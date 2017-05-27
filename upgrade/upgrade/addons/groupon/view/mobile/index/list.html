@@ -1,0 +1,96 @@
+{extend name="../../../wstmart/mobile/view/default/base" /}
+{block name="title"}团购活动 - {__block__}{/block}
+{block name="css"}
+<link rel="stylesheet"  href="__ROOT__/addons/groupon/view/mobile/index/css/list.css?v={$v}">
+{/block}
+{block name="header"}
+	<header class="ui-header ui-header-positive wst-in-header">
+	    <a href="{:url('mobile/index/index')}"><i class="ui-icon-return"></i></a>
+    </header>
+    <div class="wst-in-search search">
+    	<span class="seleft"></span><input type="text" id="wst-search" value="{$keyword}" placeholder="请输入商品名称"><span class="seright"></span><p></p><span class="ui-icon-search" onclick="javascript:searchGoods();"></span>
+    </div>
+    <div class="wst-in-icon" id="j-icon">
+        <span class="cats" style="left:initial;right:2px;" onclick="javascript:dataShow();"></span>
+    </div>
+{/block}
+{block name="footer"}
+	{include file="../../../wstmart/mobile/view/default/footer" /}
+{/block}
+{block name="main"}
+	 <input type="hidden" name="" value="{$keyword}" id="keyword" autocomplete="off">
+	 <input type="hidden" name="" value="{$goodsCatId}" id="goodsCatId" autocomplete="off">
+	 <input type="hidden" name="" value="" id="currPage" autocomplete="off">
+     <input type="hidden" name="" value="" id="totalPage" autocomplete="off">
+     <section class="ui-container">
+		<ul class="ui-tab-content" id="groupon-container" sc="{:date('Y-m-d H:i:s')}">
+	        <li id="goods-list"></li>
+	    </ul>
+     </section>
+<script id="list" type="text/html">
+{{# if(d && d.length>0){ }}
+{{# for(var i=0; i<d.length; i++){ }}
+		   <div class="ui-row-flex wst-shl-list goods" onclick="goGoods({{ d[i].grouponId }})" sv="{{ d[i].startTime }}" ev="{{ d[i].endTime }}">
+				<div class="ui-col">
+				<div class="img j-imgAdapt"><a href="javascript:void(0);" onclick="goGoods({{ d[i].grouponId }})">
+				<img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{ d[i].goodsImg }}" title="{{ d[i].goodsName }}"></a></div>
+				</div>
+				<div class="ui-col ui-col-2 info">
+					<div class="title ui-nowrap">{{ d[i].goodsName }}</div>
+					<p class="prices"><span class="discount">{{ d[i].zhekou }}折</span><span class="price">¥{{ d[i].grouponPrice }}</span><span class="price2">¥{{ d[i].marketPrice }}</span>&nbsp;</p>
+					<p>已售：{{ d[i].orderNum }}件</p>
+					<p class="time"><i></i><span class="countDown"></span></p>
+				</div>
+			</div>
+{{# } }}
+{{# }else{ }}
+	<ul class="ui-row-flex wst-flexslp">
+		<li class="ui-col ui-flex ui-flex-pack-center">
+		<p>对不起，没有相关商品。</p>
+		</li>
+	</ul>
+{{# } }}
+</script>
+{/block}
+{block name="include"}
+{/* 遮盖层  */}
+<div class="wst-cover" id="cover"></div>
+{/* 分类层  */}
+<div class="wst-fr-box" id="frame">
+    <div class="title"><span>商品分类</span><i class="ui-icon-close-page" onclick="javascript:dataHide();"></i><div class="wst-clear"></div></div>
+    <div class="content">
+       <div class="ui-scrollerl">
+            <ul>
+                {volist name="$data['goodscats']" key="k" id="gc"}
+                	<li id="goodscate" class="wst-goodscate {if($k==1)}wst-goodscate_selected{/if}" onclick="javascript:showRight(this,{$k-1});">{php}echo str_replace('、', '<br/>', $gc['catName']);{/php}</li>
+                {/volist}
+            </ul>
+        </div>
+        {volist name="$data['goodscats']" key="k" id="gc"}
+        <div class="wst-scrollerr goodscate1" {if($k!=1)}style="display:none;"{/if}>
+        {volist name="gc['childList']" key="k" id="gc1"}
+            <ul>
+                <li class="wst-goodsca">
+                    <a href="javascript:void(0);" onclick="javascript:goodsCat({$gc1['catId']});"><span>&nbsp;{$gc1.catName}</span></a>
+                    <a href="javascript:void(0);" onclick="javascript:goodsCat({$gc1['catId']});"><i class="ui-icon-arrow"></i></a>
+                </li>
+                <li>
+                    <div class="wst-goodscat">
+                        {volist name="$gc1['childList']" id="gc2"}
+                        <span><a href="javascript:void(0);" onclick="javascript:goodsCat({$gc2['catId']});">{$gc2.catName}</a></span>
+                        {/volist}
+                    </div>
+                </li>
+            </ul>
+        {/volist}
+        </div>
+        {/volist}
+        <div class="wst-clear"></div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
+<script type='text/javascript' src='__ROOT__/addons/groupon/view/mobile/index/js/list.js?v={$v}'></script>
+<script type='text/javascript' src='__ROOT__/addons/groupon/view/mobile/index/js/time.js?v={$v}'></script>
+{/block}

@@ -1,0 +1,42 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<div class="wst-toolbar">
+	订单号:<input type="text" name="orderNo" placeholder='订单号' id="orderNo" class="query" />
+	用户名称:<input type="text" name="userName" placeholder='用户名称' id="userName" class="query" />
+<button class="btn btn-blue" onclick='javascript:moneyQuery()'>查询</button>
+<div style='clear:both'></div>
+</div>
+<div id="maingrid"></div>
+<script>
+$(function(){
+	  initGrid();
+	  var grid;
+	  function initGrid(){
+		  grid = $("#maingrid").ligerGrid({
+				url:WST.U('addon/distribut-distribut-queryadmindistributmoneys'),
+				pageSize:WST.pageSize,
+				pageSizeOptions:WST.pageSizeOptions,
+				height:'99%',
+		        width:'100%',
+		        minColToggle:6,
+		        rownumbers:true,
+		        columns: [
+		            { display: '订单编号', name: 'orderNo',isSort: false},
+			        { display: '获佣用户', name: 'userName',isSort: false},
+			        { display: '佣金描述', name: 'remark',isSort: false},
+			        { display: '佣金金额', name: 'distributMoney',isSort: false},
+			        { display: '记录时间', name: 'createTime',isSort: false}
+		        ]
+		    });
+
+	  }
+	  
+	  function moneyQuery(){
+			var query = WST.getParams('.query');
+			grid.set('url',WST.U('addon/distribut-distribut-queryadmindistributmoneys',query));
+	  }
+})
+</script>
+{/block}

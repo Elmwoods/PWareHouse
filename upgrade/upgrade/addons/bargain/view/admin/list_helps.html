@@ -1,0 +1,14 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}
+<script src="__ROOT__/addons/bargain/view/admin/helps.js?v={$v}" type="text/javascript"></script>
+{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<input type='hidden' id='bargainId' value='{$bargainId}'/>
+<input type='hidden' id='bargainJoinId' value='{$bargainJoinId}'/>
+<div class="wst-toolbar">
+	<button class="btn btn-blue f-right" onclick='javascript:location.href="{:addon_url('bargain://admin/joins','bargainId='.$bargainId)}"'>返回</button>
+	<div style='clear:both'></div>
+</div>
+<div id="maingrid"></div>
+{/block}

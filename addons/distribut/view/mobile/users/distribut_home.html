@@ -1,0 +1,174 @@
+{extend name="../../../wstmart/mobile/view/default/base" /}
+{block name="title"}我的 - {__block__}{/block}
+{block name="css"}
+<link rel="stylesheet"  href="__MOBILE__/css/user.css?v={$v}">
+<link rel="stylesheet"  href="__ROOT__/addons/distribut/view/mobile/users/distribut.css?v={$v}">
+<link rel="stylesheet"  href="__MOBILE__/js/share/nativeShare.css?v={$v}">
+<style>
+
+</style>
+{/block}
+{block name="header"}
+   
+{/block}
+{block name="main"}
+    <section class="ui-container">
+        	<div class="ui-row-flex wst-users_info">
+	     		<div class="ui-col">
+	     			<div class="wst-users_infol" id="previewImages">
+			        {if (isset($user['userPhoto']) && $user['userPhoto']!='' )}
+	     			    <img src="{if(substr($user['userPhoto'],0,4)=='http')}{else}__ROOT__/{/if}{$user['userPhoto']}" class="wst-useri_portrait" id="imgurl">
+	     			{else}
+		       		    <img src="__ROOT__/{:WSTConf('CONF.userLogo')}" class="wst-useri_portrait" id="imgurl">
+		        	{/if}
+	     			</div>
+	     		</div>
+			   <div class="ui-col ui-col-2 wst-users_infor">
+			    	<span class="wst-users_infor wst-users_infortop ui-nowrap-flex ui-whitespace">{$user['userName']}</span>
+			    	<span class="wst-users_infor ui-nowrap-flex ui-whitespace" style="height:35px;width:100%;">
+			    		{if ($user['ranks']['rankName']!='')}
+			    		<div class="user-rank-box">{$user['ranks']['rankName']}
+			    		<img src="__ROOT__/{$user['ranks']['userrankImg']}">
+			    		</div>
+			    		{/if}
+			    	</span>
+			   </div>
+			   <div class="ui-col ui-col-2">
+			   		
+			   </div>
+			</div>
+			<div class="ui-row-flex ui-whitespace wst-sha_icon">
+			    <div class="ui-col ui-col make">
+			        <button type="button" class="ui-btn-lg button" onclick="WST.dialogShare();">二维码分享</button>
+			    </div>
+			    <div class="ui-col ui-col make">
+			        <button type="button" class="ui-btn-lg button" onclick="javascript:shareShow();">立刻赚钱</button>
+			    </div>
+			</div>
+			<div class="ui-row-flex ui-whitespace wst-sha_icon2">
+			    <div class="ui-col ui-col">
+				    <p class="number">{$user["userCnt"]}</p>
+				    <p>总用户</p>
+			    </div>
+			    <div class="ui-col ui-col">
+			    	<p class="number">¥{$user["distributMoney"]}</p>
+			    	<p>总佣金</p>
+			    </div>
+			</div>
+			<a href="{:url('addon/distribut-distribut-mobiledistributmoneys')}">
+			<ul class="ui-list ui-list-link wst-users_list ui-list-active">
+			    <li><div class="wst-list-thumb-sus">
+			            <span class="wst-sha_chart1"></span>
+			        </div>
+			        <div class="ui-list-info">
+			            <h5 class="ui-nowrap">佣金信息</h5>
+			    </div></li>
+			</ul></a>
+			<a href="{:url('addon/distribut-distribut-mobiledistributusers')}">
+			<ul class="ui-list ui-list-link wst-users_list ui-list-active">
+			    <li><div class="wst-list-thumb-sus">
+			            <span class="wst-sha_chart2"></span>
+			        </div>
+			        <div class="ui-list-info">
+			            <h5 class="ui-nowrap">用户列表</h5>
+			    </div></li>
+			</ul></a>
+        </section>
+        
+        
+        
+	{/*分享 */}
+	<div class="wst-cart-box" id="frame-share" style="padding-top:10px;" >
+	<div class="content" id="nativeShare" style="padding-bottom:50px;">
+		<!-- JiaThis Button BEGIN -->
+		<div class="jiathis_style_32x32">
+			<div class="ui-form-item ui-form-item-show ui-border-b">
+				<a class="jiathis_button_qzone" onclick="jiathis_mh5.sendTo('qzone');" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone" style="margin-top:5px;"></span><span>分享到QQ空间</span></a>
+			</div>
+			<div class="ui-form-item ui-form-item-show ui-border-b">
+				<a class="jiathis_button_tsina" onclick="jiathis_mh5.sendTo('tsina');" title="分享到新浪微博"><span class="jiathis_txt jtico jtico_tsina" style="margin-top:5px;"></span><span>分享到新浪微博</span></a>
+			</div>
+			<div class="ui-form-item ui-form-item-show ui-border-b">
+				<a class="jiathis_button_tqq" onclick="jiathis_mh5.sendTo('tqq');" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq" style="margin-top:5px;"></span><span>分享到腾讯微博</span></a>
+			</div>
+			<div class="ui-form-item ui-form-item-show ui-border-b">
+				<a class="jiathis_button_renren" onclick="jiathis_mh5.sendTo('renren');" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren" style="margin-top:5px;"></span><span>分享到人人网</span></a>
+			</div>
+		</div>
+		<script type='text/javascript' src='__MOBILE__/js/share/nativeShare.js?v={$v}'></script>
+		<script>
+	        var config = {
+				url: "{:url('mobile/index/index','shareUserId='.base64_encode(session('WST_USER.userId')),true,true)}",
+	            title:"",
+	            desc:"",
+	            img:""
+	        };
+			
+			var jiathis_config = {
+				url:  "{:url('mobile/index/index','shareUserId='.base64_encode(session('WST_USER.userId')),true,true)}",
+				title:"",
+				summary:"",
+				imageUrl:"",
+				slide:{
+					divid:'jiathis_main',
+					pos:'left'
+				}
+			};
+	        var share_obj = new nativeShare('nativeShare',config);
+	    </script>
+		<!-- JiaThis Button END -->
+	</div>
+	
+	<button class="button" onclick="javascript:shareHide();">取消</button>
+</div>
+        
+        <!--二维码对话框-->
+		<div class="ui-dialog" id="wst-di-qrcod" onclick="WST.dialogHide('qrcod');">
+		    <div class="ui-dialog-cnt wst-dialog-cnt5">
+		        <div class="wst-dialog-bd">
+		            <div><div id="qrcodes"></div></div>
+		        </div>
+		    </div>        
+		</div>
+		
+		{/* 遮盖层  */}
+		<div class="wst-cover" id="cover" style="z-index:0"></div>
+{/block}
+{block name="footer"}
+	{include file="../../../wstmart/mobile/view/default/dialog" /}<!-- 对话框模板 -->
+	{include file="../../../wstmart/mobile/view/default/footer" /}
+{/block}
+{block name="js"}
+<script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
+<script type='text/javascript' src='__MOBILE__/js/goods_detail.js?v={$v}'></script>
+<script type='text/javascript' src='__MOBILE__/users/user.js?v={$v}'></script>
+<script type="text/javascript" src="__STATIC__/js/qrcode.js?v={$v}"></script>
+<script>
+//弹框
+function shareShow(){
+	jQuery('#cover').attr("onclick","javascript:shareHide();").show();
+	jQuery('#frame-share').animate({"bottom": 0}, 500);
+}
+function shareHide(){
+	var cartHeight = '305px';
+	jQuery('#frame-share').animate({'bottom': '-'+cartHeight}, 500);
+	jQuery('#cover').hide();
+}
+WST.dialogShare = function(){
+	$("#wst-di-qrcod").dialog("show");
+}
+
+$(function(){
+ 	var url= "{:url('Mobile/Index/index',array('shareUserId'=>base64_encode($user['userId'])),true,true)}";
+ 	//参数1表示图像大小，取值范围1-10；参数2表示质量，取值范围'L','M','Q','H'
+ 	var qr = qrcode(10, 'H');
+ 		qr.addData(url);
+ 		qr.make();
+ 	$("#qrcodes").html(qr.createImgTag());
+ 	$("#qrcodes img").css({"width":"275px","height":"275px"});
+});
+</script>
+
+
+{/block}
+{/block}

@@ -1,0 +1,14 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}
+<script src="__ROOT__/addons/auction/view/admin/log.js?v={$v}" type="text/javascript"></script>
+{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<input type='hidden' id='id' value='{$id}'/>
+<div class="wst-toolbar">
+	竞拍人：<input type="text" name="key"  placeholder='竞拍人账号/名称' id="key" class='j-ipt'/>
+	<button class="btn btn-blue" onclick='javascript:loadGrid(0)'>查询</button>
+	<div style='clear:both'></div>
+</div>
+<div id="maingrid"></div>
+{/block}

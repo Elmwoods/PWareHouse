@@ -1,0 +1,3 @@
+<?php
+//000000000000a:1:{i:0;a:13:{s:8:"shopName";s:15:"礼品箱包馆";s:6:"shopId";i:31;s:7:"goodsId";i:8161;s:9:"goodsName";s:80:"金条电弧打火机usb充电  新款土豪金点烟器个性防风脉冲创意";s:8:"goodsImg";s:57:"upload/goods/2017-05/4083273edb65580dbbbf1f430f9f0520.jpg";s:7:"goodsSn";s:10:"6315419325";s:10:"goodsStock";i:19985;s:7:"saleNum";i:0;s:9:"shopPrice";s:6:"108.60";s:11:"marketPrice";s:6:"116.40";s:6:"isSpec";i:2;s:11:"appraiseNum";i:0;s:8:"visitNum";i:4;}}
+?>

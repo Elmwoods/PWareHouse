@@ -1,0 +1,30 @@
+{if condition="$distributType==1"}
+<tr>
+     <th>是否分销商品<font color='red'>*</font>：</th>
+     <td colspan='2'>
+      <div class="radio-box">
+        <label><input type='radio' name='isDistribut' id="isDistribut-1" class='j-ipt wst-radio' value='1' {if $distObj['isDistribut']==1}checked{/if}/><label for="isDistribut-1" class="mt-1"></label>是</label>
+        <label><input type='radio' name='isDistribut' id="isDistribut-0" class='j-ipt wst-radio' value='0' {if $distObj['isDistribut']==0}checked{/if}/><label for="isDistribut-0" class="mt-1"></label>否</label>
+      </div>
+     </td>
+  </tr>
+  <tr class='commission_tr' {if condition="$distObj['isDistribut'] ==0 "}style="display:none;"{/if}>
+     <th>佣金<font color='red'>*</font>：</th>
+     <td colspan="2">
+     	<input type='text' class='j-ipt' id='commission' value='{$distObj["commission"]}' maxLength='10' />
+     	<span style="color:red">用于分销的分成金额</span>
+     </td>
+  </tr>
+  	<script type="text/javascript">
+	<!--
+	$('input[name="isDistribut"]').click(function(){
+		   if($(this).val()==1){
+			   $(".commission_tr").show();
+		   }else{
+			   $(".commission_tr").hide();
+			   $("#'commission'").val(0);
+		   }
+	});
+	//-->
+	</script>
+{/if}

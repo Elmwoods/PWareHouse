@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS `wst_third_users`;

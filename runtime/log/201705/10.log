@@ -1,0 +1,972 @@
+[ 2017-05-10T09:27:29+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.771343s][吞吐率：1.30req/s] [内存消耗：3,797.27kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.600472s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.002848s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:34:51+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.080141s][吞吐率：12.48req/s] [内存消耗：3,726.29kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.014450s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.001171s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:37:11+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.086085s][吞吐率：11.62req/s] [内存消耗：3,726.31kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.024206s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.001017s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:41:04+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.887019s][吞吐率：1.13req/s] [内存消耗：4,037.48kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.020173s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000943s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'a.userId' in 'where clause'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T09:41:30+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.072144s][吞吐率：13.86req/s] [内存消耗：3,760.94kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022139s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000828s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:42:15+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.095892s][吞吐率：10.43req/s] [内存消耗：3,761.98kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.021831s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000834s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:42:50+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.089562s][吞吐率：11.17req/s] [内存消耗：3,760.72kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022279s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000677s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:44:05+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.104256s][吞吐率：9.59req/s] [内存消耗：3,757.28kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022433s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000753s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:44:49+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.088026s][吞吐率：11.36req/s] [内存消耗：3,757.20kb] [文件加载：45]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.019943s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000632s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:45:30+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.108254s][吞吐率：9.24req/s] [内存消耗：4,036.83kb] [文件加载：54]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022368s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000777s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义变量: friendArr[F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php:52]
+
+---------------------------------------------------------------
+[ 2017-05-10T09:45:31+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.110997s][吞吐率：9.01req/s] [内存消耗：4,036.83kb] [文件加载：54]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.023030s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000784s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义变量: friendArr[F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php:52]
+
+---------------------------------------------------------------
+[ 2017-05-10T09:46:39+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.097074s][吞吐率：10.30req/s] [内存消耗：3,941.23kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.023441s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000700s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:50:16+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.069246s][吞吐率：14.44req/s] [内存消耗：3,935.48kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.019189s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000750s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T09:50:39+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friends/userId/32
+[ log ] localhost/wstmart/vv/friend/friends/userId/32 [运行时间：0.089100s][吞吐率：11.22req/s] [内存消耗：3,935.73kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friends',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.019002s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000762s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friends[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T10:11:32+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/32 [运行时间：0.049558s][吞吐率：20.18req/s] [内存消耗：3,950.79kb] [文件加载：52]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.018009s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000836s ]
+[ info ] [ LOG ] INIT File
+[ error ] [0]方法参数错误:friendID[F:\wamp64\www\wstmart\thinkphp\library\think\App.php:302]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:14:14+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.054587s][吞吐率：18.32req/s] [内存消耗：3,996.34kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.018690s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000827s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:36+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.081882s][吞吐率：12.21req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022252s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000801s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:37+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.079123s][吞吐率：12.64req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.022256s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000626s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:37+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.057487s][吞吐率：17.40req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.020140s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000814s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:37+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.058343s][吞吐率：17.14req/s] [内存消耗：3,996.68kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.012389s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000912s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:38+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.057312s][吞吐率：17.45req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.012874s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000744s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:38+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.058716s][吞吐率：17.03req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.021388s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000774s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:18:40+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.054302s][吞吐率：18.42req/s] [内存消耗：3,996.59kb] [文件加载：55]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.017903s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000725s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'b.nickName' in 'field list'[F:\wamp64\www\wstmart\thinkphp\library\think\db\Connection.php:362]
+
+---------------------------------------------------------------
+[ 2017-05-10T10:22:20+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/29/friendID/32
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/29/friendID/32 [运行时间：0.039234s][吞吐率：25.49req/s] [内存消耗：3,908.52kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '29',
+  'friendID' => '32',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.010743s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000680s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T10:23:15+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/32/friendID/29
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/32/friendID/29 [运行时间：0.048208s][吞吐率：20.74req/s] [内存消耗：3,908.88kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+  'friendID' => '29',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.018848s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000787s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T10:25:00+08:00 ] ::1 ::1 GET /wstmart/vv/friend/friendInfo/userId/32/friendID/29
+[ log ] localhost/wstmart/vv/friend/friendInfo/userId/32/friendID/29 [运行时间：0.073931s][吞吐率：13.53req/s] [内存消耗：3,909.37kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'friend',
+    2 => 'friendInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+  'friendID' => '29',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.015921s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000909s ]
+[ info ] [ RUN ] wstmart\vv\controller\Friend->friendInfo[ F:\wamp64\www\wstmart\wstmart\vv\controller\Friend.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-05-10T10:26:24+08:00 ] ::1 ::1 GET /wstmart/vv/group/info/userId/32/groupID/1
+[ log ] localhost/wstmart/vv/group/info/userId/32/groupID/1 [运行时间：0.039121s][吞吐率：25.56req/s] [内存消耗：3,925.10kb] [文件加载：49]
+[ info ] [ LANG ] F:\wamp64\www\wstmart\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'vv',
+    1 => 'group',
+    2 => 'info',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en;q=0.6',
+  'cookie' => 'Phpstorm-a1c2db2e=5e9f6b77-a59c-4cf3-b88d-5364869cc389; WSTMART_history_goods=think%3A%5B%2267%22%2C%221%22%2C%2265%22%2C%22180%22%2C%22191%22%2C%22194%22%2C%2268%22%2C%2250%22%2C%2252%22%2C%2270%22%2C%2266%22%2C%2247%22%2C%2227%22%2C%2233%22%2C%222%22%5D; a0537_times=35',
+)
+[ info ] [ PARAM ] array (
+  'userId' => '32',
+  'groupID' => '1',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run Closure @app_begin [ RunTime:0.010922s ]
+[ info ] [ BEHAVIOR ] Run wstmart\common\behavior\InitConfig @app_begin [ RunTime:0.000721s ]
+[ info ] [ RUN ] wstmart\vv\controller\Group->info[ F:\wamp64\www\wstmart\wstmart\vv\controller\Group.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------

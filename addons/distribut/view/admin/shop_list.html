@@ -1,0 +1,69 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<div class="wst-toolbar">
+	
+   <div id="query" style="float:left;">
+	   		店铺编号:<input type="text" name="shopSn"  placeholder='账号' id="shopSn" class="query" />
+	   		店铺名称:<input type="text" name="shopName" placeholder='手机号码' id="shopName" class="query" />
+	   		店主姓名:<input type="text" name="shopkeeper" placeholder='电子邮箱' id="shopkeeper" class="query" />
+	   		<input type="button" class="btn btn-blue" onclick="javascript:userQuery()" value="查询">
+	</div>
+
+   <div style="clear:both"></div>
+</div>
+<div class="wst-toolbar">
+   
+   <div style='clear:both'></div>
+</div>
+<div id="maingrid"></div>
+<script>
+$(function(){initGrid();})
+  var grid;
+  function initGrid(){
+	  grid = $("#maingrid").ligerGrid({
+			url:WST.U('addon/distribut-distribut-queryadmindistributshops'),
+			pageSize:WST.pageSize,
+			pageSizeOptions:WST.pageSizeOptions,
+			height:'99%',
+	        width:'100%',
+	        minColToggle:6,
+	        rowHeight:65,
+	        rownumbers:true,
+	        columns: [
+	            { display: '店铺编号', name: 'shopSn',isSort: false},
+		        { display: '店铺名称', name: 'shopName',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+rowdata['shopName']+"</div>";
+	            }},
+		        { display: '店主姓名', name: 'shopkeeper',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+rowdata['shopkeeper']+"</div>";
+	            }},
+		        { display: '店主联系电话', name: 'telephone',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+rowdata['telephone']+"</div>";
+	            }},
+		        { display: '店主店铺地址', name: 'shopAddress',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+rowdata['shopAddress']+"</div>";
+	            }},
+		        { display: '所属公司', name: 'distributType',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+rowdata['shopCompany']+"</div>";
+	            }},
+		        { display: '分销模式', name: 'shopCompany',isSort: false,render: function (rowdata, rowindex, value){
+		        	return "<div class='goods-valign-m'>"+(rowdata['distributType']==1?"按商品设置提取佣金":"按订单比例提取佣金")+"</div>";
+	            }},
+		        { display: '购买者分成', name: 'buyerRate',isSort: false},
+		        { display: '第二级分成', name: 'secondRate',isSort: false},
+		        { display: '第三级分成', name: 'thirdRate',isSort: false},
+		        { display: '营业状态', name: 'shopAtive',isSort: false,render: function (rowdata, rowindex, value){
+		        	return (rowdata['shopAtive']==1)?"营业中":"休息中";
+		        }}
+	        ]
+	    });
+
+  }
+  function userQuery(){
+		var query = WST.getParams('.query');
+		grid.set('url',WST.U('addon/distribut-distribut-queryadmindistributshops',query));
+  }
+</script>
+{/block}

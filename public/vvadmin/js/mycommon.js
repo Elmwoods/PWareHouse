@@ -1,0 +1,34 @@
+      function getOneNewsHTML(rowNo){
+        var newsContent = "";
+        newsContent += "<div class='form-group'>";
+        newsContent += "  <label class='col-lg-6 control-label'>图文标题</label>";
+        newsContent += "  <div class='col-lg-6'>";
+        newsContent += "    <input type='text' class='form-control' placeholder='请输入图文标题' name='keyMsg["+rowNo+"][title]'>";
+        newsContent += "  </div>";
+        newsContent += "</div>";
+        newsContent += "";
+        newsContent += "<div class='form-group'>";
+        newsContent += "  <label class='col-lg-4 control-label'>图文内容</label>";
+        newsContent += "  <div class='col-lg-8'>";
+        newsContent += "     <input type='text' class='form-control' placeholder='请输入图文内容' name='keyMsg["+rowNo+"][content]'> ";
+        newsContent += "  </div>";
+        newsContent += "</div>";
+        newsContent += "";
+        newsContent += "<div class='form-group'>";
+        newsContent += "  <label class='col-lg-6 control-label'>跳转URL</label>";
+        newsContent += "  <div class='col-lg-6'>";
+        newsContent += "    <input type='text' class='form-control' name='keyMsg["+rowNo+"][turnurl]' placeholder='请输入点击图文时的跳转URL地址'>";
+        newsContent += "  </div>";
+        newsContent += "</div>";
+        newsContent += "";
+        newsContent += "<div class='form-group'>";
+        newsContent += "  <label class='col-lg-4 control-label'>图文封面</label>";
+        newsContent += "  <div class='col-lg-6'>";
+        newsContent += "    <input type='file' id='file"+rowNo+"' name='file[]' onchange='showImg(this,"+rowNo+")'>";
+        newsContent += "  </div>";
+        newsContent += "  <div class='col-lg-2'>";
+        newsContent += "    <img src='' id='fileImg"+rowNo+"' width='80' style='display:none'>";
+        newsContent += "  </div>";
+        newsContent += "</div>";
+        return newsContent;
+      }

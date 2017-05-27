@@ -1,0 +1,51 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}{/block}
+{block name="main"}
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<div class="wst-toolbar">
+	
+   <div id="query" style="float:left;">
+	   		会员账号:<input type="text" name="loginName"  placeholder='账号' id="loginName" class="query" />
+	   		手机号码:<input type="text" name="loginPhone" placeholder='手机号码' id="loginPhone" class="query" />
+	   		电子邮箱:<input type="text" name="loginEmail" placeholder='电子邮箱' id="loginEmail" class="query" />
+	   		<input type="button" class="btn btn-blue" onclick="javascript:userQuery()" value="查询">
+	   		
+	</div>
+	<div style="float:right;width:100px;text-align: right;"><input type="button" class="btn btn-blue" onclick="javascript:history.go(-1)" value="返回"></div>
+   <div style="clear:both"></div>
+</div>
+<div id="maingrid"></div>
+<script>
+  $(function(){initGrid()});
+  var grid;
+  function initGrid(){
+  	grid = $("#maingrid").ligerGrid({
+  		url:"{:addon_url('distribut://distribut/queryAdminDistributChildUsers',array('userId'=>$userId))}",
+  		pageSize:WST.pageSize,
+  		pageSizeOptions:WST.pageSizeOptions,
+  		height:'99%',
+          width:'100%',
+          minColToggle:6,
+          rownumbers:true,
+          columns: [
+  	        { display: '账号', name: 'loginName', isSort: false},
+  	        { display: '用户名', name: 'userName', isSort: false},
+  	        { display: '手机号码', name: 'userPhone', isSort: false},
+  	        { display: '电子邮箱', name: 'userEmail', isSort: false},
+  	        { display: '积分', name: 'userScore', isSort: false},
+  	        { display: '注册时间', name: 'createTime', isSort: false},
+  	        { display: '状态', name: 'userStatus', isSort: false, render:function(rowdata, rowindex, value){
+  	        	return (value==1)?'启用':'停用';
+  	        }},
+  	        { display: '总佣金', name: 'distributMoney', isSort: false}
+          ]
+      });
+
+  }
+  function userQuery(){
+		var query = WST.getParams('.query');
+			query.userId="{$userId}";
+		grid.set('url',WST.U('addon/distribut-distribut-queryadmindistributchildusers',query));
+  }
+</script>
+{/block}

@@ -1,0 +1,691 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:54:"E:\wamp64\wamp\www/wstmart/vvoff\view\index\index.html";i:1495867564;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>京歌科技 全球货币分流技术缔造者</title>
+    <link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__VVOFF__/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="__VVOFF__/css/index.css" id="css"/>
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <!--<script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>-->
+</head>
+<style type="text/css">
+    .team {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .terrace_show {
+        width: 200px;
+        margin: 0 12px;
+        float: left;
+    }
+</style>
+
+<script>
+    var phoneWidth = parseInt(window.screen.width);
+    var phoneHeight = parseInt(window.screen.height);
+    var phoneScale = phoneWidth/640;
+
+    var ua = navigator.userAgent;
+    if (/Android (\d+\.\d+)/.test(ua)){
+        var version = parseFloat(RegExp.$1);
+        // andriod 2.3
+        if(version>2.3){
+            document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+            // andriod 2.3以上
+        }else{
+            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+        }
+        // 其他系统
+    } else {
+        document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+    }
+</script>
+<body>
+<div class="zhezhao">
+</div>
+<div class="visible-sm-block visible-xs-block">
+    <div class="p_top">
+        <div class="p_logo">
+            <a href="#15"><img src="__VVOFF__/img/logo1.png"/></a>
+        </div>
+        <div class="p_list">
+            <ul>
+                <li><a href="#08">我们</a></li>
+                <li><a href="#09">VV聊天</a></li>
+                <li><a href="#10">钱袋子</a></li>
+                <li><a href="#11">金购商城</a></li>
+                <li><a href="#12">京歌未来</a></li>
+                <li><a href="#13">团队</a></li>
+                <li><a href="#14">新闻</a></li>
+                <!--<li><a href="<?php echo url('vvoff/index/english'); ?>">ENGLISH</a></li>-->
+            </ul>
+        </div>
+
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="header" id="15">
+                    <img src="__VVOFF__/img/phone/A.png" class="tou"/>
+<img src="__VVOFF__/images/QR_down.png" alt="" class="phone_code"/>
+<ul class="phone_width">
+<li class="li_img"><a href=""><img src="__VVOFF__/images/button_VV.png"/></a></li>
+<li class="li_img"><a href=""><img src="__VVOFF__/images/button_VVPAY.png"/></a></li>
+<li class="li_img"><a href=""><img src="__VVOFF__/images/button_jingomall.png"/></a></li>
+ </ul>
+                    <img src="__VVOFF__/img/aazx.png" class="img_b"/>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="we" id="08">
+                    <img src="__VVOFF__/img/12.png"/>
+                    <span>“杭州京歌科技有限公司”是全球“货”“币”分流技术缔造者！ </span>
+                    <br />
+                    <span>“杭州京歌科技有限公司”率先在世界上掀起新一轮货币结算体系技术变革，利用现代网络模块化先进技术与分布式账本财务结算系统相结合，一改过去必须一手交钱、一手交货的传统观念，把“货”“币”自动分流，通过降低和减少商品流通、结算时间来减少社会能耗，进一步解放社会生产力。</span>
+                    <br />
+                    <span>“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是世界上唯一一款服务最全，性能最先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+                    <br />
+                    <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
+                    <br />
+                    <span>杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容，未来。只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算……</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="vv_contact" id="09">
+                    <img src="__VVOFF__/img/vv.png" class="IM"/>
+                    <div id="pics">
+                        <a href="#" style="display: block">
+                            <img src="__VVOFF__/img/phone/1140.png"/>
+                        </a>
+                        <a href="#">
+                            <img src="__VVOFF__/img/phone/1141.png"/>
+                        </a>
+                        <a href="#" style="display: block">
+                            <img src="__VVOFF__/img/phone/1140.png"/>
+                        </a>
+                        <a href="#">
+                            <img src="__VVOFF__/img/phone/1141.png"/>
+                        </a>
+                    </div>
+                    <span>&nbsp;&nbsp;“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是一款服务全，性能先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="bag" id="10">
+                    <img src="__VVOFF__/img/123.png" class="EM"/>
+                    <div id="pics1">
+                        <a href="#" style="display: block">
+                            <img src="__VVOFF__/img/phone/1142.png"/>
+                        </a>
+                        <a href="#">
+                            <img src="__VVOFF__/img/phone/1143.png"/>
+                        </a>
+                        <a href="#" style="display: block">
+                            <img src="__VVOFF__/img/phone/1142.png"/>
+                        </a>
+                        <a href="#">
+                            <img src="__VVOFF__/img/phone/1143.png"/>
+                        </a>
+                    </div>
+                    <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="shopping" id="11">
+                    <img src="__VVOFF__/img/1234.png"/>
+                    <span>“jingomall.com（金购.中国）〞是“杭州京歌科技有限公司”旗下为全球客户服务的网络交易平台，交易包括金融在内的各类社会商品。为方便（全球）客户线上商品交易，还配套开发了云计算数据系统和移动客户端系统。</span>
+                    <br />
+                    <br />
+                    <span>货、币分流技术被世界称为最复杂、最深奥的金融理论技术，该技术能打破各国贸易藩篱服务商品流通，减少商品交易时间和降低货币兑换成本。以物为点、据点销售的链销模式被称为物联网3.0技术，该技术能把个人信用与客户消费习惯串联起来。两种技术在交易平台上深度融合，不仅颠覆了原有商品流通模式，还很符合现代人们更简便、更精致的服务心理需求。</span>
+                    <br />
+                    <br />
+                    <span>为了中国和世界的经济发展，杭州京歌科技有限公司勇挑重担努力创新，以推动社会文明发展为己任...</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="wei" id="12">
+                    <img src="__VVOFF__/img/weilaia.png"/>
+                    <span>杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容，未来。只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算……</span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="teams" id="13">
+                    <img src="__VVOFF__/img/team.png" class="T_img"/>
+                    <div class="teams_list">
+                        <ul id="teamlist">
+                            <div class="t_none">
+                                <?php if(is_array($sta2) || $sta2 instanceof \think\Collection): $i = 0; $__LIST__ = $sta2;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+                                <li class="teamitem">
+                                    <div class="mteam_img">
+                                   
+                                        <dl>
+                                            <dt>
+                                                <!--<img src="__VVOFF__/img/03241035/1.png"/>-->
+                                                <img src="/<?php echo $v['headimg']; ?>"/>
+                                            </dt>
+                                            <dd>
+                                                <p><?php echo $v['name']; ?></p>
+                                                <br />
+                                                <p class="t_xt"> <?php echo $v['job']; ?></p>
+                                                <br />
+                                                <span><?php echo $v['introduction']; ?></span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
+                            </div>
+                        </ul>
+                        <a href="<?php echo url('vvoff/index/team'); ?>"><button>加载更多</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="newss" id="14">
+                    <img src="__VVOFF__/img/0.png" class="new_img"/>
+                    <div class="se_list">
+                        <ul class="se_ul">
+                        <?php if(is_array($art2) || $art2 instanceof \think\Collection): $i = 0; $__LIST__ = $art2;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+                            <a href="<?php echo url('vvoff/index/p_news', ['id'=>$v['id']]); ?>">
+                                <li>
+                                    <dl>
+                                        <dt>
+                                            <img src="/<?php echo $v['art_img']; ?>"/>
+                                        </dt>
+                                        <dd>
+                                            <h2><?php echo $v['art_name']; ?></h2>
+
+                                            <span><?php echo $v['art_short']; ?></span>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </a>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul>
+                    </div>
+                   <a href="<?php echo url('vvoff/index/news_list'); ?>"><button style="background:#000;border:0;color:#fff;">加载更多</button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--<div class="over">
+        <span>杭州京歌科技有限公司版权所有</span>
+    </div>-->
+
+</div>
+
+<!--PC端 >=992-->
+<div class="visible-lg-block visible-md-block">
+    <div class="header" id="header">
+        <div class="header_top">
+            <div class="list">
+                <ul>
+
+                    <li><a href="#01" onfocus="this.blur();">京歌介绍</a></li>
+                    <li><a href="#02" onfocus="this.blur();">VV聊天</a></li>
+                    <li><a href="#03" onfocus="this.blur();">钱袋子</a></li>
+                    <li><a href="#04" onfocus="this.blur();">金购商城</a></li>
+                    <li><a href="#05" onfocus="this.blur();">京歌未来</a></li>
+                    <li><a href="#06" onfocus="this.blur();">团队介绍</a></li>
+                    <li><a href="#07" onfocus="this.blur();">京歌新闻</a></li>
+                   <!-- <li><a href="<?php echo url('english')?>" onfocus="this.blur();">ENGLISH SITE</a></li>-->
+
+                    <li style="" id="li">
+                        <a href="javascript:void(0)"  id="li_a">
+                    		<span class="code_down ">下载<img src="__VVOFF__/images/down.png" alt="" id="sjx"/>
+                                <!--<span class="sjx ">-->
+                                <!--二维码下载-->
+                    		  	<div class="code">
+							    	<div class="code_img">
+							    		<img src="__VVOFF__/images/QR_down.png"/>
+							    	</div>
+							    	<p>扫一扫下载VV APP</p>
+							    </div>
+                                <!--</span>-->
+                    		</span>
+                        </a>
+                    </li>
+
+                    <!-------登录注册-------->
+                    <?php if(\think\Session::get('WST_USER.userName') != ''): ?>
+                        <li style="margin: 0;width: 100px;text-align: center;" id="demo1">
+                            <span id="user_id" >
+                                <?php echo \think\Session::get('WST_USER.userName'); ?> <img src="__VVOFF__/images/down.png" alt="" />
+                            </span>
+
+                            <div class="user_detail">
+                                <div class="touxiang left">
+                                    <img src="__VVOFF__/img/touxiang.png"/>
+                                </div>
+                                <span class="left WID" style="letter-spacing: 1px;">
+                                    VVID : <?php echo \think\Session::get('WST_USER.userName'); ?>
+                                </span>
+                                <span class="left WID">
+                                    信用分 : 50
+                                </span>
+                                <span class="quit">
+                                    退出
+                                </span>
+                            </div>
+                        </li>
+                    <?php else: ?>
+                    <li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="demo right denglu" >登陆</a></li>
+                    <i class="sx"></i>
+                    <li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="zhuce">注册</a></li>
+                    <?php endif; ?>
+
+
+                </ul>
+            </div>
+            <div class="logo">
+                <img src="__VVOFF__/img/logo.png"/>
+            </div>
+        </div>
+    </div>
+
+    <!--扫码登陆-->
+<form action="<?php echo url('vvoff/login/check'); ?>" method="post" class="code_login">
+
+        <a href="javascript:void(0)">
+            <img class="tab1" src="__VVOFF__/images/tab_1.png"/>
+        </a>
+        <a href="javascript:void(0)" class="close_d">
+            <img class="close_s" src="__VVOFF__/images/button_close.png"/>
+        </a>
+        <div class="code_p">
+            <img src="__VVOFF__/serialize/<?php echo $data; ?>/<?php echo $serialize; ?>.png" class="code_s"  style="width: 140px;height: 140px;"/>
+            <img src="__VVOFF__/images/tab_1.png" class="code_cs"  style="width: 140px;height: 140px;display: none"/>
+        </div>
+        <p>请使用VV APP 扫码登陆</p>
+
+        <span class="other">
+			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+		</span>
+</form>
+
+    <!--短信登录-->
+    <form action="<?php echo url('vvoff/login/reg'); ?>" method="post" class="code_login_d">
+        <a href="javascript:void(0)">
+            <img class="tab2" src="__VVOFF__/images/tab_2.png"/>
+        </a>
+        <a href="javascript:void(0)" class="close_d2">
+            <img class="close_s" src="__VVOFF__/images/button_close.png"/>
+        </a>
+        <div class="phone_m">
+            <p class="white">短信登陆</p>
+            <p class="white">验证即登陆，未注册将自动创建 VV ID</p>
+            <div class="phone_n">
+                <input class="phone_nk sjh sjyzm" type="text" name="mobile" id="zh_03" value="" autocomplete="off" placeholder="请输入手机号"/>
+            </div>
+            <p class="sjgs" style="text-align: center;">*手机号码格式不正确*</p>
+            <div class="phone_n shangyi">
+                <input class="phone_nk" type="password" name="code" id="" value="" autocomplete="off" placeholder="请输入验证码"/>
+
+            </div>
+            <button class="send_yzm">发送验证码</button>
+
+            <input type="submit" value="提交"  class="post_tj"/>
+            <p class="agreement">同意并接受<a href="javascript:void(0)">《京歌用户协议》</a></p>
+        </div>
+
+
+        <span class="other">
+			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+		</span>
+    </form>
+
+
+    <!--帐号登入-->
+    <form action="<?php echo url('vvoff/login/cnlogon'); ?>" method="post" class="user_login">
+        <a href="javascript:void(0)">
+            <img class="tab2" src="__VVOFF__/images/tab_2.png"/>
+        </a>
+        <a href="javascript:void(0)" class="close_d2">
+            <img class="close_s" src="__VVOFF__/images/button_close.png"/>
+        </a>
+        <div class="phone_m">
+            <p class="white">帐号登陆</p>
+
+            <div class="phone_n">
+                <input class="phone_nk sjh" type="text" name="username" id="zh_02" value="" autocomplete="off" placeholder="请输入手机号 |VV ID"/>
+            </div>
+            <p class="sjgs">*手机号码格式不正确*</p>
+            <div class="phone_n shangyi">
+                <input class="phone_nk" type="password" name="password" id="" value="" autocomplete="off" placeholder="请输入密码"/>
+            </div>
+            <input type="submit" value="登录" class="zh_login" />
+            <!--<p class="agreement">同意并接受<a href="javascript:void(0)">《京歌用户协议》</a></p>-->
+        </div>
+        <span class="other">
+			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="note_login">短信登陆</a>
+		</span>
+    </form>
+
+
+    <!--注册-->
+    <form action="<?php echo url('vvoff/login/reg'); ?>" method="post" class="user_register">
+        <a href="javascript:void(0)" class="close_d2">
+            <img class="close_s" src="__VVOFF__/images/button_close.png"/>
+        </a>
+        <div class="phone_m_zc">
+            <p class="white_zc">注册</p>
+
+            <div class="phone_n">
+                <input class="phone_nk sjh sjyzm" type="tel" name="mobile" id="zh_01" value="" autocomplete="off" placeholder="请输入手机号"/>
+            </div>
+            <p class="sjgs">*手机号码格式不正确*</p>
+            <div class="phone_n shangyi">
+                <input class="phone_nk" type="text" name="code" id="" value="" autocomplete="off" placeholder="请输入验证码"/>
+            </div>
+            <button class="send_yzm">发送验证码</button>
+            <input type="submit" value="注册"  class="zh_login_r"/>
+            <p class="agreement">同意并接受<a href="javascript:void(0)">《京歌用户协议》</a></p>
+        </div>
+        <span class="other">
+			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="note_login">登陆</a>
+		</span>
+    </form>
+
+
+    <!--------下载VV---------->
+
+    <div class="code_down_b">
+
+        <a href="javascript:void(0)" class="close_d">
+            <img class="close_s" src="__VVOFF__/images/button_close.png"/>
+        </a>
+
+        <div class="code_p">
+            <img src="__VVOFF__/images/QR_down.png" class="code_b code_big"/>
+        </div>
+        <p>扫码下载VV APP</p>
+
+        <span class="other">
+			<a href="javascript:void(0)" class="denglu">登录</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="zhuce">注册</a>
+		</span>
+    </div>
+
+    <div class="container-fluid menu">
+        <div class="top">
+            <img class="top_img" src="__VVOFF__/img/11.png"/>
+            <div class="btn_a">
+                <button class="btn_lt"><img src="__VVOFF__/images/button_VV.png"/></button>
+                <button class="btn_qdz"><img src="__VVOFF__/images/button_VVPAY.png"/></button>
+                <button class="btn_sc"><a href="<?php echo url('home/index/index'); ?>" target="_blank"> <img src="__VVOFF__/images/button_jingomall.png" alt="" /></a></button>
+            </div>
+
+
+            <!--<?php if(empty($_COOKIE['WSTMART_name'])): ?>-->
+
+                <!--<div class="menu_img">
+                    <div>
+                        <dl>
+                            <dt><img src="" width="150" height="150" class="_img"></dt>
+                            <dd> <span>登陆二维码</span></dd>
+                        </dl>
+                    </div>
+                    <div>
+                        <dl>
+                            <dt><img src="" width="150" height="150" class="_img"></dt>
+                            <dd> <span>注册二维码</span></dd>
+                        </dl>
+                    </div>
+                </div>
+            <?php else: ?>
+            <p class="menu_top_p">你好,<b style="font-size: 42px; color:red;"><?php echo $_COOKIE['WSTMART_name']; ?>!</b>欢迎回来!</p>;-->
+            <!--<?php endif; ?>-->
+
+
+            <img style="margin-top:50px" src="__VVOFF__/img/aazx.png"/>
+        </div>
+    </div>
+
+    <div class="container-fluid hot" id="01">
+        <div class="hot_top">
+            <div class="top">
+                <img src="__VVOFF__/img/12.png"/>
+            </div>
+            <div class="hot_span">
+                <span>“杭州京歌科技有限公司”是全球“货”“币”分流技术缔造者！</span>
+                <br />
+                <br />
+                <br />
+                <span>“杭州京歌科技有限公司”率先在世界上掀起新一轮货币结算体系技术变革，利用现代网络模块化先进技术与分布式账本财务结算系统相结合，一改过去必须一手交钱、一手交货的传统观念，把“货”“币”自动分流，通过降低和减少商品流通、结算时间来减少社会能耗，进一步解放社会生产力。</span>
+                <br />
+                <br />
+                <br />
+                <span>“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是世界上唯一一款服务最全，性能最先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+                <br />
+                <br />
+                <br />
+                <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
+                <br />
+                <br />
+                <br />
+                <span>杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容，未来。只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算……</span>
+                <br />
+                <br />
+                <br />
+                <span>这也是京歌人倾心打造服务社会的主题，“世界，因你而变！”</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid news" id="02">
+        <div class="news_top">
+            <div class="top">
+                <img src="__VVOFF__/img/vv.png"/>
+            </div>
+            <div class="bottom">
+                <span>“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是一款服务全，性能先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+            </div>
+            <div id="pics2">
+                <a href="#" style="display: block">
+                    <img src="__VVOFF__/img/phone/1140.png"/>
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/phone/1141.png"/>
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/phone/1140.png"/>
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/phone/1141.png"/>
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/phone/1140.png"/>
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/phone/1141.png"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="column" id="03">
+        <div class="column_top">
+            <div class="top">
+                <img src="__VVOFF__/img/123.png"/>
+            </div>
+            <div id="pics3">
+                <a href="#" style="display: block">
+                    <img src="__VVOFF__/img/212011181318463959.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/5.png" alt="">
+                </a>
+                <a href="#" style="display: block">
+                    <img src="__VVOFF__/img/212011181318463959.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="__VVOFF__/img/5.png" alt="">
+                </a>
+            </div>
+            <div class="col_bot">
+                <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="shop" id="04">
+        <div class="shop_top">
+            <div class="top">
+                <img src="__VVOFF__/img/1234.png"/>
+            </div>
+            <div class="shop_txt">
+                <span>“jingomall.com（金购.中国）〞是“杭州京歌科技有限公司”旗下为全球客户服务的网络交易平台，交易包括金融在内的各类社会商品。为方便（全球）客户线上商品交易，还配套开发了云计算数据系统和移动客户端系统。</span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <span>货、币分流技术被世界称为最复杂、最深奥的金融理论技术，该技术能打破各国贸易藩篱服务商品流通，减少商品交易时间和降低货币兑换成本。以物为点、据点销售的链销模式被称为物联网3.0技术，该技术能把个人信用与客户消费习惯串联起来。两种技术在交易平台上深度融合，不仅颠覆了原有商品流通模式，还很符合现代人们更简便、更精致的服务心理需求。</span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <span>为了中国和世界的经济发展，杭州京歌科技有限公司勇挑重担努力创新，以推动社会文明发展为己任...</span>
+            </div>
+        </div>
+    </div>
+    <div class="weilai" id="05">
+        <div class="weilai_top">
+            <div class="w_top">
+                <img src="__VVOFF__/img/weilaia.png" alt="">
+            </div>
+            <div class="w_txt">
+                        <span>
+                           	 杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容，未来。只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算…… 
+                        </span>
+            </div>
+        </div>
+    </div>
+
+    <div style="background:#0f1210;width:100%;">
+          <div class="container-fluid team" id="06">
+        <div class="team_t">
+            <div class="top">
+                <img src="__VVOFF__/img/team.png"/>
+            </div>
+            <div class="col-lg-12 col-md-12 msg">
+                
+
+                <?php foreach ($sta as $v):?>
+
+                <div class="terrace_show">
+                    <dl>
+                        <dt>
+                            <img src="<?php echo '/'.$v['headimg']?>"/>
+                            <span>
+        <h4>个人简介</h4>
+        <p><?php echo $v['introduction']?></p>
+        </span>
+                        </dt>
+                        <dd>
+                            <p class="dd-tit"><span class="dd-tit-1"><?php echo $v['name']?></span></p>
+                            <br />
+
+                            <p class="dd-con dd_txt"><?php echo $v['job']?></p>
+                            <p class="dd-con">格言：<?php echo $v['motto']?></p>
+                        </dd>
+                    </dl>
+                </div>
+                <?php endforeach;?>
+                </div>
+                
+            </div>
+        </div>  
+    </div>
+    
+
+
+    
+    <div class="container-fluid service" id="07">
+        <div class="se_top">
+            <div class="top">
+                <img src="__VVOFF__/img/0.png"/>
+            </div>
+            <?php foreach ($art as $v):?>
+            <div class="se_list">
+                <ul class="se_ul">
+
+                    <!--<a href="news/id/<?php echo $v['id']?>">-->
+                    <a href="<?php echo url('vvoff/index/news', ['id'=>$v['id']]); ?>">
+                        <li>
+                            <dl>
+                                <dt>
+                                    <img src="<?php echo '/'.$v['art_img']?>" alt="" />
+                                </dt>
+                                <dd>
+                                    <h2><?php echo $v['art_name']?></h2>
+                                    <p><?php echo $v['art_addtime']?></p>
+                                    <span style="width: 600px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><?php echo $v['art_content']?></span>
+                                </dd>
+                            </dl>
+                        </li>
+                    </a>
+
+                </ul>
+            </div>
+        <?php endforeach;?>
+            <div class="bnt">
+                <!--<span>加载更多</span>-->
+            </div>
+        </div>
+    </div>
+    <div class="overs">
+        <div class="over_box">
+            <div class="over_img">
+                <img src="__VVOFF__/images/foot03/zfew.jpg"/>
+            </div>
+            <div class="over_txt">
+                <p>杭州京歌科技有限公司版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-167-5655</p>
+                <p>地址：杭州市江干区解放东路37号财富金融中心西楼3202</p>
+                <p>备案号 浙ICP备17002020号</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div id="remote" style="display: none;"><?php echo url('vvoff/index/check'); ?></div>
+<div id="send" style="display: none;"><?php echo url('vvoff/login/send'); ?></div>
+<div id="quit" style="display: none;"><?php echo url('vvoff/login/quit'); ?></div>
+<div id="back" style="display: none;"><?php echo url('vvoff/index/index'); ?></div>
+<div id="serialize" style="display: none;">__VVOFF__</div>
+<div id="setqrcode" style="display: none;"><?php echo url('vvoff/index/setqrcode'); ?></div>
+
+</body>
+<script src="__VVOFF__/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__VVOFF__/js/index.js"></script>
+<script src="__VVOFF__/js/remote_zh.js"></script>
+<script src="__VVOFF__/js/header.js" type="text/javascript" charset="utf-8"></script>
+<script src="__VVOFF__/js/b.js></script>
+<script src="__VVOFF__/js/bootstrap.min.js"></script>
+<script src="__VVOFF__/js/swiper.min.js"></script>
+<script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+
+</script>
+</html>
+

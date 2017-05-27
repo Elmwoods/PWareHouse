@@ -1,0 +1,60 @@
+{extend name="../../../wstmart/admin/view/base" /}
+{block name="js"}
+<script src="__ROOT__/addons/groupon/view/admin/list.js?v={$v}" type="text/javascript"></script>
+{/block}
+{block name="main"}
+<style>
+	.time{line-height:15px;margin-top:10px;}
+	.valign-m{vertical-align:middle;line-height:65px;}
+</style>
+<div class="l-loading" style="display: block" id="wst-loading"></div>
+<div id="wst-tabs" style="width:100%; height:99%;overflow: hidden; border: 1px solid #D3D3d3;" class="liger-tab">
+   <div title="团购商品" class='wst-tab'  style="height: 99%">
+		<div class="wst-toolbar">
+		商家所在地：
+		<select id="areaId1" class='j-ipt j-areas' level="0" onchange="WST.ITAreas({id:'areaId1',val:this.value,className:'j-areas'});">
+		  <option value="">-请选择-</option>
+		  {volist name="areaList" id="vo"}
+		  <option value="{$vo['areaId']}">{$vo['areaName']}</option>
+		  {/volist}
+		</select>
+		店铺：<input type="text" name="shopName1"  placeholder='店铺名称/店铺编号' id="shopName1" class='j-ipt'/>
+		<br/>
+		所属分类：
+		<select id="cat1_0" class='ipt pgoodsCats' level="0" onchange="WST.ITGoodsCats({id:'cat1_0',val:this.value,isRequire:false,className:'pgoodsCats'});">
+		   <option value="">-请选择-</option>
+		   {volist name=":WSTGoodsCats(0)" id="vo"}
+			<option value="{$vo['catId']}">{$vo['catName']}</option>
+			{/volist}
+		</select>
+		商品：<input type="text" name="goodsName1"  placeholder='商品名称/商品编号' id="goodsName1" class='j-ipt'/>
+		<button class="btn btn-blue" onclick='javascript:loadGrid1(0)'>查询</button>
+		<div style='clear:both'></div>
+		</div>
+		<div id="maingrid1"></div>
+   </div>
+   <div title="待审核商品" class='wst-tab'  style="height: 99%">
+        <div class="wst-toolbar">
+		商家所在地：
+		<select id="areaId2" class='j-ipt j-areas' level="0" onchange="WST.ITAreas({id:'areaId2',val:this.value,className:'j-areas'});">
+		  <option value="">-请选择-</option>
+		  {volist name="areaList" id="vo"}
+		  <option value="{$vo['areaId']}">{$vo['areaName']}</option>
+		  {/volist}
+		</select>
+		店铺：<input type="text" name="shopName2"  placeholder='店铺名称/店铺编号' id="shopName2" class='j-ipt'/>
+		<br/>
+		所属分类：
+		<select id="cat2_0" class='ipt pgoodsCats' level="0" onchange="WST.ITGoodsCats({id:'cat2_0',val:this.value,isRequire:false,className:'pgoodsCats'});">
+		   <option value="">-请选择-</option>
+		   {volist name=":WSTGoodsCats(0)" id="vo"}
+			<option value="{$vo['catId']}">{$vo['catName']}</option>
+			{/volist}
+		</select>
+		商品：<input type="text" name="goodsName2"  placeholder='商品名称/商品编号' id="goodsName2" class='j-ipt'/>
+		<button class="btn btn-blue" onclick='javascript:loadGrid2(0)'>查询</button>
+		<div style='clear:both'></div>
+		</div>
+		<div id="maingrid2"></div>
+   </div>
+{/block}

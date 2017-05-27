@@ -1,0 +1,87 @@
+{extend name="index/index" /}
+{block name="workspace"}				
+<div class="mainbar">
+
+				<!-- Page heading -->
+				<div class="page-head">
+					<h2 class="pull-left"><i class="icon-list-alt"></i>文章管理(英文版)</h2>
+
+					<!-- Breadcrumb -->
+					<div class="bread-crumb pull-right">
+						<a href=""><i class="icon-list-alt"></i>文章列表(英文版)</a>
+						<!-- Divider -->
+						<span class="divider">/</span>
+						<a href="<?php echo url('enadd')?>" class="bread-current">添加文章(英文版)</a>
+					</div>
+
+					<div class="clearfix"></div>
+
+				</div>
+				<!-- Page heading ends -->
+
+				<!-- Matter -->
+		          
+	    <div class="matter">
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-12">
+
+
+              <div class="widget wgreen">
+                
+                <div class="widget-head" style="padding: 8px 15px;">
+                  <div class="pull-left">文章列表(英文版)</div>
+                 
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content">
+                  <div class="padd">
+                        <table class='table table-bordered table-hover' >
+                             <tr class="active">
+                               <th>编号</th>
+                               <th>标题</th>
+                               <th>内容</th>
+                               <th>图片</th>
+                               <th>发表时间</th>
+                               <th>来源</th>
+                               <th>作者</th>
+                               <th>是否显示</th>
+                               <th>操作</th>
+                             </tr>
+                             <?php foreach ($data as  $v):?>
+                             <tr>
+                                <td><?php echo $v['id']?></td>
+                                <td><?php echo $v['e_art_name']?></td>
+                                <td><?php echo mb_substr($v['e_art_content'], 0, 240).'...';?></td>
+                                <td><?php echo $v['e_art_img']?></td>
+                                <td><?php echo $v['e_art_addtime']?></td>
+                                <td><?php echo $v['e_art_from']?></td>
+                                <td><?php echo $v['e_art_author']?></td>
+                                <?php if($v['e_is_see']==1) echo '<td>是</td>';?>
+                                <?php else  echo '<td>否</td>';?>
+                                <td><a href="enedit/id/<?php echo $v['id'];?>">修改</a><a onClick="return confirm('确定删除?');" href="endelete/id/<?php echo $v['id'];?>">删除</a></td>
+                             </tr>
+                              <?php endforeach;?>
+                        </table>
+                  </div>
+                </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+              </div>  
+
+            </div>
+
+          </div>
+
+        </div>
+		  </div>
+
+				</div>
+{/block}
+
+

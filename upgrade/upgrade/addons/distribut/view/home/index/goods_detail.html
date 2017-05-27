@@ -1,0 +1,13 @@
+<script type="text/javascript">
+var jiathis_config = {
+	url: "{:url('home/goods/detail',array('id'=>$addonParams['goods']['goodsId'],'shareUserId'=>base64_encode(session('WST_USER.userId'))),true,true)}",
+	title:"{$addonParams['goods']['goodsName']}",
+	summary:"{$addonConfig['goodsShareTitle']}",
+	imageUrl:'{:WSTRoot()}/{$addonParams["goods"]["goodsImg"]}',
+	slide:{
+		divid:'jiathis_main',
+		pos:'left'
+	}
+};
+</script>
+

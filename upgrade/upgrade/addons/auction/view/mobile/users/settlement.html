@@ -1,0 +1,117 @@
+{extend name="../../../wstmart/mobile/view/default/base" /}
+{block name="title"}确认订单 - {__block__}{/block}
+{block name="css"}
+<link rel="stylesheet"  href="__ROOT__/addons/auction/view/mobile/index/css/settlement.css?v={$v}">
+{/block}
+{block name="header"}
+    <header style="background:#ffffff;" class="ui-header ui-header-positive wst-header">
+    	<i class="ui-icon-return" onclick="history.back()"></i><h1>确认订单</h1>
+    </header>
+{/block}
+{block name="footer"}
+		{/* 大加载 */}
+		<div class="ui-loading-block" id="Loadl">
+		    <div class="ui-loading-cnt">
+		        <i class="ui-loading-bright"></i>
+		        <p id="j-Loadl">正在加载中...</p>
+		    </div>
+		</div>
+		{if(empty($message))}
+        <footer class="ui-footer wst-footer-btns" style="height:85px; border-top: 1px solid #e8e8e8;" id="footer">
+            {if WSTConf('CONF.isOrderScore')==1 }
+			<div class="wst-se-total">可获得积分：<span id="totalMoney">
+			¥{:WSTMoneyGiftScore($payPrice)}
+			</span></div>
+			{/if}
+			<div class="wst-se-confirm"><button class="button" onclick="javascript:submitOrder();">确定</button></div>
+        </footer>
+        {/if}
+{/block}
+{block name="main"}
+     <section class="ui-container">
+       {if(empty($message))}
+       <input type="hidden" name="" value="{$auctionId}" id="auctionId" autocomplete="off">
+       <input type="hidden" name="" value="{if isset($userAddress['addressId']) }{$userAddress['addressId']}{/if}" id="addressId" autocomplete="off">
+	   <input type="hidden" name="" value="{if isset($userAddress['addressId']) }{$userAddress['areaId2']}{/if}" id="areaId" autocomplete="off">
+		<ul class="ui-list ui-list-text ui-list-link wst-se-address">
+		    <li>
+		    {if empty($userAddress)}
+		    <h4 onclick="javascript:addAddress(1);"><p class="infono">您还没添加收货地址，请添加。</p></h4>
+		    {else}
+		    <h5 onclick="javascript:addAddress(1,{$userAddress['addressId']});">
+		    	<p class="infot">{$userAddress['userName']}    {$userAddress['userPhone']}</p>
+		    	<p class="infob"><i class="ui-icon-pin"></i>{$userAddress['areaName']}{$userAddress['userAddress']}</p>
+		    </h5>
+		    {/if}
+		    </li>
+		</ul>
+		<ul class="ui-list ui-list-text ui-list-link ui-list-active wst-se-mode">
+		    <li class="mode" onclick="javascript:dataShow('gives');">
+		        <h4 class="ui-nowrap">配送方式</h4>
+		        <div class="ui-txt-info" id="givest">快递运输</div>
+		    </li>
+		    <li class="{if(WSTConf('CONF.isOpenScorePay')==1)}mode{/if}" onclick="javascript:dataShow('invoices');">
+		        <h4 class="ui-nowrap">发票信息</h4>
+		        <div class="ui-txt-info" id="invoicest">不开发票</div>
+		    </li>
+		</ul>
+		<div class="wst-se-sh">
+			<div class="remarks">
+			<textarea id="remark" autocomplete="off" placeholder="填写订单备注"></textarea>
+			</div>
+		</div>
+		{else}
+		<ul class="ui-row-flex wst-flexslp">
+			<li class="ui-col ui-flex ui-flex-pack-center">
+			<p>{$message}</p>
+			</li>
+		</ul>
+		{/if}
+     </section>
+{/block}
+{block name="include"}
+{/* 遮盖层  */}
+<div class="wst-cover" id="cover"></div>
+{/* 配送方式 */}
+<input type="hidden" name="" value="0" id="givesh" autocomplete="off">
+<div class="wst-fr-box frame" id="gives">
+	<div class="title"><span>配送方式</span><i class="ui-icon-close-page" onclick="javascript:dataHide('gives');"></i><div class="wst-clear"></div></div>
+	<div class="content" id="content">
+         <ul class="ui-list" onclick="javascript:onSwitch(this);">
+             <li><div class="wst-list-infose1"><span>快递运输</span></div></li>
+             <i class="ui-icon-push gives0 ui-icon-checked-s wst-active" mode="0" word="快递运输"></i>
+         </ul>
+		 <div class="wst-se-line"><p></p></div>
+         <ul class="ui-list" onclick="javascript:onSwitch(this);">
+             <li><div class="wst-list-infose1"><span>自提</span></div></li>
+             <i class="ui-icon-push gives1 ui-icon-unchecked-s" mode="1" word="自提"></i>
+         </ul>
+	</div>
+	<button class="button" onclick="javascript:inDetermine('gives');">确定</button>
+</div>
+{/* 发票信息 */}
+<input type="hidden" name="" value="0" id="invoicesh" autocomplete="off">
+<div class="wst-fr-box frame" id="invoices">
+	<div class="title"><span>发票信息</span><i class="ui-icon-close-page" onclick="javascript:dataHide('invoices');"></i><div class="wst-clear"></div></div>
+	<div class="content" id="content">
+         <ul class="ui-list" onclick="javascript:onSwitch(this,0);">
+             <li><div class="wst-list-infose1"><span>不开发票</span></div></li>
+             <i class="ui-icon-push invoices0 ui-icon-checked-s wst-active" mode="0" word="不开发票"></i>
+         </ul>
+		 <div class="wst-se-line"><p></p></div>
+         <ul class="ui-list" onclick="javascript:onSwitch(this,1);">
+             <li><div class="wst-list-infose1"><span>需开发票</span></div></li>
+             <i class="ui-icon-push invoices1 ui-icon-unchecked-s" mode="1" word="需开发票"></i>
+         </ul>
+         <div class="wst-fr-invoice" id="j-invoice" style="display:none;">
+         	<p>发票抬头：</p>
+         	<textarea id="invoiceClient" autocomplete="off" placeholder=""></textarea>
+         </div>
+	</div>
+	<button class="button" onclick="javascript:inDetermine('invoices');">确定</button>
+</div>
+{/block}
+{block name="js"}
+<script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
+<script type='text/javascript' src='__ROOT__/addons/auction/view/mobile/index/js/settlement.js?v={$v}'></script>
+{/block}

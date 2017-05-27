@@ -1,0 +1,111 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:53:"/mnt/data/www/wstmart/vvoff/view/index/news_list.html";i:1495844948;}*/ ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>京歌科技 全球货币分流技术缔造者</title>
+		<link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="__VVOFF__/css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/index.css" id="css"/>
+		<!--<link rel="stylesheet" href="css/style.css">-->
+		<!--<script src="js/mui.min.js"></script>
+    	<link href="css/mui.min.css" rel="stylesheet"/>-->
+		<style>
+			.pagination li a{
+				background: #000;
+				color: #fff;
+			}
+		</style>
+	</head>
+	
+	<script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneHeight = parseInt(window.screen.height);
+		var phoneScale = phoneWidth/640;
+		
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
+	<body>
+		<div class="visible-sm-block visible-xs-block">
+			<div class="p_top" id="p_top">
+				<div class="p_logo">
+					<a href="#15"><img src="__VVOFF__/img/logo1.png"/></a>
+				</div>
+				<div class="p_list">
+					<ul>
+						<li><a href="index.html#08">我们</a></li>
+						<li><a href="index.html#09">VV聊天</a></li>
+						<li><a href="index.html#10">钱袋子</a></li>
+						<li><a href="index.html#11">金购商城</a></li>
+						<li><a href="index.html#12">京歌未来</a></li>
+						<li><a href="index.html#13">团队</a></li>
+						<li><a href="index.html#14">新闻</a></li>
+						<li><a href="<?php echo url('vvoff/index/english'); ?>">ENGLISH</a></li>
+					</ul>
+				</div>
+				
+			</div>
+					<div class="swiper-slide">
+						<div class="newss" id="14">
+                    <img src="__VVOFF__/img/0.png" class="new_img"/>
+                    <div class="se_list">
+                        <ul class="se_ul">
+                        <?php foreach ($list as $v) { ?>
+                            <a href="<?php echo url('vvoff/index/p_news', ['id'=>$v['id']]); ?>">
+                                <li>
+                                    <dl>
+                                        <dt>
+                                            <img src="<?php echo '/'.$v['art_img']; ?>"/>
+                                        </dt>
+                                        <dd>
+                                            <h2><?php echo $v['art_name'] ?></h2>
+
+                                            <span><?php echo mb_substr($v['art_content'], 0, 120).'...'; ?></span>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </a>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <?php echo $list->render(); ?>
+                </div>
+					</div>
+					
+
+				</div>
+			</div>
+			<!--<div class="over">
+				<span>杭州京歌科技有限公司版权所有</span>
+			</div>-->
+		<div id="serialize" style="display: none;">__VVOFF__</div>
+		</div>
+	</body>
+	<script src="__VVOFF__/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/index.js"></script>
+	<script src="__VVOFF__/js/b.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/bootstrap.min.js"></script>
+	<script src="__VVOFF__/js/swiper.min.js"></script>
+	<script type="text/javascript">
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true
+		});
+	</script>
+</html>

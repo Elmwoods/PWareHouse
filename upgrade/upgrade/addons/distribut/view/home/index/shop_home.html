@@ -1,0 +1,13 @@
+
+<script type="text/javascript">
+	var jiathis_config = {
+		url: "{:url('home/shops/home',array('shopId'=>$addonParams['shop']['shopId'],'shareUserId'=>base64_encode(session('WST_USER.userId'))),true,true)}",
+		title:"{$addonParams['shop']['shopName']}",
+		summary:"{$addonConfig['shopShareTitle']}",
+		slide:{
+			divid:'jiathis_main',
+			pos:'left'
+		}
+	};
+</script>
+

@@ -1,0 +1,113 @@
+{extend name="index/index" /}
+{block name="workspace"}				
+<div class="mainbar">
+
+				<!-- Page heading -->
+				<div class="page-head">
+					<h2 class="pull-left"><i class="icon-list-alt"></i>职员修改(英文版)</h2>
+
+					<!-- Breadcrumb -->
+					<div class="bread-crumb pull-right">
+						<a href="{:url('Staff/doenlist')}"><i class="icon-list-alt"></i>职员列表(英文版)</a>
+						<!-- Divider -->
+						<span class="divider">/</span>
+						<a href="#" class="bread-current">职员修改(英文版)</a>
+					</div>
+
+					<div class="clearfix"></div>
+
+				</div>
+				<!-- Page heading ends -->
+
+				<!-- Matter -->
+		          
+	    <div class="matter">
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-12">
+
+
+              <div class="widget wgreen">
+                
+                <div class="widget-head" style="padding: 8px 15px;">
+                  <div class="pull-left">职员修改</div>
+                 
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="widget-content">
+                  <div class="padd">
+
+                    <!-- Form starts.  -->
+                     <form class="form-horizontal"  action="{:url('Staff/endoedit')}" method="post" id="staffadd" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<?php echo $data['id']?>">
+                                <div class="form-group">
+                                  <label class="col-lg-4 control-label">姓名</label>
+                                  <div class="col-lg-8">
+                                    <input class="form-control" placeholder="" type="text" name="e_name" value="<?php echo $data['e_name']?>">
+                                  </div>
+                                </div>                            
+                                <div class="form-group">
+                                  <label class="col-lg-4 control-label">部门职务</label>
+                                  <div class="col-lg-8">
+                                    <input class="form-control" placeholder="" type="text" name="e_job" value="<?php echo $data['e_job']?>">
+                                  </div>
+                                 </div>
+                                 <div class="form-group">
+                                  <label class="col-lg-4 control-label">格言</label>
+                                  <div class="col-lg-8">
+                                    <input class="form-control" placeholder="" type="text" name="e_motto" value="<?php echo $data['e_motto']?>">
+                                  </div>
+                                 </div>
+                                 <div class="form-group">
+                                  <label class="col-lg-4 control-label">个人简介</label>
+                                  <div class="col-lg-8">
+                                    <textarea  name="e_introduction" id="introduction" cols="135" rows="10"><?php echo $data['e_introduction']?></textarea>
+                                  </div>
+                                 </div>
+                                <div class="form-group">
+                                  <label class="col-lg-4 control-label">职员头像</label>
+                                  <div class="col-lg-6">
+                                    <input class="form-control" type="file" name="e_headimg" value="<?php echo $data['e_headimg']?>">
+                                  </div>
+      <div class="col-lg-2">
+                                    <img src="" id="showImg" style="display:none" width="70">
+                                  </div>
+                                </div>        
+                                 <div class="form-group">
+                                  <label class="col-lg-4 control-label">是否显示</label>
+                                  <div class="col-lg-8">
+                                    <input name="e_is_see" type="radio" value="1" <?php if($data['e_is_see']==1) echo 'checked="checked"'?>/>是
+                                    <input name="e_is_see" type="radio" value="0" <?php if($data['e_is_see']==0) echo 'checked="checked"'?>/>否
+                                  </div>
+                                 </div>
+                                <div class="form-group">
+                                  <div class="col-lg-offset-1 col-lg-9">
+                            
+                                    <input type="submit" value="提交" class="btn btn-primary">
+                                  
+                                    <button type="button" onclick="history.go(-1);" class="btn btn-danger">关闭</button>
+                                  </div>
+                                </div>
+                             </form>
+                  </div>
+                </div>
+                  <div class="widget-foot">
+                    <!-- Footer goes here -->
+                  </div>
+              </div>  
+
+            </div>
+
+          </div>
+
+        </div>
+		  </div>
+				</div>
+
+{/block}
+
+
+
