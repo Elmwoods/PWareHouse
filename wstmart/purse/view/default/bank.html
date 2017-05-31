@@ -1,0 +1,217 @@
+{include file="default/purse/header" /}
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li class="red"><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="bank">
+    <div class="center public">
+        <div class="bank_main ">
+        
+            <div class="bank_left">
+                <h3>我的银行卡</h3>
+                <span>已添加<i>&nbsp;2&nbsp;</i>银行卡,&nbsp;<i>&nbsp;2&nbsp;</i>张信用卡</span>
+            </div>
+        
+        </div>
+    </div>
+    <div class="center height public">
+    <div class="bank_main ">
+        
+        <ul>
+            <li class="bg">
+                <ul>
+                    <li><img src="__STYLE__/img/bank.png"></li>
+                    <li class="wh">尾号<span>666</span></li>
+                    <li><a class="cxk">储蓄卡</a></li>
+                </ul>
+                <dl>
+                    <dt class="xz">单笔10,000元</dt>
+                    <dt>单日5,000元</dt>
+                    <dd><a class="zz" href="#">转账</a></dd>
+                    <img src="__STYLE__/img/del.png">
+                </dl>
+            </li>
+
+            <li class="bg">
+                <ul>
+                    <li><img src="__STYLE__/img/bank.png"></li>
+                    <li class="wh">尾号<span>666</span></li>
+                    <li><a class="cxk">储蓄卡</a></li>
+                </ul>
+                <dl>
+                    <dt class="xz">单笔10,000元</dt>
+                    <dt>单日5,000元</dt>
+                    <dd><a class="zz" href="#">转账</a></dd>
+                    <img src="__STYLE__/img/del.png">
+                </dl>
+            </li>
+            <li class="add_bank">
+                <div>
+                    <dl class="add">
+                        <dt><img src="__STYLE__/img/addbank.png" data-toggle="modal" data-target="#mymodal"></dt>
+                    </dl>
+                    <dl class="dl">
+                        <dt><a href="#" id="login" data-toggle="modal" data-target="#mymodal"><h4>添加银行卡</h4></a></dt>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+
+        <div id="mymodal" class="modal fade">
+            <div class="modal-dialog modal-md" style="margin-top: 250px">
+                <div class="modal-content">
+                    <form action="" method="post" class="form-horizontal">
+                    <!-- <div class="tk"> -->
+                    <div class="modal-header">
+                        <div class="close" data-dismiss="modal">&times;</div>
+                        <h4 style="font-weight: 700;">添加银行卡</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="add_bank1">
+
+
+                           <div class="bank_name">
+                               <label>姓名:</label>
+                               <div><input type="text" placeholder="请输入姓名"></div>
+                           </div>
+                           <div class="bank_name">
+                               <label>卡号:</label>
+                               <div><input type="text"  maxlength="19" placeholder="请输入银行卡号" name=number></div>
+                           </div>
+                       </div>
+                       <div class="hen">
+                       <div class="add_bank2">
+                           <div class="bank_xinxi">
+                                <dl class="bank_message">
+                                    <dd><img src="__STYLE__/img/bank.png" style="border-radius:50%;"><span>中国建设银行</span><span>储蓄卡</span></dd>
+                                </dl>
+                            </div>
+                       </div>
+                       <div class="back"></div>
+                       <div class="add_bank1">
+                           <div class="bank_name bank_xx">
+                               <label>SVN2:</label>
+                               <div><input type="text"  maxlength="3" placeholder="卡背面后三位"></div>
+                           </div>
+                       </div>
+                        <div class="back"></div>
+                        <div class="add_bank1">
+                           <div class="bank_name bank_xx">
+                               <label>手机号:</label>
+                               <div><input type="text"  maxlength="11" placeholder="请输入手机号"></div>
+                           </div>
+                       </div>
+                        <div class="back"></div>
+                        <div class="add_bank1">
+                           <div class="bank_name1">
+                               <div class="yzm "><input type="text" style="border-radius:4px;"></div>
+                               <div class="yzm" style="height:35px;line-height: 35px;"><a href="#" class="code">获取验证码</a href="#"></div>
+                           </div>
+                       </div>
+                       </div>
+                    </div>
+                       
+                        <div class="modal-footer" id="add_bank">
+                        <button type="submit">下一步</button>
+
+                        <label>
+                            <input type="checkbox">我已阅读并同意
+                            <a href=""><<金购条款>></a>
+                        </label>
+
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{include file="default/purse/bottom" /}
+<script type="text/javascript">
+
+
+
+        $('input[name=number]').blur(function(){
+            val = this.value;
+            // alert(val.length);
+            if(val == ''){
+                $('.hen').hide();
+            }else if(val.length != 19){
+                $('.hen').hide();
+            }else{
+                $('.hen').show();
+            }
+            
+        });
+
+
+
+
+    //在银行卡上移动出现样式
+      $('.bg').each(function(){
+            $(this).hover(
+                function(){
+                    $(this).css('border','2px solid #74abe9');
+                    $(this).find('dl').find('img').css('display','block');
+                },
+                function(){
+                    $(this).css('border','');
+                    $(this).find('dl').find('img').css('display','');
+                }
+            );
+        });
+
+      //删除银行卡
+      $('.bg').find('img').each(function(){
+        $('.bg').find('img').click(function(){
+            $(this).parent().parent().remove();
+        });
+      });
+
+      //鼠标移入移出添加银行卡样式
+    $('.add_bank').hover(
+
+        function(){
+            $(this).css({'border':'1px dashed #74abe9'}).find('h4').css({'color':'#74abe9'});
+        },
+        function(){
+            $(this).css({'border':''}).find('h4').css({'color':''});
+        }
+    );
+
+</script>
+    </body>
+</html>

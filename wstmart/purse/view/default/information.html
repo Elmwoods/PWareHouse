@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <title>钱袋子</title>
+    <meta http-equiv="Content-Language" Content="zh-CN">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="__STYLE__/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__STYLE__/css/bank.css">
+    <link rel="stylesheet" href="__STYLE__/css/reset.css">
+    <link rel="stylesheet" href="__STYLE__/css/bill.css">
+    <link rel="stylesheet" type="text/css" href="__STYLE__/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="__STYLE__/css/index (2).css">
+    <link rel="stylesheet" type="text/css" href="__STYLE__/css/information.css">
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="../css/information.css"> -->
+
+
+    <link href="__STYLE__/css/common.css??v={$v}" rel="stylesheet">
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.min.js?v={$v}"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/layer/layer.js?v={$v}"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/lazyload/jquery.lazyload.min.js?v={$v}"></script>
+    <script type='text/javascript' src='__ROOT__/static/js/common.js?v={$v}'></script>
+    <script type='text/javascript' src='__STYLE__/js/common.js?v={$v}'></script>
+
+
+    <script type="text/javascript" src="__STYLE__/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="__STYLE__/js/bootstrap.min.js"></script>
+
+</head>
+    <body style="background: #f5f5f5">
+        <div class="top ">
+    <div class="top_main">
+        <div class="top_list">
+            <ul>
+                <li><a href="javascript:WST.logout();">退出</a>|</li>
+                <li><a class="top_right" href="{:url('loan/news')}"><img src="__STYLE__/img/xinxi.png">{if condition="session('WST_USER.NEWS_COUNT') != 0"}<span class="news_count"></span><span class="aa">{:session('WST_USER.NEWS_COUNT')}</span>{/if}</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="logo_button public">
+    <div class="logo_main">
+        <a href="{:url('home/index/index')}"><img src="__STYLE__/img/logo.png" alt=""></a>
+    </div>
+</div>
+        <div class="hot">
+
+            <div class="hot_li">
+                <ul>
+                    <li><h5>我的信息</h5></li>
+                </ul>
+            </div>
+            <div class="hot_list">
+                {volist name="news" id="vo"}
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>{$vo.news_title}</dt>
+                            <dd>
+                                <p>{$vo.news_title}提醒</p>
+                                <br>
+                                <br>   
+                                <p>{$vo.news_content}</p>
+
+                            </dd>
+                        </dl>
+                        <div class="aa">
+
+                            {if condition="$vo.is_complete == 0"}
+                                {if condition="$vo.news_title == '还款'"}
+                                <a href="{:url('loan/index',array('id'=>$vo.id))}" class="qhk">去还款</a>
+                                {else \}
+                                <a href="{:url('predeposit/transfer_purse',array('id'=>$vo.id))}" class="qhk">去付款</a>
+                                {/if}
+                            {else \}
+                                {if condition="$vo.repayment_date==''"}
+                                    {if condition="$vo.complete_time==''"}
+                                    <span>交易关闭</span>
+                                    {else \}
+                                    <span>已付款</span>
+                                    {/if}
+                                {else \}
+                                <span>已还款</span>
+                                {/if}
+                            {/if}
+                            <br />
+                            {$vo.news_add_time}
+                        </div>
+                    </li>
+                </ul>
+                {/volist}
+            </div>
+        </div>
+        {include file="default/purse/bottom" /}
+
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">订单详情</h4>
+                        <h6 class="modal-title" style="display: inline-block;margin-right: 5px;">借款记录:</h6><span>56198415213185</span>
+                        <br>
+                        <h6 class="modal-title" style="display: inline-block;margin-right: 5px;">订单号:</h6><span>56198415213185</span>
+                    </div>
+                    <div class="modal-body"  style="background: #f6f6f6;">
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4"><a href=""  style="height: 50px;line-height: 50px;display: inline-block;background: #e60b49;border-radius: 4px;color:#fff; text-align: center;">去还款</a></div>
+                       
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.conf = {"ROOT":"__ROOT__","APP":"__APP__","STATIC":"__STATIC__","SUFFIX":"{:config('url_html_suffix')}","SMS_VERFY":"{:WSTConf('CONF.smsVerfy')}","SMS_OPEN":"{:WSTConf('CONF.smsOpen')}","GOODS_LOGO":"{:WSTConf('CONF.goodsLogo')}","SHOP_LOGO":"{:WSTConf('CONF.shopLogo')}","MALL_LOGO":"{:WSTConf('CONF.mallLogo')}","USER_LOGO":"{:WSTConf('CONF.userLogo')}","IS_LOGIN":"{if (int)session('WST_USER.userId')>0 }1{else}0{/if}","TIME_TASK":"1","ROUTES":'{:WSTRoute()}'}
+        $(function() {
+            WST.initVisitor();
+        });
+    </script>
+</html>

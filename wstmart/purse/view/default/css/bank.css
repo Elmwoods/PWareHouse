@@ -1,0 +1,687 @@
+/********************top***********************/
+a{text-decoration:none;}
+.top {
+    width: 100%;
+    height: 30px;
+    background: #ff3131;
+}
+
+.top .top_main {
+    width: 1200px;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.top .top_main .top_list {
+    float: right;
+}
+
+.top .top_main .top_list li {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+
+}
+
+.top .top_main .top_list li a {
+    float: left;
+    color: #fff;
+    padding: 0 30px;
+    font-size: 16px;
+}
+
+/**********************logo****************************/
+.logo {
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+}
+
+.logo .logo_main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/*****************header***************************/
+.header {
+    width: 100%;
+    height: 140px;
+    background: url("../img/bg1.png") no-repeat center center;
+}
+
+.header .header_main {
+    width: 1200px;
+    height: 140px;
+    margin: 0 auto;
+}
+
+.header .header_main dt {
+    float: left;
+}
+
+.header .header_main .hot {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    border-radius: 50px;
+    background: #1b6d85;
+}
+
+.header .header_main dd {
+    float: left;
+    width: 661px;
+    height: 140px;
+    margin-left: 35px;
+}
+
+.header .header_main .max {
+    width: 661px;
+    height: 69px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+}
+
+.header .header_main .max .top_left {
+    float: left;
+    width: 330px;
+    margin-top: 40px;
+
+}
+
+.header .header_main .max .top_right {
+    float: left;
+    width: 330px;
+    margin-top: 40px;
+}
+
+.header .header_main .bottom {
+    width: 661px;
+    height: 69px;
+    border-top: 1px solid #fff;
+    color: #fff;
+}
+
+.header .header_main .bottom .bottom_left {
+    float: left;
+    width: 330px;
+    padding-top: 13px;
+}
+
+.header .header_main .bottom .bottom_right {
+    float: left;
+    width: 330px;
+    padding-top: 13px;
+}
+
+/**************nav*********************/
+/*.nav {
+    width: 100%;
+    height: 50px;
+}
+
+.nav .nav_main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.nav .nav_main .nav_left {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 40px;
+}
+
+.nav .nav_main .nav_left li {
+    float: left;
+    margin-right: 75px;
+}
+
+.nav .nav_main .nav_left li a {
+    float: left;
+    color: #000;
+    font-size: 16px;
+    margin-top: 8px;
+    
+    height:36px;
+    line-height:36px;
+}*/
+.nav .nav_main .nav_left .red {
+    border-bottom: 2px solid #ff3131;
+}
+
+.nav .nav_main .nav_right {
+    float: right;
+    height: 50px;
+
+}
+
+.nav .nav_main .nav_right li {
+    float: left;
+    margin-top: 12px;
+}
+
+.nav .nav_main .nav_right li button {
+    float: left;
+    color: #000;
+    font-size: 12px;
+    margin-right: 15px;
+    display: block;
+    width: 80px;
+    height: 26px;
+    line-height: 26px;
+    background: #ff3131;
+    color: #fff;
+    border: 0;
+}
+
+/**************main_main************************/
+.main {
+    width: 100%;
+}
+
+.main .main_main {
+    width: 1200px;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 40px;
+    /*background: #e6e6e6;*/
+
+}
+
+.main .main_main .main_left {
+    float: left;
+}
+
+.main .main_main .main_left span {
+    color: #ff3131;
+}
+
+.main .main_main .main_right {
+    float: left;
+    margin-left: 50px;
+}
+
+.main .main_main .main_right span {
+    color: #ff3131;
+}
+
+/******************bank***********************/
+.bank {
+    width:100%;
+}
+.bank .bank_main {
+    width:1100px;
+    background: #fff;
+    margin:0 auto;
+}
+
+
+.bank .height .bank_main {
+    height:600px;
+}
+/*.bank .bank_main .bank_left {
+    height:80px;
+    line-height:70px;
+}
+.bank .bank_main .bank_left span {
+    float: left;
+    font-size:18px;
+    font-weight:500;
+    color: #000;
+}*/
+
+/*********************************/
+.bank .bank_main .bank_left h3 {
+    float: left;
+    height:80px;
+    font-size:18px;
+    margin-top:20px;
+    font-weight:700;
+    color: #000;
+}
+.bank .bank_main .bank_left i{
+    color:red;
+}
+.bank .bank_main .bank_left span{
+    font-size: 12px;
+}
+
+.bank .bank_main .bank_left span{
+    height:80px;
+    margin-left:20px;
+    margin-top: 24px;
+    display: inline-block;
+
+}
+/***********************************/
+.bank .bank_main .bank_left form {
+    display: inline-block;
+    font-size: 15px;
+    float: right;
+    margin-right:40px;
+}
+.bank .bank_main .bank_left button {
+    width:119px;
+    height:28px;
+    line-height:28px;
+    color: #fff;
+    border: 0;
+    background: #ff3131;
+    margin-left:20px;
+}
+.bank .bank_main ul{
+    float: left;
+}
+.bank .bank_main .bg{
+    float: left;
+    display: inline-block;
+    width:250px;
+    height:158px;
+    margin-right:28px;
+    margin-bottom:23px;
+    border-radius: 4px;
+    border:1px #d0d4d9 solid; 
+}
+
+.bank .bank_main .bg ul{
+    height:55px;
+    width:250px;
+}
+.bank .bank_main .bg ul li{
+    float:left;
+    line-height: 55px;
+    width:82px;
+    text-align: center;
+}
+
+.bank .bank_main .bg ul .cxk{
+
+    color:#999;
+   /* background:#5b9fe2; 
+    padding: 4px;*/
+    border-radius:4px;
+    margin-top: 20px;
+    margin-right: 12px;
+
+}
+
+.bank .bank_main .bg ul .wh{
+    font-size: 15px;
+    font-weight:700;
+}
+.bank .bank_main .bg ul li img{
+    width:80px;
+    height:40px;
+}
+/*ffbc4b*/
+.bank .bank_main .bg dl .zz{
+
+    display: block;
+    padding:4px;
+    color:#ffffff;
+    width:45px;
+    height:25px;
+
+    text-align: center;
+    background:#ff7674; 
+    border-radius:4px;
+}
+
+.bank .bank_main .bg dl{
+    height:105px;
+    clear: both;
+
+
+}
+
+.bank .bank_main .bg dl dt{
+    margin-left: 18px;
+    color:#666666;
+}
+
+.bank .bank_main .bg dl dd{
+    float:right;
+    margin-right: 27px;
+    margin-top:-28px;
+}
+.bank .bank_main .bg dl img{
+    margin-top: 14px;
+    float: right;
+    display: none;
+}
+
+.bank .bank_main .bg dl .xz{
+    margin-top:78px;
+}
+
+/******************银行卡信息**************************/
+
+
+.bank .bank_main .choice{
+    width:25px;
+    height:25px;
+    border:1px red solid;
+    border-radius:50%;
+    margin-top:8px;
+    margin-left:8px;
+    position:absolute;
+    display:none;
+}
+
+.bank .bank_main .choice img{
+    width:25px;
+    height:25px;
+    display: block;
+    
+}
+
+
+.bank .bank_main .dl{
+    font-size: 14px;
+    
+}
+.bank .bank_main .dl dt{
+    margin-left: 7px;
+   
+}
+
+.bank .bank_main .dl dt a{
+     text-decoration:none;
+}
+.bank .bank_main .dl .yh{
+    width:50px;
+    height:30px;
+    border:1px red solid;
+}
+
+.bank .bank_main .transfer .img{
+     margin-bottom:30px;
+}
+
+.bank .bank_main .transfer span {
+    float:right;
+    padding-right:6px;
+    margin-top:-16px;
+}
+.bank .bank_main .bank_main .dl img{
+    position: relative;
+    margin-left: 200px;
+    margin-top:-42px;
+}
+
+.bank .bank_main .information{
+    height:64px;
+    padding-top: 28px;
+}
+
+.bank .bank_main .add_bank{
+    height:35px;
+    margin-left:-8px;
+}
+.bank .bank_main .transfer{
+    height:100px;
+    padding-top: 25px;
+
+}
+
+.bank .bank_main .transfer dt{
+ height:25px;
+}
+
+
+/*.bank .bank_main .information dt{
+    float:left;
+}*/
+
+/**************添加银行卡***********************/
+.bank .bank_main .add_bank{
+    text-align: center;
+   text-decoration:none;
+   border:1px #ccc dashed;
+    float: left;
+    display: inline-block;
+    width:250px;
+    height:158px;
+    margin-right:28px;
+    margin-bottom:23px;
+    border-radius: 4px;
+}
+.bank .bank_main .add_bank .add{
+    margin-top:50px;
+}
+.bank .bank_main .add_bank img{
+    width:29px;
+    height: 22px;
+}
+
+.bank .bank_main .add_bank .dl{
+    margin-top:17px;
+}
+
+/********************银行卡结束****************************/
+
+
+.bank .bank_main .bank_main li table {
+    margin-top:55px;
+    margin-left:106px;
+}
+.bank .bank_main .bank_main li h4 {
+    text-align: center;
+    margin-top:18px;
+}
+
+.bank_add{
+    width:1200px;
+    margin:0 auto;
+    border:1px #ccc solid;
+
+}
+
+.bank_add .add{
+    width:200px;
+    height:200px;
+    border:1px #ccc solid;
+}
+
+/**************************添加银行卡**************************************/
+input {
+    width:100px;
+    height:26px;
+}
+#loginbox{
+    border:#888 solid 2px;
+    border-radius:8px;
+    box-shadow:5px 5px 5px 0 #ccc;
+    width:900px;height:480px;
+    display:none;
+    position: absolute;
+    z-index:10;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /*margin: auto;*/
+    margin: auto;
+}
+
+#loginbox .center{
+    width:850px;
+    margin:0 auto;
+}
+
+#loginbox .center .topp{
+
+    width:850px;
+    display: inline-block;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+#loginbox .center .topp div{
+    margin-bottom: 28px;
+}
+
+#loginbox .center .topp > h4 {
+    margin: 15px 3px -6px 3px;
+    
+    font-weight: 500;
+    
+}
+#loginbox .center > form {
+   margin-left: 50px;
+   margin-top: 50px;
+}
+#loginbox .center > form > input {
+    margin-bottom: 20px; 
+    border:0.1px solid #000000;
+    border-radius: 3px; 
+    box-shadow:0 0 1px #ccc;
+}
+#loginbox .center .butt{
+    display:block;
+    font-size:18px;
+    margin-top:10px;
+    margin-right:20px;
+    border:0px;
+    width: 300px;
+    height: 50px;
+    margin-left: 50px;
+    line-height: 50px;
+    background: #ff3131;
+    color: #fff;
+    text-align: center;
+}
+
+/***************************************************************/
+
+
+/***************************模态框中添加银行卡************************************/
+
+.bank_message{
+    height: 30px;
+    line-height: 30px;
+
+}
+.bank_message img{
+    width:25px;
+    height:22px;
+    margin-top:-1px;
+    
+}
+
+.bank_message span{
+    margin-left: 20px;
+    margin-top: 2px;font-size: 15px;
+    display: inline-block;
+}
+
+/*.bank_message .bank_img{
+    background: url("../img/tb.png") no-repeat;
+    width:60px;
+    height:26px;
+    display: inline-block;
+    color:#fff;
+   
+    padding-left: 5px;
+}
+*/
+#add_bank{
+    width: 100%;
+
+}
+#add_bank button{
+    background: #e60b49 none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 4px;
+    color: white;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    margin-left: 130px;
+    width: 300px;
+}
+
+#add_bank label{
+    float: left;
+    margin-left: 127px;
+    height: 20px;
+    line-height: 20px;
+    display: inline;
+    margin-top: 10px;
+}
+
+#add_bank label input{width:17px;height: 10px;}
+.code{
+    border:1px #ccc solid;
+    border-radius:4px;
+    padding:3px;
+    width:120px;
+    height:40px;
+    margin-left: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.yz{
+    display: inline-block;
+    width:100px;
+    height:35px;
+    line-height: 35px;
+    display: none;
+}
+.hen{
+    display:none;
+}
+
+.add_bank1{
+    width:566px;
+}
+
+.add_bank2{
+    width: 100%;
+    padding:0px;
+}
+
+.add_bank1 .bank_name{
+    /*float:left;*/
+    height:50px;
+    border-bottom:1px #c9c9c9 solid;
+    line-height: 50px;
+}
+.add_bank1 .bank_xx{
+    border:0px;}
+.bank_name input{
+    border:1px #ccc solid;
+    border-style: none;
+}
+
+.add_bank1 .bank_name1{
+    margin-top: 20px;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.add_bank1 .bank_name1 .yzm{
+    float: left;
+}
+.add_bank1 .bank_name1 input{
+    width:210px;
+    height: 40px;
+    border:1px #ccc solid;
+}
+.back{width:100%;height:10px;background: #e7e3e3;padding:0;margin:0}
+.add_bank2 .bank_xinxi{height:30px;line-height: 30px;}
+.add_bank1 .bank_name label{float: left;}
+.add_bank1 .bank_name>div{float: left;margin-left: 20px;}
+.add_bank1 .bank_name>div>input{width:140px;}
+/***************************************************************/
+
+
+
+
+
+
+
+
+

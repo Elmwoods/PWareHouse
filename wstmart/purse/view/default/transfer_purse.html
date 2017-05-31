@@ -1,0 +1,273 @@
+{include file="default/purse/header" /}
+<script type="text/javascript" src="__STATIC__/plugins/validator/jquery.validator.js?v={$v}"></script>
+<link href="__STATIC__/plugins/validator/jquery.validator.css?v={$v}" rel="stylesheet">
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+    var li = $('.nav_right ul li a');
+    $(li).eq(2).css({border:'1px solid #E71D56',color:'#E71D56'});
+
+
+
+</script>
+<div class="center public">
+    <div class="bean">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active" id="one"><a href="{:url('predeposit/transfer_purse')}">转账到钱袋</a></li>
+            <li role="presentation" id="two"><a href="{:url('predeposit/transfer_bank')}">转账到银行卡</a></li>
+            <li role="presentation" id="three"><a href="{:url('predeposit/gathering')}">我要收款</a></li>
+        </ul>
+        {if condition="!empty($news)"}
+        {if condition="$news['is_complete'] == 0"}
+        <div class="he">
+            <form method="post" action="" class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">收款人：</label>
+                    <div class="col-md-2">
+                        <input name="is_get" type="hidden" value="{$news.id}">
+                        <input name="member_name" value="{$user.loginName}" type="text" class="form-control" placeholder="昵称" readonly="readonly">
+                    </div>
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px">
+                            <span class="n-icon" style="display:none;" id='yu_y'></span>
+                            <span class="n-msg" style='display:none;' id='yu_h'>用户名不存在</span>
+                        </span>
+                </div>
+                <div class="form-group">
+                    <div class="hidd" style=""><div class="portrait"><img class="img" src="{$user.userPhoto?__ROOT__.$user.userPhoto:'__ROOT__/upload/sysconfigs/2016-10/5804800d5841e.png'}" style="width:40px;height:40px;border-radius:50%;" /></div>{$user.userName?'<span class="jy">'.$user.userName.'</span>':'<span class="jy" style="color:red">该用户未设置昵称</span>'}</div>
+
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label" >付款金额：</label>
+                    <div class="col-md-2">
+                        <input name="amount" type="text" value="{$news.news_amount}" class="form-control" placeholder="收款金额" readonly="readonly">	
+
+
+                    </div>
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px">
+                            <span class="n-icon" style="display:none" id='yu_q'></span>
+                            <span class="n-msg" style='display:none;' id='yu_e'></span>
+                        </span>
+                    <div class="col-md-2 xq"></div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">付款说明：</label>
+                    <div class="col-md-2">
+                        <input name="desc" value="{$news.news_desc}" type="text" class="form-control" placeholder="收款说明" readonly="readonly">
+                    </div>
+                    <div class="col-md-2 xq">添加备注</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" id="sub">下一步</button>
+                    </div>
+                </div>
+            </form>
+            {else \}
+            已付款
+            {/if}
+            {else \}
+            <div class="he">
+                <form method="post" action="" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">收款人：</label>
+                        <div class="col-md-2">
+                            <input name="is_get" type="hidden">
+                            <input name="member_name" type="text" class="form-control ng" placeholder="收款人" value="" data-rule="收款人: required;" data-msg-required="请输入收款人" data-tip="请输入收款人">
+                        </div>
+                        <span style="display: none;margin-top:7px;padding-left:10px;" class="name ">请输入收款人</span>
+                        <span role="alert" class="msg-wrap n-error" id='yu_x' style="margin-left:5px;margin-top:7px;">
+                                <span class="n-icon" style="display:none" id='yu_y'></span>
+                                <span class="n-msg" style="display:none" id='yu_h'></span>
+                            </span>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="hidd" style="display: none;"><div class="portrait"><img class="img" src="" style="width:40px;height:40px;border-radius:50%;" /></div><span class="jy">校验收款人手机号</span></div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label" >付款金额：</label>
+                        <div class="col-md-2">
+                            <input name="amount" type="text" class="form-control ng" placeholder="收款金额"  data-rule="收款金额: required;" data-msg-required="请输入收款金额" data-tip="请输入收款金额">
+                        </div>
+
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px">
+                            <span class="n-icon" style="display:none" id='yu_q'></span>
+                            <span class="n-msg" style='display:none;' id='yu_e'></span>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">付款说明：</label>
+                        <div class="col-md-2">
+                            <input name="desc" type="text" class="form-control" placeholder="收款说明">
+                        </div>
+                        <div class="col-md-2 xq">添加备注</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" id="sub">下一步</button>
+                        </div>
+                    </div>
+                </form>
+            {/if}
+
+        </div>
+    </div>
+</div>
+{include file="default/purse/bottom" /}
+<script >
+
+    i=0;
+    $('input[type="checkbox"]').click(function(){
+
+        $("#phonetext").attr( "data-rule","手机号: required;");
+        $("#phonetext").attr( "data-msg-required","请输入手机号");
+        $("#phonetext").attr( "data-tip","请输入手机号");
+        if(i%2==0){
+            $('.block').css('display','block');
+            $('.hidd').css('display','none');
+        }else{
+            $('.block').css('display','none');
+            $('.hidd').css('display','block');
+        }
+        i++;
+    });
+    $("#two").click(function(){
+        $(this).toggleClass('active');
+        $("#one").removeClass('active');
+    });
+    $("#one").click(function(){
+        $(this).toggleClass('active');
+        $("#two").removeClass('active');
+    });
+////////////
+    $("input[name='member_name']").focus(function(){
+    	// alert(20);
+        $('#yu_y').hide();
+        $('#yu_h').hide();
+        $('.hidd').hide();
+    });
+    $("input[name='member_name']").blur(function(){
+        a = $("input[name='member_name']").val();
+        if(a==''){
+
+        } else {
+            javascript:WST.Payee(a);
+        }
+    });
+/////////////
+   $("input[name='amount']").focus(function(){
+    	$('#yu_q').hide();
+        $('#yu_e').hide();
+    });
+
+    $("input[name='amount']").blur(function(){
+        va = $("input[name='amount']").val();
+        if(!isNaN(va)){
+//            alert(a);
+            javascript:WST.With(va);
+        } else {
+            $('#yu_q').show();
+            $('#yu_e').show().html('请输入正确的数字');
+            $('#sub').attr("disabled",true);
+        }
+    });
+
+    //用户名是否存在查询
+    WST.Payee = function(){
+        $.post(WST.U('purse/Predeposit/Payee'),{loginName:a},function(data){
+
+            // var json = WST.toJson(data);
+            // alert(data.userName);
+            if(data=='error'){
+                $('#yu_y').show();
+                $('#yu_h').show().html('用户名不存在');
+                $('#sub').attr("disabled",true);
+            }else{
+                $('.hidd').show();
+                // alert(data.userName);
+                var user = data['userName'];
+                var photo = data['userPhoto'];
+                var phone = data['userPhone'];
+                $('.jy').html(user);
+                if(photo){
+                    $('.img').attr('src','__ROOT__/'+photo);
+                }else{
+                    $('.img').attr('src','__ROOT__/upload/sysconfigs/2016-10/5804800d5841e.png');
+                }
+                if(user){
+                    $('.jy').html(user).css('color','black');
+                }else{
+                    $('.jy').html('该用户未设置昵称').css('color','red');
+                }
+                // alert(photo);
+                $('#sub').attr("disabled",false);
+            }
+        });
+    }
+////////  	
+
+     $('.form-horizontal').validator(function() {
+         member_name = $("input[name='member_name']").val();
+         amount = $("input[name='amount']").val();
+         desc = $("input[name='desc']").val();
+         is_get = $("input[name='is_get']").val();
+         if(member_name == ''){
+             WST.msg('不能转账给自己', {icon: 5});
+             return;
+         }
+         var loading = WST.msg('正在提交数据，请稍后...', {icon: 16, time: 60000});
+         $.post(WST.U('Purse/Predeposit/transfer_purse'), {
+             member_name: member_name,
+             amount: amount,
+             desc: desc,
+             is_get: is_get
+         }, function (data, textStatus) {
+             var json = WST.toJson(data);
+             if (json.status == 1) {
+                 WST.msg(json.msg, {icon: 1});
+                 location.href = WST.U('purse/Consume/index');
+             } else {
+                 layer.close(loading);
+                 WST.msg(json.msg, {icon: 2});
+             }
+         })
+     });
+</script>
+</body>
+</html>

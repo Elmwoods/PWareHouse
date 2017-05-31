@@ -1,0 +1,259 @@
+
+{include file="default/purse/header" /}
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li class="red"><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="main">
+    <div class="center public">
+        <div class="main_main">
+            <div class="main_left">
+                我的金豆：<span>{$users.imazamox_number}</span>个
+            </div>
+        </div> 
+    </div>
+</div>			
+<div class="menu">
+    <div class="center">
+    <div class="menu_main public">
+        <div class="menu_top">
+            <span>最近交易记录</span>
+        </div>
+        <table class="menu_table">
+                
+           <tr class="list">
+                <th>创建时间</th>
+                <th>交易方式</th>
+                <th>类型</th>
+                <th>数量</th>
+                <th>交易状态</th>
+                <th>操作</th>
+            </tr>
+            {volist name="im" id="vo"}
+            <tr class="center">
+                <td>
+                    <p>{$vo.createTime}</p>
+                </td>
+                <td>
+                    <p>{$vo.dataSrc}</p>
+                    <p>流水号：{$vo.tradeNo}</p>
+                </td>
+                <td>{$vo.dataSrc}</td>
+                <td class="money">{$vo.moneyType?'+':'-'}{$vo.money}</td>
+                <td>{switch name="$vo.dataFlag"}
+                    {case value="1"}成功{/case}
+                    {case value="2"}进行中{/case}
+                    {default /}失败
+                    {/switch}</td>
+                <td>
+                    <ul class="menu_select">
+                            <li class="menu_block"  data-toggle="modal" onclick="javascript:WST.Details({$vo.id})" data-target="#details"><a href="javascript:void(0)">&nbsp;交易详情</a><span class="menu_block_img" ></span></li>
+                            <li><a href="javascript:WST.del_jd({$vo.id})">删除</a></li>
+                        </ul>
+                </td>
+            </tr>
+            
+
+
+            <!-- 交易详情 -->
+            {/volist}
+            
+        </table>
+         <div class="menu_border"></div>
+            <div class="a">
+                <a href="">查看所有交易记录</a>
+            </div>
+    </div>
+    </div>
+</div>
+
+ <!-- 交易详情 -->
+<div id="details" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="form-horizontal" action="" method="post">
+                <!-- <div class="tk"> -->
+                <div class="modal-header" style="border:none;">
+                    <div class="close" data-dismiss="modal">&times;</div>
+                    <h3 style="text-align:left;" id="aa">交易<span id='dataFlag'></span></h3>
+                    <!-- <div class="jk">
+                        <span class="glyphicon glyphicon-yen"></span><input type="text"  placeholder="请输入借款金额">
+                    </div> -->
+                </div>
+                <div class="modal-body">
+                    <div class="consumption_bill">
+
+
+                        <table style="margin:0;padding: 0;">
+                            <tr class="top">
+                                <th class="cen">类型</th>
+                                <th class="name">消费名称</th>
+                                <th class="cen">数量/金额</th>
+                                <th class="cen">总额</th>
+                            </tr>
+                            <tr class="record">
+                                <th class="cen" id='dataSrc'>消费</th>
+                                <th class="name">
+
+                                    <p>流水账号：<span id="tradeNo"></span></p>
+                                </th>
+                                <th class="cen"><span id='moneyType'></span><span id='money'></span></th>
+                                <th class="cen"><span id='moneyType_z'></span><span id='money_z'></span></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="consumption_details">
+                    <table>
+                        <tr>
+                            <th class="th">交易描述</th>
+                            <td colspan="3" style="text-align: left;padding-left: 20px;" id='remark'></td>
+
+                        </tr>
+                        <tr>
+                            <th class="th">交易信息</th>
+                            <td colspan="3" style="text-align: left;padding-left: 20px;">
+                                <span id='dataSrc_z'></span>&nbsp;&nbsp;&nbsp;对方账户:<span id='userName'>&nbsp;</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="th" style="width:80px;">时间报告</th>
+                            <td colspan="3">
+                                <table style="border:0;">
+                                    <tr>
+                                        <th class="time">创建时间</th>
+                                        <th class="time">交易时间</th>
+                                        <th class="time">结束时间</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="time1" id='createTime'></td>
+                                        <td class="time1" id='createTime_j'></td>
+                                        <td class="time1" id='createTime_z'></td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{include file="default/purse/bottom" /}
+
+<script type="text/javascript">
+     
+    $('.click').each(function(){
+    $('.click').click(function(){
+      $(this).css('background','#f5f5f5').siblings().css('background','');
+    });
+  });
+
+
+
+  $('.menu_block').each(function(){
+    $(this).mouseover(function(){
+      $(this).siblings('li').css('display','block');
+      $(this).find('span').removeClass('menu_block_img').parent().parent().css({border:'1px #ccc solid','border-radius':'5px','color':'#fff'});
+    });
+
+    });
+
+    //鼠标放上去出现背景颜色
+  $(".menu_select").find('li').mouseover(function(){
+    $(this).css('background','#ccc');
+  }).mouseout(function(){
+    $(this).css('background','');
+  });
+
+
+  // 鼠标移出ul
+  $('.menu_select').mouseleave(function(){
+    $('.menu_block').find('span').addClass('menu_block_img').parent().parent().css({background:'white'});
+    $(this).css('border',"").find('li').first().css('display','block');
+    $(this).find('li').eq(1).css('display','none');
+    $(this).find('li').eq(2).css('display','none');
+  });
+
+     
+</script>
+<script>
+    WST.Details = function(id){
+        $.post(WST.U('purse/Consume/Details'),{id:id},function(data){
+            // alert(data['dataFlag']);
+            $("#dataSrc").html(data['dataSrc']);
+            $('#tradeNo').html(data['tradeNo']);
+            var flag = data['dataFlag'];
+            // alert(flag);
+            if(flag==1){
+                $('#dataFlag').html('成功');
+            }else if(flag==0){
+                $('#dataFlag').html('失败');
+            }else if(flag==2){
+                $('#dataFlag').html('进行中');
+            }
+            $('#createTime').html(data['createTime']);
+            $('#createTime_j').html(data['createTime']);
+            $('#createTime_z').html(data['createTime']);
+
+            var mt = data['moneyType'];
+            if(mt==1){
+                $('#moneyType').html('+');
+            }else{
+                $('#moneyType').html('-');
+            }
+            $('#money').html(data['money']);
+
+            if(mt==1){
+                $('#moneyType_z').html('+');
+            }else{
+                $('#moneyType_z').html('-');
+            }
+            $('#money_z').html(data['money']);
+            $('#remark').html(data['remark']);
+            $('#dataSrc_z').html(data['dataSrc']);
+
+            if(data['payName']==null){
+                $('#userName').html('  金购中国  ');
+            }else if(data['payName'] !=null){
+                $('#userName').html(data['payName']);
+            }
+        });
+    }
+</script>
+</body>
+</html>

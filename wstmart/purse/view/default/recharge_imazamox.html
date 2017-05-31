@@ -1,0 +1,150 @@
+{include file="default/purse/header" /}
+
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+    var li = $('.nav_right ul li a');
+    $(li).eq(0).css({border:'1px solid #E71D56',color:'#E71D56'});
+
+    function ceshi1(val){
+        var inputs=document.getElementsByName("ceshi");
+        for(var i=0;i<inputs.length;i++){
+            inputs[i].innerHTML=val;
+        }
+    }
+</script>
+<div class="center public">
+    <div class="bean">
+        <ul class="nav nav-tabs">
+            <li role="presentation"   id="one"><a href="{:url('predeposit/recharge')}">充值到余额</a></li>
+            <li role="presentation"  class="active" id="two" onclick="dj()"><a href="{:url('predeposit/recharge_imazamox')}" >充值到金豆</a></li>
+        </ul>
+        <div class="form-horizontal he">
+
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">充值金额：</label>
+                    <div class="col-md-2">
+                        <input onkeyup="ceshi1(this.value)" id="needPay" name="pdr_amount" type="text" class="form-control" id="inputPassword3">
+                    </div>
+                    <div class="col-md-2 xq">元</div>
+                    <p  style="color:#666;font-weight: 700">金豆个数：<span name="ceshi"></span></p>
+
+                </div>
+                <div class="form-group explain">
+                                      <dl class="ye">
+                        <dt>
+                            <input type="hidden" id="payCode" name="payment_code" value="alipays">
+                            <span class="img"><img src="__STYLE__/img/alipay_logo.gif" name=""></span>
+                            <span><a href="#" data-toggle="modal" data-target="#mymodal">更改</a></span>
+                        </dt>
+                    </dl>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button onclick='javascript:getPayUrl();'>下一步</button>
+                    </div>
+                </div>
+            <div id="mymodal" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!-- <div style="border:1px red solid;width:90%;"> -->
+                        <div class="modal-header">
+                            <div class="close" data-dismiss="modal">&times;</div>
+                            <h4>选择银行</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="payCode" name="payCode" />
+{volist name="payments" id="payment"}
+{if condition="$payment['isOnline'] eq 1"}
+{if condition="$payment['payCode'] eq 'wallets'"}
+{else \}
+<div class="bank">
+    <label for="bank">
+        <input  type="radio" name="payment_code" id="bank" value="{$payment['payCode']}">
+        <input type="hidden" id="payPurse" value="">
+        <img class="img1" src="{$payment['payCode']=='alipays'?'__STYLE__/img/alipay_logo.gif':'__STYLE__/img/wxpay_logo.gif'}" alt="" name="bank">
+    </label>
+
+</div>
+{/if}
+{/if}
+{/volist}
+                           <!--<div class="bank">
+                                <label for="banks">
+                                    <input type="radio" name="payment_code" id="banks" value="weixinpays">
+
+                                    <img class="img2" src="__STYLE__/img/wxpay_logo.gif" alt="" name="bank">
+                                </label>
+
+                            </div>-->
+                            <!-- <div class="bank">
+                                <label for="bankss">
+                                    <input type="radio" name="bank" id="bankss" value="wangyin">
+
+                                    <img class="img3" src="__STYLE__/img/chinabank_logo.gif" alt="" name="bank">
+                                </label>
+                            </div>
+-->
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal">下一步</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+{include file="default/purse/bottom" /}
+<script type='text/javascript' src='__STYLE__/shops/recharge/recharge.js?v={$v}'></script>
+<script >
+    $('.bank').each(function(){
+
+        $(this).click(function(){
+            link = $(this).find('img').attr('src');
+            value = $(this).find('input').val();
+
+            $('.ye img').attr('src',link);
+            $('.ye input').attr('value',value);
+        });
+    });
+</script>
+</body>
+</html>

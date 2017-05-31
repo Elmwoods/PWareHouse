@@ -1,0 +1,185 @@
+{include file="default/purse/header" /}
+<script type="text/javascript" src="__STATIC__/plugins/validator/jquery.validator.js?v={$v}"></script>
+<link href="__STATIC__/plugins/validator/jquery.validator.css?v={$v}" rel="stylesheet">
+
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+    var li = $('.nav_right ul li a');
+    $(li).eq(2).css({border:'1px solid #E71D56',color:'#E71D56'});
+
+</script>
+<div class="center public">
+    <div class="bean">
+        <ul class="nav nav-tabs">
+            <li role="presentation"  id="one"><a href="{:url('predeposit/transfer_purse')}">转账到钱袋</a></li>
+            <li role="presentation"  id="two"><a href="{:url('predeposit/transfer_bank')}">转账到银行卡</a></li>
+            <li role="presentation" class="active" id="three"><a href="{:url('predeposit/gathering')}">我要收款</a></li>
+        </ul>
+
+
+        <div class="he">
+            <form action="" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">对方账号：</label>
+                    <div class="col-md-2">
+                        <input name="name" type="text" class="form-control" id="inputEmail3" placeholder="账号或昵称" data-rule="账号或昵称: required;" data-msg-required="请输入账号或昵称" data-tip="请输入账号或昵称">
+                    </div>
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px" >
+                            <span class="n-icon" style="display:none;" id='yu_y'></span>
+                            <span class="n-msg" style='display:none;' id='yu_h'></span>
+                        </span>
+
+                </div>
+                <div class="form-group">
+                    <div class="hidd" style="display: none;"><div class="portrait"><img class="img" src="" style="width:40px;height:40px;border-radius:50%;" /></div><span class="jy">校验收款人手机号</span></div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">收款金额：</label>
+                    <div class="col-md-2">
+                        <input name="amount" type="text" class="form-control" id="inputPassword3" data-rule="收款金额: required;" data-msg-required="请输入收款金额" data-tip="请输入收款金额">
+                    </div>
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px" >
+                            <span class="n-icon" style="display:none;" id='yu_i'></span>
+                            <span class="n-msg" style='display:none;' id='yu_n'></span>
+                        </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">收款说明：</label>
+                    <div class="col-md-2">
+                        <input name="desc" type="text" class="form-control" id="inputPassword3">
+                    </div>
+                    <div class="col-md-2 xq">添加备注</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" id="sub">下一步</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("input[name='name']").focus(function(){
+            $('.hidd').hide();
+            $('#yu_y').hide();
+            $('#yu_h').hide();
+        });
+
+        $("input[name='name']").blur(function(){
+            a = $("input[name='name']").val();
+            if(a!=''){
+                javascript:WST.account(a);
+            }
+        });
+        $("input[name='amount']").focus(function(){
+            // alert(20);
+            $('#yu_i').hide();
+            $('#yu_n').hide();
+        });
+        $("input[name='amount']").blur(function(){
+            a = $("input[name='amount']").val();
+            if(!isNaN(a)){
+//            alert(a);
+                $('#sub').attr("disabled",false);
+            } else {
+                $('#yu_i').show();
+                $('#yu_n').show().html('请输入正确的数字');
+                $('#sub').attr("disabled",true);
+            }
+        });
+
+        ///////////////
+
+//用户名是否存在查询 userName loginName
+        WST.account = function(){
+            $.post(WST.U('purse/Predeposit/account'),{loginName:a},function(data){
+                if(data=='error'){
+                    $('#yu_y').show();
+                    $('#yu_h').show().html('用户名不存在');
+                    $('#sub').attr("disabled",true);
+                }else{
+                    $('.hidd').show();
+                    // alert(data.userName);
+                    var user = data['userName'];
+                    var photo = data['userPhoto'];
+                    var phone = data['userPhone'];
+                    $('.jy').html(user);
+                    if(photo){
+                        $('.img').attr('src',"__ROOT__/"+photo);
+                    }else{
+                        $('.img').attr('src',"__ROOT__/upload/sysconfigs/2016-10/5804800d5841e.png");
+                    }
+                    if(user){
+                        $('.jy').html(user).css('color','black');
+                    }else{
+                        $('.jy').html('该用户未设置昵称').css('color','red');
+                    }
+                    // alert(photo);
+                    $('#sub').attr("disabled",false);
+                }
+            });
+        }
+
+
+
+        $('.form-horizontal').validator(function(){
+            name = $("input[name='name']").val();
+            amount = $("input[name='amount']").val();
+            desc = $("input[name='desc']").val();
+            var loading = WST.msg('正在提交数据，请稍后...', {icon: 16,time:60000});
+            $.post(WST.U('Purse/Predeposit/News'),{user_name:name,news_amount:amount,news_desc:desc},function(data,textStatus){
+                var json = WST.toJson(data);
+                if(json.status==1){
+                    WST.msg(json.msg,{icon:1});
+                    location.href=WST.U('purse/Consume/index');
+                }else{
+                    layer.close(loading);
+                    WST.msg(json.msg,{icon:2});
+                }
+            });
+        });
+
+    });
+
+</script>
+{include file="default/purse/bottom" /}
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<title>钱袋子</title>
+	<meta http-equiv="Content-Language" Content="zh-CN">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="__ROOT__/wstmart/purse/view/default/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__ROOT__/wstmart/purse/view/default/css/bank.css">
+	<link rel="stylesheet" href="__ROOT__/wstmart/purse/view/default/css/reset.css">
+	<link rel="stylesheet" href="__ROOT__/wstmart/purse/view/default/css/bill.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/wstmart/purse/view/default/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/wstmart/purse/view/default/css/index (2).css">
+
+
+	<!-- <link rel="stylesheet" type="text/css" href="../css/information.css"> -->
+
+
+	<link href="__ROOT__/wstmart/purse/view/default/css/common.css??v={$v}" rel="stylesheet">
+	<script type="text/javascript" src="__ROOT__/static/js/jquery.min.js?v={$v}"></script>
+	<script type="text/javascript" src="__ROOT__/static/plugins/layer/layer.js?v={$v}"></script>
+	<script type="text/javascript" src="__ROOT__/static/plugins/lazyload/jquery.lazyload.min.js?v={$v}"></script>
+	<script type='text/javascript' src='__ROOT__/static/js/common.js?v={$v}'></script>
+	<script type='text/javascript' src='__ROOT__/wstmart/purse/view/default/js/common.js?v={$v}'></script>
+
+
+	<script type="text/javascript" src="__ROOT__/wstmart/purse/view/default/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="__ROOT__/wstmart/purse/view/default/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background: #f5f5f5">
+<div class="top">
+	<div class="top_main">
+		<div class="top_list">
+			<ul>
+				<!-- li><a href="">用户名</a>|</li> -->
+				<li><a href="javascript:WST.logout();">退出</a>|</li>
+				<!-- <li><a href="javascript:WST.logout();"><img src="/purse/view/default/img/gb.png"></a></li> -->
+				<li><a class="top_right" href="{:url('loan/news')}"><img src="__ROOT__/wstmart/purse/view/default/img/xinxi.png"><span class="news_count"></span><span class="aa">{:session('WST_USER.NEWS_COUNT')}</span><!-- {:session('WST_USER.NEWS_COUNT')} --></a></li>
+
+
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="logo public">
+	<div class="logo_main">
+		<a href="{:url('home/index/index')}"><img src="__ROOT__/wstmart/purse/view/default/img/logo.png" alt=""></a>
+	</div>
+</div>
+<div class="header">
+	<div class="header_main">
+		<dl>
+			<dt>
+			<div class="hot"><img src="__ROOT__/{:session('WST_USER.userPhoto')}" style="border-radius: 50%"></div>
+			</dt>
+			<dd>
+				<div class="max">
+					<div class="top_left">
+						你好 ,<span id="top_left">{:session('WST_USER.loginName')}</span>
+					</div>
+					<div class="top_right">
+						信用分：{:session('WST_USER.userScore')}
+					</div>
+				</div>
+				<div class="button">
+					<div class="button_left">
+						账号:{:session('WST_USER.userPhone')}
+					</div>
+					<div class="button_right">
+						上次登录时间：{:session('WST_USER.lastTime')}
+					</div>
+				</div>
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="skip">
+	<div class="skip_ds">
+	<?php switch ($code) {?>
+	<?php case 1:?>
+	<p class="success"><?php echo(strip_tags($msg));?></p>
+	<?php break;?>
+	<?php case 0:?>
+	<p class="error"><?php echo(strip_tags($msg));?></p>
+	<?php break;?>
+	<?php } ?>
+		<p class="detail"></p>
+		<p class="jump">
+			页面自动 <a id="href" href="<?php echo($url);?>">跳转</a> 等待时间： <b id="wait"><?php echo($wait);?></b>
+		</p>
+	</div>
+</div>
+<script type="text/javascript">
+	(function(){
+		var wait = document.getElementById('wait'),
+				href = document.getElementById('href').href;
+		var interval = setInterval(function(){
+			var time = --wait.innerHTML;
+			if(time <= 0) {
+				location.href = href;
+				clearInterval(interval);
+			};
+		}, 1000);
+	})();
+</script>
+
+
+
+
+{include file="default/purse/bottom" /}
+</body>
+</html>

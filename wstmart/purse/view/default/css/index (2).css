@@ -1,0 +1,659 @@
+*{margin:0 auto;padding: 0px;}
+a{text-decoration:none;outline:none !important;}
+
+/********************充值样式*********************/
+.nav_top .content .list #mymodal button{
+    width:200px;
+    height:51px;
+    background: red;
+    color:white;
+    font-size: 18px;
+    border:none;
+}
+
+.public{
+    background: #fff;
+}
+.center{
+    width:1200px;
+    margin:0 auto;
+
+}
+
+.bottom {
+    height:120px;
+    width:100%;
+    background: #323232;
+}
+.bottom .bottom_main {
+    width:1200px;
+    margin:0 auto;
+}
+.bottom .bottom_main dl {
+    float: left;
+}
+.bottom .bottom_main p {
+    float: right;
+    height:120px;
+    line-height:120px;
+    color: #fff;
+}
+.bottom .bottom_main .bottom_dt {
+    padding-top:30px;
+    color: #fff;
+    font-weight:400;
+}
+.bottom .bottom_main .bottom_dt a{
+    color: #fff;
+}
+.bottom .bottom_main .bottom_dd {
+    padding-top:30px;
+    color: #fff;
+}
+/*.loan #daikuang .modal-body .message dl .hk{*/
+    /*font-size: 14px;*/
+    /*margin-left: 332px;*/
+
+    /*float:left;*/
+/*}*/
+
+.loan #daikuang .modal-body .message dl .hk input{
+    width:200px;
+}
+/*******************************贷款样式********************************/
+/*.loan{
+    border:1px #ccc solid; 
+    height: 373px;
+    width:1200px;
+    margin:0 auto;
+}
+.loan .down{
+    margin-top: 35px;
+    margin-left:25px;
+}
+.loan .loan_top{
+    width:1151px;
+    height:120px;
+    margin-bottom:20px;
+    background: rgb(240,240,240);
+    text-align: center;
+    margin-left:25px;
+}
+.loan .loan_top .dl_top{
+    float: left;
+    margin-left:30px; 
+}
+.loan .loan_top .dl_top dt{
+    font-size: 15px;
+    margin-top: 24px;
+}
+.loan .loan_top .dl_top dt span {
+    color: red;
+}*/
+
+.center .loan {
+    width: 1100px;
+    margin:0 auto;
+    height:220px;
+
+}
+
+.center .loan .loan_left{
+   /*margin: 20px 0px;*/
+    float: left;
+    width:600px;
+    /*border-left:1px #eeeeee solid;*/
+    margin-top:40px;
+    /*height:300px;*/
+    padding-top:40px;
+    margin:0 auto;
+}
+
+.center .loan .left1{border:0px;}
+.center .loan .loan_left_top{
+    /*padding-left:40px;*/
+    height:50px;
+    font-size: 18px;
+    margin-left: 40px;
+}
+.center .loan .loan_left_top dt{
+    line-height: 50px;
+}
+.center .loan .loan_left_center{
+    padding-left:40px;
+    height:54px;
+}
+.center .loan .loan_left_center h1{
+    font-weight: 700;
+    float:left;
+}
+.center .loan .loan_left_center a{
+    border:1px #e60b49 solid;
+    width:120px;
+    float: right;
+    height:40px;
+    border-radius:5px;
+    line-height: 40px;
+    border:1px red solid;
+    font-size: 16px;
+    text-align: center;
+    color:red;
+    /*background: #e60b49;*/
+    margin-right:45px;
+    outline:none !important;
+    text-decoration:none;
+}
+.center .loan .loan_left_bottom {
+    padding-left:40px;
+    margin-bottom:30px;
+    color:#999999;
+}
+
+.center .loan .loan_left_bottom dt{
+    width:155px;
+    float: left;
+}
+
+.center .loan .loan_left_bottom .dt{
+    float: right;
+    padding-left: 31px;
+}
+
+.center .loan .loan_left_bottom .dt a{
+    color:#999999;
+}
+.center .loan .loan_right{
+    /*margin: 20px 0px;*/
+    /*float:right;*/
+    width:600px;
+    padding-top:40px;
+    margin:0 auto;
+    height:200px;
+}
+.center .loan .loan_right_top{
+    padding-left:40px;
+    height:50px;
+    font-size: 18px;
+
+}
+.center .loan .loan_right_top dt{
+    line-height: 50px;
+}
+.center .loan .loan_right_center{
+    padding-left:40px;
+    height:54px;
+}
+.center .loan .loan_right_center h1{
+    font-weight: 700;
+    float:left;
+}
+.center .loan .loan_right_center a{
+    border:1px #e60b49 solid;
+    width:120px;
+    float: right;
+    height:40px;
+    border-radius:5px;
+    border:1px red solid;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color:red;
+    margin-right:45px;
+    outline:none !important;
+    text-decoration:none;
+}
+.center .loan .loan_right_bottom {
+    padding-left:40px;
+
+    margin-bottom:30px;
+    color:#a9a9a9;
+}
+.center .loan .loan_right_bottom .dt{
+    float:right;
+    margin-right: 76px;
+   color:#999999;
+}
+
+.center .loan .loan_right_bottom .dt a{
+     color:#999999;
+}
+/**********************************************************************************/
+
+/****************************还贷款模态框样式***************************************************/
+.loan #mymodal .modal-header h4{
+    text-align: center;
+}
+.loan #mymodal .modal-header .jk{
+    margin-top:30px;
+    font-size: 18px;
+    margin-left: 27px;
+
+}
+
+.loan #mymodal .modal-header .jk input{
+    width: 200px;
+}
+.loan #mymodal .modal-body .message{
+    width:497px;
+    border-bottom:1px #ccc solid;
+    margin:0 auto;
+}
+.loan #mymodal .modal-body .ed{
+    margin:10px 0 30px 35px;
+}
+.loan #mymodal .modal-body  .table{
+    width:498px;
+    margin-left:35px; 
+    border:1px solid #ccc;
+    display: none;
+}
+
+.loan #mymodal .modal-body  .table tr{
+   
+    height:32px;
+
+    text-align: center;
+    line-height: 32px;
+
+}
+
+.loan #mymodal .modal-body  .table tr td{
+    width:62px;
+
+}
+
+.loan #mymodal .modal-body .ed dt{
+    height:30px;
+}
+
+.loan #mymodal .modal-body .message dl{
+    display: inline-block;
+    height:30px;
+    line-height:30px;
+}
+
+
+
+.loan #mymodal .modal-body .message dl dt{
+    float: left;
+    line-height:30px;
+}
+
+.loan #mymodal .modal-body .message dl .bank{
+    float:left;
+    margin-top:-29px;
+    margin-left: 336px;
+}
+
+
+.loan #mymodal .modal-footer button{
+    width:250px;
+    margin:0 auto;
+    color:white;
+    font-size: 18px;
+    border:0;
+    height:50px;
+   background:#E60B49;
+   border-radius:4px;
+    float:left;
+    border-radius:4px;
+    margin-left: 30px;
+}
+
+.loan #daikuang .modal-header h4{
+    text-align: center;
+}
+/*.loan #daikuang .modal-header .jk{
+    margin-top:30px;
+    font-size: 18px;
+    font-weight:700;
+    margin-left: 27px;
+}*/
+.loan #daikuang .modal-body .message dl .hk{
+    font-size: 18px;
+    /*margin-left: 332px;*/
+
+    float:left;
+}
+
+.loan #daikuang .modal-body .message{
+    width:497px;
+    border-bottom:1px #ccc solid;
+    margin:0 auto;
+}
+.loan #daikuang .modal-body .ed{
+    margin:10px 0 30px 35px;
+}
+
+.loan #daikuang .modal-body .ed .ye{
+    display:none;
+    color:red;
+}
+.loan #daikuang .modal-body  .table{
+    width:498px;
+    margin-left:35px; 
+    border:1px solid #ccc;
+    display: none;
+}
+
+.loan #daikuang .modal-body  .table tr{
+   
+    height:32px;
+
+    text-align: center;
+    line-height: 32px;
+
+}
+
+.loan #daikuang .modal-body  .table tr td{
+    width:62px;
+
+}
+
+/*******************************************************/
+#daikuang .modal-body .mode{
+    width:497px;
+    margin:0 auto;
+
+
+
+}
+
+#daikuang .modal-body .mode .repayment_mode{
+    line-height: 50px;
+    height:50px;
+    font-size:15px;
+    border-bottom:1px #ccc solid;
+}
+
+#daikuang .modal-body .mode .repayment_mode #q{
+    display: inline-block;
+    width:110px;
+    text-align: right;
+    margin-right: -2px;
+}
+
+/*#daikuang .modal-body .mode .repayment_mode i{
+    background: #ccc;
+    width:10px;
+    height:10px;
+
+}*/
+#daikuang .modal-body .mode .repayment_mode span {
+    font-size:15px;
+    margin-right:310px;
+}
+
+
+#daikuang .modal-body .mode .kxx{
+    width:497px;
+    display: none;
+}
+
+#daikuang .modal-body .mode .kxx dl{
+    height:50px;
+    font-size: 14px;
+
+
+}
+
+#daikuang .modal-body .mode .kxx dl:hover{
+    background:#ccc;cursor:pointer;
+}
+
+#daikuang .modal-body .mode .kxx dl dt{
+    line-height: 50px;
+    border-bottom:1px #ccc solid;
+    border-right:1px #ccc solid;
+    border-left:1px #ccc solid;
+
+}
+
+#daikuang .modal-body .mode .kxx .em{
+    margin-left:200px;
+    margin-right: 10px;
+}
+
+#daikuang .modal-body .ed dt{
+    height:30px;
+}
+
+
+/********************************/
+.loan #daikuang .modal-body .ed dt{
+    height:30px;
+}
+
+.loan #daikuang .modal-body .message dl{
+    display: inline-block;
+    height:30px;
+    line-height:30px;
+}
+
+
+
+.loan #daikuang .modal-body .message dl dt{
+    float: left;
+    line-height:30px;
+}
+
+.loan #daikuang .modal-body .message dl .zd{
+    float:left;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 376px;
+}
+
+.loan #daikuang .modal-body .message dl .bank{
+    float:left;
+    margin-top:-29px;
+    margin-left: 336px;
+}
+
+
+.loan #daikuang .modal-footer button{
+    width:250px;
+    margin:0 auto;
+    color:white;
+    font-size: 18px;
+    border:0;
+    height:50px;
+    background:#E60B49;
+    float:left;
+    border-radius:4px;
+}
+
+/****************************************************/
+
+/****************************************************************************************/
+
+
+/************************************账单流水样式************************************************/
+.content .stream{
+    height: 600px;
+}
+.content .stream .zd{
+    height:100px;
+    border:1px #ccc solid;
+}
+.content .stream .zd dl{
+    height:40px;
+    background: rgb(240,240,240);
+    margin-bottom: 0px;
+}
+.content .stream .zd dl dt{
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 40px;
+}
+.content .stream .details{
+    height: 58px;
+    border-top: 1px #ccc solid;
+}
+.content .stream .details ul {
+    line-height: 58px;
+}
+.content .stream .details li{
+    display: inline-block;
+    width:100px;
+    text-align: center;
+}
+.content .stream .record{
+    border:1px #ccc solid;
+}
+.content .stream .record .record1{
+    width:1100px;
+}
+.content .stream .record1 ul{
+    line-height:58px;
+    border-bottom:1px #ccc solid;
+    margin-bottom:0px;
+}
+.content .stream .record1 ul li {
+    display:inline-block;
+    width:100px;
+    text-align:center;
+}
+
+/************************************************************************************/
+
+/******************************************我的贷款样式************************************/
+.trade {
+    border:1px red solid;
+    height:300px;
+    width:100%;
+}
+.trade .zd{
+    height:100px;
+    border:1px #ccc solid;
+    width:1200px;
+}
+.trade .zd dl{
+    height:40px;
+    margin-bottom: 0px;
+}
+.trade .zd dl dt{
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 40px;
+}
+.trade .details{
+    height: 58px;
+    border-top: 1px #ccc solid;
+}
+.trade .details ul {
+    line-height: 58px;
+}
+.trade .details li{
+    display: inline-block;
+    width:100px;
+    text-align: center;
+}
+.trade .record{
+    border:1px #ccc solid;
+}
+.trade .record .record1{
+    width:1100px;
+}
+.trade .record1 ul{
+    line-height:58px;
+    border-bottom:1px #ccc solid;
+    margin-bottom:0px;
+}
+.trade .record1 ul li {
+    display:inline-block;
+    width:100px;
+    text-align:center;
+}
+.trade .zd .record1 .a{
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.menu_zt {
+    width: 1198px;
+    height: 70px;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+.menu_zt div {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 11px;
+}
+
+.menu_zt .qb {
+    /*background: #dcdcdc;*/
+    background: #EAEDF4;
+    border-radius: 2px;
+    color: #000;
+    /*font-weight: 700;*/
+}
+
+
+
+/********************************************我的金豆样式*******************************************/
+
+
+/***************************************************************************************/
+
+/******************充值方式样式********************************/
+.bean{margin:0 auto;padding:20px 50px 0;}
+.bean .nav-tabs{height:44px;}
+.bean .nav-tabs li{width:200px;}
+.bean .nav-tabs li a{text-align:center;font-size:15px;color:black;}
+.bean .he{height:500px;border-left:1px #ccc solid;border-right:1px #ccc solid;border-bottom:1px #ccc solid;padding-top:55px;}
+.bean .he .checkbox{width:20px;margin-left: 124px;float: left;}
+
+.bean .he .jy{display: block;float: left;margin-top: 2px;height:40px;float: left;line-height: 40px;margin-left:20px;}
+.bean .he .portrait{width:40px;height:40px;border:1px #ccc solid;border-radius:50%;float: left;margin-left: 113px;}
+
+.bean .he .block{display: none;}
+.bean .he .hidd{display: block;height:30px;}
+/*.bean .he .hidd .jy{}*/
+.bean .he .number{display: none;}
+/*.bean span{color:red;}*/
+.bean .col-md-2{margin-right:0 auto;padding-right:0;}
+.bean .xq {margin-top:5px;}
+.bean .checkbox{margin-top:-1px;}
+.bean button{width:300px;margin-left:98px;height:51px;border:none;float:left;background:#E60B49;border-radius:4px;color:white;font-size: 18px;margin-top:24px;margin-bottom:50px;}
+
+/***********************************************************************************/
+
+/*充值到金豆*/
+.bean .explain .ye {margin-left: 115px;margin-top: 20px;border:1px #ccc solid;width:290px;}
+.bean .explain .ye span{margin-right: 20px;color:#9B9B9B;font-size: 15px;}
+.bean .explain .ye span a{color:#E60B49;}
+.bean .explain .ye img{width:122px;height:53px;}
+.bean .he .dk{float:left;}
+.bean .he .dk dl dt{float:left;}
+.bean .he .dk dl dt span{text-align: left;}
+
+.bean .label {width:100px;height:25px;line-height:25px;color:black;font-size:12px;}
+.bean #mymodal .bank{margin-bottom:20px;margin-left:10px;float:left;}
+.bean #mymodal .tk {width:95%;margin:0 auto;}
+.bean #mymodal .bank input{float:left;margin-top:18px;margin-right:15px;}
+.bean #mymodal .bank img{ width:150px;height:50px;border:1px #ccc solid;float:left;margin-right:15px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}
+.bean #mymodal .modal-footer {clear:both;}
+.bean #mymodal .modal-footer button{margin:0;float:left;margin-left:50px;width:301px;height:50px;color:#fff;border-radius:4px;background: #E60B49;font-size: 15px;text-align: center;line-height: 50px;}
+
+/*********************************贷还款*******************************************************/
+.loan .tk .haidai{display: none;}
+.loan .label {width:100px;height:25px;line-height:25px;color:black;font-size:12px;}
+.loan #mymodal .bank{margin-bottom:20px;margin-left:10px;float:left;}
+.loan #mymodal .tk {width:95%;margin:0 auto;}
+.loan #mymodal .bank input{float:left;margin-top:18px;margin-right:15px;}
+.loan #mymodal .bank img{ width:230px;height:50px;border:1px #ccc solid;float:left;margin-right:15px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}
+.loan #mymodal .modal-footer {clear:both;}
+.loan #mymodal .modal-footer button{margin:0 auto;}
+
+.loan .label {width:100px;height:25px;line-height:25px;color:black;font-size:12px;}
+.loan #daikuang .bank{margin-bottom:20px;margin-left:10px;float:left;}
+.loan #daikuang .tk {width:95%;margin:0 auto;}
+.loan #daikuang .bank input{float:left;margin-top:18px;margin-right:15px;}
+.loan #daikuang .bank img{ width:230px;height:50px;border:1px #ccc solid;float:left;margin-right:15px;-moz-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}
+.loan #daikuang .modal-footer {clear:both;}
+.loan #daikuang .modal-footer button{float:left;margin:0 auto;}
+
+/*.loan .loan_top #mymodal .tk .explain .dk span{margin-right: 20px;font-weight:700;}*/

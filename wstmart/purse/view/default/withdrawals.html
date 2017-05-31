@@ -1,0 +1,173 @@
+{include file="default/purse/header" /}
+<script type="text/javascript" src="__STATIC__/plugins/validator/jquery.validator.js?v={$v}"></script>
+<link href="__STATIC__/plugins/validator/jquery.validator.css?v={$v}" rel="stylesheet">
+
+<div class="nav">
+<div class="center public">
+    <div class="nav_main ">
+        <div class="nav_left">
+            <ul>
+              
+
+                <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
+                <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
+                <li><a href="{:url('consume/bill')}">我的账单</a>|</li>
+                <li><a href="{:url('loan/index')}">我的贷款</a>|</li>
+                <li><a href="{:url('bank/index')}">我的银行卡</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+
+           
+        </script>
+        <div class="nav_right">
+            <ul>
+                <li>
+                   <a href="{:url('predeposit/recharge')}">充&nbsp;值</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/withdrawals')}">提&nbsp;现</a>
+                </li>
+                <li>
+                    <a href="{:url('predeposit/transfer_purse')}">收付款</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+
+    var li = $('.nav_right ul li a');
+    $(li).eq(1).css({border:'1px solid #E71D56',color:'#E71D56'});
+
+    function ceshi1(val){
+        var inputs=document.getElementsByName("ceshi");
+        for(var i=0;i<inputs.length;i++){
+            inputs[i].innerHTML=val;
+        }
+    }
+</script>
+<div class="center public">
+    <div class="bean">
+        <ul class="nav nav-tabs">
+            <li role="presentation"  class="active" id="one"><a href="{:url('predeposit/withdrawals')}">余额提现</a></li>
+            <li role="presentation"  id="two"><a href="{:url('predeposit/withdrawals_imazamox')}">金豆提现</a></li>
+        </ul>
+
+
+        <div class="he">
+            <form class="form-horizontal form" method="post" action="">
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">提现金额：</label>
+                    <div class="col-md-2">
+                        <input name="number" type="text" class="form-control"  data-rule="输入金额: required;" data-msg-required="请输入金额" data-tip="请输入金额">
+                    </div>
+                        <span role="alert" class="msg-wrap n-error" style="margin-left:5px;margin-top:7px">
+                            <span class="n-icon" style="display:none" id='yu_q'></span>
+                            <span class="n-msg" style='display:none;' id='yu_e'>金豆余额不足</span>
+                        </span>
+                </div>
+
+                <div class="form-group explain">
+                    <dl class="ye">
+                        <dt>
+                            <input type="hidden" name="payment_code" value="alipay" >
+                            <span class="img"><img src="__STYLE__/img/alipay_logo.gif" name=""></span>
+                            <span><a href="#" data-toggle="modal" data-target="#mymodal">更改</a></span>
+                        </dt>
+                    </dl>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">账　　号：</label>
+                    <div class="col-md-2">
+                        <input name="name" type="text" class="form-control" id="inputPassword3" data-rule="输入账号: required;" data-msg-required="请输入账号" data-tip="请输入账号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" id="sub">下一步</button>
+                    </div>
+                </div>
+            </form>
+            <div id="mymodal" class="modal fade" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" style="margin-top: 250px">
+                    <div class="modal-content">
+                        <form action="" method="post" class="form-horizontal">
+                            <div class="tk">
+                                <div class="modal-header">
+                                    <div class="close" data-dismiss="modal">&times;</div>
+                                    <h4>选择银行</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="bank">
+                                        <label for="bank">
+                                            <input  type="radio" name="payment_code" id="bank" value="alipay">
+
+                                            <img class="img1" src="__STYLE__/img/alipay_logo.gif" alt="" name="bank">
+                                        </label>
+
+                                    </div>
+                                   <!-- <div class="bank">
+                                        <label for="banks">
+                                            <input type="radio" name="payment_code" id="banks" value="weixin">
+
+                                            <img class="img2" src="__STYLE__/img/wxpay_logo.gif" alt="" name="bank">
+                                        </label>
+
+                                    </div>
+                                    <div class="bank">
+                                        <label for="bankss">
+                                            <input type="radio" name="payment_code" id="bankss" value="wangyin">
+
+                                            <img class="img3" src="__STYLE__/img/chinabank_logo.gif" alt="" name="bank">
+                                        </label>
+                                    </div>-->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal">下一步</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="default/purse/bottom" /}
+<script >
+    $('.bank').each(function(){
+
+        $(this).click(function(){
+            link = $(this).find('img').attr('src');
+            value = $(this).find('input').val();
+
+            $('.ye img').attr('src',link);
+            $('.ye input').attr('value',value);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $("input[name='number']").focus(function(){
+        $('#yu_q').hide();
+        $('#yu_e').hide();
+    });
+    $("input[name='number']").blur(function(){
+        va = $("input[name='number']").val();
+//        alert(va)
+        if(!isNaN(va)){
+//            alert(va);
+            javascript:WST.With(va);
+        } else {
+            $('#yu_q').show();
+            $('#yu_e').show().html('请输入正确的金额');
+            $('#sub').attr("disabled",true);
+        }
+    });
+</script>
+</body>
+</html>

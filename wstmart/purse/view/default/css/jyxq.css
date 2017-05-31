@@ -1,0 +1,82 @@
+/*************************交易详情***************************/
+
+#details .consumption_bill{
+    width:858px;
+    border-bottom: 2px #dddddd solid;
+    margin-bottom: 40px;
+}
+
+#details .consumption_details{
+    width:858px;
+    margin:0 auto;
+    border-top:2px #dddddd solid;
+    margin-bottom: 150px;
+}
+
+#details .consumption_details tr{
+    height:30px;
+    /*border:1px red solid;*/
+}
+
+#details .consumption_details tr th{
+    width:80px;
+}
+
+#details .consumption_details tr .th{
+    /*border-top:1px #dddddd solid;*/
+    border-right:1px #dddddd solid;
+    border-bottom:1px #dddddd solid;
+}
+
+#details .consumption_details .time{
+    text-align: center;
+    background: #dddddd;
+}
+#details .consumption_details .time1{
+    border:0;
+    text-align: center;
+}
+#details .consumption_details tr td{
+     /*border-top:1px #dddddd solid;*/
+    border-left:1px #dddddd solid;
+    border-bottom:1px #dddddd solid;
+}
+#details .consumption_bill table{
+    width:100%;
+    
+}
+
+#details .consumption_details table{
+    width:100%;
+    
+}
+
+#details .consumption_bill table tr{
+    height:30px;
+    width:100%;
+    
+}
+#details .consumption_bill table tr th{
+    /*text-align: center;*/
+    font-size: 14px;
+    height:30px;
+}
+
+#details .consumption_bill .top{
+    background:#dddddd;
+}
+
+
+#details .consumption_bill table .record{
+    height:60px;
+    
+}
+
+#details .consumption_bill table .name{
+    padding-left: 10px;
+}
+#details .consumption_bill table .cen{
+    text-align: center;
+}
+
+/******************交易详情************************/
