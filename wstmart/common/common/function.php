@@ -20,8 +20,8 @@ const WST_ADDON_PATH = './addons/';
 /**
  * 生成验证码
  */
-function WSTVerify(){
-	$Verify = new \verify\Verify();
+function WSTVerify($conf=['useCurve'  =>  false,'useNoise'  =>  false]){//添加 $conf=['useCurve'  =>  false,'useNoise'  =>  false]
+    $Verify = new \verify\Verify($conf); //添加 $con
     $Verify->length   = 4;
     $Verify->entry();
 }
@@ -1139,5 +1139,19 @@ function WSTRoot(){
  */
 function WSTBase64url($data,$isEncode = true) { 
   return ($isEncode)?rtrim(strtr(base64_encode($data), '+/', '-_'), '='):base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT)); 
-} 
+}
 
+//随机红包函数
+function redPacket($total, $num) {
+    $min        =   0.01;       //红包最小值
+    $redPacket  =   [];         //初始化红包数组
+    for ($i=1;$i<$num;$i++)
+    {
+        $safe_total     =       ($total-($num-$i)*$min)/($num-$i);          //随机数安全上限
+        $money          =       mt_rand($min*100,$safe_total*100)/100;      //红包值
+        $total          -=      $money;
+        $redPacket[$i]  =       sprintf('%.2f', $money);
+    }
+    $redPacket[$num]    =       sprintf('%.2f', $total);
+    return $redPacket;
+}
