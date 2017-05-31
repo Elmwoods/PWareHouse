@@ -41,7 +41,6 @@ class  Login  extends Controller {
 
     public function logon($username, $password) {
         $param = $this->request->param();
-        $param['password'] = md5($param['password']);
         if(isset($param['username']) && $param['username'] != '') {       //判断是否存在POST提交值
             /*if (!empty($param['client_type'])) {      暂不启用客户端类型
                 $client_type = $param['client_type'];
@@ -61,6 +60,8 @@ class  Login  extends Controller {
                     $member_name    =   $arr['loginName'];                             //用户名
                     $member_avatar  =   $arr['userPhoto'];                           //用户头像
                     $token          =   getToken($member_id, $member_name, $member_avatar);        //获取融云token
+                    $loginSecret    =   $arr['loginSecret'];
+                    $param['password'] = md5($param['password'].$loginSecret);
                     $login_time = time();
                     $limitTime = time() - 7*24*3600;
                 }else {
@@ -108,6 +109,8 @@ class  Login  extends Controller {
                     $member_id      =   $arr['userId'];
                     $member_avatar  =   $arr['userPhoto'];                             //用户头像
                     $token          =   getToken($member_id, $member_name, $member_avatar);        //获取融云token
+                    $loginSecret    =   $arr['loginSecret'];
+                    $param['password'] = md5($param['password'].$loginSecret);
                     $login_time     =   time();
                     $limitTime      =   time() - 7*24*3600;
                 }else {
@@ -159,7 +162,7 @@ class  Login  extends Controller {
         $param = $this->request->param();
         if (!empty($param)) {
             $info = $this->logon($param['username'], $param['password']);
-            if (json_decode($info) -> result == 'success') {
+            if (!empty($info) && json_decode($info) -> result == 'success') {
                 $value = json_decode($info) -> value;
                 session('WST_USER.userName',$value -> member_name);
                 session('WST_USER.userId',$value -> member_id);
@@ -175,7 +178,7 @@ class  Login  extends Controller {
         $param = $this->request->param();
         if (!empty($param)) {
             $info = $this->logon($param['username'], $param['password']);
-            if (json_decode($info) -> result == 'success') {
+            if (!empty($info) && json_decode($info) -> result == 'success') {
                 $value = json_decode($info) -> value;
                 session('WST_USER.userName',$value -> member_name);
                 session('WST_USER.userId',$value -> member_id);

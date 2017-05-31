@@ -20,8 +20,8 @@ const WST_ADDON_PATH = './addons/';
 /**
  * 生成验证码
  */
-function WSTVerify(){
-	$Verify = new \verify\Verify();
+function WSTVerify($conf=['useCurve'  =>  false,'useNoise'  =>  false]){//添加 $conf=['useCurve'  =>  false,'useNoise'  =>  false]
+    $Verify = new \verify\Verify($conf); //添加 $con
     $Verify->length   = 4;
     $Verify->entry();
 }

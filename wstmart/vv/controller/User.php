@@ -19,6 +19,7 @@ class User extends Controller {
         $this -> request = request();
     }
 
+    //修改密码
     public function changePass($mobile, $code, $password) {
         $param = $this->request->param();
         if (!empty($param) && preg_match('/^\d{11}$/', trim($param['mobile']))) {
@@ -30,7 +31,8 @@ class User extends Controller {
             Db::table('jingo_user_code') -> where('reg_time', '<', $expire) -> delete();
             $arr = Db::table('jingo_user_code') -> where($data) -> find();
             if ($arr) {
-                $boolen = Db::table('jingo_users') -> where('userPhone', $param['mobile']) -> update(['loginPwd'=>md5($param['password'])]);
+                $arr2 = Db::table('jingo_users') -> where('userPhone', $param['mobile']) -> find();
+                $boolen = Db::table('jingo_users') -> where('userPhone', $param['mobile']) -> update(['loginPwd'=>md5($param['password'].$arr2['loginSecret'])]);
                 if ($boolen) {
                     return urldecode(json_encode(['result'=>'success', 'value'=>urlencode('密码修改成功')]));
                 }else {

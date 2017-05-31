@@ -175,8 +175,8 @@ class Api extends Controller {
                     }*/
                 }else {             //如果未注册,则继续注册
                     $password = mt_rand(10000000,99999999);     //生成8位随机数字密码
-                    $password_md5 = md5($password);
                     $loginSecret = mt_rand(1000, 9999);
+                    $password_md5 = md5($password.$loginSecret);
                     $reg_time = date('Y-m-d H:i:s', time());
 
                     //生成随机用户名
@@ -203,6 +203,7 @@ class Api extends Controller {
                             'value' => array(
                                 'mobile' => $param['mobile'],
                                 'password' => $password,
+                                'loginSecret' => $loginSecret,
                             ),
                         );
                         $expire = time() - 30*60;
@@ -250,9 +251,9 @@ class Api extends Controller {
                 if ($arr) {
                     $password       =	$arr['loginPwd'];
                     $mobile         =   $arr['userPhone'];
-                    $member_id      =   $arr['userId'];                                  //用户id
-                    $member_name    =   $arr['loginName'];                             //用户名
-                    $member_avatar  =   $arr['userPhoto'];                           //用户头像
+                    $member_id      =   $arr['userId'];                                 //用户id
+                    $member_name    =   $arr['loginName'];                              //用户名
+                    $member_avatar  =   $arr['userPhoto'];                              //用户头像
                     $token          =   getToken($member_id, $member_name, $member_avatar);        //获取融云token
                     $login_time = time();
                     $limitTime = time() - 7*24*3600;
