@@ -30,4 +30,13 @@ class Index extends Controller {
 
     }
 
+    public function redPacket() {
+        $total      =   100;         //红包总金额
+        $num        =   21;         //红包个数
+        $redPacket  =   redPacket($total, $num);
+        echo '<pre />';
+        shuffle($redPacket);
+        print_r($redPacket);
+    }
+
 }
