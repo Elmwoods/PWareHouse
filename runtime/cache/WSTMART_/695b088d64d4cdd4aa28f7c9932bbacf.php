@@ -1,3 +1,0 @@
-<?php
-//000000086400a:1:{i:0;a:13:{s:8:"shopName";s:19:"WSTMart自营超市";s:6:"shopId";i:1;s:7:"goodsId";i:65;s:9:"goodsName";s:60:"【wstmart超市】美国红提2kg 提子 进口新鲜水果";s:8:"goodsImg";s:38:"upload/goods/2016-10/58044b41a1003.jpg";s:7:"goodsSn";s:15:"147667626553350";s:10:"goodsStock";i:234220;s:7:"saleNum";i:19;s:9:"shopPrice";s:5:"15.00";s:11:"marketPrice";s:5:"15.00";s:6:"isSpec";i:0;s:11:"appraiseNum";i:3;s:8:"visitNum";i:35;}}
-?>

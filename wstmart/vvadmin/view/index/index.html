@@ -12,6 +12,7 @@
 		<link href="__VVADMIN__/css/font-awesome.css" rel="stylesheet">
 		<link href="__VVADMIN__/css/style.css" rel="stylesheet">
 		<link href="__VVADMIN__/img/favicon/favicon.png" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/we/dist/css/wangEditor.min.css">
 	</head>
 	<body>
 		<!-- Header starts -->
@@ -108,8 +109,13 @@
 		<script src="__VVADMIN__/js/jquery-1.8.3.min.js"></script>	
 		<script src="__VVADMIN__/js/bootstrap.js"></script>	
 		<script src="__VVADMIN__/js/custom.js"></script>
+		<script type="text/javascript" src="__STATIC__/we/dist/js/wangEditor.min.js"></script>
 	</body>
 </html>
 
 <block name='js'>
+	<script type="text/javascript">
+    var editor = new wangEditor('textarea1');
+    editor.create();
+</script>
 </block>

@@ -1,3 +1,0 @@
-<?php
-//000000000000a:1:{i:0;a:15:{s:9:"articleId";i:22;s:5:"catId";i:11;s:12:"articleTitle";s:28:"wstmart商城，国庆促销";s:6:"isShow";i:1;s:14:"articleContent";s:46:"wstmart商城，国庆促销了，来看看吧";s:10:"articleKey";s:13:"wstmart商城";s:7:"staffId";i:1;s:8:"dataFlag";i:1;s:10:"createTime";s:19:"2016-09-26 23:04:18";s:5:"solve";i:0;s:7:"unsolve";i:0;s:8:"parentId";i:8;s:7:"catType";i:0;s:7:"catName";s:12:"商城公告";s:7:"catSort";i:0;}}
-?>

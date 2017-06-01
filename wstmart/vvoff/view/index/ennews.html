@@ -150,7 +150,7 @@
 					<span class="right"><?php echo $enart[0]['e_art_addtime']?></span>
 				</div>
 				<div class="main_main">
-					<span>&nbsp;&nbsp;<?php echo $enart[0]['e_art_content']?>
+					<span>&nbsp;&nbsp;<?php echo htmlspecialchars_decode($enart[0]['e_art_content'])?>
 				</div>
 			</div>
 				

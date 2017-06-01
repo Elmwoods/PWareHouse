@@ -75,7 +75,7 @@
                                         <dd>
                                             <h2><?php echo $v['art_name'] ?></h2>
 
-                                            <span><?php echo mb_substr($v['art_content'], 0, 120).'...'; ?></span>
+                                            <span><?php echo mb_substr(htmlspecialchars_decode($v['art_content']), 0, 120).'...'; ?></span>
                                         </dd>
                                     </dl>
                                 </li>

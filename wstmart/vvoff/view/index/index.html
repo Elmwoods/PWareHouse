@@ -23,6 +23,20 @@
         margin: 0 12px;
         float: left;
     }
+    .service .se_top .se_ul p{
+        display: inline-block;
+        float: none;
+        display: block;
+    }
+    .news-addtime{
+        float: right !important;
+    }
+    .service .se_top .se_ul h2{
+        margin-bottom: 15px;
+    }
+    .service .se_top .se_ul dd{
+        max-height: 115px;
+    }
 </style>
 
 <script>
@@ -633,8 +647,8 @@
                                 </dt>
                                 <dd>
                                     <h2><?php echo $v['art_name']?></h2>
-                                    <p><?php echo $v['art_addtime']?></p>
-                                    <span style="width: 600px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><?php echo $v['art_content']?></span>
+                                    <p class="news-addtime"><?php echo $v['art_addtime']?></p>
+                                    <span><?php echo mb_substr(htmlspecialchars_decode($v['art_content']), 0, 80, 'utf-8')?></span>
                                 </dd>
                             </dl>
                         </li>

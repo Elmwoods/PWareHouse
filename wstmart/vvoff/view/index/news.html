@@ -80,7 +80,7 @@
 		}
 		.main .main_center .main_main {
 			width: 900px;
-			margin: 30px 100px;
+			margin: 10px 100px;
 			/*padding-bottom: 100px;*/
 		}
 		.main .main_center .main_main span {
@@ -150,7 +150,7 @@
 					<span class="right"><?php echo $art[0]['art_addtime']?></span>
 				</div>
 				<div class="main_main">
-					<span>&nbsp;&nbsp;<?php echo $art[0]['art_content']?></span>
+					<span>&nbsp;&nbsp;<?php echo htmlspecialchars_decode($art[0]['art_content'])?></span>
 					
 				</div>
 			</div>

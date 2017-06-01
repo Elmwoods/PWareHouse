@@ -1,3 +1,0 @@
-<?php
-//000000000000a:9:{i:0;a:3:{s:5:"catId";i:1;s:8:"parentId";i:7;s:7:"catName";s:12:"支付方式";}i:1;a:3:{s:5:"catId";i:5;s:8:"parentId";i:7;s:7:"catName";s:12:"购物指南";}i:2;a:3:{s:5:"catId";i:6;s:8:"parentId";i:7;s:7:"catName";s:12:"商城快讯";}i:3;a:3:{s:5:"catId";i:7;s:8:"parentId";i:0;s:7:"catName";s:12:"帮助中心";}i:4;a:3:{s:5:"catId";i:8;s:8:"parentId";i:0;s:7:"catName";s:12:"商城快讯";}i:5;a:3:{s:5:"catId";i:9;s:8:"parentId";i:7;s:7:"catName";s:12:"售后服务";}i:6;a:3:{s:5:"catId";i:10;s:8:"parentId";i:7;s:7:"catName";s:12:"商务合作";}i:7;a:3:{s:5:"catId";i:11;s:8:"parentId";i:8;s:7:"catName";s:12:"商城公告";}i:8;a:3:{s:5:"catId";i:12;s:8:"parentId";i:8;s:7:"catName";s:12:"促销信息";}}
-?>

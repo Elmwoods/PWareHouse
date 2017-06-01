@@ -719,7 +719,7 @@
 	                                    <dd>
 	                                    	<h2><?php echo '/'.$v['e_art_name']?></h2>
 	                                    	<p><?php echo '/'.$v['e_art_addtime']?></p>
-	                                    	<span style="width: 600px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><?php echo '/'.$v['e_art_content']?></span>
+	                                    	<span style="width: 600px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><?php echo '/'.htmlspecialchars_decode($v['e_art_content'])?></span>
 	                                    </dd>
 	                                </dl>
 	                            </li>
