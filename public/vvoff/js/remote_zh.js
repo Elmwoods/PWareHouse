@@ -99,6 +99,11 @@ $(".code_cs").click(function () {
     window.location.href="http://www.jingomall.com"
 });
 
+$(".denglu").click(function() {
+    $(".code_s").css("display", "block");
+    $(".code_cs").css("display", "none");
+})
+
 
 // $(function () {
 //     function refresh() {
@@ -240,18 +245,18 @@ $("#zh_01").blur(function checkMobile() {
         $("p.sjgs").css("visibility", "visible")
     }
 });
-$("#zh_02").blur(function checkMobile1() {
-    var reg = /^1(3|4|5|7|8)\d{9}$/;
-    var mobile2 = $("#zh_02").val();
-    if(mobile2 && reg.test(mobile2)) {
-        //对的
-
-        $("p.sjgs").css("visibility", "hidden")
-
-    } else {
-        $(".sjgs").css("visibility", "visible")
-    }
-});
+// $("#zh_02").blur(function checkMobile1() {
+//     var reg = /^1(3|4|5|7|8)\d{9}$/;
+//     var mobile2 = $("#zh_02").val();
+//     if(mobile2 && reg.test(mobile2)) {
+//         //对的
+//
+//         $("p.sjgs").css("visibility", "hidden")
+//
+//     } else {
+//         $(".sjgs").css("visibility", "visible")
+//     }
+// });
 $("#zh_03").blur(function checkMobile2() {
     var reg = /^1(3|4|5|7|8)\d{9}$/;
     var mobile3 = $("#zh_03").val();

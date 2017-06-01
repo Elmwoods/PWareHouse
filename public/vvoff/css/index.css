@@ -182,6 +182,10 @@ a:focus{
 	display: none;
 }
 
+.code_s{
+	margin: 0 auto;
+}
+
 .code_down {
 	width: 50px;
 	height: 40px;
