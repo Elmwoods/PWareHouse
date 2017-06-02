@@ -21,6 +21,7 @@
 		.header .header_top .logo {
 			float: right;
 			padding-right:18px;
+			margin-top: 15px;
 		}
 		.header .header_top .list {
 			float: right;
@@ -132,7 +133,7 @@
 						<li><a href="index.html#05">京歌未来</a></li>
 						<li><a href="index.html#06">团队介绍</a></li>
 						<li><a href="index.html#07">京歌新闻</a></li>
-						<li><a href="English.html">ENGLISH SITE</a></li>
+						<!--<li><a href="English.html">ENGLISH SITE</a></li>-->
 					</ul>
 				</div>
 				<div class="logo">
@@ -146,10 +147,10 @@
 			<div class="main_center">
 				<h2><?php echo $art[0]['art_name']?></h2>
 				<div class="main_list">
-					<span class="left"><?php echo $art[0]['art_from']?></span>
-					<span class="right"><?php echo $art[0]['art_addtime']?></span>
+					<span class="left" style="color:#fff;"><?php echo $art[0]['art_from']?></span>
+					<span class="right" style="color:#fff;"><?php echo $art[0]['art_addtime']?></span>
 				</div>
-				<div class="main_main">
+				<div class="main_main" style="color:#fff;">
 					<span>&nbsp;&nbsp;<?php echo htmlspecialchars_decode($art[0]['art_content'])?></span>
 					
 				</div>

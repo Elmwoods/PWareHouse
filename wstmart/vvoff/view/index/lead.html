@@ -4,31 +4,37 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<script type="text/javascript">
-			function browserRedirect() {
-				var sUserAgent = navigator.userAgent.toLowerCase();
-				var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-				var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-				var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-				var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-				var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-				var bIsAndroid = sUserAgent.match(/android/i) == "android";
-				var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-				var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-				document.writeln("您的浏览设备为：");
-				if(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-					document.writeln("phone");
-				} else {
-					document.writeln("pc");
-				}
-			}
-
-			browserRedirect();
-		</script>
-
+		
 	</head>
 
 	<body>
+		<div id="phone" style="display: none;">{:url('vvoff/index/phone')}</div>
+		<div id="index" style="display: none;">{:url('vvoff/index/web')}</div>
 	</body>
+	<script src="__VVOFF__/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			
+			   $(window).load(function() {
+		            var sUserAgent = navigator.userAgent.toLowerCase();
+					var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+					var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+					var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+					var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+					var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+					var bIsAndroid = sUserAgent.match(/android/i) == "android";
+					var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+					var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+					if(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+						window.location.href = $('#phone').html();
+					} else {
+						window.location.href = $('#index').html();
+
+					}
+		        });
+
+
+
+
+	</script>
 
 </html>

@@ -9,7 +9,10 @@ use wstmart\vvoff\model\VvoffEnstaff as T;
 
 class  index extends Controller
  {
-	public function index()
+    public function index(){
+        return view('lead');
+    }
+	public function web()
 	{
 		$m=new MM;
 		$ii=$m->where('is_see',1)->select();
@@ -36,6 +39,35 @@ class  index extends Controller
 		$this -> assign('serialize', $serialize);
 		return  $this->fetch('index');
 	}
+
+    public function phone()
+    {
+        $m=new MM;
+        $ii=$m->where('is_see',1)->select();
+        $iii=$m->where('is_see',1)->limit(0,3)->select();
+        $this->assign('sta',$ii);
+        $this->assign('sta2',$iii);
+        $mm=new M;
+        $dd=$mm->where('is_see',1)->limit(0,3)->select();
+        $arr = [];
+        $i=0;
+        foreach ($dd as $v) {
+            $arr[$i]['id'] = $v['id'];
+            $arr[$i]['art_img'] = $v['art_img'];
+            $arr[$i]['art_name'] = $v['art_name'];
+            $arr[$i]['art_content'] = $v['art_content'];
+            $arr[$i]['art_short'] = mb_substr($v['art_content'], 0, 120, 'utf-8').'...';
+            $i++;
+        }
+        $this->assign('art2',$arr);
+        $this->assign('art',$dd);
+        $serialize = $this->setqrcode();
+        $date = date("Ymd",time());
+        $this->assign('data',$date);
+        $this -> assign('serialize', $serialize);
+        return  $this->fetch('phone');
+    }
+
 	public function english()
 	{
 		$m=new T;
