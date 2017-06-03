@@ -12,6 +12,29 @@ class  index extends Controller
     public function index(){
         return view('lead');
     }
+    public function purse(){
+        return view('purse');
+    }
+
+    public function Ephone(){
+        $m=new T;
+        $ii=$m->where('e_is_see',1)->select();
+        $this->assign('ensta',$ii);
+        $mm=new D;
+        $dd=$mm->where('e_is_see',1)->select();
+        $this->assign('enart',$dd);
+        $serialize = $this->setqrcode();
+        $date = date("Ymd",time());
+        $this->assign('data',$date);
+        $this -> assign('serialize', $serialize);
+        return view('Ephone');
+    }
+
+    public function Eteam(){
+        $list = Db::name('vvoff_enstaff')->where('e_is_see',1)->paginate(4);
+        $this->assign('list',$list);
+        return view('Eteam');
+    }
 	public function web()
 	{
 		$m=new MM;
@@ -90,7 +113,14 @@ class  index extends Controller
 		$this->assign('art',$dd);
 		return $this->fetch('news');
 	}
-	public function ennews() 
+    public function webnew(){
+        $mm=new D;
+        $ii=input('param.');
+        $dd=$mm->where('id',$ii['id'])->select();
+        $this->assign('enart',$dd);
+        return view('webnew');
+    }
+	public function ennews()
 	{
 		$mm=new D;
 		$ii=input('param.');
@@ -232,4 +262,19 @@ class  index extends Controller
             $this -> error('网络又开小差了，请稍后重试');
         }
 	 }
+     public function ep_new1() {
+        $param = request()->param();
+        if (!empty($param['id'])) {
+            $mm=new M;
+            $dd=$mm->where('id',$param['id'])->find();
+            $this->assign('e_art',$dd);
+            return view('ep_new1');
+        }else {
+            $this -> error('网络又开小差了，请稍后重试');
+        }
+     }
+
+     public function agreement() {
+        return view('agreement');
+     }
 }

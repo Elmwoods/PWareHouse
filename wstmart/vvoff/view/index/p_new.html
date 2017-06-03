@@ -61,11 +61,11 @@
 		.p_top .p_list a:hover {
 			border-bottom: 3px solid #fff;
 		}
-		.banner {
+		/*.banner {
 			width: 640px;
 			height: 80px;
 			background: url(/public/img/phonebanner.jpg) no-repeat center center;
-		}
+		}*/
 		.main {
 			width: 640px;
 			background: #1b1b1b;
@@ -163,16 +163,16 @@
 				</ul>
 			</div>
 		</div>
-		<div class="banner"></div>
+		<!--<div class="banner"></div>-->
 		<div class="main">
 			<div class="main_top"></div>
 			<div class="main_center">
 				<h2>{$art.art_name}</h2>
 				<div class="main_list">
-					<span class="left">{$art.art_from}</span>
-					<span class="right">{$art.art_addtime}</span>
+					<span class="left" style="color:#ccc;">{$art.art_from}</span>
+					<span class="right" style="color:#ccc;">{$art.art_addtime}</span>
 				</div>
-				<div class="main_main">
+				<div class="main_main" style="color:#ccc;font-size: 13px;line-height:1.7;">
 					{$art.art_content}
 				</div>
 			</div>

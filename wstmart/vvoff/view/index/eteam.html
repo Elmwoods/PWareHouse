@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>HANGZHOU JINGE TECHNOLOGY CORPORATION  GLOBAL DISTRIBUTARY SYSTEM OF COMMODITY CURREN</title>
+		<link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="__VVOFF__/css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/index.css" id="css"/>
+		<!--<link rel="stylesheet" href="css/style.css">-->
+		<!--<script src="js/mui.min.js"></script>
+    	<link href="css/mui.min.css" rel="stylesheet"/>-->
+		<style>
+			
+			.pagination li a{
+				background: #000;
+				color: #fff;
+			}
+		</style>
+	</head>
+	
+	<script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneHeight = parseInt(window.screen.height);
+		var phoneScale = phoneWidth/640;
+		
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
+	<body>
+		<div class="visible-sm-block visible-xs-block">
+			<div class="p_top" id="p_top">
+				<div class="p_logo">
+					<a href="#15"><img src="__VVOFF__/img/logo1.png"/></a>
+				</div>
+				<div class="p_list">
+					<ul>
+						<li><a href="ephone.html#08">ABOUT</a></li>
+						<li><a href="ephone.html#09">VVCHAT</a></li>
+						<li><a href="ephone.html#10">CASHBAG</a></li>
+						<li><a href="ephone.html#11">JINGOMALL</a></li>
+						<li><a href="ephone.html#12">FUTURE</a></li>
+						<li><a href="ephone.html#13">TEAMS</a></li>
+						<li><a href="ephone.html#14">NEWS</a></li>
+						<li><a href="{:url('vvoff/index/ephone')}">中文版</a></li>
+					</ul>
+				</div>
+				
+			</div>
+					<div class="swiper-slide">
+						<div class="teams" id="13">
+							<img src="__VVOFF__/img/team.png" class="T_img"/>
+							<div class="teams_list">
+								<ul id="teamlist">
+									<div class="t_none">
+										{volist name="list" id="v"}
+										<li class="teamitem">
+											<div class="mteam_img">
+												<dl>
+													<dt>
+														<img src="/{$v.e_headimg}"/>
+													</dt>
+													<dd>
+														<p>{$v.e_name}</p>
+														<br />
+														<p class="t_xt"> {$v.e_job}</p>
+														<br />
+														<span>{$v.e_introduction}</span>
+													</dd>
+												</dl>
+											</div>
+										</li>
+										{/volist}
+									</div>
+								</ul>
+
+								<!--<p id="page" style="color:#fff;">
+								<?php
+									echo $_SERVER['QUERY_STRING'];
+								?>
+								</p>
+								<ul class="pager">
+									<li><a href="?page=1">&laquo;</a></li>
+									<li class="disabled"><a href="?page=2" <span>&raquo;</span></a></li>
+								</ul>-->
+								{$list->render()}
+							</div>
+						</div>
+					</div>
+					
+
+				</div>
+			</div>
+			<!--<div class="over">
+				<span>杭州京歌科技有限公司版权所有</span>
+			</div>-->
+		<div id="serialize" style="display: none;">__VVOFF__</div>
+		</div>
+	</body>
+	<script src="__VVOFF__/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/index.js"></script>
+	<script src="__VVOFF__/js/b.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/bootstrap.min.js"></script>
+	<script src="__VVOFF__/js/swiper.min.js"></script>
+	<script type="text/javascript">
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true
+		});
+	</script>
+</html>

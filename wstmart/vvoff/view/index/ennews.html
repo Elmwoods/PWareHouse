@@ -1,66 +1,90 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title>京歌科技 全球货币分流技术缔造者</title>
-		<link rel="icon" href="img/1.ico" type="__VVOFF__/image/x-icon">
+		<link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
 	</head>
-	<style type="text/css">
-		.header {
-			width:100%;
-			height: 120px;
-			background: #111;
+	<script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneHeight = parseInt(window.screen.height);
+		var phoneScale = phoneWidth/640;
+		
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
 		}
-		.header .header_top {
-			width:1200px;
-			height:120px;
-			line-height:120px;
-			margin:0 auto;
+	</script>
+	<style type="text/css">	
+		body {
+			background: #000;
 		}
-		.header .header_top .logo {
+		.p_top {
+			width: 640px;
+			height: 50px;
+			background: #111111;
+		}
+		.p_top .p_logo {
+			float: left;
+			padding-left: 37px;
+			padding-top: 10px;
+		}
+		
+		.p_top .p_list {
 			float: right;
-			padding-right:18px;
+			padding-right: 15px;
+			padding-top: 10px;
 		}
-		.header .header_top .list {
-			float: right;
-			padding-right:59px;
-		}
-		.header .header_top .list ul {
+		.p_top .p_list li {
 			float: left;
+			padding: 0 9px;
+			line-height: 30px;
+			line-height: 30px;
 		}
-		.header .header_top .list li {
+		.p_top .p_list a {
 			float: left;
-			margin:0 18px;
-		}
-		.header .header_top .list a {
-			float: left;
+			font-size: 9px;
 			color: #fff;
 		}
+		.p_top .p_list a:hover {
+			border-bottom: 3px solid #fff;
+		}
 		.banner {
-			width: 100%;
-			height: 120px;
-			background: url(__VVOFF__/img/pcbanner.jpg) no-repeat center center;
+			width: 640px;
+			height: 80px;
+			background: url(/public/img/phonebanner.jpg) no-repeat center center;
 		}
 		.main {
-			width: 100%;
-			background: #0b0b0b;
-			padding-bottom: 80px;
+			width: 640px;
+			background: #1b1b1b;
+			padding-bottom: 51px;
 			
 		}
 		.main .main_top {
-			height: 80px;
-			width: 100%;
+			height: 51px;
+			width: 640px;
 		}
 		.main .main_center {
-			width: 1100px;
+			width: 540px;
 			margin: 0 auto;
 			border: 1px solid #a2a2a2;
 		}
 		.main .main_center h2 {
-			margin-top: 36px;
+			margin-top: 30px;
 			color: #ffffff;
-			font-size: 36px;
+			font-size: 22px;
 			font-weight: 500;
 			text-align: center;
 		}
@@ -68,9 +92,9 @@
 			height: 26px;
 			line-height: 26px;
 			border-bottom: 1px solid #303030;
-			width: 900px;
+			width: 470px;
 			margin: 0 auto;
-			margin-top: 40px;
+			margin-top: 10px;
 		}
 		.main .main_center .main_list .left {
 			float: left;
@@ -79,8 +103,8 @@
 			float: right;
 		}
 		.main .main_center .main_main {
-			width: 900px;
-			margin: 30px 100px;
+			width: 470px;
+			margin: 30px 30px;
 			/*padding-bottom: 100px;*/
 		}
 		.main .main_center .main_main span {
@@ -93,17 +117,17 @@
 			margin: 10px 0;
 		}
 		.overs {
-			width: 100%;
+			width: 640px;
 			height: 150px;
 			background: #000;
 		}
 		.overs .over_box {
-			width: 1200px;
+			width: 640px;
 			margin: 0 auto;
 		}
 		.over_box .over_img {
 			margin-left: 150px;
-			margin-top: 25px;
+			margin-top: 40px;
 			float: left;
 		}
 		.over_box img {
@@ -119,25 +143,24 @@
 			margin-left: 20px;
 		}
 		
+
 	</style>
 	<body>
-		<div class="header" id="header">
-			<div class="header_top">
-				<div class="list">
-					<ul>
-						<li><a href="English.html#01">ABUOT</a></li>
-						<li><a href="English.html#02">VVCHAT</a></li>
-						<li><a href="English.html#03">CASHBAG</a></li>
-						<li><a href="English.html#04">JINGOMALL</a></li>
-						<li><a href="English.html#05">FUTURE</a></li>
-						<li><a href="English.html#06">TEAMS</a></li>
-						<li><a href="English.html#07">NEWS</a></li>
-						<li><a href="news/id/<?php echo $enart[0]['id']?>">中文版</a></li>
-					</ul>
-				</div>
-				<div class="logo">
-					<img src="__VVOFF__/img/logo.png"/>
-				</div>
+		<div class="p_top">
+			<div class="p_logo">
+				<a href="#15"><img src="__VVOFF__/img/logo1.png"/></a>
+			</div>
+			<div class="p_list">
+				<ul>
+		            <li><a href="ephone.html#08">ABOUT</a></li>
+		            <li><a href="ephone.html#09">VVCHAT</a></li>
+		            <li><a href="ephone.html#10">CASHBAG</a></li>
+		            <li><a href="ephone.html#11">JINGOMALL</a></li>
+		            <li><a href="ephone.html#12">FUTURE</a></li>
+		            <li><a href="ephone.html#13">TEAMS</a></li>
+		            <li><a href="ephone.html#14">NEWS</a></li>
+		            <li><a href="{:url('vvoff/index/index')}">中文版</a></li>
+		        </ul>
 			</div>
 		</div>
 		<div class="banner"></div>
@@ -150,23 +173,9 @@
 					<span class="right"><?php echo $enart[0]['e_art_addtime']?></span>
 				</div>
 				<div class="main_main">
-					<span>&nbsp;&nbsp;<?php echo htmlspecialchars_decode($enart[0]['e_art_content'])?>
-				</div>
-			</div>
-				
-		</div>
-		<div class="overs">
-			<div class="over_box">
-				<div class="over_img">
-					<img src="__VVOFF__/images/foot03/zfew.jpg"/>
-				</div>
-				<div class="over_txt">
-					<p>Hangzhou Jinge Technology Co., Ltd. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-167-5655</p>
-					<p>Address:Room 3202，Wealth Financial Center, No. 37 Jiefang East Road, Jianggan District, Hangzhou</p>
-					<p>Zhejiang ICP prepared No. 17002020</p>
+					<span>&nbsp;&nbsp;<?php echo $enart[0]['e_art_content']?>
 				</div>
 			</div>
 		</div>
-		
 	</body>
 </html>

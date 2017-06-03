@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>钱袋子</title>
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/purse.css" />
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css">
+		<link rel="icon" href="__VVOFF__/images/1.ico" type="image/x-icon">
+	</head>
+	<style>
+		/*body{
+			width: 1500px;
+			height: 662px;
+		}*/
+	</style>
+
+	<body>
+		<div class="zhezhao">
+</div>
+		
+		
+		
+		<div class="main">
+			<div class="main_main">
+				<div class="main_top">
+					<div class="logo">
+						<img src="__VVOFF__/images/9.png" alt="">
+					</div>
+					<div class="list">
+						<ul>
+							<li>
+								<a href="javascritp:void(0);">VV聊天</a>
+							</li>
+							<li>
+								<a href="{:url('home/index/index')}">金购商城</a>
+							</li>
+							<li>
+								<a href="{:url('vvoff/index/index')}">京歌官网</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="main_hot">
+					<div class="main_left">
+						<img src="__VVOFF__/images/6.png" alt="">
+						<a>VV 钱袋子您生活中的支付助手 立即下载</a>
+					</div>
+					<div class="main_right">
+
+
+						<form action="{:url('vvoff/login/check')}" method="post" class="code_login login">
+
+							<a href="javascript:void(0)">
+								<img class="tab1" src="__VVOFF__/images/7.png" />
+							</a>
+							
+							<div class="code_p">
+								
+								<img src="__VVOFF__/images/1.png"/ style="margin: 2px 36px;width: 55%">
+							</div>
+							<p>请使用VV APP 扫码登陆</p>
+
+							<span class="other">
+								<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+							</span>
+						</form>
+
+						<!--短信登录-->
+						<form action="{:url('vvoff/login/reg')}" method="post" class="code_login_d login">
+							<a href="javascript:void(0)">
+								<img class="tab2" src="__VVOFF__/images/8.png" />
+							</a>
+							
+							<div class="phone_m">
+								<p>短信登陆</p>
+								<p>验证即登陆，未注册将自动创建 VV ID</p>
+								<div class="phone_n">
+									<input class="phone_nk sjh sjyzm" type="text" name="mobile" id="zh_03" value="" placeholder="请输入手机号" />
+								</div>
+								<p class="sjgs" style="text-align: center;width: 77%">*手机号码格式不正确*</p>
+								<div class="phone_n shangyi">
+									<input class="phone_nk" type="password" name="code" id="" value="" placeholder="请输入验证码" />
+
+								</div>
+								<button type="button" class="send_yzm" id="send_yzm2">发送验证码</button>
+
+								<input type="submit" value="提交" class="post_tj" />
+								<p class="agreement">同意并接受
+									<a href="javascript:void(0)">《京歌用户协议》</a>
+								</p>
+							</div>
+
+							<span class="other">
+								<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+							</span>
+						</form>
+
+						<!--帐号登入-->
+						<form action="{:url('vvoff/login/cnlogon')}" method="post" class="user_login login">
+							
+							
+							<div class="phone_m" style="margin-bottom: -15%">
+								<p style="font-size: 18px;width: 72%">帐号登陆</p>
+
+								<div class="phone_n">
+									<input class="phone_nk sjh" type="text" name="username" id="zh_02" value="" autocomplete="off" placeholder="请输入手机号 |VV ID" />
+								</div>
+								<!-- <p class="sjgs">*手机号码格式不正确*</p> -->
+								<div class="phone_n">
+									<input class="phone_nk" type="password" name="password" id="" value="" autocomplete="off" placeholder="请输入密码" />
+								</div>
+								<input type="submit" value="登录" class="zh_login" />
+								<!--<p class="agreement">同意并接受<a href="javascript:void(0)">《京歌用户协议》</a></p>-->
+							</div>
+							<span class="other">
+								<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="note_login">短信登陆</a>
+							</span>
+						</form>
+
+						<!--注册-->
+						<form action="{:url('vvoff/login/reg')}" method="post" class="user_register login">
+							<a href="javascript:void(0)" class="close_d2">
+								<img class="close_s" src="__VVOFF__/images/button_close.png" />
+							</a>
+							<div class="phone_m_zc">
+								<p class="zc">注册</p>
+
+								<div class="phone_n">
+									<input class="phone_nk sjh sjyzm" type="tel" name="mobile" id="zh_01" autocomplete="off" placeholder="请输入手机号" />
+								</div>
+								<p class="sjgs">*手机号码格式不正确*</p>
+								<div class="phone_n shangyi">
+									<input class="phone_nk" type="text" name="code" id="" value="" placeholder="请输入验证码" />
+								</div>
+								<button type="button" class="send_yzm" id="send_yzm1">发送验证码</button>
+								<input type="submit" value="注册" class="zh_login_r" />
+								<p class="agreement">同意并接受
+									<a href="javascript:void(0)">《京歌用户协议》</a>
+								</p>
+							</div>
+							<span class="other" style="color: black;">
+								<a href="javascript:void(0)" class="downvv">下载VV APP</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="note_login">登陆</a>
+							</span>
+						</form>
+
+						<!--------下载VV---------->
+
+						<div class="code_down_b">
+
+							<a href="javascript:void(0)" class="guan">
+								<img class="close_s" src="__VVOFF__/images/hei.png" />
+							</a>
+
+							<div class="code_p">
+								<img src="__VVOFF__/images/1.png" class="code_b code_big" />
+							</div>
+							<p style="color: black;">扫码下载VV APP</p>
+
+							<span class="other">
+								<a href="javascript:void(0)" class="denglu">登录</a>
+								<i class="sx1">|</i>
+								<a href="javascript:void(0)" class="zhuce">注册</a>
+							</span>
+						</div>
+
+						<!--扫码登录-->
+						<!--<div class="login">
+                            <div class="switch">
+                                <img src="img/7.png" alt="" class="IMG">
+                            </div>
+                            <div class="QR_code">
+                                <div class="qr_img">
+                                    <img src="img/1.png" alt="">
+                                    <p>请使用VV APP 扫码登陆</p>
+
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    下载VV APP
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    账号登陆
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        
+                        <!--短信登录-->
+						<!--<div class="login">
+                            <div class="switch">
+                                <img src="img/7.png" alt="" class="IMG">
+                            </div>
+                            
+                            <div class="p_login" style="display: none;">
+                                <p>短信登录</p>
+                                <span>验证即登录，未注册将自动创建 VV ID</span>
+                                <form action="">
+                                    <input type="text" placeholder="请输入手机号">
+                                    <input type="text" placeholder="请输入验证码">
+                                    <button>发送验证码</button>
+                                    <button>登录</button>
+                                    <p>阅读并接受 《京歌用户协议》</p>
+                                </form>
+                            </div>
+                            <ul>
+                                <li>
+                                    下载VV APP
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    账号登陆
+                                </li>
+                            </ul>
+                        </div>-->
+
+					</div>
+				</div>
+
+			</div>
+			<div class="main_list"></div>
+			<div class="bg-list"></div>
+			<div class="bg-bottom">
+				<div class="bg-left">
+					<img src="__VVOFF__/images/3.png" alt="">
+				</div>
+				<div class="bg-right">
+					<p>客服热线 400-167-5655</p>
+					<span>浙公网安备 33010402002972号 &nbsp;&nbsp; CROPYRIGHT 2016-2017 杭州京歌科技有限公司</span>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="__VVOFF__/js/jquery.min.js"></script>
+	<script src="__VVOFF__/js/purse.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/remote_zh.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

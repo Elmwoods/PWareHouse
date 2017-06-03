@@ -11,7 +11,7 @@ class  Staff  extends Controller
 	public function dolist()
 	{
 		$m=new M;
-		$data=$m->select();
+		$data=$m->order('id', 'asc')->select();
 		$this->assign("data",$data);
 		return  $this->fetch('dolist');
 	}
@@ -144,7 +144,7 @@ class  Staff  extends Controller
 	public function doenlist()
 	{
 		$m=new MM;
-		$data=$m->select();
+		$data=$m->order('id', 'asc')->select();
 		$this->assign("data",$data);
 		return  $this->fetch('doenlist');
 	}
@@ -186,10 +186,10 @@ class  Staff  extends Controller
 			];
 
 		$validate = new Validate([
-			['e_name'  ,'require|^[A-Za-z]+$','请输入职员姓名|请输入英文'],
-			['e_job','require|^[A-Za-z]+$','请输入职员职务|请输入英文'],
-			['e_motto'  ,'require|^[A-Za-z]+$','请输入职员格言|请输入英文'],
-			['e_introduction'  ,'require|^[A-Za-z]+$','请输入职员简介|请输入英文']
+			['e_name'  ,'require','请输入职员姓名'],
+			['e_job','require','请输入职员职务'],
+			['e_motto'  ,'require','请输入职员格言'],
+			['e_introduction'  ,'require','请输入职员简介']
 		]);
 		if($validate->check($data))
 		{
@@ -238,10 +238,10 @@ class  Staff  extends Controller
 			'e_is_see'=>$ii['e_is_see']
 			];
 		$validate = new Validate([
-			['e_name'  ,'require|^[A-Za-z]+$','请输入职员姓名|请输入英文'],
-			['e_job','require|^[A-Za-z]+$','请输入职员职务|请输入英文'],
-			['e_motto'  ,'require|^[A-Za-z]+$','请输入职员格言|请输入英文'],
-			['e_introduction'  ,'require|^[A-Za-z]+$','请输入职员简介|请输入英文']
+			['e_name'  ,'require','请输入职员姓名'],
+			['e_job','require','请输入职员职务'],
+			['e_motto'  ,'require','请输入职员格言'],
+			['e_introduction'  ,'require','请输入职员简介']
 		]);
 		if ($validate->check($data)) {
 			$file = request()->file('e_headimg');

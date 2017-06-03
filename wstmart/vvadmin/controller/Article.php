@@ -169,10 +169,10 @@ class  Article  extends Controller
 			];
 
 		$validate = new Validate([
-			['e_art_name'  ,'require|^[A-Za-z]+$','请输入文章标题|请输入英文'],
-			['e_art_content'  ,'require|^[A-Za-z]+$','请输入文章内容|请输入英文'],
-			['e_art_author'  ,'require|^[A-Za-z]+$','请输入文章作者|请输入英文'],
-			['e_art_from'  ,'require|^[A-Za-z]+$','请输入文章来源|请输入英文']
+			['e_art_name'  ,'require','请输入文章标题'],
+			['e_art_content'  ,'require','请输入文章内容'],
+			['e_art_author'  ,'require','请输入文章作者'],
+			['e_art_from'  ,'require','请输入文章来源']
 		]);
 		if ($validate->check($data)) {
 			$file = request()->file('e_art_img');
@@ -226,10 +226,10 @@ class  Article  extends Controller
 			];
 
 		$validate = new Validate([
-			['e_art_name'  ,'require|^[A-Za-z]+$','请输入文章标题|请输入英文'],
-			['e_art_content'  ,'require|^[A-Za-z]+$','请输入文章内容|请输入英文'],
-			['e_art_author'  ,'require|^[A-Za-z]+$','请输入文章作者|请输入英文'],
-			['e_art_from'  ,'require|^[A-Za-z]+$','请输入文章来源|请输入英文']
+			['e_art_name'  ,'require','请输入文章标题'],
+			['e_art_content'  ,'require','请输入文章内容'],
+			['e_art_author'  ,'require','请输入文章作者'],
+			['e_art_from'  ,'require','请输入文章来源']
 		]);
 		if($validate->check($data))
 		{
