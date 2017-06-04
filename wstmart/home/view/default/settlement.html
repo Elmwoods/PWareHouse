@@ -5,7 +5,7 @@
 {/block}
 {block name="main"}
 <div class="wst-container">
-	<div id="stepflex" class="stepflex">
+	<!-- <div id="stepflex" class="stepflex">
        <dl class="first doing">
           <dt class="s-num">1</dt>
           <dd class="s-text">我的购物车</dd>
@@ -19,9 +19,9 @@
           <dt class="s-num1">3</dt>
           <dd class="s-text1">成功提交订单</dd>
        </dl>
-    </div>
+    </div> -->
     <div class='wst-clear'></div>
-    <div class='main-head'>填写并核对订单</div>
+    <div class='main-head'>填写订单并核对信息</div>
     <input type='hidden' class='j-ipt' id='s_addressId' value='{if isset($userAddress["addressId"]) }{$userAddress["addressId"]}{/if}'/>
     <input type='hidden' class='j-ipt' id='s_areaId' value='{if isset($userAddress["addressId"]) }{$userAddress["areaId2"]}{/if}'/>
     <!-- 用户地址 -->
@@ -51,7 +51,7 @@
 
        </div>
        <!-- 地址列表  -->
-       <ul class='j-list-box hide' id='addressList'></ul>
+       <ul class='j-list-box hide' id='addressList' style="display: block;"></ul>
 
        <!-- 新增编辑地址 -->
        <div class='j-edit-box {if !empty($userAddress)}hide{/if}'>
@@ -71,7 +71,7 @@
 			        <option value="{$vo['areaId']}">{$vo['areaName']}</option>
 			        {/volist}
 			    </select>
-                <input type='text' class='j-eipt' id='userAddress' style='width:300px' maxLength='200'/>
+                <input type='text' class='j-eipt' id='userAddress' style='width:200px' maxLength='200'/>
                 </div>
                 <div class='wst-clear'></div>
             </div>
@@ -98,7 +98,14 @@
           </form>
        </div>
     </div>
+
+   <!--  <script type="text/javascript">
+      $(document).ready(function(){
+        javascript:emptyAddress(this,1);
+      });
+    </script> -->
     <!-- 支付方式 -->
+    <div style="border-left:1px solid #eeeeee;border-right:1px solid #eeeeee;width: 1198px;">
     <div class='pay-box'>
        <div class='box-head'>支付方式</div>
        <div class="wst-list-box">
@@ -112,31 +119,139 @@
           <div class='wst-clear'></div>
        </div>
     </div>
+    </div>
     <!-- 商品清单 -->
+    
     <div class='cart-box2'>
        <div class='box-head2'>商品清单</div>
-       <div class='cart-head2'>
-          <div class='goods2'>商品</div>
-          <div class='price2'>单价</div>
-          <div class='num2'>数量</div>
-          <div class='t-price2'>总价</div>
-       </div>
+       
+       
+       
+       
        {php}$shopFreight = 0;{/php}
-       {volist name='$carts["carts"]' id='vo'}
-       {php}
-       if($vo['isFreeShipping']){
-          $freight = 0;
-       }else{
-          if(!empty($userAddress)){
-             $freight = WSTOrderFreight($vo['shopId'],$userAddress['areaId2']);
-          }else{
-             $freight = WSTOrderFreight($vo['shopId'],-1);
-          }
-       }
-       $shopFreight = $shopFreight + $freight;
-       {/php}
+	       {volist name='$carts["carts"]' id='vo'}
+	       {php}
+	       if($vo['isFreeShipping']){
+	          $freight = 0;
+	       }else{
+	          if(!empty($userAddress)){
+	             $freight = WSTOrderFreight($vo['shopId'],$userAddress['areaId2']);
+	          }else{
+	             $freight = WSTOrderFreight($vo['shopId'],-1);
+	          }
+	       }
+	       $shopFreight = $shopFreight + $freight;
+	       {/php}
+	       
+       <!--<div style="width:1200px;margin-bottom:20px;">
+	       <div class="huodong" style="float:left;">
+	         <dl>
+	         	
+	           <dt>商家:{$vo['shopName']}</dt>
+	           
+	         </dl>
+	         <dl>活动商品活动商品活动商品活动商品</dl>
+	         <div class="btm">
+	           <dl>给卖家留言:</dl>
+	           <dl><input type="text" name="" id=''></dl>
+	         </div>
+	       </div>
+	       
+	       
+	       <div class="particulars" style="float:left;">
+		       <div class='cart-head2'>
+		          <div class='goods2'>商品</div>
+		          <div class='price2'>单价</div>
+		          <div class='num2'>数量</div>
+		          <div class='t-price2'>总价</div>
+		       </div>
+	       
+	       {volist name='vo["list"]' id='vo2'}
+	        <div class='item selected'>
+	            <div class='goods2'>
+	                <div class='img2'>
+	                    <a href='{:Url("home/goods/detail","id=".$vo2["goodsId"])}' target='_blank'>
+	                  <img src='__ROOT__/{$vo2["goodsImg"]}' width='80' height='80' title='{$vo2["goodsName"]}'/>
+	                  </a>
+	                </div>
+	                <div class='name2'>{$vo2["goodsName"]}</div>
+	               
+	            </div>
+	            <div class='price2'>¥{$vo2['shopPrice']}</div>
+	            <div class='num2'>{$vo2['cartNum']}</div>
+	            <div class='t-price2'>¥{$vo2['shopPrice']*$vo2['cartNum']}</div>
+	            <div class='wst-clear'></div>
+	        </div>
+	        {/volist}
+	      </div> 
+      </div>-->
+      
+      
+
+	       
+	       
+	       
+	       <div class="detailed">
+	       	
+	       	
+	       	<div class="huodong">
+		         <dl>
+		         	
+		           <dt>商家：<span class="sj">{$vo['shopName']}</span></dt>
+		           
+		         </dl>
+		         <!-- <dl>活动商品活动商品活动商品活动商品</dl> -->
+		         <div class="btm">
+		           <dl>给卖家留言:</dl>
+		           <dl><input type="text" name="remark_{$vo['shopId']}" id=''></dl>
+		         </div>
+		     </div>
+	       
+	       	<div class="particulars">
+	        
+	       	
+		       <div class='cart-head2'>
+		          <div class='goods2'>商品</div>
+		          <div class='price2'>单价</div>
+		          <div class='num2'>数量</div>
+		          <div class='t-price2'>总价</div>
+		       </div>
+	       
+		       {volist name='vo["list"]' id='vo2'}
+		        <div class='item selected'>
+		            <div class='goods2'>
+		                <div class='img2'>
+		                    <a href='{:Url("home/goods/detail","id=".$vo2["goodsId"])}' target='_blank'>
+		                  <img src='__ROOT__/{$vo2["goodsImg"]}' width='80' height='80' title='{$vo2["goodsName"]}'/>
+		                  </a>
+		                </div>
+		                <div class='name2'>{$vo2["goodsName"]}</div>
+		               
+		            </div>
+		            <div class='price2'>¥{$vo2['shopPrice']}</div>
+		            <div class='num2'>{$vo2['cartNum']}</div>
+		            <div class='t-price2'>¥{$vo2['shopPrice']*$vo2['cartNum']}</div>
+		            <div class='wst-clear'></div>
+		        </div>
+		        {/volist}
+	        
+	        </div>
+	        <div style="clear: both;"></div>
+	      </div> 
+  
+      {/volist}
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
        <div class='cart-item'>
-          <div class='shop2'>
+       <!--    <div class=''>
           {$vo['shopName']}
           {if $vo['shopQQ'] !=''}
           <a href="tencent://message/?uin={$vo['shopQQ']}&Site=QQ交谈&Menu=yes">
@@ -148,9 +263,10 @@
 			  <img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid={$vo['shopWangWang']}&site=cntaobao&s=1&charset=utf-8" alt="和我联系" />
 		  </a>
           {/if}
-          </div>
+          </div> -->
           <div class='goods-list'>
-             {volist name='vo["list"]' id='vo2'}
+            
+             <!-- {volist name='vo["list"]' id='vo2'}
              <div class='item selected'>
 		        <div class='goods2'>
 		            <div class='img2'>
@@ -158,20 +274,21 @@
 			            <img src='__ROOT__/{$vo2["goodsImg"]}' width='80' height='80' title='{$vo2["goodsName"]}'/>
 			            </a>
 		            </div>
-		            <div class='name2'>{$vo2["goodsName"]}</div>
+		            <div class='name2'>wstmart开源多用户商城 福建平和红心蜜柚1个约1.1kg/个 柚子 新鲜水果</div>
 		            <div class='spec2'>
 		            {volist name='vo2["specNames"]' id='specs'}
 		            <div>{$specs['catName']}：{$specs['itemName']}</div>
 		            {/volist}
 		            </div>
 		        </div>
-		        <div class='price2'>¥{$vo2['shopPrice']}</div>
-		        <div class='num2'>{$vo2['cartNum']}</div>
-		        <div class='t-price2'>¥{$vo2['shopPrice']*$vo2['cartNum']}</div>
+		        <div class='price2'>¥32.00</div>
+		        <div class='num2'>4</div>
+		        <div class='t-price2'>¥128</div>
 		        <div class='wst-clear'></div>
              </div>
-             {/volist}
-             <div class='shop-remark selected2'>
+             {/volist} -->
+            
+            <!--  <div class='shop-remark selected2'>
               订单备注：<input type='text' id="remark_{$vo['shopId']}" class='j-ipt' style='width:700px;' maxLength='100' placeholder='给卖家留言'/>
 
              <div style="float: right;margin-top:-10px;">
@@ -181,10 +298,11 @@
              <span style='text-align:right;line-height:30px;padding-right:13px;'>店铺合计(含运费)：<span id="shopC_{$vo['shopId']}" v="{$vo['goodsMoney']}" style='font-weight: bold;color: #E55356;'>￥{$freight+$vo['goodsMoney']}</span></span>
              </div>
 
-           </div>
+           </div> -->
           </div>
        </div>
-       {/volist}
+       
+    <div style="clear: both;"></div>
     <!-- 送货方式 -->
     <div class='pay-boxs'>
        <div class='box-head'>送货方式</div>
@@ -199,7 +317,7 @@
           <div class='cart-summary2'>
           	<div class="summarys2">
     <!-- 发票信息 -->
-    <div class="pay-boxs">
+    <div class="pay-boxs" style="margin-top: 0px;">
        <div class='box-head'>发票信息</div>
        <div class="j-show-box">
        <div class="wst-frame2 j-selected" onclick='javascript:changeInvoice(0,"#invoiceClientDiv",this)'>不需要开发票<i></i></div>
@@ -224,23 +342,29 @@
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¥-<span id='scoreMoney2'>0.0</span></div>
              {/if}
              <div class='summary2'>应付总金额(含运费)：¥<span id='totalMoney' v='{$carts["goodsTotalMoney"]}'>
+
              {if empty($userAddress)}
              {$carts["goodsTotalMoney"]}
              {else}
              {$carts["goodsTotalMoney"]+$shopFreight}
              {/if}
              </span></div>
+             <div class='cart-btn'>
+               <!--  <a href='{:Url("home/carts/index")}' class='wst-prev wst-cart-asha' style='width:105px;height:33px;line-height:33px;'>上一步</a> -->
+                <a href='javascript:void(0)' onclick='javascript:submitOrder()' class='wst-order wst-cart-reda' style='width:160px;height:60px;line-height:60px;font-size: 22px;'>提交订单</a>
+                <div class='wst-clear'></div>
+             </div>
              <div {if WSTConf('CONF.isOrderScore')!=1 }style='display:none'{/if}>可获得积分：<span id='orderScore'>{:WSTMoneyGiftScore($carts["goodsTotalMoney"])}</span>个</div>
              </div>
              <div class='wst-clear'></div>
           </div>         
        </div>
     </div>
-     <div class='cart-btn'>
+     <!-- <div class='cart-btn'>
         <a href='{:Url("home/carts/index")}' class='wst-prev wst-cart-asha' style='width:105px;height:33px;line-height:33px;'>上一步</a>
         <a href='javascript:void(0)' onclick='javascript:submitOrder()' class='wst-order wst-cart-reda' style='width:118px;height:33px;line-height:33px;'>提交订单</a>
         <div class='wst-clear'></div>
-     </div>
+     </div> -->
 </div>
 {/block}
 {block name="js"}

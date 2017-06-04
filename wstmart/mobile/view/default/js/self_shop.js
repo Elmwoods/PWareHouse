@@ -6,12 +6,13 @@ $(function(){
     var w = WST.pageWidth();
     // 商家推荐
     new Swiper('.swiper-container', {
-        slidesPerView: 4,
+        slidesPerView: 5,
         freeMode : true,
-        spaceBetween: 3,
-        autoplay : 2000,
-        speed:1200,
+//      spaceBetween: 3,
+//      autoplay : 2000,
+//      speed:1200,
         loop : false,
+        paginationClickable: true,
         autoplayDisableOnInteraction : false,
         onSlideChangeEnd: function(swiper){
             echo.init();//图片懒加载

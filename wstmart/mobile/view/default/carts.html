@@ -51,13 +51,15 @@
 					</div>
 					<div class="wst-ca-76">
 						<div class="info">
-						<p class="name">{$li['goodsName']}</p><p class="price">¥{$li['shopPrice']}</p>
+						<p class="name">{$li['goodsName']}</p>
 						{if($li['specNames'])}
 						<p class="spec">规格：
 						{volist name="li['specNames']" id="sp"}
 							{$sp['catName']}:{$sp['itemName']}
 						{/volist}
 						</p>
+						<p class="price">¥{$li['shopPrice']}</p>
+						
 						{/if}
 <div class="wst-buy_l">
  	<input class="wst-buy_l1" type="button" value="-" onclick='javascript:WST.changeIptNum(-1,"#buyNum",{$li["cartId"]},"statCartMoney")'><input id="buyNum_{$li['cartId']}" class="wst-buy_l2" data-min='1' data-max='{$li["goodsStock"]}' type="number" value="{$li['cartNum']}" autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum",{$li["cartId"]},"statCartMoney")'><input class="wst-buy_l3" type="button" value="+" onclick='javascript:WST.changeIptNum(1,"#buyNum",{$li["cartId"]},"statCartMoney")'>
@@ -74,13 +76,26 @@
 		</div>
 		{/volist}
 		{else}
-	  <div class="wst-carttsi"><i class="ui-icon-cart wst-cartts"></i></div>
-		<ul class="ui-row-flex wst-flexslps">
-	       <li class="ui-col ui-flex ui-flex-pack-center">
-	       <p class="wst-carttst">您还没有添加商品哦，快去逛逛吧~</p>
+		
+	  <div class="wst-carttsi"><!--<i class="ui-icon-cart wst-cartts"></i>-->
+	  	<img src="__MOBILE__/img/img/gouwuche_line.png"/>
+	  </div>
+		<!--<ul class="ui-row-flex wst-flexslps" style="margin-top: 12px;overflow: auto;text-align: center;">
+	       <li class="ui-col ui-flex ui-flex-pack-center" style="overflow: auto;">
+	       	<p class="wst-carttst">购物车空空也！</p>
 	       </li>
-       </ul>
+	     
+       </ul>-->
+        	<p class="wst-is-empty">购物车空空如也！</p>
+        
 		{/if}
+		 <!--大圆加，不能插入-->
+            <div class="dayaun-nav" style="z-index: 999;display: none;">
+           		<a><img class="dayuanjia" src="__MOBILE__/img/dayuanjia.png"/></a>
+				<a><img class="xiaoyuan1 xiaoyuan" src="__MOBILE__/img/xiaoyuan1.png"/></a>
+				<a href="__MOBILE__/users/history/list.html"><img class="xiaoyuan2 xiaoyuan" src="__MOBILE__/img/xiaoyuan2.png"/></a>
+				<a href="history/list.html"><img class="xiaoyuan3 xiaoyuan" src="__MOBILE__/img/xiaoyuan3.png"/></a>
+			</div>
      </section>
 {/block}
 {block name="include"}
@@ -89,3 +104,6 @@
 {block name="js"}
 <script type='text/javascript' src='__MOBILE__/js/carts.js?v={$v}'></script>
 {/block}
+
+
+

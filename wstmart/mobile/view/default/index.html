@@ -5,19 +5,42 @@
 <link rel="stylesheet"  href="__MOBILE__/css/index.css?v={$v}">
 {/block}
 {block name="header"}
-    <header class="ui-header ui-header-positive wst-in-header" id="j-header">
+     <header class="ui-header ui-header-positive wst-in-header" id="j-header">
     </header>
     <div class="wst-in-icon" id="j-icon">
-    <a href="{:url('mobile/goodscats/index')}"><span class="cats"></a></span>
+    <a href="{:url('mobile/users/index')}"><span class="cats calogos"></span></a>
     <span onclick="location.href='{:url('mobile/messages/index')}'" class="news">{if($news['message']['num']>0)}<i class="wst-in-num">{$news['message']['num']}</i>{/if}</span>
     </div>
     <div class="wst-in-search search" id="j-search">
-    	<span class="seleft"></span><input id="wst-search" type="text" placeholder=""><span class="seright"></span><p></p><span class="ui-icon-search" onclick="javascript:WST.search(0);"></span>
+    	<!--<span class="seleft"></span>-->
+    	<input id="wst-search" type="text" placeholder="搜索商品/店铺"/>
+    	<!--<span class="seright"></span><p></p>-->
+    	<span class="ui-icon-search" onclick="javascript:WST.search(0);"></span>
     </div>
+   
+    <!--轮播-->
+		<div class="swiper-container" style="margin-top: 42px;">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href=""><img src="__MOBILE__/img/img/banner01.png" /></a>
+				</div>
+				<div class="swiper-slide">
+					<a href=""><img src="__MOBILE__/img/img/banner02.png" /></a>
+				</div>
+				<div class="swiper-slide">
+					<a href=""><img src="__MOBILE__/img/img/banner01.png" /></a>
+				</div>
+				<div class="swiper-slide">
+					<a href=""><img src="__MOBILE__/img/img/banner02.png" /></a>
+				</div>
+			</div>
+			<div class="swiper-pagination" style="text-align: left;"></div>
+		</div>
+	<!--轮播结束-->
 {/block}
 {block name="main"}
 <input type="hidden" name="" value="-1" id="currPage" autocomplete="off">
-<section class="ui-container">
+<section class="ui-container" style="border-top: none;">
         <div class="ui-slider" style="padding-top:50%;">
 		    <ul class="ui-slider-content" style="width: 300%">
 		    	{wst:ads code="wx-ads-index" cache='86400'}
@@ -29,17 +52,17 @@
 		    {volist name=':WSTMobileBtns(0)' id='btn'}
 		    <div class="ui-col ui-col-25">
 		    <a href="{:url($btn['btnUrl'])}">
-		    <p><img width='56' src="__ROOT__/{$btn['btnImg']}" style='margin-top:7px;'/></p>
+		    <p><img  src="__ROOT__/{$btn['btnImg']}" style='margin-top:14px;width: 0.5rem;height: 0.5rem;'/></p>
 		    <span>{$btn['btnName']}</span>
 		    </a></div>
 		    {/volist}
 		</div>
-		<div class="wst-in-news">
-		<span class="new">最新资讯：</span>
-		<marquee scrollamount='3' behavior='right'>{wst:article cat="new" num='6' cache='86400'}<a href="{:url('mobile/news/view',['articleId'=>$vo['articleId']])}">{$vo['articleTitle']}。</a>{/wst:article}</marquee>
-		<span class="more" onclick="location.href='{:url('mobile/news/view')}'">更多</span>
-		<div class="wst-clear"></div>
-		</div>
+		<!--<div class="wst-in-news">
+			<span class="new">最新资讯：</span>
+			<marquee scrollamount='3' behavior='right'>{wst:article cat="new" num='6' cache='86400'}<a href="{:url('mobile/news/view',['articleId'=>$vo['articleId']])}">{$vo['articleTitle']}。</a>{/wst:article}</marquee>
+			<span class="more" onclick="location.href='{:url('mobile/news/view')}'">更多</span>
+			<div class="wst-clear"></div>
+		</div>-->
 		<div class="wst-in-adst">
 			{wst:ads code="wx-index-large" cache='86400' num='4'}
 			<a class="advert2" href="{$vo.adURL}"><div class="adst"><img src="__ROOT__/{:WSTImg($vo.adFile,2)}"/></div></a>
@@ -47,7 +70,7 @@
 			<div class="wst-clear"></div>
 		</div>
 		<div class="wst-in-adsb">
-		<div class="swiper-container">
+		<!--<div class="swiper-container">
           <div class="swiper-wrapper">
           	{wst:ads code="wx-index-small" cache='86400' num='4'}
                 <div class="swiper-slide" style="width:33.333333%;">
@@ -57,34 +80,67 @@
                 </div>
             {/wst:ads}
           </div>
+        </div>-->
         </div>
-        </div>
-		<div id="goods-list"></div>
+		<div id="goods-list" style="background: #fff;"></div>
 </section>
 <script id="list" type="text/html">
 <div class="wst-in-title colour{{ d.currPage }}">
 	<div class="left">
-		<p class="line1"></p><span></span><p class="line2"></p><span></span><p></p><span></span>
-		<p class="line2"></p><span></span><p class="line1"></p></div>
+		<p class="line1" style="background:none;"></p><span></span><p class="line2" style="background: none;"></p><span></span>
+		<p class="line1" style="background:none;"></p><span></span>
+		<p></p><span></span>
+		<p class="line2" style="background:none;"></p><span></span><p class="line1" style="background: none;"></p></div>
 	<div class="right">
-		<p class="line1"></p><span></span><p class="line2"></p><span></span><p></p><span></span>
-		<p class="line2"></p><span></span><p class="line1"></p></div>{{ d.catName }}</div>
+		<p class="line1" style="background:none;"></p><span></span><p class="line2" style="background: none;"></p><span></span>
+		<p class="line1" style="background:none;"></p><span></span>
+		<p></p><span></span>
+		<p class="line2" style="background:none;"></p><span></span><p class="line1" style="background: none;"></p></div>{{ d.catName }}
+</div>
 	{{# if(d.ads && d.ads.length>0){ }}
 		<div class="wst-in-adscats"><a href="{{ d.ads[0].adURL }}"><img src="__ROOT__/{{ d.ads[0].adFile }}"/></a></div>
 	{{# } }}
-	{{# if(d.goods.length>0){ }}
-		{{# for(var i=0; i<d.goods.length; i++){ }}
-			<div class="wst-in-goods" onclick="javascript:WST.intoGoos({{ d.goods[i].goodsId }});">
-				<div class="img j-imgAdapt"><a href="javascript:void(0);" onclick="javascript:WST.intoGoods({{ d.goods[i].goodsId }});"><img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{ d.goods[i].goodsImg }}" title="{{ d.goods[i].goodsName }}"/></a></div>
-				<div class="name ui-nowrap-multi">{{ d.goods[i].goodsName }}</div>
-				<div class="info"><span class="price">¥{{ d.goods[i].shopPrice }}</span><span class="deal">成交数:{{ d.goods[i].saleNum }}</span></div>
-			</div>
+	
+	<div class="" style="padding: 0.01rem 0.09rem;">
+		{{# if(d.goods.length>0){ }}
+			<div class="wst-big-img" style="float: left;"><img  class="img" src="__MOBILE__/img/img/shuidai.png"/></div>
+			<div class="goods-ul-box">
+			{{# for(var i=0; i<d.goods.length; i++){ }}
+				<!--<div class="wst-in-goods" onclick="javascript:WST.intoGoos({{ d.goods[i].goodsId }});">
+					<div class="img j-imgAdapt"><a href="javascript:void(0);" onclick="javascript:WST.intoGoods({{ d.goods[i].goodsId }});"><img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{ d.goods[i].goodsImg }}" title="{{ d.goods[i].goodsName }}"/></a></div>
+					<div class="name ui-nowrap-multi">{{ d.goods[i].goodsName }}</div>
+					<div class="info"><span class="price">¥{{ d.goods[i].shopPrice }}</span><span class="deal">成交数:{{ d.goods[i].saleNum }}</span></div>
+				</div>-->
+				<div class="in-goods" onclick="javascript:WST.intoGoos({{ d.goods[i].goodsId }});">
+					<div class="goods-lis-box">
+						<a href="javascript:void(0);" onclick="javascript:WST.intoGoods({{ d.goods[i].goodsId }});"><img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{ d.goods[i].goodsImg }}" title="{{ d.goods[i].goodsName }}"/>
+						<span class="name ui-nowrap-multi">{{ d.goods[i].goodsName }}</span>
+						<div class="info"><span class="price">¥{{ d.goods[i].shopPrice }}</span><span class="deal">成交数:{{ d.goods[i].saleNum }}</span></div>
+						</a>
+					</div>
+				</div>
+			{{# } }}
 		{{# } }}
-	{{# } }}
+		</div>
+		<div class="wst-clear"></div>
+	</div>
 <div class="wst-clear"></div>
 </script>
 {/block}
 {block name="js"}
-<script type='text/javascript' src='__MOBILE__/js/swiper.jquery.min.js'></script>
+<script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
+<script type='text/javascript' src='__MOBILE__/js/swiper.min.js'></script>
 <script type='text/javascript' src='__MOBILE__/js/index.js?v={$v}'></script>
-{/block}
+	<script type="text/javascript">
+		//<!--轮播启动-->
+		var mySwiper = new Swiper('.swiper-container', {
+			direction: 'horizontal',//左右轮播
+//	        direction: 'vertical',//上下轮播
+			loop: true,
+			speed: 500,
+			pagination: '.swiper-pagination',
+			autoplay: 2000,
+			autoplayDisableOnInteraction: false
+		});
+	</script>	
+{/block} 

@@ -41,8 +41,8 @@ body {
 	position: absolute;
     top: 8px;
     right:10px;
-    background: #e00102;
-    border-bottom: 1px solid #e00102;
+    background: #e60b49;
+    border-bottom: 1px solid #e60b49;
 }
 .f-btn{
 	min-width: 85px;
@@ -78,8 +78,10 @@ body {
 }
 .wst-shl-list .title{
 	margin-bottom:5px;
-	font-size:0.175rem;
+	font-size:0.14rem;
 	color:#363638;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 .wst-shl-list .price{
 	color:#ff0e00;

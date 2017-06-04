@@ -6,11 +6,11 @@ function editAddress(addressId){
 	$('#cellphone').val('');
 	$('#address_detailed').val('');
 	$('#areaId').val('');
-	$('#addresst').html('请选择收货地址');
+	$('#addresst').html('请选择 <i class="detail-go"></i>');
 	$('.wst-ad-submit .button').attr('onclick','javascript:saveAddress('+addressId+');');
 	$('#defaults').removeClass('default').addClass('nodefault');
     if(addressId>0){
-    	$('.iziModal-header-title').html('修改收货地址');
+    	$('.iziModal-header-title').html('修改收货地址<div class="address-save" onclick="javascript:saveAddress(0);">保存</div>');
         $.post(WST.U('mobile/useraddress/getById'), {addressId:addressId}, function(data){
             var info = WST.toJson(data);
             if(info){
@@ -28,7 +28,7 @@ function editAddress(addressId){
             addressInfo= null;
         });
     }else{
-    	$('.iziModal-header-title').html('新增收货地址');
+    	$('.iziModal-header-title').html('添加收货地址<div class="address-save" onclick="javascript:saveAddress(0);">保存</div>');
     }
     jQuery('#modal-large').iziModal('open');
 }
@@ -98,7 +98,9 @@ function saveAddress(addressId){
 //设为默认地址
 function inDefault(obj,id){
 	$(obj).addClass('default').removeClass('nodefault').siblings('.j-operate').addClass('nodefault').removeClass('default');
+	$(".wst-list-infose1").find("i").css("color","#f00");
 	$('.wst-ad-operate').css('position','relative');
+	//$(".default-address").css("display","inline");
     $.post(WST.U('mobile/useraddress/setDefault'), {id:id}, function(data){
         var json = WST.toJson(data);
         if( json.status == 1 ){
@@ -111,7 +113,9 @@ function inDefault(obj,id){
         	$('.wst-ad-operate').css('position','static');
         }
         data = json = null;
+
     });
+
 }
 function setToDefault(obj){
     if( $(obj).attr('class').indexOf('nodefault') > -1 ){
@@ -211,7 +215,7 @@ $(document).ready(function(){
     // 弹出层
     $('#modal-large').css({'top':0,'margin-top':0});
     var h = WST.pageHeight();
-    $("#frame").css('bottom','-'+h/2);
+    $("#frame").css('bottom','-'+h);
     var listh = h/2-106;
     $(".wst-fr-box .list").css('overflow-y','scroll').css('height',listh+'px');
 });

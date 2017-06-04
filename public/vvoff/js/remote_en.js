@@ -121,7 +121,7 @@ $(".denglu").click(function(){
 
 
 $(".code_cs").click(function () {
-    window.location.href="http://www.jingomall.com"
+    window.location.href="http://www.jingomall.com/vvoff/index/english"
 });
 
 

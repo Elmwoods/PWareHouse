@@ -9,6 +9,7 @@
 {block name="css"}{/block}
 <script type="text/javascript" src="__STATIC__/js/jquery.min.js?v={$v}"></script>
 <script type="text/javascript" src="__STATIC__/plugins/layer/layer.js?v={$v}"></script>
+
 <script type="text/javascript" src="__STATIC__/plugins/lazyload/jquery.lazyload.min.js?v={$v}"></script>
 <script type='text/javascript' src='__STATIC__/js/common.js?v={$v}'></script>
 {block name="depend_common_js"}{/block}
@@ -31,6 +32,8 @@ $(function() {
 </head>
 
 <body>
+
+<a name="return_top" id="return_top"></a>
 {block name="header_top"}
 	{include file="default/header_top" /}
 {/block}
@@ -57,5 +60,6 @@ $(function() {
 	{include file="default/footer" /}
 {/block}
 {block name="js"}{/block}
+
 </body>
 </html>

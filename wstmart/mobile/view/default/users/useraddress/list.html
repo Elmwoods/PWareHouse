@@ -6,8 +6,8 @@
 {/block}
 {block name="header"}
     <header style="background:#ffffff;" class="ui-header ui-header-positive ui-border-b wst-header">
-        <i class="ui-icon-return" {if($type==1)}onclick="javascript:chooseAddress({$addressId});"{else}onclick="history.back();"{/if}></i><h1>我的地址</h1>
-        <span class="edit" onclick="javascript:editAddress(0);">新增</span>
+        <i class="ui-icon-return" {if($type==1)}onclick="javascript:chooseAddress({$addressId});"{else}onclick="history.back();"{/if} ></i><h1 >选择收货地址</h1>
+		<span class="edit" onclick="javascript:editAddress(0);" style="margin-right:20px;">新增</span>
     </header>
 {/block}
 {block name="main"}
@@ -18,12 +18,13 @@
             <ul class="ui-list wst-listse">
 	            <li {if($type==1)}onclick="javascript:chooseAddress({$li['addressId']});"{/if}>
 		            <div class="wst-list-infose1">
-			            <span class="name">{$li['userName']}&nbsp;&nbsp;{$li['userPhone']}</span>
-			            <span class="address">{$li['areaName']}-{$li['userAddress']}</span>
-		            </div>
+			            <span class="name">{$li['userName']} <i class="telphone">{$li['userPhone']}</i>	</span>
+			            <span class="address"><i class="default-address" style="">[默认地址]</i>{$li['areaName']}-{$li['userAddress']}</span>
+					</div>
 	            </li>
 	            <div class="wst-ad-operate">
-	            	{if($type!=1)}<span class="left">设为默认</span>{/if}
+	            	{if($type!=1)}
+					<span class="left">设为默认</span>{/if}
 	            	<span class="right" onclick="javascript:delAddress({$li['addressId']});"><i class="delete"></i>&nbsp;删除</span>
 	            	<span class="right" onclick="javascript:editAddress({$li['addressId']});"><i class="edit"></i>&nbsp;编辑</span>
 	            	<div class="wst-clear"></div>
@@ -43,6 +44,9 @@
         	</ul>
 	       {/empty}
      </section>
+<!--<div class="select-address-add" onclick="javascript:editAddress(0);">-->
+	<!--<span class="edit" >添加新地址</span>-->
+<!--</div>-->
 {/block}
 {block name="include"}
 {include file="default/dialog" /}<!-- 对话框模板 -->
@@ -52,4 +56,5 @@
 <script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
 <script type='text/javascript' src='__MOBILE__/js/izimodal/iziModal.js'></script>
 <script type='text/javascript' src='__MOBILE__/users/useraddress/address.js?v={$v}'></script>
+
 {/block}

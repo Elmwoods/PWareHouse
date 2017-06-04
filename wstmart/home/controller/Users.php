@@ -2,6 +2,7 @@
 namespace wstmart\home\controller;
 use wstmart\common\model\Users as MUsers;
 use wstmart\common\model\LogSms;
+use think\Db;
 /**
  * ============================================================================
  * WSTMart多用户商城
@@ -195,12 +196,58 @@ class Users extends Base{
 	/**
 	* 修改密码
 	*/
-	public function passedit(){
-		$userId = (int)session('WST_USER.userId');
-		$m = new MUsers();
-		$rs = $m->editPass($userId);
-		return $rs;
-	}
+    public function passedit(){
+        $userId = (int)session('WST_USER.userId');
+        $mobile = input("post.mobile") ? input("post.mobile") : "";
+        $sendCode = input("post.mobilecode") ? input("post.mobilecode") : "";
+        $newPass = input("post.newPass") ? input("post.newPass") : "";
+        $reNewPass = input("post.reNewPass") ? input("post.reNewPass") : "";
+
+        if($mobile == ""){
+            return WSTReturn('手机号不能为空',-1);
+        }
+        if($sendCode == ""){
+            return WSTReturn('手机验证码不能为空',-1);
+        }
+        if($newPass == "" || $reNewPass == ""){
+            return WSTReturn('密码不能为空',-1);
+        }
+        //验证新密码
+        if($newPass !=$reNewPass){
+            return WSTReturn('两次输入的密码不一致',-1);
+        }
+        //验证手机号码
+        if(!preg_match('/^1[\d]{10}$/', trim($mobile))){
+            return WSTReturn('请输入有效的手机号码',-1);
+        }
+
+        //删除失效的手机验证码
+        $del = Db::name("user_code")->where('mobile',$mobile)->max('id');
+        $del = Db::name("user_code")->where('mobile',$mobile)->where('id','lt',$del)->delete();
+        $del = Db::name("user_code")->where('mobile',$mobile)->where('reg_time','lt',time()-30*60)->delete();
+        //验证 手机验证码
+        $mobilecode = Db::name("user_code")->where(['mobile'=>$mobile,'code'=>$sendCode])->find();
+        if(!$mobilecode){
+            return WSTReturn('验证码错误',-1);
+        }
+
+        //获取用户信息
+        $m = new MUsers();
+        $rs = $m->getById($userId);
+
+        $newPass = md5(input("post.newPass").$rs['loginSecret']);
+        //修改密码
+        if($rs['userPhone'] == $mobile){
+            $m->save(['loginPwd'=>$newPass],['userId'=>$userId]);
+            return WSTReturn('修改密码成功',1);
+        }else if($rs['userPhone'] == ''){
+            $m->save(['loginPwd'=>$newPass,'userPhone'=>$mobile],['userId'=>$userId]);
+            return WSTReturn('修改密码成功',1);
+        }else{
+            return WSTReturn('修改失败',-1);
+        }
+
+    }
 	/**
     * 修改
     */

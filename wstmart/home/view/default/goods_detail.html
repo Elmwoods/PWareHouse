@@ -7,7 +7,6 @@
 {block name="css"}
 <link href="__STYLE__/css/goods.css?v={$v}" rel="stylesheet">
 {/block}
-<script type="text/javascript" src="__STYLE__/js/jquery.min.js"></script>
 {block name="nav"}
 	{include file="default/header" /}
 {/block}
@@ -99,23 +98,25 @@
              </div>             
              <div class='wst-clear'></div>
           </div>
+
           <div class='spec'>
-             {if condition = "$goods['isSpec'] == 1"}
-             {volist name="$goods['spec']" id='vo'}
-             <div class='item'>
-               <div class='dt'>{$vo['name']}：</div>
-               <div class='dd'>
-               {volist name="$vo['list']" id='vo2'}
-                  {if $vo2['itemImg']!=''}
-                  <div class='j-option img' data-val="{$vo2['itemId']}" style='height:28px;padding:0px;'><img class="cloudzoom-gallery" width="28" height="28" src="__ROOT__/{:WSTImg($vo2['itemImg'])}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo2['itemImg'])}', zoomImage:'__ROOT__/{$vo2['itemImg']}' "  title="{$vo2['itemName']}" alt="{$vo2['itemName']}"/><i></i></div>
-                  {else}
-                  <div class='j-option' data-val="{$vo2['itemId']}">{$vo2['itemName']}<i></i></div>
-                  {/if}
-               {/volist}
-               </div>
-               <div class='wst-clear'></div>
-             </div>
-             {/volist}
+                  {if condition="($goods['isSpec'] == 1)"}
+                  {volist name="$goods['spec']" id='vo'}
+                  <div class='item'>
+                      <div class='dt'>{$vo['name']}：</div>
+                      <div class='dd'>
+                          {volist name="$vo['list']" id='vo2'}
+                          {if $vo2['itemImg']!=''}
+                          <div class='j-option img' data-val="{$vo2['itemId']}" style='height:28px;padding:0px;'><img class="cloudzoom-gallery" width="28" height="28" src="__ROOT__/{:WSTImg($vo2['itemImg'])}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo2['itemImg'])}', zoomImage:'__ROOT__/{$vo2['itemImg']}' "  title="{$vo2['itemName']}" alt="{$vo2['itemName']}"/><i></i></div>
+                          {else}
+                          <div class='j-option' data-val="{$vo2['itemId']}">{$vo2['itemName']}<i></i></div>
+                          {/if}
+                          {/volist}
+                      </div>
+                      <div class='wst-clear'></div>
+                  </div>
+                  {/volist}
+              <!-- 添加代码start -->
               {elseif condition = "($goods['isSpec'] == 2 OR $goods['isSpec'] == 3) AND (isset($goodsSpec))"}
               <style>
                   td {
@@ -273,8 +274,9 @@
                   $('#table_genre').find("tr").eq(0).find("td").eq(0).css("margin","0 0 0 -12px");
                   $('#table_genre').find("tr").eq(1).find("td").eq(0).css("margin","0 0 0 -12px");
               </script>
-             {/if}
+              <!-- 添加代码end -->
 
+             {/if}
           </div>
           <div class='buy'>
              <div class='item'>
@@ -357,7 +359,7 @@
 </div>
 <div class='wst-w'>
    <div class='wst-container'>
-       <div class='wst-side'>
+      <!--  <div class='wst-side'>
            <div class='shop-intro'>
                 <div class='title'>{$shop['shopName']}</div>
                 <div class='body'>
@@ -398,17 +400,122 @@
 					{/wst:goods}
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class='goods-desc'>
 		    <div id='tab' class="wst-tab-box">
-				<ul id='goodsTabs' class="wst-tab-nav">
-				   <li>商品介绍</li>
-				   <li>商品评价<span class='appraise-num'>（{$goods['appraiseNum']}）</span></li>
+				<!-- <ul id='goodsTabs' class="wst-tab-nav">
+				   <li>商品参数</li>
+				   <li>商品详情<span class='appraise-num'>（{$goods['appraiseNum']}）</span></li>
            {if !$goods['read'] && $goods['goodsType']==0}
            <a id='addCart2' href='javascript:addCart(1,"#buyNum")'>立即购买</a>
            {/if}
-				</ul>
-			  <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
+           <li>商品评价</li>
+           <li>商品咨询</li>
+           <li>购买须知</li>
+				</ul> -->
+        <div  id='goodsTabs' class="wst-tab-nav">
+          <div style="width:1200px;margin:0 auto;">
+          <ul id="md">
+             <li class="one_li"><a href="#goods_cs">商品参数</a><span>|</span></li>
+             <li><a href="#goods_xx">商品详情</a><span>|</span></li>
+             <li><a href="#goods_pj">商品评价</a><span>|</span></li>
+             <li><a href="#goods_zx">商品咨询</a><span>|</span></li>
+             <li><a href="#goods_xz">购买须知</a></li>
+          </ul>
+          <div class="wst-tab_right" id="zf">
+            <span class="wst-tab_right_pay">&nbsp;&nbsp;<a href="">扫一扫手机支付</a>
+            <div class="code"><img src="#"></div></span>
+            
+            <span class="wst-tab_right_shopping">&nbsp;&nbsp;<a href="javascript:addCart(1,'#buyNum')">立即购买</a></span>
+          </div>
+          </div>
+        </div>
+        <div>
+        <a name="goods_cs" class="wst-tab_goods">
+          <h3>商品参数<span>1</span></h3>
+            <div class="goods_img">
+                {$goods['goodsDesc']|htmlspecialchars_decode}
+            </div>
+        </a>
+        </div>
+
+        <div>
+        <a name="goods_xx" class="wst-tab_goods">
+          <h3>商品详情<span>2</span></h3>
+          <div class="goods_img">
+            <img src="" >
+            <img src="" >
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <a name="goods_pj" class="wst-tab_goods">
+          <h3>商品评价<span>3</span></h3>
+          <div class="goods_img">
+            <img src="" >
+            <img src="" >
+          </div>
+        </a>
+        </div>
+
+        <div>
+        <a name="goods_zx" class="wst-tab_goods">
+          <h3>商品咨询<span>4</span></h3>
+          <div class="goods_img">
+            <img src="" >
+            <img src="">
+          </div>
+        </a>
+        </div>
+
+        <div>
+        <a name="goods_xz" class="wst-tab_goods">
+          <h3>购买须知<span>5</span></h3>
+          <div class="goods_img">
+            <img src="">
+            <img src="">
+          </div>
+        </a>
+        </div>
+
+        <script type="text/javascript">
+          $(function(){
+              $('.wst-tab-nav li').hover(
+                function(){
+                  $(this).css({'color':'#e60b49','border-bottom':'2px #e60b49 solid'}).siblings().css({'color':'','border-bottom':''});
+                  $(this).find('a').addClass('goods_a');
+                  $('.one_li').removeClass();
+                },
+                function(){
+                  $(this).find('a').removeClass('goods_a');
+                }
+              );
+
+              $('.wst-tab_right_pay').hover(
+                function(){
+                  $('.code').slideDown(200,function(){
+                    $(this).show();
+                  });
+                  $(this).css({'background':'#ccc'});
+                },
+                function(){
+                   $('.code').slideUp(200,function(){
+                    $(this).hide();
+                  });
+                  $(this).css({'background':''});
+                }
+              );
+
+              // $('#md').find('li').click(function(){
+              //   $('.wst-tab_goods').addClass('height');
+            
+              // });
+             
+           });
+         
+        </script>
+			  <!-- <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
 			       <div class="wst-tab-item goods-desc-box" style="position: relative;">
 			       <ul class='wst-attrs-list'>
                 {volist name="$goods['attrs']" id="vo"}
@@ -455,7 +562,7 @@
                 <div id='ga-box'></div>
                 <div id='pager' style='text-align:center;'></div>
 			       </div>
-		    </div>
+		    </div> -->
 		</div>	
 		<div class='wst-clear'></div>
 	</div>

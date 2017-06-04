@@ -1,0 +1,52 @@
+{extend name="default/base" /}
+{block name="title"}店铺首页 - {__block__}{/block}
+{block name="css"}
+<link rel="stylesheet"  href="__MOBILE__/css/swiper.min.css">
+<link rel="stylesheet"  href="__MOBILE__/css/search.css?v={$v}">
+{/block}
+{block name="header"}
+	<header class="ui-header ui-header-positive wst-in-header">
+	    <i class="ui-icon-return" onclick="history.back()"></i>
+    </header>
+    <div class="wst-in-search search">
+    	<span class="seleft"></span>
+        <input type="text" id="wst-search" value="{$goodsName}" placeholder="搜索本店商品">
+        <span class="seright"></span>
+        <p></p>
+        <span class="ui-icon-search" onclick="javascript:WST.search(2);"></span>
+    </div>
+{/block}
+	<body> 
+		
+		<header>
+			<a class="goback" href="javascript:history.go(-1)">
+				<img src="../img/jiantou_png.png" />
+			</a>
+			<div class="searchBox">
+				<img class="fangdajing" src="../img/sousuo_png.png" />
+				<input  type="text" / placeholder="搜索店铺内商品" >
+			
+			</div>
+				<a class="search-text" href="qunzi.html">搜索</a>
+		</header>
+		
+		<div style="height: 0.88rem;"></div>
+		<div class="liulan-jilu">
+			<span>浏览记录</span>
+			<a href=""><img src="../img/fanhui_png.png"/></a>
+		</div>
+		<div class="hot-search">
+			<div class="hot-search-title">
+				热门搜索
+			</div>
+		</div>
+		<div class="hot-search-list">
+			<div><a href="">T恤</a></div>
+			<div><a href="">外套</a></div>
+			<div><a href="">短裙</a></div>
+			<div><a href="">平底鞋</a></div>
+			<div><a href="">潮包</a></div>
+			<div><a href="">运动鞋</a></div>
+		</div>
+	</body>
+</html> 

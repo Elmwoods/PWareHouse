@@ -8,14 +8,22 @@
 <div class="wst-user-head"><span>设置密码</span><a href="{:url('home/users/security')}">返回</a></div>
 	<form method="post" id="myorm" autocomplete="off">
         <table class='wst-form'>
-        {if ($data['loginPwd'])}
-           <tr>
-             <th align='right'> <font color='red'>*</font>原始密码：</th>
-             <td>
-             <input type='password' class="ipt" id='oldPass' name='oldPass' {if ($data['loginPwd'])}data-rule="原始密码: required;" data-msg-required="请填写原始密码" data-tip="请输入原始密码"{/if} style='width:250px;' maxLength='16'/>
-             </td>
-           </tr>
-        {/if}
+            <!-- 添加代码 start-->
+            <tr>
+                <th align='right'> <font color='red'>*</font>手机号码：</th>
+                <td>
+                    <input type='text' class="ipt" id='mobile' name='mobile' placeholder="请输入手机号码" style='width:250px;' maxLength='11'/>
+                </td>
+            </tr>
+            <tr>
+                <th align='right'> <font color='red'>*</font>验证码：</th>
+                <td>
+                    <input type='text' class="ipt" id='mobilecode' name='mobilecode' value='请输入验证码'  onfocus="f1()"   style='width:145px;' maxLength='6'/>
+                    <button id="timeTips" onclick="getVerifyCode();">获取短信验证码</button>
+                    <span id="mobileCodeTips"></span>
+                </td>
+            </tr>
+            <!-- 添加代码 end-->
            <tr>
              <th align='right'> <font color='red'>*</font>新密码：</th>
              <td>
@@ -46,4 +54,16 @@
 	<script>
 	$(function(){veMyorm();})
 	</script>
+
+<!-- 添加代码 -->
+<script>
+    function getVerifyCode(){
+        var mobile = $("#mobile").val();
+        $.post(WST.U('chat/api/send'),{mobile:mobile},function(data,textStatus){});
+    }
+    function f1(){
+        $("#mobilecode").val('');
+    }
+</script>
+<!-- 添加end -->
 {/block}

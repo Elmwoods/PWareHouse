@@ -118,7 +118,6 @@
      <td colspan='2'>
          <select id="shopCatId1" class='j-ipt' onchange="getShopsCats('shopCatId2',this.value,'');">
             <option value="">-请选择-</option>
-             {php}var_dump($object);{/php}
             {volist name=":WSTShopCats(0)" id="vo"}
             <option value="{$vo['catId']}" {if $object['shopCatId1']==$vo['catId']}selected{/if}>{$vo['catName']}</option>
             {/volist}

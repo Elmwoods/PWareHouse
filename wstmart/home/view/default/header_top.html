@@ -1,7 +1,60 @@
 <div class="wst-header">
     <div class="wst-nav">
 		<ul class="headlf">
-		{if condition="session('WST_USER.userId') >0"}
+		
+
+			<li class="drop-info">
+			  <div>服务热线：{:WSTConf('CONF.serviceTel')}</div>
+			</li>
+			<li class="spacer">|</li>
+			<!-- <li class="drop-info">
+			  <div><a href="{:Url('home/users/regist')}">免费注册</a></div>
+			</li> -->
+			<li class="j-dorpdown">
+				<div class="drop-down drop-down2 pdr5"><i class="di-left"></i><a href="#" target="_blank">手机商城</a></div>
+				<div class='j-dorpdown-layer sweep-list'>
+				   <div class="qrcodea">
+					   <div id='qrcodea' class="qrcodeal"></div>
+					   <div class="qrcodear">
+					   	<p>扫描二维码</p><span>下载手机客户端</span>
+					   	<br/>
+					   	<a >Android</a>
+					   	<br/>
+					   	<a>iPhone</a>
+					   </div>
+				   </div>
+				</div>
+			</li>
+		</ul>
+		<ul class="headrf" style='float:right;'>
+		    <!-- <li class="j-dorpdown" style="width: 86px;">
+				<div class="drop-down" style="padding-left:0px;">
+					<a href="{:Url('home/users/index')}" target="_blank">我的订单<i class="di-right"><s>◇</s></i></a>
+				</div>
+				<div class='j-dorpdown-layer order-list'>
+				   <div><a href='{:Url("home/orders/waitPay")}' onclick='WST.position(3,0)'>待付款订单</a></div>
+				   <div><a href='{:Url("home/orders/waitReceive")}' onclick='WST.position(5,0)'>待发货订单</a></div>
+				   <div><a href='{:Url("home/orders/waitAppraise")}' onclick='WST.position(6,0)'>待评价订单</a></div>
+				</div>
+			</li>	 -->
+			
+			<!-- <li class="spacer">|</li> -->
+			<!-- <li class="j-dorpdown">
+				<div class="drop-down drop-down2 pdr5"><i class="di-left"></i><a href="#" target="_blank">手机商城</a></div>
+				<div class='j-dorpdown-layer sweep-list'>
+				   <div class="qrcodea">
+					   <div id='qrcodea' class="qrcodeal"></div>
+					   <div class="qrcodear">
+					   	<p>扫描二维码</p><span>下载手机客户端</span>
+					   	<br/>
+					   	<a >Android</a>
+					   	<br/>
+					   	<a>iPhone</a>
+					   </div>
+				   </div>
+				</div>
+			</li> -->
+			{if condition="session('WST_USER.userId') >0"}
 		   <li class="drop-info">
 			  <div class="drop-infos">
 			  <a href="{:Url('home/users/index')}">欢迎您，{:session('WST_USER.userName')?session('WST_USER.userName'):session('WST_USER.loginName')}</a>
@@ -43,60 +96,51 @@
 			<li class="drop-info">
 			  <div><a href="javascript:WST.logout();">退出</a></div>
 			</li>
+			<li class="spacer">|</li>
 			{else /}
-			<li class="drop-info">
-			  <div>欢迎来到{:WSTMSubstr(WSTConf('CONF.mallName'),0,13)}<a href="{:Url('home/users/login')}">&nbsp;&nbsp;请&nbsp;登录</a></div>
-			</li>
-			<li class="spacer">|</li>
-			<li class="drop-info">
-			  <div><a href="{:Url('home/users/regist')}">免费注册</a></div>
-			</li>
+				<li class="drop-info">
+				  <div class="drop-info_logo">您好&nbsp;,&nbsp;&nbsp;<a href="{:Url('home/users/login')}">请登录</a></div>
+				</li>
+				<!-- <li class="spacer">|</li> -->
+				<li class="drop-info">
+				  <div><a href="{:Url('home/users/regist')}">注册</a></div>
+				</li>
+				<li class="spacer">|</li>
 			{/if}
-		</ul>
-		<ul class="headrf" style='float:right;'>
-		    <li class="j-dorpdown" style="width: 86px;">
-				<div class="drop-down" style="padding-left:0px;">
-					<a href="{:Url('home/users/index')}" target="_blank">我的订单<i class="di-right"><s>◇</s></i></a>
-				</div>
-				<div class='j-dorpdown-layer order-list'>
-				   <div><a href='{:Url("home/orders/waitPay")}' onclick='WST.position(3,0)'>待付款订单</a></div>
-				   <div><a href='{:Url("home/orders/waitReceive")}' onclick='WST.position(5,0)'>待发货订单</a></div>
-				   <div><a href='{:Url("home/orders/waitAppraise")}' onclick='WST.position(6,0)'>待评价订单</a></div>
-				</div>
-			</li>	
 			
-			<li class="spacer">|</li>
-			<li class="j-dorpdown">
-				<div class="drop-down drop-down2 pdr5"><i class="di-left"></i><a href="#" target="_blank">手机商城</a></div>
-				<div class='j-dorpdown-layer sweep-list'>
-				   <div class="qrcodea">
-					   <div id='qrcodea' class="qrcodeal"></div>
-					   <div class="qrcodear">
-					   	<p>扫描二维码</p><span>下载手机客户端</span>
-					   	<br/>
-					   	<a >Android</a>
-					   	<br/>
-					   	<a>iPhone</a>
-					   </div>
-				   </div>
-				</div>
-			</li>
-			<li class="spacer">|</li>
-			<li class="j-dorpdown" style="width:78px;">
+			<!-- <li class="j-dorpdown" style="width:78px;">
 				<div class="drop-down" style="padding:0 5px;"><a href="#" target="_blank">关注我们</a></div>
 				<div class='j-dorpdown-layer des-list' style="width:120px;">
 					<div style="height:114px;"><img src="__STYLE__/img/wst_qr_code.jpg" style="height:114px;"></div>
 					<div>关注我们</div>
 				</div>
+			</li> -->
+
+			<li class="" style="width:91px;text-align: center;">
+				<div class="drop-down" style="padding:0 5px;"><a href="#" target="_blank">邀请掘金</a></div>
+				<!-- <div class='j-dorpdown-layer des-list' style="width:120px;"> -->
+				<!-- 	<div style="height:114px;"><img src="__STYLE__/img/wst_qr_code.jpg" style="height:114px;"></div>
+					<div>关注我们</div>
+				</div> -->
 			</li>
+
+
 			<li class="spacer">|</li>
-			<li class="j-dorpdown">
-				<div class="drop-down drop-down4 pdr5"><a href="#" target="_blank">我的收藏</a></div>
+
+				<li class="j-dorpdown">
+				<div class="drop-down"><a href="#" target="_blank">我的商城</a></div>
 				<div class='j-dorpdown-layer foucs-list'>
 				   <div><a href="{:Url('home/favorites/goods')}" onclick='WST.position(41,0)'>商品收藏</a></div>
 				   <div><a href="{:Url('home/favorites/shops')}" onclick='WST.position(46,0)'>店铺收藏</a></div>
 				</div>
 			</li>
+		<!-- 	<li class="j-dorpdown">
+				<div class="drop-down drop-down4 pdr5"><a href="#" target="_blank">我的收藏</a></div>
+				<div class='j-dorpdown-layer foucs-list'>
+				   <div><a href="{:Url('home/favorites/goods')}" onclick='WST.position(41,0)'>商品收藏</a></div>
+				   <div><a href="{:Url('home/favorites/shops')}" onclick='WST.position(46,0)'>店铺收藏</a></div>
+				</div>
+			</li> -->
 			<li class="spacer">|</li>
 			<li class="j-dorpdown">
 				<div class="drop-down drop-down5 pdr5" ><a href="#" target="_blank">客户服务</a></div>
@@ -109,6 +153,7 @@
 			<li class="spacer">|</li>
 			{if condition="session('WST_USER.userId') gt 0"}
 				{if condition="session('WST_USER.userType') eq 0"}
+
 				<li class="j-dorpdown">
 				<div class="drop-down pdl5" ><a href="#" target="_blank">商家管理<i class="di-right"><s>◇</s></i></a></div>
 				<div class='j-dorpdown-layer foucs-list'>

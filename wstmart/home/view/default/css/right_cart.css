@@ -10,7 +10,7 @@
     top: 0px;
     right: 0px;
     z-index: 9990;
-    width: 35px;
+    width: 40px;
     height: 100%;
     
 }
@@ -21,15 +21,16 @@
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 29px;
+    width: 40px;
     height: 100%;
-    border-right: 6px solid #333333;
+    background:#333333;
 }
 .toolbar-panels {
     position: absolute;
-    left: 35px;
+    /*left: 40px;*/
+   	right: 40px;
     top: 0px;
-    width: 270px;
+    /*width: 270px;*/
     height: 100%;
     z-index: 2;
     background: #ECEAEA none repeat scroll 0% 0%;
@@ -38,14 +39,16 @@
     width: 270px;
     height: 100%;
     position: absolute;
-    background: #ECEAEA none repeat scroll 0% 0%;
+    right: 0px;
+    background: #ffffff none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 3px 1px #666666;
 }
 .tbar-panel-header {
     position: relative;
     width: 270px;
     height: 40px;
     line-height: 40px;
-    background: #ECEAEA none repeat scroll 0% 0%;
+    background: #ffffff none repeat scroll 0% 0%;
     font-family: "microsoft yahei";
 	font-weight: normal;
 	margin: 0px;
@@ -131,13 +134,17 @@
 
 .tbar-panel-cart .tbar-panel-footer {
     height: 50px;
-    background-color: #ECEAEA;
+    background-color: #ffffff;
     margin: 0px;
 	padding: 0px;
+	position: absolute;
+	bottom: 0px;
+	border-top: 2px solid #CCCCCC;
+	width: 100%;
 }
 .tbar-checkout {
     height: 40px;
-    padding: 5px 110px 5px 5px;
+    padding: 5px 120px 5px 5px;
     position: relative;
 }
 
@@ -163,12 +170,13 @@
     position: absolute;
     right: 5px;
     top: 7px;
-    width: 110px;
+    width: 130px;
     height: 35px;
     font: 16px/35px "微软雅黑";
     text-align: center;
     background: #C81623 none repeat scroll 0% 0%;
     color: #FFF;
+    border-radius: 5px;
 }
 .tbar-cart-list{
     width: 100%;
@@ -336,36 +344,49 @@
 }
 .toolbar-tabs {
     position: absolute;
-    top: 50%;
+    top: 200px;
     left: 0px;
-    width: 35px;
+    width: 40px;
     margin-top: -61px;
+}
+
+.toolbar-tabs .fgx{
+    background: #fff;
+    width:13px;
+    height:1px;
+    margin-left: 13px;
 }
 .toolbar-tab {
     position: relative;
-    width: 35px;
-    height: 35px;
-    margin-bottom: 1px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     cursor: pointer;
     background-color: #333333;
-    border-radius: 3px 0px 0px 3px;
     font: 12px/150% Arial,Verdana,"宋体";
 	color: #666;
 	display: inline-block;
-	background-image: url("../img/right_cart.png");
 	background-repeat: no-repeat;
 }
+.tbar-tab-self{
+    background-image: url("../img/right_self.png");
+}
 .tbar-tab-cart{
-    background-position: -50px 0px;
+	background-image: url("../img/right_gwc.png");
 }
 .tbar-tab-follow{
-    background-position: -50px -50px;
+    background-image: url("../img/right_shoucang.png");
 }
 .tbar-tab-history{
-    background-position: -50px -100px;
+	background-image: url("../img/right_liulan.png");
 }
 .tbar-tab-message{
-    background-position: -50px -144px;
+	background-image: url("../img/right_xinxi.png");
+}
+.tab-cart-buy-num-hover{
+	/*color: #C81623;
+	background-color: white;*/
 }
 .tab-ico {
     width: 34px;
@@ -377,23 +398,22 @@
 }
 .tab-text {
     width: 62px;
-    height: 35px;
-    line-height: 35px;
+    height: 40px;
+    line-height: 40px;
     color: #FFF;
     text-align: center;
     font-family: "微软雅黑";
     position: absolute;
     z-index: 1;
-    left: 35px;
+    left: 40px;
     top: 0px;
-    background-color: #333333;
-    border-radius: 3px 0px 0px 3px;
+    background-color: #c81623;
+    /*border-radius: 3px 0px 0px 3px;*/
     transition: left 0.3s ease-in-out 0.1s;
     font-style: normal;
     margin: 0px;
 	padding: 0px;
 	cursor: pointer;
-	
 }
 .tab-sub {
     position: absolute;
@@ -412,48 +432,73 @@
     background-color: #CC6060;
     background-image: linear-gradient(to bottom, #CC6060 0px, #B61D1D 100%);
 }
+.tab-cart-buy-num{
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	margin-left:11px;
+	background: #C81623;
+	display: block;
+	text-align: center;
+	line-height: 20px;
+	color: white;
+}
 .toolbar-footer {
     position: absolute;
     bottom: -1px;
     width: 100%;
+    height: 120px;
     margin: 0px;
 	padding: 0px;
 	font: 12px/150% Arial,Verdana,"宋体";
 	color: #666;
 }
-
+.toolbar-footer > div {
+	margin: 0px;
+}
+.tbar-tab-service {
+	background-image: url(../img/kefu.png);
+}
+.tbar-tab-code {
+	background-image: url(../img/erweima.png);
+}
 .tbar-tab-top {
-    background-position: -50px -250px;
+    background-image: url(../img/top.png);
 }
 .tbar-tab-feedback {
     background-position: -50px -300px;
 }
 .footer-tab-text {
-    width: 50px;
-    height: 35px;
-    line-height: 35px;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
     color: #FFF;
     text-align: center;
     font-family: "微软雅黑";
     position: absolute;
     z-index: 1;
-    left: 35px;
+    left: 40px;
     top: 0px;
-    background-color: #7A6E6E;
-    border-radius: 3px 0px 0px 3px;
+    background-color: #C81623;
+    /*border-radius: 3px 0px 0px 3px;*/
     transition: left 0.3s ease-in-out 0.1s;
     font-style: normal;
     margin: 0px;
 	padding: 0px;
 	cursor: pointer;
 }
-
+.fgxl {
+	border-left: 2px solid #666666;
+	height: 14px;
+	display: inline-block;
+}
 .tbar-tab-hover {
     left: -60px;
     background-color: #C81623;
+   
 }
 .tbar-tab-footer-hover {
-	left: -48px;
+	left: -60px;
     background-color: #C81623;
 }
 .tbar-tab-selected {
@@ -498,9 +543,11 @@
 	margin: 0px;
 	cursor: pointer;
 }
-.toolbar-open  {
-    right: 270px;
+.toolbar-open {
+    /*right: 270px;*/
+   /*display: none;*/
 }
+
 
 .j-close:hover{
 	transform:rotate(180deg);
@@ -523,6 +570,77 @@
     line-height: 20px;
     padding: 0 5px;
 }
+
+.i-tab-login {
+	width: 280px;
+	height: 302px;
+	background: #ffffff;
+	position:absolute;
+	right: 40px;
+	top: 0px;
+	box-shadow: -1px 1px 5px 1px #888888;
+	text-align: center;
+	display: none;
+    z-index: 1000;
+}
+.tab-cart {
+	color:#fff;
+	width:20px;
+	display: block;
+	margin:18px 0px 10px 16px;
+}
+.tab-fade-photo {
+	width: 110px;
+	height: 110px;
+	border-radius: 75px;
+	margin: 30px auto;
+	background: #F06F69;
+}
+.tab-fade-photo img{
+	width:100%;
+	height:100%;
+	border-radius:50%;
+}
+.tab-code-img {
+	width: 120px;
+	height: 120px;
+	background: #FFFFFF;
+}
+.i-tab-code {
+	width: 120px;
+	height: 120px;
+	position: absolute;
+	bottom: 0px;
+	right: 40px;
+	background: #ffffff;
+	box-shadow: -1px 1px 5px 1px #888888;
+	text-align: center;
+	display: none;
+}
+.arrow3{
+	width: 0px;
+	height: 0px;
+	border: 7px solid;
+	border-color:#C81623 #C81623 #C81623 #FFFFFF;
+	z-index: 100;
+	border-right: none;
+}
+.arrow-cart {
+	position: absolute;
+	right: -7px;
+	top: 266px;
+}
+.arrow-login {
+	position: absolute;
+	right: -7px;
+	top: 13px;
+} 
+.arrow-code {
+	position: absolute;
+	right: -7px;
+	bottom: 13px;
+}
+
 input.right-cart-buy-num[type="text"] {
     border-color: #ddd -moz-use-text-color;
     border-style: solid none;
@@ -543,4 +661,4 @@ input.right-cart-buy-num[type="text"] {
     top: 4px;
     width: 20px;
 }
-.right-carts-empty{margin-left:40px;margin-top:20px;}
+.right-carts-empty {margin-left:40px;margin-top:20px;}

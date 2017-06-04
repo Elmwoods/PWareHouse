@@ -608,7 +608,7 @@ function auditByPage(p){
 		        	 groups: 3,
 		        	 jump: function(e, first){
 		        		 if(!first){
-		        		      auditByPage(e.curr);
+		        		      saleByPage(e.curr);
 		        		 }
 		        	 } 
 		        });
@@ -674,7 +674,7 @@ function illegalByPage(p){
 		        	 groups: 3,
 		        	 jump: function(e, first){
 		        		 if(!first){
-		        		      illegalByPage(e.curr);
+		        		      saleByPage(e.curr);
 		        		 }
 		        	 } 
 		        });

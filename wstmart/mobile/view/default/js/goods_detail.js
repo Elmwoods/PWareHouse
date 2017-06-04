@@ -27,12 +27,14 @@ var currPage = totalPage = 0;
 var loading = false;
 $(document).ready(function(){
 	//商品图片
-    var slider = new fz.Scroll('.ui-slider', {
+     var slider = new fz.Scroll('.ui-slider', {
         role: 'slider',
         indicator: true,
         autoplay: true,
         interval: 3000
     });
+    
+    
 	var w = WST.pageWidth();
     evaluateList();
 	WST.imgAdapt('j-imgAdapt');
@@ -171,3 +173,5 @@ function addCart(){
 	     }
 	});
 }
+
+    

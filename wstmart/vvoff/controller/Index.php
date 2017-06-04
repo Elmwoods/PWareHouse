@@ -18,11 +18,15 @@ class  index extends Controller
 
     public function Ephone(){
         $m=new T;
-        $ii=$m->where('e_is_see',1)->select();
+        $ii=$m->where('e_is_see',1)->order('id', 'asc')->select();
         $this->assign('ensta',$ii);
+        $iii=$m->where('e_is_see',1)->order('id', 'asc')->limit(0,3)->select();
+        $this->assign('ensta2',$iii);
         $mm=new D;
-        $dd=$mm->where('e_is_see',1)->select();
+        $dd=$mm->where('e_is_see',1)->order('id', 'asc')->select();
         $this->assign('enart',$dd);
+        $ddd=$mm->where('e_is_see',1)->order('id', 'asc')->limit(0,3)->select();
+        $this->assign('enart2',$ddd);
         $serialize = $this->setqrcode();
         $date = date("Ymd",time());
         $this->assign('data',$date);
@@ -31,14 +35,15 @@ class  index extends Controller
     }
 
     public function Eteam(){
-        $list = Db::name('vvoff_enstaff')->where('e_is_see',1)->paginate(4);
+        $list = Db::name('vvoff_enstaff')->where('e_is_see',1)->order('id', 'asc')->paginate(3);
         $this->assign('list',$list);
-        return view('Eteam');
+        return view('eteam');
     }
+
 	public function web()
 	{
 		$m=new MM;
-		$ii=$m->where('is_see',1)->select();
+		$ii=$m->where('is_see',1)->order('id', 'asc')->select();
 		$iii=$m->where('is_see',1)->limit(0,3)->select();
 		$this->assign('sta',$ii);
 		$this->assign('sta2',$iii);
@@ -66,7 +71,7 @@ class  index extends Controller
     public function phone()
     {
         $m=new MM;
-        $ii=$m->where('is_see',1)->select();
+        $ii=$m->where('is_see',1)->order('id', 'asc')->select();
         $iii=$m->where('is_see',1)->limit(0,3)->select();
         $this->assign('sta',$ii);
         $this->assign('sta2',$iii);
@@ -94,10 +99,10 @@ class  index extends Controller
 	public function english()
 	{
 		$m=new T;
-		$ii=$m->where('e_is_see',1)->select();
+		$ii=$m->where('e_is_see',1)->order('id', 'asc')->select();
 		$this->assign('ensta',$ii);
 		$mm=new D;
-		$dd=$mm->where('e_is_see',1)->select();
+		$dd=$mm->where('e_is_see',1)->order('id', 'asc')->select();
 		$this->assign('enart',$dd);
         $serialize = $this->setqrcode();
         $date = date("Ymd",time());
@@ -109,14 +114,14 @@ class  index extends Controller
 	{
 		$mm=new M;
 		$ii=input('param.');
-		$dd=$mm->where('id',$ii['id'])->select();
+		$dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
 		$this->assign('art',$dd);
 		return $this->fetch('news');
 	}
     public function webnew(){
         $mm=new D;
         $ii=input('param.');
-        $dd=$mm->where('id',$ii['id'])->select();
+        $dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
         $this->assign('enart',$dd);
         return view('webnew');
     }
@@ -124,7 +129,7 @@ class  index extends Controller
 	{
 		$mm=new D;
 		$ii=input('param.');
-		$dd=$mm->where('id',$ii['id'])->select();
+		$dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
 		$this->assign('enart',$dd);
 		return $this->fetch('ennews');
 	}
@@ -240,13 +245,13 @@ class  index extends Controller
         }
     }
     public function team() {
-		$list = Db::name('vvoff_staff')->where('is_see',1)->paginate(4);	
+		$list = Db::name('vvoff_staff')->where('is_see',1)->order('id', 'asc')->paginate(4);
 		$this->assign('list', $list);
 		return view('team');
     }
     
     public function news_list() {
-        $list = Db::name('vvoff_article')->where('is_see',1)->paginate(3);	
+        $list = Db::name('vvoff_article')->where('is_see',1)->order('id', 'asc')->paginate(3);
 		$this->assign('list', $list);
 		return view('news_list');
 	}
@@ -262,6 +267,7 @@ class  index extends Controller
             $this -> error('网络又开小差了，请稍后重试');
         }
 	 }
+
      public function ep_new1() {
         $param = request()->param();
         if (!empty($param['id'])) {

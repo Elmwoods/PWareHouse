@@ -199,6 +199,7 @@ function getAddressList(obj){
 
 
 function inEffect(obj,n){
+	
 	$(obj).addClass('j-selected').siblings('.wst-frame'+n).removeClass('j-selected');
 }
 function editAddress(){
@@ -265,7 +266,7 @@ function emptyAddress(obj,n){
 	$("select[id^='area_0_']").remove();
 
 	layerbox =	layer.open({
-					title:'用户地址',
+					title:'新增收货人信息',
 					type: 1,
 					area: ['800px', '300px'],
 					content: $('.j-edit-box')
@@ -279,7 +280,7 @@ function toEditAddress(id,obj,n,flag,type){
 	     if(json.status==1){
 	     	if(flag){
 		     	layerbox =	layer.open({
-					title:'用户地址',
+					title:'新增收货人信息',
 					type: 1,
 					area: ['800px', '300px'], //宽高
 					content: $('.j-edit-box')

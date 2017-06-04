@@ -215,68 +215,143 @@ function fBGoods(id){
 	});
 }
 
+/*
 function loadImg(){
-	$('.fImg').lazyload({ failurelimit : 10,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});
-}
-
+   	$('.fImg').lazyload({ failurelimit : 11,skip_invisible : false,threshold: 200,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});
+   }*/
 /*左侧楼层导航*/
-$(function() {
-	loadImg();
- });
-$('.lnav').click(function(){
-	var i = $(this).index()+1;
-	i = i+'F';
-	$("html,body").animate({scrollTop: $("a[name='"+i+"']").offset().top-7}, 500);
-})
+// $(function() {
+// 	loadImg();
+//  });
+// $('.lnav').click(function(){
+// 	var i = $(this).index()+1;
+// 	i = i+'F';
+// 	$("html,body").animate({scrollTop: $("a[name='"+i+"']").offset().top-7}, 500);
+// })
 
-function leftNav(){
-	//内容距离左边空白处宽度
-	var containerW = $('.wst-container').offset().left;
-	left = containerW-35;
-	$('#screen-left-nav').css('left', left);
-}
-$(window).resize(function(){leftNav()});
+// function leftNav(){
+// 	//内容距离左边空白处宽度
+// 	var containerW = $('.wst-container').offset().left;
+// 	left = containerW-35;
+// 	$('#screen-left-nav').css('left', left);
+// }
+// $(window).resize(function(){leftNav()});
 
 
-var currF,first=true;
+// var currF,first=true;
 
-function cf(){
-	var sumFloor = $('.floor-box').length;
-	for(var f=sumFloor;f>=1;--f){
-	var id = '#c'+f;
-	if($(id).offset().top+500-$(window).scrollTop()>0){
-		currF = f;
-		first = false;
-		lcurr(f)
-		}
-	}
-}
+// function cf(){
+// 	var sumFloor = $('.floor-box').length;
+// 	for(var f=sumFloor;f>=1;--f){
+// 	var id = '#c'+f;
+// 	if($(id).offset().top+500-$(window).scrollTop()>0){
+// 		currF = f;
+// 		first = false;
+// 		lcurr(f)
+// 		}
+// 	}
+// }
 
 
 //内容高度
-var containerH = parseInt($('.wst-main').css('height'));
-$(window).scroll(function(){
-leftNav();
-//滚动条当前高度
-var scrollHeight = $(window).scrollTop();
+// var containerH = parseInt($('.wst-main').css('height'));
+// $(window).scroll(function(){
+// leftNav();
+// //滚动条当前高度
+// var scrollHeight = $(window).scrollTop();
 
-// 楼层选中
-if(first){
-	cf();
-}else{
-	var cfh = $('#c'+currF).offset().top+500-$(window).scrollTop();
-	if(cfh<0 || cfh>1200)cf();
+// // 楼层选中
+// if(first){
+// 	cf();
+// }else{
+// 	var cfh = $('#c'+currF).offset().top+500-$(window).scrollTop();
+// 	if(cfh<0 || cfh>1200)cf();
 	
-}
+// }
 
-if(scrollHeight>=462 && scrollHeight<containerH+200){
-	$('#screen-left-nav').show();
-}else{
-	$('#screen-left-nav').hide();
-}
+// if(scrollHeight>=462 && scrollHeight<containerH+200){
+// 	$('#screen-left-nav').show();
+// }else{
+// 	$('#screen-left-nav').hide();
+// }
 
-});
-function lcurr(F){
-	$('#F'+F).siblings().removeClass('lcurr');
-	$('#F'+F).addClass('lcurr');
+// });
+// function lcurr(F){
+// 	$('#F'+F).siblings().removeClass('lcurr');
+// 	$('#F'+F).addClass('lcurr');
+// }
+
+
+
+
+/*左侧楼层导航*/
+ $(function () {	
+ 	function floorShow(x,y){ //左侧楼梯的变化
+ 		x.css("background","#E60B49").children(".screen-left-nav-line").hide(0);
+		x.children("img").hide();
+		x.children("span").show();
+		x.siblings().not(y).css("background","").children(".screen-left-nav-line").show(0);
+		x.siblings().not(y).children("span").hide().children("img");
+		x.siblings().not(y).children("img").show();
+ 	}
+ 	/*$("#floornav li").mouseenter(function(){
+ 		$(this).css("background","#E60B49").children(".screen-left-nav-line").hide(0);
+		$(this).children("img").hide();
+		$(this).children("span").show();
+		$(this).siblings().not(".myStyle").css("background","").children(".screen-left-nav-line").show(0);
+		$(this).siblings().not(".myStyle").children("span").hide().children("img");
+		$(this).siblings().not(".myStyle").children("img").show();
+ 	});*/
+ $("#floornav li").mouseenter(function(){
+ 	floorShow($(this),".myStyle");
+ })
+ $("#floornav li").mouseleave(function(){
+ 		$(this).not(".myStyle").css("background","").children(".screen-left-nav-line").show(0);
+		$(this).not(".myStyle").children("img").show();
+		$(this).not(".myStyle").children("span").hide();
+ 	});
+ 
+ 
+ 
+ 	function leftNav(){  //左侧楼梯距左侧的距离
+		var containerW = $('.wst-container').offset().left;
+		left = containerW - 90;
+		$('#screen-left-nav').css('left', left);
+		$('#screen-left-nav').css('top', 120);
 }
+	$(window).resize(function(){
+		leftNav();
+	});
+	    var $navs = $("#floornav li");//左侧可以点击的li
+        var $floors = $("#floor-box-all .floor-box");//楼梯->内容
+        $navs.click(function () {
+        	$(this).addClass("myStyle");
+        	$(this).siblings().removeClass("myStyle");
+                var index = $(this).index();//获取点击的是第几个li
+                var ot = $floors.eq(index).offset().top-120;//获取当前楼层相对于文档的top值,这个值可以和scrollTop值相等 
+                $("body,html").stop(true).animate({scrollTop: ot});                   
+                });
+
+           
+            $(window).scroll(function () {
+            	leftNav();
+                var st = $(window).scrollTop();//获取当前滚动的距离
+                var containerH = parseInt($('.wst-main').css('height'));
+                   if(st>=462 && st<containerH){
+	               $('#screen-left-nav').show();
+					}else{
+					$('#screen-left-nav').hide();
+						}
+                    for(var i = 0,len = $floors.size(); i<len; i++) {
+                    	var boundValue = $floors.eq(i).offset().top + $floors.eq(i).height()/2;
+                        if(st < boundValue) {
+                         
+					     floorShow($(".Louti").eq(i));
+					     $(".lnav").eq(i).addClass("myStyle");
+        	             $(".lnav").eq(i).siblings().removeClass("myStyle");
+                            break;
+                        }
+                    }
+            });
+
+        })

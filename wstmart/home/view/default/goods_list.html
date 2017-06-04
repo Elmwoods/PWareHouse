@@ -12,7 +12,7 @@
 {/block}
 {block name="main"}
 {/* 推荐热卖   */}
-<div class='wst-hot-sales'>
+<!-- <div class='wst-hot-sales'>
    <div class='wst-sales-logo'>
    		&nbsp;<span class="wst-hot-icon">热卖推荐</span>
    </div>
@@ -29,7 +29,69 @@
       </li>
      {/wst:goods}
    </ul>
-</div>
+</div> -->
+
+<!-- <div class='wst-hot-sales'>
+   <div class='wst-sales-logo'>
+   		
+   </div> -->
+
+
+<!--    <ul class='wst-sales-box'>
+     {wst:goods type='recom' cat='$catId' num='4'}
+      <li class="item">
+     	<div class="img"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" title="{$vo['goodsName']}" alt="{$vo['goodsName']}" /></a></div>
+     	<div class="des">
+     		<div class="p-sale">已售{$vo['saleNum']}件</div>
+     		<div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
+     		<div class="p-price">￥{$vo['shopPrice']}</div>
+     		<div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
+     	</div>
+      </li>
+     {/wst:goods}
+   </ul> -->
+
+
+
+
+  <!--  <div class="wst-sales-box">
+   		<div class="left"></div>
+   		<div class="right">
+   			<dl>
+   				<dt class="ys">已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt class="ys">$<span>已售0件</span></dt>
+   			</dl>
+   			<button>加入购物车</button>
+   		</div>
+   </div>
+   <div class="wst-sales-box">
+   		<div class="left"></div>
+   		<div class="right">
+   			<dl>
+   				<dt class="ys">已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt class="ys">$<span>已售0件</span></dt>
+   			</dl>
+   			<button>加入购物车</button>
+   		</div>
+   </div>
+   <div class="wst-sales-box">
+   		<div class="left"></div>
+   		<div class="right">
+   			<dl>
+   				<dt class="ys">已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt>已售0件</dt>
+   				<dt class="ys">$<span>已售0件</span></dt>
+   			</dl>
+   			<button>加入购物车</button>
+   		</div>
+   </div>
+
+</div> -->
 
 {/* 已筛选的条件 */}
 <input type="hidden" id="cat" class="sipt" value='{$catId}'/>
@@ -42,7 +104,8 @@
 <input type="hidden" id="order" class="sipt" value='{php}echo ($order=="0")?"1":"0";{/php}' autocomplete="off"/>
 <input type="hidden" id="areaId" class="sipt" value='{$areaId}' />
 <div class='wst-filters'>
-   <div class='item' style="border-left:2px solid #df2003;padding-left: 8px;">
+  <div style="margin-top: 14px;padding-top: 10px;">
+   <div class='item' style="padding-left: 8px;">
       <a class='link' href='__ROOT__'>首页</a>
       <i class="arrow">></i>
    </div>
@@ -79,6 +142,7 @@
    </div>
    {/if}
    <div class='wst-clear'></div>
+   </div>
 </div>
 {/* 筛选条件  */}
 <div class="wst-selector">
@@ -139,15 +203,43 @@
 	<div class='goods-side'>
 		<div class="guess-like">
 			<div class="title">猜你喜欢</div>
-			{wst:goods type='best' cat="$catId" num='3'}
+		<!-- 	{wst:goods type='best' cat="$catId" num='3'}
 			<div class="item">
 				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
 				<div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
 				<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
 			</div>
-			{/wst:goods}
+			{/wst:goods} -->
+
+
+
+      {wst:goods type='best' cat="$catId" num='3'}
+      <div class="center">
+       <a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}" style="width:180px;height:180px;" /></a>
+      </div>
+      <div class="center1">
+        <dl>
+          <dt>{$vo['goodsName']}</dt>
+          <dt><span>￥{$vo['marketPrice']}</span><del>￥100</del></dt>
+        </dl>
+      </div>
+      {/wst:goods}
+
+      
+      <!--  <div class="center">
+        aaaa
+      </div>
+      <div class="center1">
+        <dl>
+          <dt>aaaaaaaaaaaa</dt>
+          <dt><span>$666</span><del>$100</del></dt>
+        </dl>
+      </div> -->
+
+
 		</div>
-		<div class="hot-goods">
+
+		<!-- <div class="hot-goods">
 			<div class="title">热销商品</div>
 			{wst:goods type='hot' cat="$catId" num='3'}
 			<div class="item">
@@ -156,7 +248,7 @@
 				<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
 			</div>
 			{/wst:goods}
-		</div>
+		</div> -->
 	</div>
 	<div class='goods-main'>
 	   <div class='goods-filters'>
@@ -268,6 +360,27 @@
 
 	      </div>
 	   </div>
+
+     <!-- <div class="goods-list">
+      {volist name='goodsPage["Rows"]' id='vo'}
+        <div class="goods">
+            <div class="goods_img">
+              <a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}">
+                  <img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" class='goodsImg2' data-original="__ROOT__/{$vo['goodsImg']}" style="width:230px;height:250px;" />
+                </a>
+            </div>
+            <div class="goods_center">
+              <div class="tt">
+                {$vo['goodsName']}
+              </div>
+              <div class="pu"><span class="jg">￥0.111</span><span class="cj">成交数:1</span></div>
+              <div class="pu">市场价<del>￥0000</del><span class="cj">已有 <i>1</i>人评价</span></div>
+              <div class="pu">自营超市</div>
+            </div>
+        </div>
+        {/volist}
+     </div> -->
+
 	   <div class="goods-list">
 	      {volist name='goodsPage["Rows"]' id='vo'}
 	      <div class="goods">
@@ -292,6 +405,11 @@
 	      {/volist}
 	     <div class='wst-clear'></div>
 	   	</div>
+
+
+
+
+
 	   	<div style="position: absolute;bottom: -50px;width:980px;">
 	  		<div id="wst-pager"></div>
 		</div>

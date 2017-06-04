@@ -61,7 +61,58 @@ body{
 	width: 100%;
 	height:160px;
 }
+/*slider*/
 
+.slider{
+	width: 100%;
+	height: 50px;
+	overflow: hidden;
+}
+.slider-L{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.slider-L a{
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	font-size: 0.12rem;
+	color: #333333;
+}
+
+.slider-L i{
+	width: 150%;
+	height: 110px;
+	display: block;
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	top: -30px;
+	z-index: -1;
+}
+.slider-L-active a{
+	color: #FFFFFF;
+}
+.slider-L i.sli-active{
+	background: #E60B49;
+}
+.sli-content{
+	width: 75%;
+	height: 45px;
+	position: absolute;
+	right: 10px;
+	top: 6px;
+	text-align: center;
+}
+.sli-content img{
+	width: 0.25rem;
+	height: 0.25rem;
+	display: block;
+	margin: 0 auto;
+}
 /*店主推荐*/
 .wst-gol-adsb{
 	padding:10px;
@@ -134,8 +185,8 @@ body{
 	text-align:center;
 }
 .wst-shl-head .active{
-	color:#de0202;
-	border-bottom: 2px solid #de0202;
+	color:#e60b49;
+	border-bottom: 2px solid #e60b49;
 }
 .wst-shl-head .sorts i{
 	width: 15px;
@@ -163,12 +214,13 @@ body{
 
 .wst-in-goods{
     float:left;
-    width: 44.666666%;
+    width: 44%;
     padding:5px;
-    margin:5px 0px 5px 5px;
+    margin:14px 1.2% 0px 1.4%;
     font-size:0.158rem;
     background:#ffffff;
-    box-shadow: 0 1px 2px #e0e0e0;
+    box-shadow: 0 0 7px 0px #CCCCCC;
+    border-radius: 10px;
 }
 .wst-in-goods .img{
     float: left;
@@ -192,8 +244,10 @@ body{
 .wst-in-goods .name{
     float: left;
     width: 100%;
-    height: 40px;
+    /*height: 40px;*/
+    height: 22px;
     margin-top:5px;
+    overflow: hidden;
 }
 .wst-in-goods .info{
     float: left;
@@ -203,14 +257,21 @@ body{
 .wst-in-goods .info .price{
     float: left;
     font-size:0.175rem;
-    color:#e00102;
+    color:#e60b49;
+}
+.wst-in-goods .info .vipPrice{
+	font-size: 0.12rem;
+	color: #E60B49;
+	border: 1px solid #E60B49;
+	border-radius: 5px;
+	padding: 0px 2px;
+	margin-left: 0.14rem;
+	float: left;
 }
 .wst-in-goods .info .deal{
     float:right;
     color:#a0a0a0;
 }
-
-
 /* 商品列表end */
 
 
@@ -269,8 +330,8 @@ body{
     height: 40px;
     line-height: 40px;
     color:#ffffff;
-    background:#e00102;
-	border-bottom:1px solid #e00102;
+    background:#e60b49;
+	border-bottom:1px solid #e60b49;
 }
 .wst-fr-box .button:not(.disabled):not(:disabled):active,.wst-cart-box .button:not(.disabled):not(:disabled):active{
 	color:#fff0f0;

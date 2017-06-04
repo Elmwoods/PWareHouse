@@ -111,6 +111,27 @@
 .wst-in-title .left .line2,.wst-in-title .right .line2{
 	width: 5px;
 }
+/*
+ 轮播*/
+.swiper-container{
+	width: 100%;
+	height: 1.6rem;
+	overflow: hidden;
+	position: relative;
+}
+.swiper-wrapper{
+	height: 1.6rem;
+}
+.swiper-slide{
+	height: 1.6rem;
+	display: block;
+}
+.swiper-slide a,
+.swiper-slide img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
 /*楼层颜色*/
 .colour0{
 	color:#A4CB47;
@@ -175,14 +196,16 @@
 .wst-in-adscats{
 	height: 60px;
 }
-.wst-in-goods{
+/*.wst-in-goods{
 	float:left;
 	width: 44.666666%;
 	padding:5px;
 	margin:5px 0px 5px 5px;
 	font-size:0.158rem;
 	background:#ffffff;
-	box-shadow: 0 1px 2px #e0e0e0;
+	box-shadow: 0px 0px 3px #bbbbbb;
+	
+	border-radius: 10px;
 }
 .wst-in-goods .img{
 	float: left;
@@ -217,7 +240,7 @@
 .wst-in-goods .info .price{
 	float: left;
 	font-size:0.175rem;
-	color:#e00102;
+	color:#e60b49;
 }
 .wst-in-goods .info .deal{
 	float:right;
@@ -235,5 +258,74 @@
     border-radius: 5px;
     padding: 0 1px;
     color: #ffffff;
-    background: #de0202;
+    background: #e60b49;
+}*/
+
+/*.in-goods{
+	width: 98%;
+	height: 160px;
+	margin: 10px auto;
+}*/
+.wst-big-img{
+	width: 35%;
+	height: 160px;
+	float: left;
+}
+.wst-big-img .img{
+	width: 100%;
+	height: 100%;
+	display: block;
+	float: left;
+}
+.goods-ul-box{
+	width: 65%;
+	height: 160px;
+	display: block;
+	float: left;
+	overflow: hidden;
+}
+.goods-lis-box{
+	width: 49.5%;
+	height: 80px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	text-align: center;
+	font-size: 0.12rem;
+	float: left;
+	box-sizing: border-box;
+}
+.goods-lis-box > a{
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+.goods-lis-box > a img{
+	display: block;
+	height: 40px;
+	margin: auto;
+	margin-top: 2px;
+}
+
+.goods-lis-box > a >span{
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 2px;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 10px;
+}
+.goods-lis-name{
+	font-size: 0.166rem;
+}
+.goods-price .price{
+	color: #E60B49;
+	margin-right: 5px;
+}
+.goods-price .deal{
+	text-decoration: line-through;
 }

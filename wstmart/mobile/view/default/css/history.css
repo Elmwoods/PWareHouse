@@ -8,12 +8,14 @@ body{
 	background:#ffffff;
 }
 .goodsTitle{
-	font-size: 0.17rem;
+	font-size: 0.13rem;
 	height:40px;
 	margin-left:-8px;
+	padding-left: 10px;
 }
 .goods-info{
 	color:#989292;
+	font-size: 0.14rem;
 }
 .price{
 	color: red;

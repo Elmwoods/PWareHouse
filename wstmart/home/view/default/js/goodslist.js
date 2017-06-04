@@ -111,11 +111,15 @@ function searchFilter(obj,vtype){
 		if(ipts[key]!='')params.push(key+"="+ipts[key]);
 	}
 	location.href=WST.U('home/goods/search',params.join('&'),true);
+
 }
+
 function searchOrder(orderby){
+	
 	if($('#orderBy').val()!=orderby){
 		$('#order').val(1);
 	}
+
 	$('#orderBy').val(orderby);
 	searchFilter(null,0);
 }

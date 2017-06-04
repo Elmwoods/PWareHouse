@@ -117,27 +117,32 @@ WST.showCategoryNavs = function(){
 WST.Sidebar = function(){
 	if(!$('#wst-categorys')[0])return;
 	
-	if(!$('#wst-categorys').hasClass('j-index')){
-	   WST.dropDownLayer("#wst-categorys",".j-cate-dd");
-	}
+	// if(!$('#wst-categorys').hasClass('j-index')){
+	//    WST.dropDownLayer("#wst-categorys",".j-cate-dd");
+	// }
+
 	$(".dd-inner").children(".item").hover(function() { //一级导航悬浮
 		$('.categeMenuImg').lazyload({ effect: "fadeIn",failurelimit : 10,skip_invisible : false,threshold: 100,placeholder:window.conf.ROOT+'/'+window.conf.GOODS_LOGO});//默认图片
 		$(this).parent().find('.over-cat').show();
 
         $(this).addClass("hover").siblings(".item").removeClass("hover");
         var index = $(this).index();
+
+
         $(".dorpdown-layer").children(".item-sub").hide();
         $(".dorpdown-layer").children(".item-sub").eq(index).show();
 
         var start = $('.j-cate-dt').offset().top;
+
         var obj = $('#index_menus_sub');
         var sh = document.documentElement.scrollTop || document.body.scrollTop; // 滚动条距离顶部高度
+        
         if(sh>start+36){
 	            var start = sh-start;
         }else{
-        	var start = 36;
+        	var start = 0;
         }
-        //obj.stop().animate({ "top": start });
+        obj.stop().animate({ "top": start });
         obj.css('top',start);
 
 
@@ -154,18 +159,19 @@ WST.Sidebar = function(){
     	$(this).find('.over-cat-icon').removeClass('over-cat-icon-hover');
     });
 
-    $(".dd-inner").children(".item").mouseover(function() {
+    $(".dd-inner").children(".item").mouseenter(function() {
 
     	$('.dd-inner').find('.over-cat').show();
 
         var iCon = $(this).attr('id');
         $('.'+iCon).addClass(iCon+'-hover');
     });
-    $(".dd-inner").children(".item").mouseout(function() {
+    $(".dd-inner").children(".item").mouseleave(function() {
 
     	$('.dd-inner').find('.over-cat').hide();
 
         var iCon = $(this).attr('id');
+
         $('.'+iCon).removeClass(iCon+'-hover');
     });
 
@@ -198,11 +204,11 @@ WST.Sidebar = function(){
 
     });
     
-    $('.fore2').hover(function(){
-	$(this).children('dt').css('background-color','#ff6a53');
-	},function(){
-		$(this).children('dt').css('background-color','');
-	});
+ //    $('.fore2').hover(function(){
+	// $(this).children('dt').css('background-color','#ff6a53');
+	// },function(){
+	// 	$(this).children('dt').css('background-color','');
+	// });
 }
 WST.dropDownLayer = function(dropdown,layer){
 	$(dropdown).hover(function () {
@@ -378,6 +384,7 @@ WST.getVerify = function(id){
     $(id).attr('src',WST.U('home/index/getVerify','rnd='+Math.random()));
 }
 WST.loginWindow = function(){
+	
 	$.post(WST.U('home/users/toLoginBox'),{},function(data){
 		WST.open({type:1,area:['550px','320px'],offset:'auto',title:'用户登录',content:data});
 	});

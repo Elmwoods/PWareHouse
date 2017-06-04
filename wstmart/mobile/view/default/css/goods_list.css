@@ -45,8 +45,8 @@
 	text-align:center;
 }
 .wst-shl-head .active{
-	color:#de0202;
-	border-bottom: 2px solid #de0202;
+	color:#e60b49;
+	border-bottom: 2px solid #e60b49;
 }
 .wst-shl-head .sorts i{
 	width: 15px;
@@ -113,7 +113,7 @@
 .wst-in-goods .info .price{
 	float: left;
 	font-size:0.175rem;
-	color:#e00102;
+	color:#e60b49;
 }
 .wst-in-goods .info .deal{
 	float:right;

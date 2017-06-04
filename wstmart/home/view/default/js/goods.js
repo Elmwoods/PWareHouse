@@ -61,13 +61,15 @@ $(function(){
 });
 function fixedbar(){
     var offsetTop = $("#goodsTabs").offset().top;  
+
     $(window).scroll(function() {  
-        var scrollTop = $(document).scrollTop();  
+        var scrollTop = $(document).scrollTop(); 
+        
         if (scrollTop > offsetTop){  
-        	$('#addCart2').show();
+        	$('#zf').show();
             $("#goodsTabs").css("position","fixed");  
         }else{  
-        	$('#addCart2').hide();
+        	$('#zf').hide();
             $("#goodsTabs").css("position", "static");  
         }  
     });   
@@ -176,6 +178,7 @@ function queryByPage(p){
   });
 }
 function addCart(type,iptId){
+
 	if(window.conf.IS_LOGIN==0){
 		WST.loginWindow();
 		return;
@@ -195,12 +198,7 @@ function addCart(type,iptId){
 		}
 	}
 	var buyNum = $(iptId)[0]?$(iptId).val():1;
-
-    //添加代码
-    var color  = $('.rect_select:eq(0)').html();
-    var size  = $('.rect_select:eq(1)').html();
-
-    $.post(WST.U('home/carts/addCart'),{goodsId:goodsInfo.id,goodsSpecId:goodsSpecId,buyNum:buyNum,color:color,size:size,rnd:Math.random()},function(data,textStatus){
+	$.post(WST.U('home/carts/addCart'),{goodsId:goodsInfo.id,goodsSpecId:goodsSpecId,buyNum:buyNum,rnd:Math.random()},function(data,textStatus){
 	     var json = WST.toJson(data);
 	     if(json.status==1){
 	    	 WST.msg(json.msg,{icon:1});

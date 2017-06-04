@@ -3,9 +3,13 @@ function login(typ){
 	if(!$('#loginName').isValid())return;
 	if(!$('#loginPwd').isValid())return;
 	if(!$('#verifyCode').isValid())return;
+	
 	var ll = WST.load({msg:'正在处理数据，请稍后...'});
+
 	$.post(WST.U('home/users/checkLogin'),params,function(data,textStatus){
+		
 		var json = WST.toJson(data);
+
 		if(json.status=='1'){
 			WST.msg(json.msg, {icon: 1});
 			if(typ==2){

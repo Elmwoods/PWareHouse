@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>京歌科技 全球货币分流技术缔造者</title>
+    <title>HANGZHOU JINGE TECHNOLOGY CORPORATION  GLOBAL DISTRIBUTARY SYSTEM OF COMMODITY CURRENCTY</title>
     <link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
     <link rel="stylesheet" href="__VVOFF__/css/swiper.min.css">
@@ -58,7 +58,7 @@
                 <ul class="phone_width">
                     <li class="li_img"><a href=""><img src="__VVOFF__/images/BUTTON_EINGLISH_VVCHAT.png"/></a></li>
                     <li class="li_img"><a href=""><img src="__VVOFF__/images/BUTTON_EINGLISH_CASHBAG.png"/></a></li>
-                    <li class="li_img"><a href="{:url('home/index/index')}"><img src="__VVOFF__/images/BUTTON_EINGLISH_JINGOMALL.png"/></a></li>
+                    <li class="li_img"><a href=""><img src="__VVOFF__/images/BUTTON_EINGLISH_JINGOMALL.png"/></a></li>
                 </ul>
 
                 <img src="__VVOFF__/img/Eng_img/2017xia.png" class="E_img"/>
@@ -145,99 +145,26 @@
                     <ul id="teamlist">
                         <div class="t_none">
                             <li class="teamitem">
-                                <a href="">
+                                {volist name='ensta2' id='v'}
                                     <div class="mteam_img">
                                         <dl>
                                             <dt>
-                                                <img src="__VVOFF__/img/03241035/1.png"/>
+                                                <img src="/{$v.e_headimg}"/>
                                             </dt>
                                             <dd>
-                                                <p>AnHua Luo</p>
+                                                <p>{$v.e_name}</p>
                                                 <br />
-                                                <p>Executive Director</p>
+                                                <p style="font-size:16px;">{$v.e_job}</p>
                                                 <br />
-                                                <span>Motto: the working people, they are the driving force to promote social progress ... ... I want to cry for them.</span>
+                                                <span>Motto: {$v.e_motto}</span>
                                             </dd>
                                         </dl>
                                     </div>
-                                </a>
+                                {/volist}
                             </li>
-                            <!--<li class="teamitem">
-                                <a href="">
-                                    <div class="mteam_img">
-                                        <dl>
-                                            <dt>
-                                                <img src="img/03241035/2.png"/>
-                                            </dt>
-                                            <dd>
-                                                <p>Xiaodong Xie</p>
-                                                <br />
-                                                <p>CTO</p>
-                                                <br />
-                                                <span>Motto: simple thing, repeat a million times, it is no longer simple.</span>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </a>
-                            </li>-->
-                            <!--<li class="teamitem">
-                                <a href="">
-                                    <div class="mteam_img">
-                                        <dl>
-                                            <dt>
-                                                <img src="img/03241035/3.png"/>
-                                            </dt>
-                                            <dd>
-                                                <p>JinFeng Ren</p>
-                                                <br />
-                                                <p>Chairman of the Board</p>
-                                                <br />
-                                                <span>Motto:Pioneering, enterprising, innovative!</span>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </a>
-                            </li>-->
-                            <li class="teamitem">
-                                <a href="">
-                                    <div class="mteam_img">
-                                        <dl>
-                                            <dt>
-                                                <img src="__VVOFF__/img/03241035/4.png"/>
-                                            </dt>
-                                            <dd>
-                                                <p>Yan Zheng</p>
-                                                <br />
-                                                <p>News Spokesman</p>
-                                                <br />
-                                                <span>Motto: work hard and treat people honestly</span>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="teamitem">
-                                <a href="">
-                                    <div class="mteam_img">
-                                        <dl>
-                                            <dt>
-                                                <img src="__VVOFF__/img/03241035/5.png"/>
-                                            </dt>
-                                            <dd>
-                                                <p>Qian Kou</p>
-                                                <br />
-                                                <p>HR and Admin Supervisor</p>
-                                                <br />
-                                                <span>Motto: the value of life is determined by their own</span>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </a>
-                            </li>
-
                         </div>
                     </ul>
-                    <a href="Eteam.html"><button>MORE</button></a>
+                    <a href="{:url('vvoff/index/Eteam')}"><button>MORE</button></a>
                 </div>
             </div>
         </div>
@@ -246,7 +173,7 @@
                 <img src="__VVOFF__/img/Eng_img/NEWS.png" class="new_img"/>
                 <div class="se_list">
                     <ul class="se_ul">
-                    {volist name="enart" id="v"}
+                    {volist name="enart2" id="v"}
                             <a href="{:url('vvoff/index/ennews', ['id'=>$v.id])}">
                                 <li>
                                     <dl>

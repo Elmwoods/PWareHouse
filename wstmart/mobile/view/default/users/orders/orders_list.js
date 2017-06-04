@@ -19,10 +19,9 @@ function getOrderList(){
           $('#currPage').val(json.CurrentPage);
           $('#totalPage').val(json.TotalPage);
         }else{
-           var mhtml = '<ul class="ui-row-flex wst-flexslp">';
-           mhtml += '<li class="ui-col ui-flex ui-flex-pack-center">';
-           mhtml += '<p>暂无相关订单</p>';
-           mhtml += '</li>';
+           var mhtml = '<ul>';
+          //  mhtml += '<li class="orders-none"></li>';
+           mhtml += '<li class="orders-none"><div class="orders-none-pic"></div><div class="orders-none-txt">您没有相关订单哟 ~</div></li>';
            mhtml += '</ul>';
           $('#order-box').html(mhtml);
         }

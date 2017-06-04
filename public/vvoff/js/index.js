@@ -190,8 +190,8 @@ $(".accounts").click(function(){
 })
 $(".note_login").click(function(){
     $(".zhezhao").css("display","block");
-    $(".code_login").css("display","block");
-    $(".code_login_d").css("display","none");
+    $(".code_login").css("display","none");
+    $(".code_login_d").css("display","block");
     $(".user_login").css("display","none");
     $(".user_register").css("display","none");
 })

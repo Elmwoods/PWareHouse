@@ -3,7 +3,7 @@ namespace  wstmart\vvoff\Controller;
 
 use think\Db;
 use think\Controller;
-use wstmart\vv\controller\Api;
+use wstmart\chat\controller\Api;
 
 class  Login  extends Controller {
 

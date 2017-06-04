@@ -11,7 +11,7 @@ class  Staff  extends Controller
 	public function dolist()
 	{
 		$m=new M;
-		$data=$m->order('id', 'asc')->select();
+		$data=$m->select();
 		$this->assign("data",$data);
 		return  $this->fetch('dolist');
 	}
@@ -144,7 +144,7 @@ class  Staff  extends Controller
 	public function doenlist()
 	{
 		$m=new MM;
-		$data=$m->order('id', 'asc')->select();
+		$data=$m->select();
 		$this->assign("data",$data);
 		return  $this->fetch('doenlist');
 	}

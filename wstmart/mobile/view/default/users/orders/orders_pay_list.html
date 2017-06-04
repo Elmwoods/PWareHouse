@@ -13,6 +13,20 @@
 	<section class="ui-container">
 		<ul class="ui-list ui-list-text ui-list-link wst-pa-l">
 			{volist name="$payments[1]" id="pa"}
+
+			<!--支付选择页面渲染模板-->
+		    <li class="line" onclick="javascript:toPay({$orderNo},{$isBatch},'{$pa['payCode']}');">
+		        <span class="{$pa['payCode']}"></span><h5 class="ui-nowrap">{$pa['payName']}</h5>
+		    </li>
+		    <li class="line" onclick="javascript:toPay({$orderNo},{$isBatch},'{$pa['payCode']}');">
+		        <span class="{$pa['payCode']}"></span><h5 class="ui-nowrap">{$pa['payName']}</h5>
+		    </li>
+		    <li class="line" onclick="javascript:toPay({$orderNo},{$isBatch},'{$pa['payCode']}');">
+		        <span class="{$pa['payCode']}"></span><h5 class="ui-nowrap">{$pa['payName']}</h5>
+		    </li>
+		    <li class="line" onclick="javascript:toPay({$orderNo},{$isBatch},'{$pa['payCode']}');">
+		        <span class="{$pa['payCode']}"></span><h5 class="ui-nowrap">{$pa['payName']}</h5>
+		    </li>
 		    <li class="line" onclick="javascript:toPay({$orderNo},{$isBatch},'{$pa['payCode']}');">
 		        <span class="{$pa['payCode']}"></span><h5 class="ui-nowrap">{$pa['payName']}</h5>
 		    </li>

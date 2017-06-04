@@ -30,13 +30,24 @@ $(document).ready(function(){
         	WST.changeIconStatus($(this), 1);//选中
         }else{
         	var checked = 0;
-        	WST.changeIconStatus($(this), 2);//取消选中
+        	WST.changeIconStatus($(this), 2);//取消选中        	
         }
         var cid = $(this).attr('cartId');
         if(cid!=''){
 		    WST.changeCartGoods(cid,$('#buyNum_'+cid).val(),checked);
 		    statCartMoney();
 	    }
+        
+       /* var len = $(this).parent().parent().siblings().length;
+        console.log(len);
+        for(var i = 1;i<len-1;i++){
+        	 if(!$(this).parents("wst-ca-s").children().eq(i).find("i").hasClass("wst-active")){
+        	alert(i);
+           return;
+        }
+        }*/
+        
+       
     });
     //选中合计
     $('.ui-icon-choose').click(function(){
@@ -164,3 +175,30 @@ function toSettlement(){
     }
     location.href = WST.U('mobile/carts/settlement');
 }
+
+
+
+
+/*底部导航*/
+   var cheng = false;
+			$(".dayuanjia").click(function(){
+				cheng = !cheng;
+				$(".xiaoyuan1").click(function(){
+					$("html,body").css({scrollTop:0});
+					/*$(".dayuanjia").attr("src","../img/dayuanjia.png");*/
+					$(".xiaoyuan").css({"bottom":"90px","right":"25px"});
+					cheng = false;
+				})
+				if(cheng){
+					/*$(".dayuanjia").attr("src","img/dayuancheng.png");*/
+					$(".xiaoyuan1").css({"bottom":"160px","right":"30px"});
+					$(".xiaoyuan2").css({"bottom":"140px","right":"80px"});
+					$(".xiaoyuan3").css({"bottom":"90px","right":"95px"})
+				}		
+				else{
+					/*$(".dayuanjia").attr("src","../img/dayuanjia.png");*/
+					$(".xiaoyuan").css({"bottom":"90px","right":"25px"})
+				}
+			})
+
+   

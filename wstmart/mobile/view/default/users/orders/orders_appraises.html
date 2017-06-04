@@ -47,10 +47,29 @@
 
         <script id="appraises-box" type="text/html">
             <ul class="ui-row appraise-box">
-                <li class="ui-col ui-col-25 appraise-title">商品名称</li>
+                <li class="ui-col comment-lis-box">
+                    <ul class="clearfix">
+                        <li class="comment-img-lis comment-li-ls"></li>
+                        <li class="comment-txt-lis comment-li-ls">好评</li>
+                        <li class="comment-pic-lis comment-li-ls"></li>
+                        <li class="comment-txt-lis comment-li-ls">中评</li>
+                        <li class="comment-pic-lis comment-li-ls"></li>
+                        <li class="comment-txt-lis comment-li-ls">差评</li>
+                    </ul>
+                </li>
+                <li class="ui-col">
+                      <textarea class="appraisesContent" id="content"></textarea>
+                </li>
+                <div class="ui-col uploadfile-box" style="padding-top: 20px;">
+                        <div id="filePicker">上传附件(最多5张)</div>
+                        <ul class="complainFileBox" id="edit_chart">
+                        </ul>
+                      
+                </div>
+                <!--<li class="ui-col ui-col-25 appraise-title">商品名称</li>
                 <li class="ui-col ui-col-75 ui-nowrap-multi ui-whitespace">
                     {{d.goodsName}}
-                </li>
+                </li>-->
                 <li class="ui-col ui-col-25 appraise-title">商品评分</li>
                 <li class="ui-col ui-col-75">
                     <ul class="ui-row">
@@ -75,7 +94,7 @@
                       <li class="ui-col ui-col-20 score" id="goodsScore" score="{{(d.timeScore!='')?d.timeScore:'0'}}">{{(d.goodsScore!='')?d.goodsScore:'0'}}分</li>
                     </ul>
                 </li>
-
+                
                 <li class="ui-col ui-col-25 appraise-title">服务评分</li>
                 <li class="ui-col ui-col-75">
                     <ul class="ui-row">
@@ -104,6 +123,7 @@
                 <li class="ui-col ui-col-25 appraise-title">时效评分</li>
                 <li class="ui-col ui-col-75">
                     <ul class="ui-row">
+                        
                       <li class="ui-col ui-col-80">
                       {{# if(d.timeScore!=''){ }}
                         {{# for(var i=0;i<d.timeScore;i++){ }}
@@ -127,14 +147,8 @@
                 </li>
 
                 {{# if(d.content==''){ }}
-                    <li class="ui-col">
-                      <textarea class="appraisesContent" id="content"></textarea>
-                    </li>
-                    <div class="ui-col uploadfile-box">
-                      <ul class="complainFileBox" id="edit_chart">
-                      </ul>
-                      <div id="filePicker">上传附件(最多5张)</div>
-                    </div>
+                    
+                    
                     <br />
                     <div class="ui-btn-wrap post-btn">
                       <button class="ui-btn-lg" onclick="javascript:saveAppr({{d.goodsId}},{{d.goodsSpecId}});">提交</button>
@@ -160,9 +174,17 @@
                 {{# } }}
             </ul>
 
-            
 
         </script>
+
+
+        <script>
+            window.onload=function(){
+                var nnnnn = document.getElementsByClassName("comment-txt-lis");
+                console.log(nnnnn);
+            }
+        </script>
+
         <div id="appraisesBox">
         </div>
 

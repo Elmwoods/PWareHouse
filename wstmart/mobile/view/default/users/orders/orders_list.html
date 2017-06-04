@@ -6,7 +6,7 @@
 {block name="header"}
 	<div id="info_list">
     <header style="background:#ffffff;" class="ui-header ui-header-positive ui-border-b wst-header">
-        <i class="ui-icon-return" onclick="location.href='{:url('mobile/users/index')}'"></i><h1>我的订单</h1>
+        <i class="ui-icon-return" onclick="history.back()"></i><h1>我的订单</h1>
     </header>
 {/block}
 {block name="main"}
@@ -18,8 +18,9 @@
     {{# for(var i = 0; i < d.length; i++){ }}
             <div class="order-item">
                 <div class="ui-row-flex ui-whitespace item-head" onclick="getOrderDetail({{d[i].orderId}})">
-                    <div class="ui-col ui-col-2 ui-nowrap-flex">{{d[i].shopName}}</div>
+                    <div class="ui-col ui-col-2 ui-nowrap-flex nowrap-flex-tt"><span>{{d[i].shopName}}</span><span class="order-tr-pic"></span></div>
                     <div class="ui-col order-tr o-status">
+                        <!--订单右上角待收货,已收货-->
                         {{ d[i].status }}
                         {{# if($.inArray(d[i].orderStatus,[-3,-4,-5])!=-1){ }}
 						{{# if(d[i].payType==1 && d[i].isPay==1) { }} 
@@ -40,20 +41,34 @@
                     </div>
                     <div class="ui-col ui-col-3 o-gInfo">
                         <p class="o-gName ui-nowrap-multi ui-whitespace">{{d[i].list[g].goodsName}}</p>
+                            <!--商品信息概览-->
+                        <p class="o-gName-shop">MO&CO官方旗舰店</p>
+                        <div class="o-gName-txt">
+                            <span>尺码</span>
+                            <span>匀码</span>
+                            <span class="ui-col order-tr o-gName-num" style="word-break:break-all;">￥{{d[i].list[g].goodsPrice}} x{{d[i].list[g].goodsNum}}</span>
+                        </div>
 
                         {{# if(d[i].list[g].isSpec==1){ }}
                         <p class="o-gSpec ui-nowrap-flex ui-whitespace">规格：{{d[i].list[g].goodsSpecNames}}</p>
                         {{# } }}
 
                     </div>
-                    <div class="ui-col order-tr" style="word-break:break-all;">￥{{d[i].list[g].goodsPrice}} x{{d[i].list[g].goodsNum}}</div>
+                    <!--改之前-->
+                    <!--<div class="ui-col order-tr" style="word-break:break-all;">￥{{d[i].list[g].goodsPrice}} x{{d[i].list[g].goodsNum}}</div>-->
+                    <!--改之后-->
+                    <!--<div class="ui-col order-tr" style="word-break:break-all;">￥{{d[i].list[g].goodsPrice}}</div>-->
                 </div>
+                
                 {{#  } }}
 
 
                 <div class="ui-btn-wrap" style="padding-top:5px;padding-bottom:5px;">
                 <div class="o-oListMoney">
-                    订单总价：<span>￥{{d[i].realTotalMoney}}</span>
+                    
+                     合计：<span>￥{{d[i].realTotalMoney}}
+                        <span>(含运费)</span>
+                    </span>
                 </div>
                 {{# if(d[i].orderStatus==-2){ }}
                     <button class="ui-btn o-btn" onclick="choicePay({{d[i].orderNo}},0);">
@@ -87,7 +102,7 @@
 
                 {{# if((d[i].allowRefund==1) && (d[i].orderStatus==-1 || d[i].orderStatus==-3)){ }}
                 <button class="ui-btn o-btn" onclick="showRefundBox({{d[i].orderId}})">
-                           申请退款
+                        申请退款
                 </button>
                 {{# } }}
 
@@ -110,11 +125,13 @@
     <section class="ui-container" id="shopBox">
         <div class="ui-row-flex ui-whitespace order-tab">
             <div class="ui-col ui-col tab-item {if $type==''}tab-curr{/if}" type="" >全部</div>
+            <!--待收货需要判断类型  目前-->
+            <div class="ui-col ui-col tab-item {if $type=='waitPay'}tab-curr{/if}" type="waitPay" >待发货</div>
             <div class="ui-col ui-col tab-item {if $type=='waitPay'}tab-curr{/if}" type="waitPay" >待付款</div>
             <div class="ui-col ui-col tab-item {if $type=='waitReceive'}tab-curr{/if}" type="waitReceive" >待收货</div>
             <div class="ui-col ui-col tab-item {if $type=='waitAppraise'}tab-curr{/if}" type="waitAppraise" >待评价</div>
-            <div class="ui-col ui-col tab-item {if $type=='finish'}tab-curr{/if}" type="finish" >已完成</div>
-            <div class="ui-col ui-col tab-item {if $type=='abnormal'}tab-curr{/if}" type="abnormal" >取消拒收</div>
+            <!--<div class="ui-col ui-col tab-item {if $type=='finish'}tab-curr{/if}" type="finish" >已完成</div>
+            <div class="ui-col ui-col tab-item {if $type=='abnormal'}tab-curr{/if}" type="abnormal" >已取消</div>-->
         </div>
 
         <div id="order-box">
