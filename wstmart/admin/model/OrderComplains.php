@@ -121,7 +121,7 @@ class OrderComplains extends Base{
 	 	}else{
 	 	    return WSTReturn('操作失败，该投诉状态已发生改变，请刷新后重试!',-1);
 	 	}
-	 	return $rd;
+	 	return $rs;
 	 }
 
 	 /**

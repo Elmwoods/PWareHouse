@@ -48,7 +48,7 @@ class  index extends Controller
 		$this->assign('sta',$ii);
 		$this->assign('sta2',$iii);
 		$mm=new M;
-		$dd=$mm->where('is_see',1)->limit(0,3)->select();
+		$dd=$mm->where('is_see',1)->order('art_addtime', 'DESC')->select();
 		$arr = [];
 		$i=0;
 		foreach ($dd as $v) {

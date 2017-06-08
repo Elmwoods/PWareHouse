@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/index.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js" type="text/javascript" charset="utf-8"></script>
     <!--<link rel="stylesheet" href="css/style.css">-->
     <!--<script src="js/mui.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>-->
@@ -431,7 +432,11 @@
             <div class="top">
                 <img src="__VVOFF__/img/0.png"/>
             </div>
-            <?php foreach ($art as $v):?>
+        
+            	
+            	<div id="eachpagebox"  style="height: 360px;overflow: hidden;position: relative;">
+            		<div id="eachpage" style="position: absolute;">
+            		    <?php foreach ($art as $v):?>
             <div class="se_list">
                 <ul class="se_ul">
 
@@ -445,7 +450,7 @@
                                 <dd>
                                     <h2><?php echo $v['art_name']?></h2>
                                     <p><?php echo $v['art_addtime']?></p>
-                                    <span><?php echo mb_substr(htmlspecialchars($v['art_content']), 0, 80, 'utf-8').'...';?></span>
+                                    <span><?php echo mb_substr(htmlspecialchars_decode($v['art_content']), 0, 80, 'utf-8').'...';?></span>
                                 </dd>
                             </dl>
                         </li>
@@ -454,13 +459,44 @@
                 </ul>
             </div>
             <?php endforeach;?>
+            	</div>
+            	</div>
+            	
             <div class="bnt">
-                <!--<span>加载更多</span>-->
+                <span id="shangyiye" style="font-size: 14px;cursor: pointer;">上一页</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span id="xiayiye" style="font-size: 14px;cursor: pointer;">下一页</span>
             </div>
+            
+            <script type="text/javascript">
+            var newsheight = $("#eachpage").height();
+            var a = 0;
+            var xh = -newsheight;
+            $("#xiayiye").click(function(){
+           	    a-=360;
+           	    if(a<xh||a==xh){
+            		a+=360;
+            	};
+            	$("#eachpage").stop().animate({
+            		"top":a
+            	},500)
+            })
+            
+            
+              $("#shangyiye").click(function(){
+            	a+=360;
+            	if(a>0){
+            		a=0;
+            	};
+            	$("#eachpage").stop().animate({
+            		"top":a
+            	},500)
+            	
+            })
+
+            </script>
         </div>
     </div>
     <div class="overs">
-        <div class="over_box">
+        <div class="over_box"> 
             <div class="over_img">
                 <img src="__VVOFF__/images/foot03/zfew.jpg"/>
             </div>

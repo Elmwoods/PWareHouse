@@ -20,6 +20,9 @@ class Api extends Controller {
         $this -> request = request();
     }
 
+
+
+
     //app初始化页面接口(用于验证是否免登陆)
     public function index() {
         $param = $this->request->param();
@@ -363,7 +366,8 @@ class Api extends Controller {
         }
     }
 
-    public function userInfo() {
+    //个人用户信息
+    public function userInfo($token_id, $token) {
         $param = $this->request->param();
         if (isset($param['token_id'])) {
             $param['token'] = str_replace('\/', '/', $param['token']);
@@ -372,7 +376,7 @@ class Api extends Controller {
                     return json($this -> getUserInfo($param['token_id'], $param['token']));
                     break;
                 case 'invalid' :
-                    return json(array('result' => 'invalid', 'value' => '免登陆时间已过,请重新登录'));
+                    return json(array('result' => 'error', 'value' => '免登陆时间已过,请重新登录'));
                     break;
                 case 'error' :
                     return json(array('result' => 'error', 'value' => '免登陆验证失败,请重新登录'));
@@ -384,7 +388,7 @@ class Api extends Controller {
     //查询用户信息的函数
     private function getUserInfo($token_id, $token) {
         $users = db('users a');
-        $data = array('a.userId', 'a.loginName', 'a.trueName', 'a.userPhoto','a.userSex', 'a.brithday', 'a.userEmail', 'a.userName', 'a.userNation', 'a.userProvince', 'a.userCity');
+        $data = array('a.userId', 'a.loginName', 'a.trueName', 'a.userPhoto', 'a.userPhone', 'a.userSex', 'a.brithday', 'a.signature', 'a.userEmail', 'a.userName', 'a.userNation', 'a.userProvince', 'a.userCity');
         $arr = $users -> join('user_token b', 'b.member_id = a.userId', 'LEFT') -> where('b.token_id', $token_id) -> where('b.token', $token)->field($data) -> find();
         $encodeArr = array();
         foreach ($arr as $k => $v) {

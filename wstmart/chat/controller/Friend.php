@@ -31,21 +31,20 @@ class Friend extends Controller {
         if (!empty($param)) {
             //联接朋友表和用户总表查询好友信息
             $user_friend = db('user_friends a');
-            $arr1 = $user_friend -> join('users b', 'a.friendID = b.userId', 'LEFT') -> field(['a.friendID', 'a.nickName', 'b.userPhoto']) -> where('a.userId', $param['userId']) -> where('a.isBlackList', 0) -> where('a.isAgreed', 1) -> select();
+            $arr1 = $user_friend -> join('users b', 'a.friendID = b.userId', 'LEFT') -> field(['a.friendID', 'a.nickName', 'b.userName', 'b.userPhoto', 'b.loginName', 'b.userPhone']) -> where('a.userId', $param['userId']) -> where('a.isBlackList', 0) -> where('a.isAgreed', 1) -> select();
             for ($i=0;$i<count($arr1);$i++) {
                 $arr1[$i]['state'] = 0;     //0表示朋友
             }
             //$arr = $user_friend ->field(['friendID', 'nickName', 'type']) -> where('userId', $param['userId']) -> where('isBlackList', 0) -> select();
             //联接群表和群用户表查询群信息
             $user_group = db('user_groups a');
-            $arr2 = $user_group -> field(['a.groupID', 'a.name', 'a.icon']) -> join('user_groupmembers b', 'a.groupID = b.groupID', 'LEFT') -> where('b.userId', $param['userId']) -> where('b.isSave',1) -> select();
+            $arr2 = $user_group -> field(['a.groupID', 'a.name', 'a.icon', 'b.groupName']) -> join('user_groupmembers b', 'a.groupID = b.groupID', 'LEFT') -> where('b.userId', $param['userId']) -> where('b.isSave',1) -> select();
             for ($i=0;$i<count($arr2);$i++) {
                 $arr2[$i]['state'] = 1;     //1表示群
             }
             //合并朋友表和群表
             $arr = array_merge($arr1, $arr2);
             return json(array('result'=>'success', 'value'=>$arr));
-
             /*$friendArr[] = array();
             for ($i=0; $i < count($arr); $i++) {
                 if ($arr[$i]['type'] == 0) {
@@ -95,7 +94,7 @@ class Friend extends Controller {
             if (Db::table('jingo_user_friends') -> insert($data)) {         //好友表添加对方好友的相关信息
                 return json(array('result'=>'success', 'value'=>'多一个朋友，少一个敌人'));
             }else {
-                return json(array('result'=>'success', 'value'=>'网络又开小差了,请稍候重试'));
+                return json(array('result'=>'error', 'value'=>'网络又开小差了,请稍候重试'));
             }
         }else {
             return json(array('result'=>'error', 'value'=>'请传参'));
@@ -169,69 +168,7 @@ class Friend extends Controller {
         }
     }
 
-    //生成个人二维码
-    private function setQRcode() {
-        include_once "phpqrcode.php";
-        $param = $this->request->param();
-        if (!$param) {
-            exit();
-        }
-        $serialize = json_encode([              //二维码信息
-            'userId'=>$param['userId'],
-            'nickName'=>$param['nickName']
-        ]);
-        $rand = mt_rand(10000000, 99999999);
-        $time = time();
-        $name = md5($rand).md5($time);          //生成二维码名
-        $date = date("Ymd",time());
-        if (!file_exists(ROOT_PATH.'upload/qrcode/personal/'.$date)) {
-            mkdir(ROOT_PATH.'upload/qrcode/personal/'.$date);
-        }
 
-        $errorCorrectionLevel = 'L';//容错级别
-        $matrixPointSize = 2;//生成图片大小
-        $path = $date.'/'.$name.'.png';
-        $map = [
-            'userId' => $param['userId']
-        ];
-        QRcode::png($serialize, ROOT_PATH.'upload/qrcode/personal/'.$date.'/'.$name.'.png', $errorCorrectionLevel, $matrixPointSize, 2);
-
-        $arr = Db::table('jingo_users') -> field('userPhoto') -> where('userId', $param['userId']) -> find();
-        if ($arr) {
-            $logo = ROOT_PATH.$arr['userPhoto'];//准备好的logo图片
-            $QR = ROOT_PATH.'upload/qrcode/personal/'.$date.'/'.$name.'.png';//已经生成的原始二维码图
-
-            if ($logo !== FALSE) {
-                $QR = imagecreatefromstring(file_get_contents($QR));
-                $logo = imagecreatefromstring(file_get_contents($logo));
-                $QR_width = imagesx($QR);//二维码图片宽度
-                $QR_height = imagesy($QR);//二维码图片高度
-                $logo_width = imagesx($logo);//logo图片宽度
-                $logo_height = imagesy($logo);//logo图片高度
-                $logo_qr_width = $QR_width / 5;
-                $scale = $logo_width / $logo_qr_width;
-                $logo_qr_height = $logo_height / $scale;
-                $from_width = ($QR_width - $logo_qr_width) / 2;
-
-                //重新组合图片并调整大小
-                imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
-            }
-
-            //输出图片
-            imagepng($QR, ROOT_PATH.'upload/qrcode/personal/'.$date.'/'.$name.'.png');
-        }
-        if (file_exists(ROOT_PATH.'upload/qrcode/personal/'.$date.'/'.$name.'.png')) {
-            if (Db::table('jingo_users') -> where($map) -> update(['qrcode'=>$path])) {
-                return json(array('result'=>'success', 'value'=>'二维码图片上传成功'));
-            }else {
-                unlink(ROOT_PATH.'upload/qrcode/personal/'.$date.'/'.$name.'.png');     //linux下注意权限问题
-                return json(array('result'=>'error', 'value'=>'二维码图片路径保存失败,请稍候重试'));
-            }
-        }else {
-            return json(array('result'=>'error', 'value'=>'二维码图片失效,请重新生成'));
-        }
-
-    }
 
     //拉黑好友
     public function deFriend($userId, $friendID) {

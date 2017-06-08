@@ -44,7 +44,6 @@ class Orders extends Base{
      */
     public function toExport(){
     	$m = new M();
-    	$rs = $m->toExport();
-    	$this->assign('rs',$rs);
+    	$m->toExport();
     }
 }

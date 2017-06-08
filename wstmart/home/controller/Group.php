@@ -130,7 +130,7 @@ class Group extends Controller {
             if ($group_member -> where('groupID', $param['groupID']) -> where('userId', $param['userId']) -> delete()) {
                 return json(array('result'=>'success', 'value'=>'已退出该群组'));
             }else {
-                return json(array('result'=>'success', 'value'=>'退出群组失败,请稍后重试'));
+                return json(array('result'=>'error', 'value'=>'退出群组失败,请稍后重试'));
             }
         }else {
             return json(array('result'=>'error', 'value'=>'请传参'));

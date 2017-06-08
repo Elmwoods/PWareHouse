@@ -133,7 +133,7 @@ class Attributes extends Base{
 	 */
 	public function listQuery(){
 		$catId = input("post.catId/d");
-		$rs = $this->field("attrId id, attrId, catId, attrName name,  '' goodsCatNames")->where(["dataFlag"=>1,"catId"=>$catId])->sort('attrSort asc,attrId asc')->select();
+		$rs = $this->field("attrId id, attrId, goodsCatId, attrName name,")->where(["dataFlag"=>1,"catId"=>$catId])->order('attrSort asc,attrId asc')->select();
 		return $rs;
 	}
 }

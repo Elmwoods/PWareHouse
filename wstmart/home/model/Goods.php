@@ -819,7 +819,24 @@ class Goods extends CGoods{
 		$where['goodsStatus'] = 1;
 		$where['g.dataFlag'] = 1;
 		$where['isSale'] = 1;
-		if($keyword!='')$where['goodsName'] = ['like','%'.$keyword.'%'];
+        //添加代码start
+        if ($keyword!='') {
+            $re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
+            header("content-type:text/html; charset=utf-8");
+            // var_dump($re);die;
+            if($re){
+                $where['goodsName'] = ['like','%'.$keyword.'%'];
+                // var_dump($goodsCatIds);die;
+            }else if(in_array(null,$goodsCatIds)){
+                $where['goodsName'] = ['=',''];
+            }else{
+                $where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
+            }
+        }
+        //添加代码end
+        // $where['goodsName'] = ['like','%'.$keyword.'%'];
+
+		//if($keyword!='')$where['goodsName'] = ['like','%'.$keyword.'%'];
 		//属性筛选
 		$goodsIds = $this->filterByAttributes();
 		if(!empty($goodsIds))$where['goodsId'] = ['in',$goodsIds];

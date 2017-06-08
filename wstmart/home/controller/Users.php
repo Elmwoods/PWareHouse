@@ -221,14 +221,16 @@ class Users extends Base{
             return WSTReturn('请输入有效的手机号码',-1);
         }
 
-        //删除失效的手机验证码
+        //删除没有用过但失效的手机验证码
         $del = Db::name("user_code")->where('mobile',$mobile)->max('id');
         $del = Db::name("user_code")->where('mobile',$mobile)->where('id','lt',$del)->delete();
-        $del = Db::name("user_code")->where('mobile',$mobile)->where('reg_time','lt',time()-30*60)->delete();
+        $del = Db::name("user_code")->where('reg_time','lt',time()-30*60)->delete();
         //验证 手机验证码
         $mobilecode = Db::name("user_code")->where(['mobile'=>$mobile,'code'=>$sendCode])->find();
         if(!$mobilecode){
             return WSTReturn('验证码错误',-1);
+        }else{
+            $del = Db::name("user_code")->where(['mobile'=>$mobile,'code'=>$sendCode])->delete();//删除用过的验证码
         }
 
         //获取用户信息
@@ -241,6 +243,11 @@ class Users extends Base{
             $m->save(['loginPwd'=>$newPass],['userId'=>$userId]);
             return WSTReturn('修改密码成功',1);
         }else if($rs['userPhone'] == ''){
+            //修改密码并绑定手机
+            $se = $m->where('userPhone',$mobile)->find();//查看手机是否被其他用户绑定
+            if($se){
+                return WSTReturn('该手机已被占用！',-1);
+            }
             $m->save(['loginPwd'=>$newPass,'userPhone'=>$mobile],['userId'=>$userId]);
             return WSTReturn('修改密码成功',1);
         }else{

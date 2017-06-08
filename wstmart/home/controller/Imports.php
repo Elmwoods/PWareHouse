@@ -105,15 +105,35 @@ class Imports extends Base{
                 $fieldArr[$i] = $content[$i];       //组合数据表字段
             }
             $content = preg_split('/\t|[\n]/', unicodeToUtf8(file_get_contents($filename)));      //对内容进行中文转码,并按制表符和换行符进行分离*/
-            $line = preg_split('/\n/', unicodeToUtf8(file_get_contents($filename)));
-            $line = array_slice($line, 1, -1);
-            $field = preg_split('/\t/', $line[0]);
-            $fieldNum = count($field);
-            $line = implode("\t", $line);
-            $content = preg_split('/[\t]/', $line);
-            $fieldArr = array();        //数据表字段数组
 
 
+            if (substr($_FILES['file']['name'], -3) == 'csv') {
+                $line = preg_split('/\n/', unicodeToUtf8(file_get_contents($filename)));
+                $line = array_slice($line, 1, -1);
+                $field = preg_split('/\t/', $line[0]);
+                $fieldNum = count($field);
+                $line = implode("\t", $line);
+                $content = preg_split('/[\t]/', $line);
+                $fieldArr = array();        //数据表字段数组
+            }elseif (substr($_FILES['file']['name'], -3) == 'xml') {
+                $simple = simplexml_load_file($filename);
+                $arr = $this -> std_class_object_to_array($simple -> content);
+                $fieldNum = count($arr['r-0']);
+                $fieldArr = $arr['r-0'];
+                $content = [];
+                foreach ($arr as $v) {
+                    foreach ($v as $v1) {
+                        $content[] = is_array($v1) ? '' : $v1;
+                    }
+                }
+            }else {
+                $this -> error('上传文件类型只能为CSV或XML');
+            }
+
+
+            /*echo '<pre />';
+            print_r($content);
+            exit();*/
             for ($i = 0;$i < $fieldNum; $i++) {
                 $fieldArr[$i] = $content[$i];       //组合数据表字段
             }
@@ -268,4 +288,21 @@ class Imports extends Base{
 		}
     	return $rs;
     }
+
+    public function std_class_object_to_array($stdclassobject)
+    {
+        $_array = is_object($stdclassobject) ? get_object_vars($stdclassobject) : $stdclassobject;
+        $array = [];
+        foreach ($_array as $key => $value) {
+            $value = (is_array($value) || is_object($value)) ? $this -> std_class_object_to_array($value) : $value;
+            $array[$key] = $value;
+        }
+
+        return $array;
+    }
+
+    public function test() {
+
+    }
+
 }

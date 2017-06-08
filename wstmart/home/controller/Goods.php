@@ -188,6 +188,10 @@ class Goods extends Base{
         $data['areaId'] = (int)Input('areaId');
         $aModel = model('home/areas');
 
+        //添加代码
+        $catId = model('GoodsCats')->where('catName',$data['keyword'])->field('catId')->find();
+        $goodsCatIds = model('GoodsCats')->getParentIs($catId['catId']);
+
         // 获取地区
         $data['area1'] = $data['area2'] = $data['area3'] = $aModel->listQuery(); // 省级
 
@@ -218,6 +222,8 @@ class Goods extends Base{
         
 
     	$data['goodsPage'] = $m->pageQuery();
+        $data['goodsPage'] = $m->pageQuery($goodsCatIds); //添加参数 $goodsCatIds
+        $data['Total'] = $data['goodsPage']['Total'];//添加代码  获取商品数量
     	return $this->fetch("goods_search",$data);
     }
     
