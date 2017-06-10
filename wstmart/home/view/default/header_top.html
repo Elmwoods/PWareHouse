@@ -14,7 +14,9 @@
 				<div class="drop-down drop-down2 pdr5"><i class="di-left"></i><a href="#" target="_blank">手机商城</a></div>
 				<div class='j-dorpdown-layer sweep-list'>
 				   <div class="qrcodea">
-					   <div id='qrcodea' class="qrcodeal"></div>
+					   <div id='qrcodea' class="qrcodeal">
+					   	<img src="__STYLE__/img/erweima.png" style="width:114px;height:114px;margin-left: 5px;">
+					   </div>
 					   <div class="qrcodear">
 					   	<p>扫描二维码</p><span>下载手机客户端</span>
 					   	<br/>
@@ -116,16 +118,16 @@
 				</div>
 			</li> -->
 
-			<li class="" style="width:91px;text-align: center;">
-				<div class="drop-down" style="padding:0 5px;"><a href="#" target="_blank">邀请掘金</a></div>
+			<!-- <li class="" style="width:91px;text-align: center;">
+				<div class="drop-down" style="padding:0 5px;"><a href="#" target="_blank">邀请掘金</a></div> -->
 				<!-- <div class='j-dorpdown-layer des-list' style="width:120px;"> -->
 				<!-- 	<div style="height:114px;"><img src="__STYLE__/img/wst_qr_code.jpg" style="height:114px;"></div>
 					<div>关注我们</div>
 				</div> -->
-			</li>
+			<!-- </li> -->
 
 
-			<li class="spacer">|</li>
+			<!-- <li class="spacer">|</li> -->
 
 				<li class="j-dorpdown">
 				<div class="drop-down"><a href="#" target="_blank">我的商城</a></div>
@@ -196,9 +198,11 @@ $(function(){
 	//参数1表示图像大小，取值范围1-10；参数2表示质量，取值范围'L','M','Q','H'
 	var a = qrcode(8, 'M');
 	var url = window.location.host+window.conf.APP;
+
 	a.addData(url);
+
 	a.make();
-	$('#qrcodea').html(a.createImgTag());
+	// $('#qrcodea').html(a.createImgTag());
 });
 function goShop(id){
   location.href=WST.U('home/shops/home','shopId='+id);

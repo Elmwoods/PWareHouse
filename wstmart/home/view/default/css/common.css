@@ -143,7 +143,7 @@ input[type=button]{cursor:pointer}
 
 .wst-lite-container{height:auto;}
 .wst-logo{float:left;height:auto;height:120px;}
-.wst-logo img{width:240px;height:80px;margin-top: 20px;}
+.wst-logo img{width:226px;height:71px;margin-top: 25px;}
 .wst-search-box{float:left;position: relative;width: 551px;height:120px;margin-left: 115px;}
 .wst-search{border:2px solid #e60b49;height: 36px;margin-left: 20px;margin-top: 42px;position: relative;border-radius: 4px;}
 .wst-search .j-search-type{width:72px;top:0;line-height:36px;position: absolute;padding:0;border-left:2px solid #e60b49;color:#e60b49;font-size:14px;cursor: pointer;left:-2px;text-align:center;}
@@ -157,6 +157,188 @@ input[type=button]{cursor:pointer}
   z-index: 100;
   background-color: #fff;
 }
+
+.wst_fixed_top{
+  height:60px;width:100%;position: absolute;left:0px;top:0px;display: none;background:#fff;opacity:1;z-index: 100;border-bottom: 2px #ccc solid;
+}
+
+.fixed_top{
+  width:1200px;height:60px;margin:0 auto;
+}
+
+.fixed_top .fixed_logo{
+  width:190px;height:40px;float: left;
+  border:1px red solid;
+  margin-top:10px;
+}
+
+.fixed_top .fixed_logo .fl{
+  background: url(../img/icon_fenleitubiao.png) no-repeat 30px;
+  background-color:#e60b49;
+  color: #fff;
+  font-size:16px;
+  float: left;
+  display: block;
+  font: 400 15px/36px "microsoft yahei";
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  width: 190px;
+}
+
+.fixed_top .fixed_logo .dd{
+  height:488px;
+  display: block;
+  z-index: 999;
+  position: absolute;
+  width:190px; 
+  left:76px;
+  top:52px;
+  background: #000;
+  opacity: 0.9;
+}
+
+.fixed_top .fixed_logo .dd .item-sub {
+    display: none;
+    overflow: hidden;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+    margin-bottom: -10px;
+    padding: 6px 0 10px 20px;
+    width: 1000px;
+}
+/*.fixed_top .fixed_logo .dd .item-sub .subitems dl {
+    line-height: 2em;
+    overflow: hidden;
+    width: 100%;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dl.fore1 dd {
+    border-top: medium none;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dt {
+    color: #fff;
+    display: inline-block;
+    line-height: 24px;
+    height:24px;
+    margin-right: 10px;
+    padding: 0 0 0 8px;
+    white-space: nowrap;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dt a{color: #000;font-weight:700;}
+.fixed_top .fixed_logo .dd .item-sub .subitems dt i {
+    font: 400 9px/14px consolas;
+    height: 24px;
+    margin-left:8px;
+    width: 23px;
+    display:inline-block;
+    color:#fff;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dd {
+    border-top: 1px solid #eee;
+    padding: 6px 0;
+    width: 1000px;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dd a {
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    margin: 4px 0;
+    padding: 0 8px;
+    white-space: nowrap;    
+    color:#666;
+}
+.fixed_top .fixed_logo .dd .item-sub .subitems dd a:hover {
+    color:#DF2003;
+}
+*/
+.fixed_top .fixed_logo .dd-inner .item {
+    color: #FF2706;
+    height: 35px;
+    position: relative;
+    z-index: 1;
+    transition: padding 100ms ease-in;
+    -moz-transition: padding 100ms ease-in; /* Firefox*/
+    -webkit-transition: padding 100ms ease-in; /* Safari 和 Chrome */
+    -o-transition: padding 100ms ease-in; /* Opera */
+
+}
+
+.fixed_top .fixed_logo .dd-inner h3{
+   font-size: 13px;
+    font-weight: 400;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 38px;
+   
+    margin:0 auto;
+    position: absolute;
+    z-index: 2;
+}
+
+.fixed_top .fixed_logo .dd-inner .hover {
+  height:33px;
+  border-left: 2px solid #DF2003;
+  /*border-top: 1px solid #DF2003;
+  border-bottom: 1px solid #DF2003;*/
+  background: #555 none repeat scroll 0 0;
+  color: #b61d1d;
+  /*padding-left:10px;*/
+}
+
+.fixed_top .fixed_logo  .dd-inner .hover a {
+    color:#fff;
+}
+/*.fixed_top .fixed_logo img{
+  width:240px;height:60px;
+  margin-top:5px;
+}*/
+.fixed_top .ss{
+  width:551px;height:40px; float: left;
+  margin:10px 0px 0px 134px;
+}
+
+.wst-search1{border:2px solid #e60b49;height: 36px;position: relative;border-radius: 4px;}
+.wst-search1 .j-search-type{width:72px;top:0;line-height:36px;position: absolute;padding:0;border-left:2px solid #e60b49;color:#e60b49;font-size:14px;cursor: pointer;left:-2px;text-align:center;}
+.wst-search1 .j-type-list{width:70px;top:36px;line-height:36px;position: absolute;border:2px solid #e60b49;color:#e60b49;font-size:14px;cursor: pointer;background-color: #fff;left:-2px;z-index: 100;border-top:0;display: none;text-align: center;}
+.wst-search1 .j-search-type s{  position: relative;
+  top: -17px;
+  text-decoration: none;}
+.wst-search1 .j-type-list div:hover{color: #e23c3d}
+.wst-search1 .search-ipt{border: 0 none;
+    color: #999;
+    float: left;
+    font-family: Microsoft Yahei;
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 0;
+    /*font-size: 12px;*/
+    width: 360px;
+    height:36px;
+    border:36px;
+    outline:none;
+    padding-left: 80px;
+    padding-right: 10px;
+  }
+.wst-search1 .search-btn{
+  background-color: #e60b49;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    height: 38px;
+    line-height: 36px;
+    position: absolute;
+    right: -1px;
+    text-align: center;
+    top: -1px;
+    width: 80px;
+}
+
+
+
 /*********************顶部固定***********************/
 .wst_fixed{
   /*float: left;*/
@@ -636,12 +818,10 @@ opacity:0.95;/*其他，透明度50%*/
 }
 #wst-categorys .dorpdown-layer {
     background: #fff none repeat scroll 0 0;
-    border: 1px solid #DF2003;
     display: none;
     left: 190px;
     overflow: hidden;
     position: absolute;
-    /*width: 779px;*/
     width: 1006px;
     min-height:488px;
 }

@@ -819,24 +819,24 @@ class Goods extends CGoods{
 		$where['goodsStatus'] = 1;
 		$where['g.dataFlag'] = 1;
 		$where['isSale'] = 1;
-        //添加代码start
-        if ($keyword!='') {
-            $re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
-            header("content-type:text/html; charset=utf-8");
-            // var_dump($re);die;
-            if($re){
-                $where['goodsName'] = ['like','%'.$keyword.'%'];
-                // var_dump($goodsCatIds);die;
-            }else if(in_array(null,$goodsCatIds)){
-                $where['goodsName'] = ['=',''];
-            }else{
-                $where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
-            }
-        }
-        //添加代码end
-        // $where['goodsName'] = ['like','%'.$keyword.'%'];
 
-		//if($keyword!='')$where['goodsName'] = ['like','%'.$keyword.'%'];
+		//添加代码start 
+		if ($keyword!='') {
+			$re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
+			header("content-type:text/html; charset=utf-8");
+			if($re){
+				$where['goodsName'] = ['like','%'.$keyword.'%']; 
+			}else if(in_array(null,$goodsCatIds)){
+				$where['goodsName'] = ['=',''];
+			}else{
+				$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];  
+			}
+		}else{
+			if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];  
+		}
+		//添加代码end
+		// $where['goodsName'] = ['like','%'.$keyword.'%'];
+		
 		//属性筛选
 		$goodsIds = $this->filterByAttributes();
 		if(!empty($goodsIds))$where['goodsId'] = ['in',$goodsIds];
@@ -852,7 +852,7 @@ class Goods extends CGoods{
 		if($isStock==1)$where['goodsStock'] = ['>',0];
 		if($isNew==1)$where['isNew'] = ['=',1];
 		if($isFreeShipping==1)$where['isFreeShipping'] = 1;
-		if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
+		// if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];  
 	    $sprice = input("param.sprice");//开始价格
 	    $eprice = input("param.eprice");//结束价格
 		if($sprice!='' && $eprice!=''){
@@ -862,12 +862,32 @@ class Goods extends CGoods{
 		}elseif($eprice!=''){
 			$where['g.shopPrice'] = ["<=",(int)$eprice];
 		}
+
+		//添加代码start  猜你喜欢
 		$list = Db::name("goods")->alias('g')->join("__SHOPS__ s","g.shopId = s.shopId")
 			->where($where)
-			->field('goodsId,goodsName,goodsSn,goodsStock,saleNum,shopPrice,marketPrice,isSpec,goodsImg,appraiseNum,visitNum,s.shopId,shopName')
+			->field('goodsId,goodsName,goodsSn,goodsStock,saleNum,shopPrice,marketPrice,isSpec,goodsImg,appraiseNum,visitNum,s.shopId,shopName,isBest')//添加  isBest
 			->order($pageBy[$orderBy]." ".$pageOrder[$order].",goodsId asc")
 			->paginate(input('pagesize/d',16))->toArray();
 
+		$list['cai'] = [];
+		foreach ($list['Rows'] as $key => $value) {
+			if (count($list['cai'])<3) {
+				if($value['isBest'] == 1){
+					$list['cai'][$key] = $value;
+				}	
+			}
+
+		}
+		if(count($list['cai']) == 0){
+			foreach ($list['Rows'] as $key => $value) {
+				if (count($list['cai'])<3) {
+					$list['cai'][$key] = $value;
+				}
+			}
+		}
+		//添加代码end
+		
 		return $list;
 	}
 	/**

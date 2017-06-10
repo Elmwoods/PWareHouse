@@ -11,7 +11,6 @@ namespace wstmart\chat\controller;
 
 use think\Controller;
 use think\Db;
-use wstmart\admin\controller\privileges;
 
 class Api extends Controller {
     public $request;
@@ -21,6 +20,9 @@ class Api extends Controller {
     }
 
 
+    public function upload() {
+        return view('default/upload');
+    }
 
 
     //app初始化页面接口(用于验证是否免登陆)

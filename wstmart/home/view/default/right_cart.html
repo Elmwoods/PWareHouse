@@ -166,38 +166,42 @@
 				</div>
 				<div class="fgx"></div>
 				
-				<div class="toolbar-tab tbar-tab-follow">
+				<!-- 添加代码start -->
+				<div class="toolbar-tab tbar-tab-follow" <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
 					<i class="tab-ico"></i>
 					<em class="tab-text">收藏</em>
 					<span class="tab-sub j-count hide">0</span> 
 				</div>
 				<div class="fgx"></div>
 			
-				<div class=" toolbar-tab tbar-tab-history ">
+				<div class=" toolbar-tab tbar-tab-history " <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
 					<i class="tab-ico"></i>
 					<em class="tab-text">浏览记录</em>
 					<span class="tab-sub j-count hide"></span>
 				</div>
 				<div class="fgx"></div>
-				<div class="toolbar-tab tbar-tab-message">
+				<div class="toolbar-tab tbar-tab-message" <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
 				  <a target='_blank' href='{:Url("home/messages/index")}' onclick='WST.position(50,0)'>
 					<i class="tab-ico"></i>
 					<em class="tab-text">信息</em>
 					<span class="tab-sub j-message-count hide"></span> 
 				  </a>
 				</div>
+				<!-- 添加代码end -->
+				
+				</div>
 				<div class="fgx"></div>
 			</div>
 			
 			<div class="toolbar-footer">
-				<div class="toolbar-tab tbar-tab-service"> 
+				<!-- <div class="toolbar-tab tbar-tab-service"> 
 					<a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">客服</em> </a>
-				</div>
+				</div> -->
 				<div class="toolbar-tab tbar-tab-code tab-fade"> 
 					<a href="#"> 
 						<i class="tab-ico  "></i> 
 						<span class="tab-fade-box i-tab-code">
-							<img class="tab-code-img" src="wstmart/home/view/default/img/erweima.png" />
+							<img class="tab-code-img" src="__STYLE__/img/erweima.png" />
 							<em class="arrow3 arrow-code"></em>
 						</span>
 						

@@ -37,10 +37,10 @@
 </div>
 </div>
 <div class='wst-w'>
-   <div class='wst-container' style='border:1px solid #eee'>
+   <div class='wst-container'>
       <div class='goods-img-box'>
           <div class="goods-img spec-preview" id="preview">
-          	<img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" src="__ROOT__/{:WSTImg($goods['goodsImg'])}" class="cloudzoom" data-cloudzoom="zoomImage:'__ROOT__/{$goods['goodsImg']}'" height="350" width="350">
+          	<img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" src="__ROOT__/{:WSTImg($goods['goodsImg'])}" class="cloudzoom" data-cloudzoom="zoomImage:'__ROOT__/{$goods['goodsImg']}'" height="530" width="420">
           </div>
           <div class="goods-pics">
             <a class="prev">&lt;</a>
@@ -48,7 +48,7 @@
             <div class="items">
                <ul>
                {volist name="$goods['gallery']" id='vo'}
-                   <li><img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" class='cloudzoom-gallery' src="__ROOT__/{:WSTImg($vo)}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo)}', zoomImage:'__ROOT__/{$vo}' " width="60" height="60"></li>
+                   <li><img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" class='cloudzoom-gallery' src="__ROOT__/{:WSTImg($vo)}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo)}', zoomImage:'__ROOT__/{$vo}' " width="60" height="76"></li>
                {/volist}
 			   </ul>	
 			</div>
@@ -90,32 +90,31 @@
                  <div class='dt'>运费：</div>
                  <div class='dd'>{if $goods['isFreeShipping']==1}免运费{else}系统计算{/if}</div>
                </div>
-               <div class="infor">
+               <!-- <div class="infor">
                 <div id='qrcode' style='width:125px;height:125px;margin-left:18px;'></div>
                 <div style='text-align: center;'>微信端扫购有惊喜</div>
-               </div>
+               </div> -->
              </div>
              </div>             
              <div class='wst-clear'></div>
           </div>
-
           <div class='spec'>
-                  {if condition="($goods['isSpec'] == 1)"}
-                  {volist name="$goods['spec']" id='vo'}
-                  <div class='item'>
-                      <div class='dt'>{$vo['name']}：</div>
-                      <div class='dd'>
-                          {volist name="$vo['list']" id='vo2'}
-                          {if $vo2['itemImg']!=''}
-                          <div class='j-option img' data-val="{$vo2['itemId']}" style='height:28px;padding:0px;'><img class="cloudzoom-gallery" width="28" height="28" src="__ROOT__/{:WSTImg($vo2['itemImg'])}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo2['itemImg'])}', zoomImage:'__ROOT__/{$vo2['itemImg']}' "  title="{$vo2['itemName']}" alt="{$vo2['itemName']}"/><i></i></div>
-                          {else}
-                          <div class='j-option' data-val="{$vo2['itemId']}">{$vo2['itemName']}<i></i></div>
-                          {/if}
-                          {/volist}
-                      </div>
-                      <div class='wst-clear'></div>
-                  </div>
-                  {/volist}
+             {if condition="($goods['isSpec'] == 1)"}
+             {volist name="$goods['spec']" id='vo'}
+             <div class='item'>
+               <div class='dt'>{$vo['name']}：</div>
+               <div class='dd'>
+               {volist name="$vo['list']" id='vo2'}
+                  {if $vo2['itemImg']!=''}
+                  <div class='j-option img' data-val="{$vo2['itemId']}" style='height:28px;padding:0px;'><img class="cloudzoom-gallery" width="28" height="28" src="__ROOT__/{:WSTImg($vo2['itemImg'])}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo2['itemImg'])}', zoomImage:'__ROOT__/{$vo2['itemImg']}' "  title="{$vo2['itemName']}" alt="{$vo2['itemName']}"/><i></i></div>
+                  {else}
+                  <div class='j-option' data-val="{$vo2['itemId']}">{$vo2['itemName']}<i></i></div>
+                  {/if}
+               {/volist}
+               </div>
+               <div class='wst-clear'></div>
+             </div>
+             {/volist}
               <!-- 添加代码start -->
               {elseif condition = "($goods['isSpec'] == 2 OR $goods['isSpec'] == 3) AND (isset($goodsSpec))"}
               <style>
@@ -316,8 +315,8 @@
              {:hook('homeDocumentGoodsDetail',['goods'=>$goods,'getParams'=>input()])}
 			
              <div style="clear: both;"></div>
-				<div style="margin-top:10px;float: right;">
-				<!-- JiaThis Button BEGIN -->
+			<!-- 	<div style="margin-top:10px;float: right;">
+				
 				<div class="jiathis_style_24x24">
 					<a class="jiathis_button_qzone"></a>
 					<a class="jiathis_button_tsina"></a>
@@ -327,7 +326,7 @@
 					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>					
 				</div>
 				<div style="clear: both;"></div>
-				</div>
+				</div> -->
 				
 			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
              
@@ -335,7 +334,7 @@
           </div>
       </div>
 
-      <div class='seeing'>
+      <!-- <div class='seeing'>
          <div class='head'>看了又看</div>
          <div class='body'>
           {wst:goods type="visit" cat="$goods['goodsCatId']" num="5" id="visit" num="6"}
@@ -353,7 +352,7 @@
 
 
          </div>
-      </div>
+      </div> -->
       <div class='wst-clear'></div>
    </div>
 </div>
@@ -402,7 +401,7 @@
 			</div>
 		</div> -->
 		<div class='goods-desc'>
-		    <div id='tab' class="wst-tab-box">
+		    <div  class="wst-tab-box">
 				<!-- <ul id='goodsTabs' class="wst-tab-nav">
 				   <li>商品参数</li>
 				   <li>商品详情<span class='appraise-num'>（{$goods['appraiseNum']}）</span></li>
@@ -414,13 +413,13 @@
            <li>购买须知</li>
 				</ul> -->
         <div  id='goodsTabs' class="wst-tab-nav">
-          <div style="width:1200px;margin:0 auto;">
+          <div style="width:1200px;margin:0 auto;" id="tab">
           <ul id="md">
-             <li class="one_li"><a href="#goods_cs">商品参数</a><span>|</span></li>
-             <li><a href="#goods_xx">商品详情</a><span>|</span></li>
-             <li><a href="#goods_pj">商品评价</a><span>|</span></li>
-             <li><a href="#goods_zx">商品咨询</a><span>|</span></li>
-             <li><a href="#goods_xz">购买须知</a></li>
+             <li class="one_li">商品参数<span>|</span></li>
+             <!-- <li><a href="#goods_xx">商品详情</a><span>|</span></li> -->
+             <li>商品评价&nbsp;(&nbsp;{$goods['appraiseNum']}&nbsp;)</li>
+             <!-- <li><a href="#goods_zx">商品咨询</a><span>|</span></li> -->
+             <!-- <li><a href="#goods_xz">购买须知</a></li> -->
           </ul>
           <div class="wst-tab_right" id="zf">
             <span class="wst-tab_right_pay">&nbsp;&nbsp;<a href="">扫一扫手机支付</a>
@@ -430,16 +429,16 @@
           </div>
           </div>
         </div>
-        <div>
-        <a name="goods_cs" class="wst-tab_goods">
-          <h3>商品参数<span>1</span></h3>
-            <div class="goods_img">
-                {$goods['goodsDesc']|htmlspecialchars_decode}
-            </div>
-        </a>
+
+        <div class="aa">
+        <div class="parameter bb">
+          <div class="goods_img">
+           {$goods['goodsDesc']|htmlspecialchars_decode}
+          </div>
+   
         </div>
 
-        <div>
+       <!--  <div>
         <a name="goods_xx" class="wst-tab_goods">
           <h3>商品详情<span>2</span></h3>
           <div class="goods_img">
@@ -447,19 +446,53 @@
             <img src="" >
           </div>
         </a>
-      </div>
+      </div> -->
 
-      <div>
-        <a name="goods_pj" class="wst-tab_goods">
-          <h3>商品评价<span>3</span></h3>
-          <div class="goods_img">
-            <img src="" >
-            <img src="" >
+      <div  class="parameter" style="display: none;">
+        
+          
+          <script id="tblist" type="text/html" style="display: none;">
+               {{# for(var i = 0; i < d.length; i++){ }}
+               <div class="appraises-box">
+                <div class="wst-appraises-left">
+                  <p class="app-content">
+                    {{d[i]['content']}}
+                  </p>
+                  {{#  if(WST.blank(d[i]['images'])!=''){ var img = d[i]['images'].split(','); var length = img.length;  }}
+                  <div id="img-file-{{i}}">
+                  {{#  for(var g=0;g<length;g++){  }}
+                         <img src="__ROOT__/{{img[g].replace('.','_thumb.')}}" layer-src="__ROOT__/{{img[g]}}"  style="width:80px;height:80px;" />
+                  {{#  } }}
+                  </div>
+                  {{# }  }}
+                  {{# if(d[i]['shopReply']!='' && d[i]['shopReply']!=null){ }}
+                  <div class="reply-box">
+                     <!-- <p class="reply-content"><a href="javascript:void(0)" onclick="goShop({{d[i]['shopId']}})">{{d[i]['shopName']}}</a>：{{d[i]['shopReply']}}</p> -->
+                     <p class="reply-time">{{d[i]['replyTime']}}</p>
+                 </div>
+                 {{# } }}
+
+               </div>
+               <div class="wst-appraises-right">
+                <div class="goods-spec-box">
+                    {{d[i]['goodsSpecNames']}}
+                </div>
+                <div class="appraiser">
+                    【{{d[i]['loginName']}}】
+                </div>
+               </div>
+             <div class="wst-clear"></div>
+              </div> 
+               {{# } }}
+               </script>
+          <div class="goods_img" id='ga-box'>
+    
           </div>
-        </a>
+     
+        </div>
         </div>
 
-        <div>
+       <!--  <div>
         <a name="goods_zx" class="wst-tab_goods">
           <h3>商品咨询<span>4</span></h3>
           <div class="goods_img">
@@ -477,9 +510,9 @@
             <img src="">
           </div>
         </a>
-        </div>
+        </div> -->
 
-        <script type="text/javascript">
+       <!--  <script type="text/javascript">
           $(function(){
               $('.wst-tab-nav li').hover(
                 function(){
@@ -506,15 +539,9 @@
                   $(this).css({'background':''});
                 }
               );
-
-              // $('#md').find('li').click(function(){
-              //   $('.wst-tab_goods').addClass('height');
-            
-              // });
-             
            });
          
-        </script>
+        </script> -->
 			  <!-- <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
 			       <div class="wst-tab-item goods-desc-box" style="position: relative;">
 			       <ul class='wst-attrs-list'>

@@ -123,10 +123,10 @@
 .goods-filters .line .store3{background:url(../img/store_icon_sx_sel_up.png) 0px 0px no-repeat;}
 
 .wst-price-ipts{float:left;position: relative;margin-left: 10px;}
-input.wst-price-ipt{width:92px;height: 19px;outline: none;border: 1px solid #e9e7e7;}
+input.wst-price-ipt{width: 83px;height: 19px;outline: none;border: 1px solid #e9e7e7;padding-left: 18px;}
 input.wst-price-ipt:focus{border: 1px solid #ff8043;}
 .wst-price-ipt1{position: absolute;left: 11px;top: 4px;}
-.wst-price-ipt2{position: absolute;right: 84px;top: 4px;}
+.wst-price-ipt2{position: absolute;right: 89px;top: 4px;}
 .wst-price-but{outline: none;background:#e60b49;margin-left:10px;border-radius:3px;color: #fff;border: 1px solid #dad7d7;cursor:pointer;}
 .wst-price-but:not(.disabled):not(:disabled):active, .wst-price-but.active{background: #f1f1f1;background-clip: padding-box;}
 
@@ -324,6 +324,9 @@ input.wst-price-ipt:focus{border: 1px solid #ff8043;}
 .item .hei{
 	height:30px;
 }
-
+.item .hei1{
+	height:40px;
+	padding-left:5px;
+}
 
 

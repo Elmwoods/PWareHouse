@@ -17,6 +17,19 @@ class  Login  extends Controller {
 
 
     public function send() {
+        $mobile=$_POST['mobile'];
+        $arr2 = Db::table('jingo_users')->field(['userId', 'loginName', 'userPhoto'])->where('userPhone',$mobile)->find();        //查询手机号相关用户
+        if ($arr2) {
+            exit();
+        }
+        $param = $this->request->param();
+        if (!empty($param)) {
+            $info = $this->api->send($param['mobile']);
+            return $info;
+        }
+    }
+
+    public function sends() {
         $param = $this->request->param();
         if (!empty($param)) {
             $info = $this->api->send($param['mobile']);
@@ -28,6 +41,7 @@ class  Login  extends Controller {
         $param = $this->request->param();
         if (!empty($param)) {
             $info = $this->api->reg($param['mobile'], $param['code']);
+
             if (json_decode($info) -> result == 'success') {
                 $value = Db::table('jingo_users') -> field(['userName', 'userId']) -> where('userPhone', $param['mobile']) -> find();
                 session('WST_USER.userName',$value['userName']);
@@ -38,6 +52,26 @@ class  Login  extends Controller {
             }
         }
     }
+   /* public function alreadyLogin(){
+        if(session('WST_USER.userName')!=='' && session('WST_USER.userId')!=='' ){
+            return view('')
+        }
+    }*/
+
+
+    public function regs()
+    {
+        $mobile=$_POST['mobile'];
+        $arr2 = Db::table('jingo_users')->field(['userId', 'loginName', 'userPhoto'])->where('userPhone',$mobile)->find();        //查询手机号相关用户
+        if ($arr2) {
+            $data = array(
+                'result' => 'repeat',
+                'value' => '您的手机号码已注册，请直接登录',
+            );
+            return $data['value'];
+        }
+    }
+
 
     public function logon($username, $password) {
         $param = $this->request->param();
@@ -114,7 +148,7 @@ class  Login  extends Controller {
                     $login_time     =   time();
                     $limitTime      =   time() - 7*24*3600;
                 }else {
-                    return json(array('result' => 'error', 'value' => '不存在该用户'));
+                    return urldecode(json_encode(array('result' => 'error', 'value' => urlencode('不存在该用户'))));
                 }
 
                 //判断提交值密码 和数据库密码是否一致

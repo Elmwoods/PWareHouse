@@ -368,6 +368,7 @@
 	color: #666;
 	display: inline-block;
 	background-repeat: no-repeat;
+    z-index: 10;
 }
 .tbar-tab-self{
     background-image: url("../img/right_self.png");
@@ -460,7 +461,7 @@
 	background-image: url(../img/kefu.png);
 }
 .tbar-tab-code {
-	background-image: url(../img/erweima.png);
+	background-image: url(../img/right_erweima.png);
 }
 .tbar-tab-top {
     background-image: url(../img/top.png);
@@ -590,16 +591,19 @@
 	margin:18px 0px 10px 16px;
 }
 .tab-fade-photo {
-	width: 110px;
-	height: 110px;
-	border-radius: 75px;
-	margin: 30px auto;
-	background: #F06F69;
+    width: 110px;
+    height: 110px;
+    border-radius: 75px;
+    margin: 30px auto;
+    /*background: #F06F69;*/
+     background: url("../img/user_logo.png") no-repeat #f06f69;
+     background-size:100% 100%;
 }
-.tab-fade-photo img{
-	width:100%;
-	height:100%;
-	border-radius:50%;
+
+.tab-code-img {
+    width: 120px;
+    height: 120px;
+    background: #FFFFFF;
 }
 .tab-code-img {
 	width: 120px;

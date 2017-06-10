@@ -26,7 +26,6 @@ class Friend extends Controller {
 
     //获取朋友列表
     public function friends($userId) {
-
         $param = $this -> request -> param();
         if (!empty($param)) {
             //联接朋友表和用户总表查询好友信息
@@ -43,7 +42,8 @@ class Friend extends Controller {
                 $arr2[$i]['state'] = 1;     //1表示群
             }
             //合并朋友表和群表
-            $arr = array_merge($arr1, $arr2);
+            $arr3[] = ['friendID' => 1, 'userName' => 'administrator', 'userPhoto' => 'http://www.jingomall.com/logo.png', 'state' => 2];
+            $arr = array_merge($arr1, $arr2, $arr3);
             return json(array('result'=>'success', 'value'=>$arr));
             /*$friendArr[] = array();
             for ($i=0; $i < count($arr); $i++) {

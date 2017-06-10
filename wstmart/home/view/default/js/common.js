@@ -94,6 +94,16 @@ WST.search = function(){
 		WST.goodsSearch($.trim($('#search-ipt').val()));
 	}
 }
+
+WST.fixed = function(){
+	if($("#fixed-type").val()==1){
+		WST.shopSearch($.trim($('#fixed-ipt').val()));
+	}else{
+		WST.goodsSearch($.trim($('#fixed-ipt').val()));
+	}
+}
+
+
 WST.shopSearch = function(v){
 	location.href = WST.U('home/shops/shopstreet','keyword='+v,true);
 }
@@ -394,10 +404,12 @@ $.fn.TabPanel = function(options){
 	var defaults = {tab: 0}; 
 	var opts = $.extend(defaults, options);
 	var t = this;
-	$(t).find('.wst-tab-nav li').click(function(){
-		$(this).addClass("on").siblings().removeClass();
+	
+	$(t).find('#md li').click(function(){
+		
+		$(this).addClass("one_li").siblings().removeClass();
 		var index = $(this).index();
-		$(t).find('.wst-tab-content .wst-tab-item').eq(index).show().siblings().hide();
+		$(t).parent('#goodsTabs').next('.aa').find('.parameter').eq(index).show().siblings().hide();
 		if(opts.callback)opts.callback(index);
 	});
 	$(t).find('.wst-tab-nav li').eq(opts.tab).click();

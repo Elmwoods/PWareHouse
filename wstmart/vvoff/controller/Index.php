@@ -9,7 +9,16 @@ use wstmart\vvoff\model\VvoffEnstaff as T;
 
 class  index extends Controller
  {
+    public function turn() {
+        $needle = strrpos($_SERVER['SERVER_NAME'], '.') + 1;        //获取最后一次 . 出现的位置
+        $suffix =  substr($_SERVER['SERVER_NAME'], $needle);        //获取域名后缀
+        if ($suffix == 'cn') {
+            $this -> redirect("http://www.jingomall.com");
+        }
+    }
+
     public function index(){
+        $this -> turn();
         return view('lead');
     }
     public function purse(){

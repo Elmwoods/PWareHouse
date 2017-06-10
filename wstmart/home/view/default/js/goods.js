@@ -198,7 +198,11 @@ function addCart(type,iptId){
 		}
 	}
 	var buyNum = $(iptId)[0]?$(iptId).val():1;
-	$.post(WST.U('home/carts/addCart'),{goodsId:goodsInfo.id,goodsSpecId:goodsSpecId,buyNum:buyNum,rnd:Math.random()},function(data,textStatus){
+	//添加代码
+    var color  = $('.rect_select:eq(0)').html();
+    var size  = $('.rect_select:eq(1)').html();
+
+    $.post(WST.U('home/carts/addCart'),{goodsId:goodsInfo.id,goodsSpecId:goodsSpecId,buyNum:buyNum,color:color,size:size,rnd:Math.random()},function(data,textStatus){
 	     var json = WST.toJson(data);
 	     if(json.status==1){
 	    	 WST.msg(json.msg,{icon:1});
