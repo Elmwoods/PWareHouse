@@ -173,7 +173,7 @@
 					<span class="right" style="color:#ccc;">{$art.art_addtime}</span>
 				</div>
 				<div class="main_main" style="color:#ccc;font-size: 13px;line-height:1.7;">
-					{$art.art_content}
+					<?php echo htmlspecialchars_decode($art['art_content']); ?>
 				</div>
 			</div>
 		</div>

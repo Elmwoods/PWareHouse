@@ -22,7 +22,7 @@ class Joy extends Controller {
 
     //游戏初始化
     public function index($userId) {
-        $param = $this->request->param();
+        $param = input('post.');
         $time = strtotime(date("Y-m-d 00:00:00"));
         $GPN = Db::table('jingo_users') -> field('imazamox_number') -> where('userId', $param['userId']) -> find();
         if (!empty($param)) {
@@ -51,7 +51,7 @@ class Joy extends Controller {
     }
 
     public function update() {
-        $param = $this->request->param();
+        $param = input('post.');
         $now = strtotime(date("Y-m-d 00:00:00"));
         if (!empty($param)) {
             $joy = new Joys();
@@ -64,7 +64,7 @@ class Joy extends Controller {
                     $data['joy2'] = 0;
                     $data['joy3'] = 0;
                     $data['time'] = $now;
-                    if ($joy -> isUpdate(true) -> save($data, ['userId'=>$param['userId']])) {
+                    if ($joy -> isUpdate(true) -> save($data, ['userId'=>$param['userId']])) {          //更新游戏状态
                         return json(array('result' => 'success', 'value' => '更新成功,可以开始动作了'));
                     }else {
                         return json(array('result' => 'error', 'value' => '更新失败,请重试'));
@@ -76,10 +76,10 @@ class Joy extends Controller {
                 $data['time'] = $now;
                 $data['GPN']  = $param['GPN'];
                 $data['userId'] = $param['userId'];
-                if ($joy -> isUpdate(true) -> save($data, ['userId'=>$param['userId']])) {
+                if ($joy -> isUpdate(true) -> save($data, ['userId'=>$param['userId']]) && Db::table('jingo_users') -> where('userId', $param['userId']) -> update(['imazamox_number'=>$param['GPN']])) {
                     return json(array('result' => 'success', 'value' => '更新成功,可以开始动作了'));
                 }else {
-                    return json(array('result' => 'error', 'value' => '更新失败,请重试'));
+                    return json(array('result' => 'error', 'value' => '网络又开小差了,请稍候重试'));
                 }
             }else {
                 return json(array('result' => 'error', 'value' => '非法操作'));

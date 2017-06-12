@@ -85,7 +85,7 @@ class  index extends Controller
         $this->assign('sta',$ii);
         $this->assign('sta2',$iii);
         $mm=new M;
-        $dd=$mm->where('is_see',1)->limit(0,3)->select();
+        $dd=$mm->where('is_see',1)->limit(0,3)->order('art_addtime', 'DESC')->select();
         $arr = [];
         $i=0;
         foreach ($dd as $v) {
@@ -111,7 +111,7 @@ class  index extends Controller
 		$ii=$m->where('e_is_see',1)->order('id', 'asc')->select();
 		$this->assign('ensta',$ii);
 		$mm=new D;
-		$dd=$mm->where('e_is_see',1)->order('id', 'asc')->select();
+		$dd=$mm->where('e_is_see',1)->order('e_art_addtime', 'DESC')->select();
 		$this->assign('enart',$dd);
         $serialize = $this->setqrcode();
         $date = date("Ymd",time());
@@ -123,14 +123,14 @@ class  index extends Controller
 	{
 		$mm=new M;
 		$ii=input('param.');
-		$dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
+		$dd=$mm->where('id',$ii['id'])->order('art_addtime', 'DESC')->select();
 		$this->assign('art',$dd);
 		return $this->fetch('news');
 	}
     public function webnew(){
         $mm=new D;
         $ii=input('param.');
-        $dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
+        $dd=$mm->where('id',$ii['id'])->order('art_addtime', 'DESC')->select();
         $this->assign('enart',$dd);
         return view('webnew');
     }
@@ -138,7 +138,7 @@ class  index extends Controller
 	{
 		$mm=new D;
 		$ii=input('param.');
-		$dd=$mm->where('id',$ii['id'])->order('id', 'asc')->select();
+		$dd=$mm->where('id',$ii['id'])->order('e_art_addtime', 'DESC')->select();
 		$this->assign('enart',$dd);
 		return $this->fetch('ennews');
 	}
@@ -260,7 +260,7 @@ class  index extends Controller
     }
     
     public function news_list() {
-        $list = Db::name('vvoff_article')->where('is_see',1)->order('id', 'asc')->paginate(3);
+        $list = Db::name('vvoff_article')->where('is_see',1)->order('art_addtime', 'DESC')->paginate(3);
 		$this->assign('list', $list);
 		return view('news_list');
 	}

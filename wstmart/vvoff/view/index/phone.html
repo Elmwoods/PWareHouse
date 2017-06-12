@@ -163,22 +163,22 @@
                     <img src="__VVOFF__/img/0.png" class="new_img"/>
                     <div class="se_list">
                         <ul class="se_ul">
-                            {volist name="art2" id="v"}
-                            <a href="{:url('vvoff/index/p_news', ['id'=>$v.id])}">
+                            <?php foreach($art2 as $v) { ?>
+                            <a href="<?php echo url('vvoff/index/p_news', ['id'=>$v['id']]);?>">
                                 <li>
                                     <dl>
                                         <dt>
-                                            <img src="/{$v.art_img}"/>
+                                            <img src="/<?php echo $v['art_img'];?>"/>
                                         </dt>
                                         <dd>
-                                            <h2>{$v.art_name}</h2>
+                                            <h2><?php echo $v['art_name'];?></h2>
 
-                                            <span>{$v.art_short}</span>
+                                            <span><?php echo htmlspecialchars_decode($v['art_short']);?></span>
                                         </dd>
                                     </dl>
                                 </li>
                             </a>
-                            {/volist}
+                           <?php  } ?>
                         </ul>
                     </div>
                     <a href="{:url('vvoff/index/news_list')}"><button style="background:#000;border:0;color:#fff;">加载更多</button></a>
