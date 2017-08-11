@@ -89,7 +89,20 @@ class Kuaidi extends Addons{
 	    	return $this->fetch('view/home/view');
     	}
     }
-    
+
+    /**
+     * 获取该订单商品是否已签收   添加代码
+     */
+    public function signfor($orderId){
+        $m = new DM();
+        $rs = $m->getOrderDeliver($orderId);
+        if($rs["deliverType"]==0 && $rs["orderStatus"]>0){
+            $rs = $m->getOrderExpress($orderId);
+            $expressLogs = json_decode($rs, true);
+            return $expressLogs;
+        }
+    }
+
 	public function afterQueryUserOrders($params){
 		$m = new DM();
     	foreach ($params["page"]["Rows"] as $key => $v){

@@ -48,7 +48,7 @@
             0: "此处",
             fallback: "{0}格式不正确",
             loading: "正在验证...",
-            error: "网络异常",
+            error: "用户名格式不对",
             timeout: "请求超时",
             required: "{0}不能为空",
             remote: "{0}已被使用",

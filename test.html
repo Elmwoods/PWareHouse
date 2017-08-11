@@ -1,0 +1,45 @@
+<script>
+
+var array = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+  [10,11,12],
+  [10,11,12]
+];
+var len = array.length;
+var results = [];
+var indexs = {};
+function specialSort(start) {
+    start++;
+    if (start > len - 1) {
+        return;
+    }
+    if (!indexs[start]) {
+        indexs[start] = 0;
+    }
+    if (!(array[start] instanceof Array)) {
+        array[start] = [array[start]];
+    }
+    for (indexs[start] = 0; indexs[start] < array[start].length; indexs[start]++) {
+        specialSort(start);
+        if (start == len - 1) {
+            var temp = [];
+            for (var i = len - 1; i >= 0; i--) {
+                if (!(array[start - i] instanceof Array)) {
+                    array[start - i] = [array[start - i]];
+                }
+                temp.push(array[start - i][indexs[start - i]]);
+            }
+            results.push('<br/>'+temp);
+        }
+    }
+}
+
+specialSort(-1);
+document.writeln(results);
+alert(results.length);
+
+
+
+</script>

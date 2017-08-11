@@ -13,7 +13,7 @@ if($control_flag) {
 }
 ?>
 <?php $extend_class = (isSet($block['blockFullWidth']) && $block['blockFullWidth'] == '1') ? 'store-decoration-block-full-width' : '';?>
-<div id="block_<?php echo $block['blockId'];?>" data-block-id="<?php echo $block['blockId'];?>" nctype="shop_decoration_block" class="wst-decration-block store-decoration-block-1 <?php echo $extend_class;?> tip" title="<?php echo $block_title;?>">
+<div id="block_<?php echo $block['blockId'];?>" data-block-id="<?php echo $block['blockId'];?>" nctype="shop_decoration_block" class="wst-decration-block store-decoration-block-1 <?php echo $extend_class;?> tip"  title="<?php echo $block_title;?>">
     <div nctype="shop_decoration_block_content" class="wst-decration-block-content store-decoration-block-1-content">
         <div nctype="shop_decoration_block_module" class="store-decoration-block-1-module">
             <?php if(isSet($block['blockModuleType']) && !empty($block['blockModuleType'])) { 

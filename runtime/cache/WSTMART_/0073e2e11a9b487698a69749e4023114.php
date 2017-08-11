@@ -1,0 +1,3 @@
+<?php
+//000000086400a:4:{i:0;a:4:{s:6:"shopId";i:19;s:7:"shopImg";s:38:"upload/shops/2017-04/58fdb577478f4.png";s:8:"shopName";s:15:"金购女装馆";s:5:"catId";i:1;}i:1;a:4:{s:6:"shopId";i:20;s:7:"shopImg";s:38:"upload/shops/2017-04/58ff0330c33af.png";s:8:"shopName";s:15:"金购男装馆";s:5:"catId";i:1;}i:2;a:4:{s:6:"shopId";i:21;s:7:"shopImg";s:38:"upload/shops/2017-04/58ff04e682420.png";s:8:"shopName";s:15:"金购男鞋馆";s:5:"catId";i:1;}i:3;a:4:{s:6:"shopId";i:23;s:7:"shopImg";s:38:"upload/shops/2017-04/58ff05b602cdc.png";s:8:"shopName";s:15:"金购配饰馆";s:5:"catId";i:1;}}
+?>

@@ -1,0 +1,3 @@
+<?php
+//000000086400a:1:{i:0;a:13:{s:8:"shopName";s:15:"家居家装馆";s:6:"shopId";i:32;s:7:"goodsId";i:2073;s:9:"goodsName";s:81:"世昌源自营 仙罐 宠物狗零食狗罐头犬泰迪金毛湿狗粮牛肉375g";s:8:"goodsImg";s:57:"upload/goods/2017-06/f7477f67305bf0c713df6afd072661d5.jpg";s:7:"goodsSn";s:10:"5417974912";s:10:"goodsStock";i:2644;s:7:"saleNum";i:0;s:9:"shopPrice";s:5:"22.90";s:11:"marketPrice";s:5:"23.90";s:6:"isSpec";i:2;s:11:"appraiseNum";i:0;s:8:"visitNum";i:11;}}
+?>

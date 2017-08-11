@@ -1,0 +1,3 @@
+<?php
+//000000086400a:1:{i:0;a:13:{s:8:"shopName";s:15:"食品饮料馆";s:6:"shopId";i:37;s:7:"goodsId";i:1468;s:9:"goodsName";s:76:"报喜林氨糖  蓬生源牌氨糖软骨素维生素D钙片 氨糖软骨素";s:8:"goodsImg";s:57:"upload/goods/2017-06/d6d58a61db1db65791597929d24eac91.jpg";s:7:"goodsSn";s:10:"5409425849";s:10:"goodsStock";i:91818;s:7:"saleNum";i:0;s:9:"shopPrice";s:5:"51.90";s:11:"marketPrice";s:5:"54.90";s:6:"isSpec";i:0;s:11:"appraiseNum";i:0;s:8:"visitNum";i:6;}}
+?>

@@ -1,0 +1,3 @@
+<?php
+//000000086400a:3:{i:0;a:4:{s:6:"shopId";i:12;s:7:"shopImg";s:38:"upload/shops/2017-04/58f9bd16845a8.jpg";s:8:"shopName";s:18:"树下的大蘑菇";s:5:"catId";i:825;}i:1;a:4:{s:6:"shopId";i:40;s:7:"shopImg";s:38:"upload/shops/2017-05/59097510c3342.png";s:8:"shopName";s:15:"玩具乐器馆";s:5:"catId";i:825;}i:2;a:4:{s:6:"shopId";i:61;s:7:"shopImg";s:38:"upload/shops/2017-06/594878645d16f.png";s:8:"shopName";s:6:"痕迹";s:5:"catId";i:825;}}
+?>

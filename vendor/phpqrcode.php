@@ -1,5 +1,5 @@
 <?php
-namespace wstmart\vv\controller;
+namespace vendor;
 /*
  * PHP QR Code encoder
  *
