@@ -67,7 +67,8 @@ class Orders extends Base{
 		 	-3,-4,-5:拒收、退款列表
 			-2:待付款列表 
 			-1:已取消订单
-			0,1: 待收货
+			0:代发货
+			1: 待收货
 			2:待评价/已完成
 		*/
 		$flag = -1;
@@ -78,8 +79,11 @@ class Orders extends Base{
 				$status=[-2];
 				break;
 			case 'waitReceive':
-				$status=[0,1];
+				$status=[1];
 				break;
+			case 'waitSend':
+				$status=[0];
+				break;	
 			case 'waitAppraise':
 				$status=[2];
 				$flag=0;
@@ -195,7 +199,7 @@ class Orders extends Base{
 			-2:待付款列表 
 			-1:已取消订单
 			 0: 待发货
-			1,2:待评价/已完成
+			1,2:待收货/已完成
 		*/
 		$type = input('param.type');
 		$status = [];

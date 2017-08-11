@@ -55,7 +55,7 @@ class Goods extends Base{
 	/**
 	 * 审核中的商品
 	 */
-    public function auditByPage(){
+public function auditByPage(){
     	$where['goodsStatus'] = 0;
 		$where['g.dataFlag'] = 1;
 		$where['isSale'] = 1;
@@ -64,15 +64,28 @@ class Goods extends Base{
 		$goodsName = input('goodsName');
 		$shopName = input('shopName');
 		if($areaIdPath !='')$where['areaIdPath'] = ['like',$areaIdPath."%"];
-		if($goodsCatIdPath !='')$where['goodsCatIdPath'] = ['like',$goodsCatIdPath."%"];
+		// if($goodsCatIdPath !='')$where['goodsCatIdPath'] = ['like',$goodsCatIdPath."%"];
 		if($goodsName != '')$where['goodsName|goodsSn'] = ['like',"%$goodsName%"];
 		if($shopName != '')$where['shopName|shopSn'] = ['like',"%$shopName%"];
 		$keyCats = model('GoodsCats')->listKeyAll();
-		$rs = $this->alias('g')->join('__SHOPS__ s','g.shopId=s.shopId','left')
+		
+		//添加代码start
+		if(!strpos($goodsCatIdPath,"_") && $goodsCatIdPath){
+			$goodsCatIdPath1 ="'".$goodsCatIdPath."|_%" ."'". "escape '|' ";
+			$rs = $this->alias('g')->join('__SHOPS__ s','g.shopId=s.shopId','left')
+			->where("goodsCatIdPath like ".$goodsCatIdPath1)
 		    ->where($where)
 			->field('goodsId,goodsName,goodsSn,saleNum,shopPrice,goodsImg,s.shopName,s.shopId,goodsCatIdPath')
 			->order('saleTime', 'desc')
 			->paginate(input('pagesize/d'))->toArray();
+		}else{
+			if($goodsCatIdPath !='')$where['goodsCatIdPath'] = ['like',$goodsCatIdPath."%"];
+			$rs = $this->alias('g')->join('__SHOPS__ s','g.shopId=s.shopId','left')
+		    ->where($where)
+			->field('goodsId,goodsName,goodsSn,saleNum,shopPrice,goodsImg,s.shopName,s.shopId,goodsCatIdPath')
+			->order('saleTime', 'desc')
+			->paginate(input('pagesize/d'))->toArray();
+		}
         foreach ($rs['Rows'] as $key => $v){
 			$rs['Rows'][$key]['verfiycode'] =  WSTShopEncrypt($v['shopId']);
 			$rs['Rows'][$key]['goodsCatName'] = self::getGoodsCatNames($v['goodsCatIdPath'],$keyCats);

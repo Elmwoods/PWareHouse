@@ -26,7 +26,7 @@ class CashDraws extends Base{
         if(in_array($targetType,[0,1]))$where['targetType'] = $targetType;
         if(in_array($cashSatus,[0,1]))$where['cashSatus'] = $cashSatus;
         if($cashNo!='')$where['cashNo'] = ['like','%'.$cashNo.'%'];
-        return $this->where($where)->paginate(input('pagesize/d'))->order('createTime desc')->toArray();
+        return $this->where($where)->order('createTime desc')->paginate(input('pagesize/d'))->toArray();
 	}
 
 	/**

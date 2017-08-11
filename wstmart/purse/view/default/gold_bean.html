@@ -155,12 +155,10 @@
                                 <table style="border:0;">
                                     <tr>
                                         <th class="time">创建时间</th>
-                                        <th class="time">交易时间</th>
                                         <th class="time">结束时间</th>
                                     </tr>
                                     <tr>
                                         <td class="time1" id='createTime'></td>
-                                        <td class="time1" id='createTime_j'></td>
                                         <td class="time1" id='createTime_z'></td>
                                     </tr>
                                 </table>
@@ -227,8 +225,7 @@
                 $('#dataFlag').html('进行中');
             }
             $('#createTime').html(data['createTime']);
-            $('#createTime_j').html(data['createTime']);
-            $('#createTime_z').html(data['createTime']);
+            $('#createTime_z').html(data['endTime']);
 
             var mt = data['moneyType'];
             if(mt==1){

@@ -19,7 +19,7 @@ class Goods extends CGoods{
 	/**
 	 * 获取列表
 	 */
-	public function pageQuery($goodsCatIds = []){
+	public function pageQuery($goodsCatIds = [],$isSearch = 0){
 		//查询条件
 		$keyword = input('keyword');
 		$brandId = input('brandId/d');
@@ -27,7 +27,45 @@ class Goods extends CGoods{
 		$where['goodsStatus'] = 1;
 		$where['g.dataFlag'] = 1;
 		$where['isSale'] = 1;
-		if($keyword!='')$where['goodsName'] = ['like','%'.$keyword.'%'];
+
+		//添加代码start
+		$flag = false;//判断商品是否存在
+		if(!empty($goodsCatIds)){
+			foreach ($goodsCatIds as $key => $value1) {
+	            $rs = Db::name('goods')->where(['goodsCatIdPath'=>['like',implode('_',$value1).'%']])->find();
+	            if($rs){
+	            	$flag = true;
+	            	break;
+				}else if($isSearch ==0){
+					$where['goodsCatIdPath'] = ['like','-.,*(_+a_z!$^.<>_null_'];
+				}
+        	}	
+		}
+
+		if($flag == true){
+        	if(count($goodsCatIds) > 1){
+        		$where['goodsCatIdPath']=[];
+        		foreach ($goodsCatIds as $key => $value2) {
+	            	array_push($where['goodsCatIdPath'],['like',implode('_',$value2).'%']);
+        		}
+        		array_push($where['goodsCatIdPath'],'or');
+        	}else{
+        		$where['goodsCatIdPath'] = ['like',implode('_',$value1).'%'];
+        	}
+		}
+		if($flag == false){
+			if ($keyword!=''){
+				$re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
+				if($re){
+					$where['goodsName'] = ['like','%'.$keyword.'%']; 
+				}else{
+					$where['goodsCatIdPath'] = ['like','-.,*(_+a_z!$^.<>_null_'];
+				}
+			}
+		}
+		//添加代码end
+
+		// if($keyword!='')$where['goodsName'] = ['like','%'.$keyword.'%'];
 		if($brandId>0)$where['g.brandId'] = $brandId;
 		//排序条件
 		$orderBy = input('condition/d',0);
@@ -35,12 +73,13 @@ class Goods extends CGoods{
 		$order = (input('desc/d',0)==1)?1:0;
 		$pageBy = ['saleNum','shopPrice','visitNum','saleTime'];
 		$pageOrder = ['desc','asc'];
-		if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
+		// if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
 		$list = Db::name('goods')->alias('g')->join("__SHOPS__ s","g.shopId = s.shopId")
 		->where($where)
 		->field('goodsId,goodsName,saleNum,shopPrice,marketPrice,isSpec,goodsImg,appraiseNum,visitNum,s.shopId,shopName')
 		->order($pageBy[$orderBy]." ".$pageOrder[$order].",goodsId asc")
 		->paginate(input('pagesize/d'))->toArray();
+
 		return $list;
 	}
 

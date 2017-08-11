@@ -36,7 +36,14 @@ class Goods extends Base{
 			$sarr = array();
 			foreach ($words as $key => $word) {
 				if($word!=""){
-					$sarr[] = "g.goodsName like '%$word%'";
+					//添加代码start
+					$rs = Db::name('shop_cats')->field('catId')->where('catName',$word)->find();
+					if ($rs) {
+						$sarr[]="g.shopCatId2=".$rs['catId'];
+					}else{
+						$sarr[] = "g.goodsName like '%$word%'";//源代码
+					}
+					//添加代码end
 				}
 			}
 			$where4 = implode(" or ", $sarr);
@@ -46,8 +53,15 @@ class Goods extends Base{
 		$eprice = input("param.eprice");//结束价格
 		if($sprice!="")$where2 = "g.shopPrice >= ".(float)$sprice;
 		if($eprice!="")$where3 = "g.shopPrice <= ".(float)$eprice;
-		$ct1 = input("param.ct1/d");
-		$ct2 = input("param.ct2/d");
+		//添加代码start
+		if ($where4) {
+			$ct1 = 0;
+			$ct2 = 0;
+		}else{
+			$ct1 = input("param.ct1/d");//源代码
+			$ct2 = input("param.ct2/d");//源代码
+		}
+		//添加代码end
 		if($ct1>0)$where['shopCatId1'] = $ct1;
 		if($ct2>0)$where['shopCatId2'] = $ct2;
 		$goods = Db::name('goods')->alias('g')

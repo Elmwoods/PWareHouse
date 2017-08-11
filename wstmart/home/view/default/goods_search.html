@@ -40,7 +40,7 @@
       <i class="arrow">></i>
    </div>
    <div class='wst-lfloat keyword'>{$keyword}</div>
-   <div>(商品共<span>{$Total}</span>个)</div>
+   <div class="num">(商品共<span>{$Total}</span>个)</div>
    <div class='wst-clear'></div>
 </div>
 
@@ -55,7 +55,10 @@
 			<div class="item">
 				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' id="img" data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
 				<div class="p-name hei"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-				<div class="p-price hei1">现价￥{$vo['shopPrice']}<div class="p-mprice"><span class="v-price">市场价<del>￥{$vo['marketPrice']}</del></span></div></div>
+				<div class="p-price hei" >
+					<div class="v-price">经销价<span>￥{$vo['shopPrice']}</span></div>
+					<div class"yj">原价<span>￥{$vo['marketPrice']}</span></div>
+				</div>
 			</div>
 			{/volist}
 			<!-- 添加代码end -->
@@ -73,7 +76,7 @@
 	</div>
 	<div class='goods-main'>
 	   <div class='goods-filters'>
-	   	  <div class='line'>
+	   	  <div class='line1'>
 	   	  <div class='wst-lfloat chk'>发货地</div>
 	        <div class='city wst-address'>
 		    <div class='item dorpdown'>
@@ -172,7 +175,7 @@
 	        <a class="{if condition="$orderBy eq 0"}curr {/if}" href='javascript:void(0)' onclick='javascript:searchOrder(0)'>销量<span class="{if condition="$orderBy neq 0"}store{/if}{if condition="$orderBy eq 0 and $order eq 1"}store2{/if}{if condition="$orderBy eq 0 and $order eq 0"}store3{/if}"></span></a>
 
 
-	        <a class="{$orderBy==1?'curr':''}" href='javascript:void(0)' onclick='javascript:searchOrder(1)'>价格<span class="{if condition="$orderBy neq 1"}store{/if}{if condition="$orderBy eq 1 and $order eq 1"}store2{/if}{if condition="$orderBy eq 1 and $order eq 0 "}store3{/if}"></span></a>
+	        <a class="{$orderBy==1?'curr':''}" href='javascript:void(0)' onclick='javascript:searchOrder(1)'>价格<span class="{if condition="$orderBy neq 1"}price{/if}{if condition="$orderBy eq 1 and $order eq 1"}price2{/if}{if condition="$orderBy eq 1 and $order eq 0 "}price3{/if}"></span></a>
 
 
 
@@ -193,7 +196,7 @@
 	      	<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" class='goodsImg2' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}"/></a></div>
 	      	<div class="p-name"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}" class="wst-redlink" title="{$vo['goodsName']}">{$vo['goodsName']}</a></div>
 	      	<div>
-	      		<div class="p-price">￥{$vo['shopPrice']}</div>
+	      		<div class="p-price">经销价&nbsp;<span>￥{$vo['shopPrice']}</span></div>
 	      		<div class="p-hsale">
 	      			<div class="sale-num">成交数：<span class="wst-fred">{$vo['saleNum']}</span></div>
 		      		<a class="p-add-cart" style="display:none;" href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
@@ -201,7 +204,7 @@
 	      		<div class='wst-clear'></div>
 	      	</div>
 	      	<div>
-	      		<div class="p-mprice">市场价<span>￥{$vo['marketPrice']}</span></div>
+	      		<div class="p-mprice">原价<span>￥{$vo['marketPrice']}</span></div>
 	      		<div class="p-appraise">已有<span class="wst-fred">{$vo['appraiseNum']}</span>人评价</div>
 	      		<div class='wst-clear'></div>
 	      	</div>

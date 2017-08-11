@@ -39,11 +39,11 @@ $(function() {
 
 <div class='wst-lite-bac'>
 <div class='wst-lite-container'>
-   <div class='wst-logo'><a href='{$Request.root.true}'><img src="__STYLE__/img/jingo_logo.png" height="80" width='160'></a></div>
-   <div class="wst-lite-tit"><span>买家中心</span><a class="wst-lite-in" href='{$Request.root.true}'>返回商城首页</a></div>
+   <div class='wst-logo'><a href='{$Request.root.true}/home'><img src="__ROOT__/{:WSTConf('CONF.mallLogo')}" height="80" width='160'></a></div>
+   <div class="wst-lite-tit"><span>买家中心</span><a class="wst-lite-in" href='{$Request.root.true}/home'>返回商城首页</a></div>
    <div class="wst-lite-cart">
    	<a href="{:url('home/carts/index')}" target="_blank"><span class="word j-word">我的购物车<span class="num" id="goodsTotalNum">0</span></span></a>
-   	<div class="wst-lite-carts hide">
+   	<div class="wst-lite-carts hide" style="display: none;">
    		<div id="list-carts"></div>
    		<div id="list-carts2"></div>
    		<div id="list-carts3"></div>
@@ -119,7 +119,58 @@ $(function() {
               
             </div>
             <div class='wst-content'>
-            {block name="content"}<div class="result"></div>{/block}
+            {block name="content"}
+
+              <div class="result">
+                <div class="portrait"><img src="{:WSTUserPhoto(session('WST_USER.userPhoto'))}" ></div>
+                <div class="user">{:session('WST_USER.userName')?session('WST_USER.userName'):session('WST_USER.loginName')}</div>
+              </div>
+              <!-- 添加代码 start -->
+              <div class="option">
+              <a href="{:url('home/users/index?a=3')}">待付款<span id="span3">{php}echo count($d){/php}</span></a>|
+              <a href="{:url('home/users/index?a=5')}">待收货<span id="span5">{php}echo count($e){/php}</span></a>|
+              <a href="{:url('home/users/index?a=7')}">已取消<span id="span7">{php}echo count($f){/php}</span></a>|
+              <a href="{:url('home/users/index?a=6')}">待评价<span id="span6">{php}echo count($g){/php}</span></a>|
+              <a href="{:url('home/users/index?a=8')}">退款<span id="span8">{php}echo count($h){/php}</span></a>
+              </div>
+              <div class="logistics">
+                  <div class="mylogistics"><img src="__STYLE__/img/logistics.png" style="width:35px;height:35px;"><div>我的物流</div></div>
+                  {volist name="orders['Rows']" id="dat"}
+                  <div style="width:100%;background-color: #f5f5f5;height: 31px;">
+                  <span style="color: #aaa;font-size:12px;margin-left: 7px;line-height:31px;">订单时间:{$dat.createTime}</span>
+                  <span style="color: #aaa;font-size:12px;margin-left: 31px;line-height:31px;">订单号:{$dat.orderNo}</span>
+                  </div>
+                  <div class="logistics_xq" style="clear:both">
+                  {volist name="dat['list']" id="dat1"}
+                      <div class="goods_img"><a href="/jingo/goods-{$dat1.goodsId}.html" target="_blank"><img src="__ROOT__/{$dat1.goodsImg}" style="width:82px;height:82px" /></a></div>
+                      <div class="details">
+                        <span style="font-size:12px;">{$dat1.goodsName}</span></br>
+                        <span style="font-size:12px;line-height: 27px;">实付金额：¥{$dat.goodsMoney}</span></br>
+                        <a href="javascript:void(0)" onclick="view({$dat.orderId})" class="see">订单详情</a>
+                      </div>
+                      <div style="clear:both;"></div>
+                      {/volist}
+                      {if $dat.orderStatus==1}
+                         <a href="javascript:void(0)" onclick="abc()" id="ab" value='{$dat.orderId}' class="confirm">确认收货</a>
+                      {/if}
+                  </div>
+                  <div style="clear:both;"></div>
+                  {/volist}
+                  <!-- 添加代码 end -->
+
+              </div>
+            {/block}
+            <script type="text/javascript">
+            // var page;
+            //    $('.option').find('a').click(function(){
+                
+            //    page =   $(this).find('span').text();
+            //   });
+            //    alert(page);
+            </script>
+            <div style="position: relative;/*bottom: -50px;*/width:980px;">
+                      <div id="wst-pager"></div>
+            </div>
             </div>
           </div>
           <div style='clear:both;'></div>
@@ -171,6 +222,107 @@ $(function() {
           <div style='clear:both;'></div>
           <br/>
 </div>
+<!-- 添加代码 start -->
+<script type="text/javascript">
+function abc() {
+
+  var id=$('#ab').attr('value');
+  $.post(WST.U('home/users/index'), {id:id}, function(data){
+
+    });
+  location.reload(true);
+}
+</script>
+<script type='text/javascript'>
+// $(function(){
+  
+//   {if !isset($areaInfo)}$('#fl_1_1').click();{/if}
+// });
+//后添加start
+function getRequest() {
+  var url = window.location.search; //获取url中"?"符后的字串
+  var theRequest = new Object();
+  if (url.indexOf("?") != -1) {
+    var str = url.substr(1);
+    strs = str.split("&");
+    for(var i = 0; i < strs.length; i ++) {
+       
+      theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+       
+    }
+  }
+  return theRequest;
+}
+var url1=getRequest().a;
+var num=null;
+if (url1==3) {
+  num=$('#span3').html();
+}else if(url1==5){
+  num=$('#span5').html();
+}
+else if(url1==7){
+  num=$('#span7').html();
+}
+else if(url1==6){
+  num=$('#span6').html();
+}
+else if(url1==8){
+  num=$('#span8').html();
+}
+var pages1=Math.ceil(num/6);
+//后添加 end
+laypage({
+    cont: 'wst-pager',
+    pages: pages1, //总页数
+    skip: true, //是否开启跳页
+    skin: '#e60b49',
+    groups: 4, //连续显示分页数
+    curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+        var page = location.search.match(/page=(\d+)/);
+        return page ? page[1] : 1;
+    }(), 
+    jump: function(e, first){ //触发分页后的回调
+        if(!first){ //一定要加此判断，否则初始时会无限刷新
+          var nuewurl = WST.splitURL("page");
+          var ulist = nuewurl.split("?");
+          if(ulist.length>1){
+            location.href = nuewurl+'&page='+e.curr;
+          }else{
+            location.href = '?page='+e.curr;
+          }
+            
+        }
+    }
+});
+
+
+
+var total = num;
+function page(t){
+  var page = location.search.match(/page=(\d+)/);
+  var curr = 1;
+  if(page && page.length>1){ //说明当前url上有page参数
+    curr = page[1]; // 当前页
+  }
+  var nuewurl = WST.splitURL("page"); // 当前url
+  var ulist = nuewurl.split("?"); // 将传递的参数与url分开
+  // 说明当前有参数. 需要带着参数一起传递
+  var url = (ulist.length>1)?nuewurl+'&page=':'?page=';
+
+  if(t=='prev'){ // 上一页
+    if(curr<=1)return;
+    curr = parseInt(curr)-1;
+    location.href = url+curr;
+  }else{ // 下一页
+    if(curr>=total)return;
+    curr = parseInt(curr)+1;
+    location.href = url+curr;
+  }
+  
+}
+</script>
+<!-- 添加代码 end -->
+<script type='text/javascript' src='__STYLE__/users/orders/orders.js?v={$v}'></script>
 {block name="footer"}
 	{include file="default/footer" /}
 {/block}

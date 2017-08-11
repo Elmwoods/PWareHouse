@@ -52,7 +52,7 @@
             <li role="presentation" id="three"><a href="{:url('predeposit/gathering')}">我要收款</a></li>
         </ul>
         {if condition="!empty($news)"}
-        {if condition="$news['is_complete'] == 0"}
+        {if condition="$news['dataFlag'] == 0"}
         <div class="he">
             <form method="post" action="" class="form-horizontal">
                 <div class="form-group">
@@ -67,13 +67,13 @@
                         </span>
                 </div>
                 <div class="form-group">
-                    <div class="hidd" style=""><div class="portrait"><img class="img" src="{$user.userPhoto?__ROOT__.$user.userPhoto:'__ROOT__/upload/sysconfigs/2016-10/5804800d5841e.png'}" style="width:40px;height:40px;border-radius:50%;" /></div>{$user.userName?'<span class="jy">'.$user.userName.'</span>':'<span class="jy" style="color:red">该用户未设置昵称</span>'}</div>
+                    <div class="hidd" style=""><div class="portrait"><img class="img" src="{$user.userPhoto?'/'.$user.userPhoto:'__ROOT__/upload/sysconfigs/2016-10/5804800d5841e.png'}" style="width:40px;height:40px;border-radius:50%;" /></div>{$user.userName?'<span class="jy">'.$user.userName.'</span>':'<span class="jy" style="color:red">该用户未设置昵称</span>'}</div>
 
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label" >付款金额：</label>
                     <div class="col-md-2">
-                        <input name="amount" type="text" value="{$news.news_amount}" class="form-control" placeholder="收款金额" readonly="readonly">	
+                        <input name="amount" type="text" value="{$news.amount}" class="form-control" placeholder="收款金额" readonly="readonly">
 
 
                     </div>
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">付款说明：</label>
                     <div class="col-md-2">
-                        <input name="desc" value="{$news.news_desc}" type="text" class="form-control" placeholder="收款说明" readonly="readonly">
+                        <input name="desc" value="{$news.msgDesc}" type="text" class="form-control" placeholder="收款说明" readonly="readonly">
                     </div>
                     <div class="col-md-2 xq">添加备注</div>
                 </div>

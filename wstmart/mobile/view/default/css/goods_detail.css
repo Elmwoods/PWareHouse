@@ -28,8 +28,31 @@
     background: url(../img/fenxiang.png) 2px 8px no-repeat;
     background-size: 60%;
 }
+
+#goods1{
+	border-bottom: 0;
+}
+#goods3 .comment-m{
+	width: 100%;
+	font-size: 0.18rem;
+	text-align: center;
+	height: 44px;
+	line-height: 44px;
+	background: #FFFFFF;
+	border-bottom: 1px solid #E8E8E8;
+	position: fixed;
+	top: 0px;
+}
+#goods3 .em{
+	font-size: 40px;
+	text-align: right;
+	line-height: 44px;
+	position: absolute;
+	left: 10px;
+	color: #999999;
+}
 .wst-go-name{
-	font-size: 12px;
+	font-size: 16px;
     padding-top: 10px;
     font-weight: bold;
 	line-height: 21px;
@@ -76,7 +99,7 @@
 	height: 26px;
 	border-radius: 6px;
 	font-size: 14px;
-	border: 1px solid #e60b49;
+	border: 1px dashed #e60b49;
 	text-align: center;
 	color: #e60b49;
 	line-height: 26px;
@@ -97,7 +120,7 @@
 	border-bottom: 1px solid #F2F2F2;
 	display: flex;
 	height: 35px;
-	justify-content: space-between;
+	justify-content: space-around;
 	line-height: 35px;
 	vertical-align: middle;
 	box-sizing: border-box;
@@ -105,23 +128,11 @@
 .wst-go-price .tips>span{
 	display: inline-block;
 	height: 35px;
-	width: 33.33%;
 	font-size: 16px;
 	color: #666666;
 	text-align: center;
 }
-.wst-go-price .tips>span:nth-child(1){
-	margin-left: 30px;
-}
-.wst-go-price .tips>span:nth-child(3){
-	margin-right: 30px;
-}
-.wst-go-price .ensure{
-	height: 35px;
-	line-height: 35px;
-	vertical-align: middle;
-	font-size: 14px;
-}
+
 .wst-go-price .ensure em{
 	display: inline-block;
 	vertical-align: text-bottom;
@@ -158,7 +169,11 @@
 	color: #3d3d3d;
 	margin-left: 0px;
 	/*padding-left:10px;*/
+	padding: 10px 15px;
 	border-bottom: 1px solid #edebeb;
+}
+.wst-go-ul li.active{
+	padding: 10px 15px;
 }
 .wst-go-ul li.activity{
 	border-top: 2px solid #F2F2F2;
@@ -200,10 +215,11 @@
 	display: inline-block;
 	width: 12px;
 	color: #dbdada;
-	height: 26px;
-	line-height: 26px;
+	height: 21px;
+	line-height: 21px;
 	font-size:0.35rem;
-	background: url("../img/youjiantou_xiao_png.png") 0  0 no-repeat;
+	background: url("../img/detail-go.png") 0  0 no-repeat;
+	background-size: 80%;
 }
 .score .ui-col{
 	box-sizing: border-box;
@@ -239,15 +255,15 @@
 }
 .wst-go-shop p{
 	color:#59595c;
-	font-size: 0.15rem;
-	height: 24px;
+	font-size: 0.14rem;
+	/*height: 24px;*/
 	line-height: 24px;
 }
 .wst-go-shop .name{
-	position: absolute;
+	/*position: absolute;
 	left:0px;
 	top:12px;
-	font-size: 0.165rem;
+	font-size: 0.165rem;*/
 }
 .wst-go-shop .name2{
 	position: absolute;
@@ -257,13 +273,13 @@
 }
 .wst-go-shop .score{
 	padding:8px 0px;
-	font-size: 0.15rem;
+	font-size: 0.14rem;
 	text-align: center;
 }
 
 #footer .ui-row-flex{
 	position: relative;
-	height: 40px;
+	height: 45px;
 	width: 100%;
 }
 #footer .add{
@@ -276,7 +292,8 @@
 	background-size: 100%;
 }
 #footer .ui-row-flex .wst-go-icon,#footer .ui-row-flex .wst-goods_buy{
-	width: 50%;
+	/*width: 50%;*/
+	width: 0;
 	height: 100%;
 }
 .wst-go-goods{
@@ -335,7 +352,7 @@
 }
 .wst-go-icon .icon,.wst-go-icon .but{
 	float:left;
-	width: 33.33%;
+	width: 50%;
 	height: 60px;
 	/*margin-left: 25px;*/
 	color:#59595c;
@@ -354,7 +371,7 @@
 	left:0;
 	top:0;
 	margin-top: 5px;
-	margin-left: 20px;
+	margin-left: 25px;
 }
 .wst-go-icon .tel{
     background: url("../img/kefu_png.png")  no-repeat;
@@ -365,7 +382,7 @@
 	background-size: 100%;
 }
 .wst-go-icon .follow{
-    background: url("../img/shoucang_png.png")  no-repeat;
+    background: url("../img/icon_gz.png")  no-repeat;
 	background-size: 100%;
 }
 .wst-go-icon .nofollow{
@@ -373,14 +390,14 @@
 	background-size: 100%;
 }
 .wst-go-icon .word{
-	width: 25px;
+	width: 30px;
 	height: 15px;
 	position: absolute;
 	left:-2px;
 	bottom:20px;
-	font-size:10px;
+	font-size:14px;
 	text-align: center;
-	margin-left: 20px;
+	margin-left: 22px;
 }
 .wst-goods_buy{
 	height: 60px;
@@ -388,7 +405,7 @@
 .wst-goods_buyl,.wst-goods_buyr{
 	float:left;
 	width: 50%;
-    height: 40px;
+    height: 45px;
     font-size:0.15rem;
     color: #ffffff;
 	text-align: center;
@@ -426,7 +443,7 @@
 	border-bottom:1px solid #e60b49;
 	border-radius:3px;
 }
-.wst-go-shop .comment{margin-top: 30px;border-bottom: 1px solid #666;margin-left: 10px;}
+.wst-go-shop .comment{border-bottom: 1px solid #666;}
 .wst-go-shop .comment .head{
 	height: 60px;
 }
@@ -454,7 +471,7 @@
 .wst-go-shop .comment .time{
 	font-size: 14px;
 	color: #666;
-	margin: 10px 0 18px;
+	/*margin: 10px 0 18px;*/
 }
 .wst-go-shop .comment .imgshow{
 	margin-bottom: 28px;
@@ -466,14 +483,38 @@
 	border-radius: 0;
 }
 .seller .head{
-	margin-top: 18px;
+	/*margin-top: 18px;*/
 	display: flex;
 	align-items: center;
 	height: 80px;
-	width: 100%;
-	-webkit-box-shadow: 0 1.5px 20px -5px #666666 inset;
-	-moz-box-shadow: 0 1.5px 20px -5px #666666 inset;
-	box-shadow: 0 1.5px 20px -5px #666666 ;
+	/*width: 100%;*/
+	padding-left: 15px;
+	-webkit-box-shadow: 0 1.5px 10px -5px #666666 inset;
+	-moz-box-shadow: 0 1.5px 10px -5px #666666 inset;
+	box-shadow: 0 1.5px 10px -5px #666666 ;
+	position: relative;
+}
+.ui-list-info p {
+    color: #333;
+    font-weight: bold;
+    font-size: 18px; !importent
+}
+.seller .head .collection{
+	position: absolute;
+	right: 50px;
+	top: 27px;
+	/*z-index: 1000;*/
+}
+.head .icon{
+	display: inline-block;
+    width: 12px;
+    color: #dbdada;
+    height: 21px;
+    background: url(../img/detail-go.png) 0 0 no-repeat;
+    background-size: 80%;
+    position: absolute;
+    right: 15px;
+    top: 29px;
 }
 .seller .nickname{
 	display: inline-block;
@@ -485,18 +526,16 @@
 	color: #333;
 }
 .seller .collection{
-	border: 1px solid #e60b49;
+	border: 1px solid #999;
 	border-radius: 5px;
-	color: #e60b49;
+	color: #999;
 	font-size: 12px;
-	padding: 6px 14px;
-	margin-left: 10px;
+	padding: 3px 10px;
 }
 .seller img{
-	width: 60px;
-	height: 60px;
-	margin-right: 20px;
-	margin-left: 10px;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
 }
 .seller i{
 	background: url("../img/youjiantou_xiao_png.png") no-repeat;
@@ -505,7 +544,7 @@
 	margin-left: 15px;
 	display: inline-block;
 }
-.seller .detail{margin-top: 20px;}
+/*.seller .detail{margin-top: 20px;}*/
 .seller .detail ul:after{
 	content: "";
 	clear: both;
@@ -516,7 +555,7 @@
 }
 .seller .detail li{
 	float: left;
-	width: 33.33%;
+	width: 50%;
 	margin: 0;
 	/*padding: 0 10px;*/
 	color: #666666;
@@ -528,7 +567,7 @@
 	color: #e60b49;
 	border-bottom: 2px solid #e60b49;
 	background: #ffffff;
-	padding-left: 0;
+	/*padding-left: 0;*/
 }
 .wst-fav_but{
 	width: 23px;
@@ -543,11 +582,13 @@
 }
 .wst-go-details img{
 	width: 100%;
-	margin-bottom: 18px;
+	/*margin-bottom: 18px;*/
+    height: auto;
 }
 .wst-go-evaluate{
-	margin-top:10px;
-	font-size: 0.16rem;
+	/*margin-top:10px;*/
+	margin-bottom: 10px;
+	font-size: 0.14rem;
 	background:#ffffff;
 }
 .wst-go-evaluate .name{
@@ -821,12 +862,13 @@
 	border: 1px solid #e60b49;
 }
 .wst-cart-box .number{
-	width: 92%;
-	position: absolute;
-	left:3%;
-	bottom:52px;
-	z-Index: 1;
-	background:#ffffff;
+	width: 95%;
+    position: absolute;
+    left: 0;
+    bottom: 43px;
+    z-Index: 1;
+    background: #ffffff;
+    padding: 10px;
 }
 .wst-cart-box .number .stock{
 	float:left;
@@ -843,15 +885,17 @@
 	background:#FFF;
 	border:none;
 	border:1px solid #dddddd;
+	
+	border-radius: 5px;
 }
-.wst-buy_l1{
+/*.wst-buy_l1{
 	border-top-left-radius:3px;
 	border-bottom-left-radius:3px;
 }
 .wst-buy_l3{
 	border-top-right-radius:3px;
 	border-bottom-right-radius:3px;
-}
+}*/
 .wst-buy_l2{
 	border:none;
 	width:48px;
@@ -859,6 +903,8 @@
 	border:1px solid #dddddd;
 	text-align:center;
 	color:#e60b49;
+	
+	border-radius: 5px;
 }
 .wst-buy_l1:focus,.wst-buy_l3:focus{
 	color:#e60b49;
@@ -882,6 +928,7 @@
 .ui-tab-nav li{
 	height: 42px;
     line-height: 42px;
-    font-size:0.23rem;
+    /*font-size:0.23rem;*/
+   font-size: 0.18rem;
     min-width: 50px;
 }

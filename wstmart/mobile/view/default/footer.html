@@ -10,17 +10,19 @@
 		    </div>
 		</div>
         <footer class="ui-footer wst-footer-btns" style="height:45px; border-top: 1px solid #e8e8e8;" id="footer">
-	        <!--<div class="wst-toTop" id="toTop">
+	        <div class="wst-toTop" id="toTop">
 			  <i class="wst-toTopimg"><span>顶部</span></i>
-			</div>-->
+			</div>
 			{php}$cartNum = WSTCartNum();{/php}
             <div class="ui-row-flex wst-menus">
 			    <div class="ui-col ui-col"><a href="{:url('mobile/index/index')}"><p id="home"></p></a></div>
 			    <div class="ui-col ui-col"><a href="{:url('mobile/goodscats/index')}"><p id="category"></p></a></div>
-			    <div class="ui-col ui-col carsNum"><a href="{:url('mobile/carts/index')}"><p id="cart">
+			   	<div class="ui-col ui-col"><a href="http://www.jingomall.com"><p id="back"></p></a></div>
+			   	<div class="ui-col ui-col carsNum"><a href="{:url('mobile/carts/index')}"><p id="cart">
                 </p></a>{if($cartNum>0)}<i>{php} echo $cartNum;{/php}</i>{/if}</div>
-                <div class="ui-col ui-col"><a href="{:url('mobile/favorites/goods')}"><p id="follow"></p></a></div>
+                <!--<div class="ui-col ui-col"><a href="{:url('mobile/favorites/goods')}"><p id="follow"></p></a></div>-->
 			    <div class="ui-col ui-col"><a href="{:url('mobile/users/index')}"><p id="user"></p></a></div>
 			</div>
+
         </footer>
         {:hook('initCronHook')}

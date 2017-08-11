@@ -7,7 +7,6 @@
 	        <div class="wst-ad-line"><p></p></div>
 	        <div class="ui-form-itemin telphone">
 	        	<label class="word">联系电话</label><input class="ui-border-binte" id="cellphone" type="text" placeholder="" onkeypress='return WST.isNumberKey(event);' onkeyup="javascript:WST.isChinese(this,1)">
-	       		<i class="icon-jiahao"></i>
 	         </div>
 	        <div class="wst-ad-line"><p></p></div>
 	        <div class="ui-form-itemin select">
@@ -33,10 +32,10 @@
 			<div class="wst-ad-line " style="padding-top:17px;background: #FFF;"><p style="border-bottom:3px solid #FCFCFC;"></p></div>
 	        <div class="ui-form-itemin slide-button-parent " style="height:86px;line-height:86px" >
 				<label class="operate">设为默认 </label>
-				<div class="slide-button nodefault" id="defaults" onclick="javascript:setToDefault(this)">
+				<div class="slide-button">
 					<section class="model-1">
 						<div class="checkbox">
-							<input type="checkbox"/>
+							<input type="checkbox" id="defaults" class="nodefault" onclick="javascript:setToDefault(this)"/>
 							<label></label>
 						</div>
 					</section>

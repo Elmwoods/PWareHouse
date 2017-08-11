@@ -26,6 +26,7 @@ class UserAddress extends Base{
 		$m = new M();
 		$userId = session('WST_USER.userId');
 		$addressList = $m->listQuery($userId);
+//		dump($addressList);die;
 		//获取省级地区信息
 		$area = model('mobile/Areas')->listQuery(0);
 		$this->assign('area',$area);

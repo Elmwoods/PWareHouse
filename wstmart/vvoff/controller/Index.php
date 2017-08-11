@@ -19,7 +19,7 @@ class  index extends Controller
 
     public function index(){
         $this -> turn();
-        return view('lead');
+        return $this -> web();
     }
     public function purse(){
         return view('purse');
@@ -145,7 +145,6 @@ class  index extends Controller
 
 	public function check() {
         if (isset($_POST['check'])) {
-            echo $_POST['check'];exit();
         //echo ($_POST['check']);
             //$sql = "SELECT member_name FROM jingo_user_token WHERE serialize = '{$_POST['check']}'";      //查询是否存在登录页面的二维码序列号
             //$result = pdo() -> query($sql);
@@ -154,9 +153,15 @@ class  index extends Controller
             if ($arr['member_name'] != null) {
                 $expire = time() - 120;      //2分钟之前的时间点
                 Db::table('jingo_user_token') -> where('set_time', '<', $expire) -> delete();
+                $user = \think\Db::name('users')->where('userId',$arr['member_id'])->find();
                 //setcookie('name', $arr['member_name'], time() + 24*3600);           //设置cookie,用于免登陆
-                session('WST_USER.userName',$arr['member_name']);
-                session('WST_USER.userId',$arr['member_id']);
+                session('WST_USER',$user);
+                //将登录时间和ip存入数据表
+                $ip = request()->ip();
+                $update = [];
+                $update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
+//                dump($update);die;
+                \think\Db::name('users')->where(["userId"=>$user['userId']])->update($update);
                 echo 'true';
             }else {
                 echo 'false';
@@ -192,7 +197,7 @@ class  index extends Controller
         //生成序列号
         $rand = mt_rand(10000000, 99999999);
         $time = time();
-        $serialize = md5($rand).md5($time);
+        $serialize = 'loginPC&'.md5($rand).md5($time);
         $date = date("Ymd",time());
         if (!file_exists(ROOT_PATH.'public/vvoff/serialize/'.$date)) {
             mkdir(ROOT_PATH.'public/vvoff/serialize/'.$date);
@@ -292,4 +297,6 @@ class  index extends Controller
      public function agreement() {
         return view('agreement');
      }
+
+    
 }

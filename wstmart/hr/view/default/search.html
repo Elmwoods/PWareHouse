@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京歌通讯录</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #container {
+            background: rgba(224,255,255,0.3);
+            width: 60%;
+            margin-left:20%;
+        }
+        #show tr{
+            color: #ffffff;
+            text-align: center;
+        }
+        #show td, #show th {
+            padding:10px;
+            width:200px;
+            text-align: center;
+        }
+        #show th  {
+            font-size:32px;
+        }
+        #show td {
+            font-size: 24px;
+        }
+        #show a {
+            color:#fff;
+            text-decoration: none;
+        }
+        a:hover {
+            color:#06c804;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function start(){
+            var firstInput=document.getElementsByTagName("input")[0];
+            firstInput.select();
+        }
+    </script>
+</head>
+<body onload="start();" style="text-align:center;padding:50px;background: url('http://www.jingomall.com/wstmart/hr/view/default/img/back.jpg') no-repeat;background-size: 100%;">
+<p><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    <a href="{:url('hr/index/show')}" style="color:#fff;">返回通讯录列表</a>
+</button></p>
+    <form class="form-search" name="phoneBook" action="{:url('hr/index/search')}" enctype="multipart/form-data" method="post">
+        <div class="form-group" style="width: 60%;margin-left:20%;">
+            <input type="text" id="search" class="form-control" placeholder="请输入要查询的姓名或首字母缩写" name="keyword"><button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="display: none;">
+            搜索
+        </button>
+        </div>
+    </form>
+    <div id="container">
+        {if condition="isset($phone)"}
+        <table id="show">
+            <tr><th>姓名</th><th>手机</th><th>首字母缩写</th><th>操作</th></tr>
+            {volist name="phone" id="v"}
+            <tr><td>{$v.name}</td><td>{$v.phone}</td><td>{$v.short}</td><td><a href="{:url('hr/index/update', ['id'=>$v.id])}">修改</a> | <a href="{:url('hr/index/delete', ['id'=>$v.id])}" onclick="return confirm('确定要删除这条通讯录吗?');">删除</a></td></tr>
+            {/volist}
+        </table>
+        {$phone->render()}
+        {/if}
+    </div>
+
+
+</body>
+</html>

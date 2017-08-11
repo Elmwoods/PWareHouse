@@ -69,7 +69,43 @@
                             <span class="n-msg" style='display:none;' id='yu_e'>金豆余额不足</span>
                         </span>
                 </div>
+                <script type="text/javascript">
+                    $("input[name='number']").blur(function(){
+                        var value=$(this).val();
+                        if(value == null || value == ''){
+                            return false;
+                        }
+                        if(!isNaN(value)){
+                            var userreg=/^[0-9]+([.]{1}[0-9]{1,2})?$/;
+                            if(userreg.test(value)){
+                                if(parseInt(value).toString().length > 10){
+                                    $(this).val("");
+                                    $('#yu_q').show();
+                                    $('#yu_e').show().html('整数不得大于10位数');
+                                    return false;
+                                }
+                            }else{
+                                var numindex = parseInt(value.indexOf("."),10);
+                                if(numindex == 0){
+                                    $(this).val("");
+                                    $('#yu_q').show();
+                                    $('#yu_e').show().html('输入的数字不规范');
+                                    return false;
+                                }
+                                var head = value.substring(0,numindex);
+                                var bottom = value.substring(numindex,numindex+3);
+                                var fianlNum = head+bottom;
+                                $(this).val(fianlNum);
 
+                            }
+                        }else{
+                            $(this).val("");
+                            $('#yu_q').show();
+                            $('#yu_e').show().html('请输入数字');
+                            return false;
+                        }
+                    });
+                </script>
                 <div class="form-group explain">
                     <dl class="ye">
                         <dt>

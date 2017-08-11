@@ -26,11 +26,18 @@ $(function(){
 
     $('.wst-gol-adsb').css('height',$('.j-imgRec').width()+20);
 
+    $("#ui-scrollerl").css('height',document.body.clientHeight-60 );
+    var scroll = new fz.Scroll('.ui-scrollerl', {
+        scrollY: true,
+        slidingY: 'y'
+    });
 
-    if(parseInt(dataHeight)>230){
-        $('#content').css('overflow-y','scroll').css('height','200');
-    }
     var dataHeight = $("#frame").css('height');
+    if(parseInt(dataHeight)>230){
+        $('#content').css('overflow-y','scroll').css('height',document.body.clientHeight-40);
+        
+    }
+
     $("#frame").css('top',0);
      var dataWidth = $("#frame").css('width');
     $("#frame").css('right','-'+dataWidth);
@@ -41,12 +48,14 @@ $(function(){
 function dataShow(){
     jQuery('#cover').attr("onclick","javascript:dataHide();").show();
     jQuery('#frame').animate({"right": 0}, 500);
+    $("body").css("overflow","hidden")
 }
 function dataHide(){
     var dataHeight = $("#frame").css('height');
     var dataWidth = $("#frame").css('width');
     jQuery('#frame').animate({'right': '-'+dataWidth}, 500);
     jQuery('#cover').hide();
+    $("body").css("overflow","")
 }
 
 function showRight(obj, index){
@@ -142,7 +151,13 @@ function shopsList(){
 }
 
 /*分类*/
-function getGoodsList(ct1,ct2){
+function goGoodsList(ct1,ct2,categoryName){
+    var keyword = document.getElementById('keyword');
+    var wstSearch = document.getElementById('wst-search');
+    if(keyword.value != null){
+        keyword.value = '';
+        wstSearch.value = categoryName;
+    }
     $('#ct2').val(' ');
     $('#ct1').val(ct1);
     if(ct2)$('#ct2').val(ct2);

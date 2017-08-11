@@ -81,6 +81,9 @@ class Orders extends Base{
     public function waitReceiveByPage(){
 		$m = new M();
 		$rs = $m->userOrdersByPage([0,1]);
+		// header("content-type:text/html; charset=utf-8");
+  //           echo "<pre>";
+  //           print_r($rs);die;
 		return WSTReturn("", 1,$rs);
 	}
 	/**
@@ -235,10 +238,18 @@ class Orders extends Base{
 	/**
 	 * 用户收货
 	 */
-	public function receive(){
+	public function receive($orderId = 0,$userId = 0){
 		$m = new M();
-		$rs = $m->receive();
+		$rs = $m->receive($orderId,$userId);
 		return $rs;
+	}
+	/**
+	 * 签收   添加代码
+	 */
+	public function receive1($orderId = 0,$userId = 0){
+		$m = new M();
+		$rs = $m->receive1($orderId,$userId);
+		// return $rs;
 	}
 	/**
 	 * 商家-已完成订单

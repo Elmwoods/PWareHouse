@@ -12,15 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="__ROOT__/wstmart/purse/view/default/css/index (2).css">
 
 
-	<!-- <link rel="stylesheet" type="text/css" href="../css/information.css"> -->
 
 
-	<link href="__ROOT__/wstmart/purse/view/default/css/common.css??v={$v}" rel="stylesheet">
-	<script type="text/javascript" src="__ROOT__/static/js/jquery.min.js?v={$v}"></script>
-	<script type="text/javascript" src="__ROOT__/static/plugins/layer/layer.js?v={$v}"></script>
-	<script type="text/javascript" src="__ROOT__/static/plugins/lazyload/jquery.lazyload.min.js?v={$v}"></script>
-	<script type='text/javascript' src='__ROOT__/static/js/common.js?v={$v}'></script>
-	<script type='text/javascript' src='__ROOT__/wstmart/purse/view/default/js/common.js?v={$v}'></script>
+	<link href="__ROOT__/wstmart/purse/view/default/css/common.css" rel="stylesheet">
+	<script type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__ROOT__/static/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="__ROOT__/static/plugins/lazyload/jquery.lazyload.min.js"></script>
+	<script type='text/javascript' src='__ROOT__/static/js/common.js'></script>
+	<script type='text/javascript' src='__ROOT__/wstmart/purse/view/default/js/common.js'></script>
 
 
 	<script type="text/javascript" src="__ROOT__/wstmart/purse/view/default/js/jquery-1.9.1.js"></script>
@@ -35,16 +34,14 @@
 				<!-- li><a href="">用户名</a>|</li> -->
 				<li><a href="javascript:WST.logout();">退出</a>|</li>
 				<!-- <li><a href="javascript:WST.logout();"><img src="/purse/view/default/img/gb.png"></a></li> -->
-				<li><a class="top_right" href="{:url('loan/news')}"><img src="__ROOT__/wstmart/purse/view/default/img/xinxi.png"><span class="news_count"></span><span class="aa">{:session('WST_USER.NEWS_COUNT')}</span><!-- {:session('WST_USER.NEWS_COUNT')} --></a></li>
-
-
+				<li><a class="top_right" href="{:url('loan/news')}"><img src="__ROOT__/wstmart/purse/view/default/img/xinxi.png">{if condition="session('NEWS_COUNT') != 0"}<span class="news_count"></span><span class="aa">{:session('NEWS_COUNT')}</span>{/if}</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 <div class="logo public">
 	<div class="logo_main">
-		<a href="{:url('home/index/index')}"><img src="__ROOT__/wstmart/purse/view/default/img/logo.png" alt=""></a>
+		<a href="{:url('home/index/index')}"><img src="__ROOT__/wstmart/purse/view/default/img/VVpaylogo.png" alt=""></a>
 	</div>
 </div>
 <div class="header">
@@ -56,15 +53,18 @@
 			<dd>
 				<div class="max">
 					<div class="top_left">
-						你好 ,<span id="top_left">{:session('WST_USER.loginName')}</span>
+						你好 ,<span id="top_left">{:session('WST_USER.userName')}</span>
 					</div>
 					<div class="top_right">
-						信用分：{:session('WST_USER.userScore')}
+						账号:{:session('WST_USER.userPhone')}
 					</div>
+					<div class="top_vv" >VVID：<!--<a data-toggle="modal" data-target="#vvid">-->{:session('WST_USER.loginName')}<!--</a>-->
+						<a href="{:url('home/users/edit')}"><img src="__ROOT__/wstmart/purse/view/default/img/personal.png" alt=""></a></div>
 				</div>
 				<div class="button">
 					<div class="button_left">
-						账号:{:session('WST_USER.userPhone')}
+
+						信用分：{:session('WST_USER.userScore')}
 					</div>
 					<div class="button_right">
 						上次登录时间：{:session('WST_USER.lastTime')}
@@ -74,6 +74,7 @@
 		</dl>
 	</div>
 </div>
+
 
 <div class="skip">
 	<div class="skip_ds">

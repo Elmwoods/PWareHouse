@@ -706,7 +706,8 @@ h6, .ui-txt-tips {
   .ui-row-flex .ui-col {
     float: none;
     -webkit-box-flex: 1;
-    width: 0; }
+    width: 0;
+     }
   .ui-row-flex .ui-col-2 {
     -webkit-box-flex: 2; }
   .ui-row-flex .ui-col-3 {
@@ -718,7 +719,9 @@ h6, .ui-txt-tips {
   -webkit-box-orient: vertical; }
   .ui-row-flex-ver .ui-col {
     width: 100%;
-    height: 0; }
+    height: 0; 
+    padding: 0px 10px;
+    }
 
 .ui-whitespace {
   padding-left: 15px;
@@ -886,13 +889,14 @@ h6, .ui-txt-tips {
 .ui-badge, .ui-badge-muted, .ui-badge-num, .ui-badge-corner, .ui-badge-cornernum {
   display: inline-block;
   text-align: center;
-  background: #f74c31;
+  /*background: #f74c31;*/
+ background: #E60B49;
   color: #fff;
   font-size: 11px;
   height: 16px;
   line-height: 16px;
   -webkit-border-radius: 8px;
-  padding: 0 6px;
+  /*padding: 0 6px;*/
   background-clip: padding-box; }
 
 /* 浅色的 */
@@ -1401,10 +1405,10 @@ h6, .ui-txt-tips {
   background-clip: padding-box; }
 
 .ui-btn-danger {
-  background-color: #f75549;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #fc6156), to(#f75549));
+  background-color: #E60B49;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #E60B49), to(#E60B49));
   color: white;
-  border-color: #f43d30;
+  border-color: #E60B49;
   background-clip: padding-box; }
 
 .ui-btn-danger:not(.disabled):not(:disabled):active, .ui-btn-danger.active {

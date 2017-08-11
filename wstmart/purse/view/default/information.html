@@ -34,7 +34,7 @@
         <div class="top_list">
             <ul>
                 <li><a href="javascript:WST.logout();">退出</a>|</li>
-                <li><a class="top_right" href="{:url('loan/news')}"><img src="__STYLE__/img/xinxi.png">{if condition="session('WST_USER.NEWS_COUNT') != 0"}<span class="news_count"></span><span class="aa">{:session('WST_USER.NEWS_COUNT')}</span>{/if}</a></li>
+                <li><a class="top_right" href="{:url('loan/news')}"><img src="__STYLE__/img/xinxi.png">{if condition="session('NEWS_COUNT') != 0"}<span class="news_count"></span><span class="aa">{:session('NEWS_COUNT')}</span>{/if}</a></li>
                 
             </ul>
         </div>
@@ -42,7 +42,7 @@
 </div>
 <div class="logo_button public">
     <div class="logo_main">
-        <a href="{:url('home/index/index')}"><img src="__STYLE__/img/logo.png" alt=""></a>
+        <a href="{:url('home/index/index')}"><img src="__STYLE__/img/VVpaylogo.png" alt=""></a>
     </div>
 </div>
         <div class="hot">
@@ -57,26 +57,29 @@
                 <ul>
                     <li>
                         <dl>
-                            <dt>{$vo.news_title}</dt>
+                            <dt>{$vo.msgTitle? $vo.msgTitle:'系统'}</dt>
                             <dd>
-                                <p>{$vo.news_title}提醒</p>
+                                <p>{$vo.msgTitle? $vo.msgTitle:'系统'}提醒</p>
                                 <br>
-                                <br>   
-                                <p>{$vo.news_content}</p>
+
+                                <p>{$vo.msgContent}</p>
 
                             </dd>
                         </dl>
                         <div class="aa">
 
-                            {if condition="$vo.is_complete == 0"}
-                                {if condition="$vo.news_title == '还款'"}
+                            {if condition="$vo.msgDesc == '还款超期'"}
+                            <span></span>
+                            {else \}
+                            {if condition="$vo.dataFlag == 0"}
+                                {if condition="$vo.msgTitle == '还款'"}
                                 <a href="{:url('loan/index',array('id'=>$vo.id))}" class="qhk">去还款</a>
                                 {else \}
                                 <a href="{:url('predeposit/transfer_purse',array('id'=>$vo.id))}" class="qhk">去付款</a>
                                 {/if}
                             {else \}
-                                {if condition="$vo.repayment_date==''"}
-                                    {if condition="$vo.complete_time==''"}
+                                {if condition="$vo.repaymentDate==0"}
+                                    {if condition="$vo.completeTime==''"}
                                     <span>交易关闭</span>
                                     {else \}
                                     <span>已付款</span>
@@ -85,8 +88,9 @@
                                 <span>已还款</span>
                                 {/if}
                             {/if}
+                            {/if}
                             <br />
-                            {$vo.news_add_time}
+                            {$vo.createTime}
                         </div>
                     </li>
                 </ul>

@@ -35,6 +35,7 @@ class Shops extends Base{
 		$data['dataFlag'] = -1;
 		Db::startTrans();
         try{
+        	$userShop=$this->where('shopId',$id)->find();//添加代码
 	        $result = $this->update($data,['shopId'=>$id]);
 	        WSTUnuseImage('shops','shopImg',$id);
             if(false !== $result){
@@ -42,6 +43,8 @@ class Shops extends Base{
             	Db::name('recommends')->where(['dataSrc'=>1,'dataId'=>$id])->delete();
             	//删除店铺与商品分类的关系
             	Db::name('cat_shops')->where(['shopId'=>$id])->delete();
+            	//更新user表
+            	Db::name('users')->where('userId',$userShop['userId'])->update(['userType'=>0]);//添加代码 
             	//下架商品
         	    model('goods')->unsaleByshopId($id);
         	    return WSTReturn("删除成功", 1);
@@ -113,6 +116,12 @@ class Shops extends Base{
 			$applys = model('ShopApplys')->checkOpenShop($applyId);
 			$userId = (int)$applys['userId'];
 		}
+		//添加代码start
+		if (!$applyId) {
+			$model1=Db::name('users')->where('userPhone',(int)input('telephone'))->find();
+			$userId = $model1['userId'];
+		}
+		//添加代码end
 		//如果是游客的话就要检测一下账号是否存在
 		if($userId==0){
 			$user = [];
@@ -141,11 +150,12 @@ class Shops extends Base{
         	// 获取该账号当时申请所使用的手机号码，用于发送短信通知
 	        $userPhone = Db::name('shop_applys')->where("applyId=$applyId")->value('phoneNo');
 			$userPhone=($userPhone=='')?(int)input('telephone'):$userPhone;
-
+			$user['userPhone'] =$userPhone;//添加代码
         	//如果是游客的话就先新增会员资料
         	if($userId==0){
 	            model('users')->save($user);
 	            $userId = model('users')->userId;
+	            Db::name('shop_applys')->where('phoneNo',$userPhone)->update(['userId'=>$userId]);//添加代码
 	            //发送短信消息
 		        $tpl = WSTMsgTemplates('PHONE_USER_SHOP_OPEN_SUCCESS');
 		        if($tpl['tplContent']!=''){
@@ -186,6 +196,7 @@ class Shops extends Base{
 	        WSTUnset($data,'shopId,dataFlag,isSelf');
 	        if($data['shopSn']=='')$data['shopSn'] = $this->getShopSn('S');
 	        $data['userId'] = $userId;
+	        Db::name('shop_applys')->where('phoneNo',$userPhone)->update(['userId'=>$userId]);//添加代码
 	        $shopId = 0;
 	        if($userId>0){
 	        	$this->allowField(true)->save($data);

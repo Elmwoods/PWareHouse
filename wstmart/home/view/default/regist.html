@@ -19,7 +19,7 @@
 	<table class="wst-table">
 		<tr class="wst-login-tr">
 			<td class="wst-regist-td"><font color='red'>*</font>用户名</td>
-			<td><input id="loginName" name="loginName" class="wst_ipt wst-regist-input" tabindex="1" maxlength="30" autocomplete="off" onpaste="return false;" style="ime-mode:disabled;" placeholder="邮箱/用户名/手机号"  type="text" onkeyup="javascript:WST.isChinese(this,1)"/></td>
+			<td><input id="loginName" name="loginName" class="wst_ipt wst-regist-input" tabindex="1" maxlength="11" autocomplete="off" onpaste="return false;" style="ime-mode:disabled;" placeholder="手机号"  type="text" onkeyup="javascript:WST.isChinese(this,1)"/></td>
 		</tr>
 		<tr class="wst-login-tr">
 			<td class="wst-regist-td"><font color='red'>*</font>密码</td>
@@ -37,14 +37,14 @@
 				<span id="mobileCodeTips"></span>
 			</td>
 		</tr>
-		<tr id="authCodeDiv" class="wst-login-tr">
+		<!-- <tr id="authCodeDiv" class="wst-login-tr">
 			<td class="wst-regist-td"><font color='red'>*</font>验证码</td>
 			<td>
 				<div class="wst-regist-code">
 				<input id="verifyCode" style="ime-mode:disabled" name="verifyCode"  class="wst_ipt wst-regist-codein" tabindex="6" autocomplete="off" maxlength="6" type="text"  data-target="#verifyCodeTips" placeholder="验证码"/>
 				<img id='verifyImg' class="wst-regist-codeim" src="{:url('home/users/getVerify')}" onclick='javascript:WST.getVerify("#verifyImg")' style="width:116px;border-top-right-radius:6px;border-bottom-right-radius:6px;"><span id="verifyCodeTips"></span>    	
 			   	</div>
-			</td>
+			</td -->>
 		</tr>
 		<tr class="wst-login-tr">
 			<td colspan="2" style="padding-left:180px;">

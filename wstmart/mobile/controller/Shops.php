@@ -130,4 +130,12 @@ class Shops extends Base{
     	return $rs;
     }
 
+
+	/**
+	 * 评论
+	 * 
+	 * */
+	public function comment(){
+		return $this->fetch('comment');
+	}
 }

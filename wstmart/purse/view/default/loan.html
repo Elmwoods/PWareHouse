@@ -5,7 +5,7 @@
 <div class="nav">
 <div class="center public">
     <div class="nav_main ">
-        <div class="nav_left">
+            <div class="nav_left">
             <ul>
                 <li><a href="{:url('consume/index')}">我的钱袋</a>|</li>
                 <li><a href="{:url('imazamox/index')}">我的金豆</a>|</li>
@@ -38,7 +38,7 @@
 <div class="main">
 
 </div>
-{if condition="$users.userScore > 1000"}
+{if condition="$users.userScore >= 1000"}
 <div class="center" style="background: #fff;">
 
 <div class="loan">
@@ -96,8 +96,8 @@
             <a class="dh" href="#" data-toggle="modal" data-target="#mymodal" id="dhd">去借款</a>
         </dl>
         <dl class="loan_left_bottom">
-            <dt><span>总额度：</span><span>{if condition="$users.userScore >1000"}10000{else /}你的额度不足{/if}</span><span>　利率</span><span>0.05%</span></dt>
-            <dt class="dt"><a href="#" >查看合同</a></dt>
+            <dt><span>总额度：</span><span>{if condition="$users.userScore >1000"}10000{else /}你的额度不足{/if}</span><span>　利率</span><span>0.82%</span></dt>
+            <dt class="dt"><a href="{:url('loan/loanNotes')}" target="_blank">贷款须知</a></dt>
         </dl>
     </div>
     </div>
@@ -111,7 +111,7 @@
             <a class="dh" href="#" data-toggle="modal" data-target="#daikuang">去还款</a>
         </dl>
         <dl class="loan_right_bottom">
-            <dt><span>还款日：</span><span>{$users.repayment_date}</span><a href="#" class="dt">查看合同</a></dt>
+            <dt><span>还款日：</span><span>{$users.repayment_date}</span><a href="{:url('loan/loanNotes')}" target="_blank" class="dt">贷款须知</a></dt>
         </dl>
     </div>
     {/if}
@@ -133,7 +133,7 @@
                                         <span class="glyphicon glyphicon-yen"></span>&nbsp;<input name="repayment_amount" type="text"  placeholder="请输入还款金额" data-rule="还款金额: required;" data-msg-required="请输入还款金额" data-tip="请输入还款金额">
 
                                         {else \}
-                                        {if condition="$news.is_complete === 0"}
+                                        {if condition="$news.dataFlag === 0"}
                                         <span class="glyphicon glyphicon-yen"></span>&nbsp;<input name="repayment_amount" type="text"  placeholder="请输入还款金额" value="{$users.residual_repayment}"  readonly="readonly">
                                         <input type="hidden" name="loan" value="{$news.id}">
                                         {else \}
@@ -344,12 +344,10 @@
                               <table style="border:0;">
                                 <tr>
                                   <th class="time">创建时间</th>
-                                  <th class="time">交易时间</th>
                                   <th class="time">结束时间</th>
                                 </tr>
                                 <tr>
                                   <td class="time1" id='createTime'></td>
-                                  <td class="time1" id='createTime_j'></td>
                                   <td class="time1" id='createTime_z'></td>
                                 </tr>
                                 </table>
@@ -580,7 +578,7 @@
             params.targetType = 1;
             params.needPay = repayment_amount;
             params.payCode = payCode;
-            // alert(params.needPay)
+//             alert(params.payObj)
             if(params.needPay<=0){
                 WST.msg('请输入充值金额', {icon: 5});
                 return;
@@ -624,8 +622,7 @@
                 $('#dataFlag').html('进行中');
             }
             $('#createTime').html(data['createTime']);
-            $('#createTime_j').html(data['createTime']);
-            $('#createTime_z').html(data['createTime']);
+            $('#createTime_z').html(data['endTime']);
 
             var mt = data['moneyType'];
             if(mt==1){

@@ -35,7 +35,6 @@
         </div>
     </div>
 
-
         
 	</footer>
 {/block}
@@ -47,17 +46,17 @@
     {{# for(var i = 0; i < d.length; i++){ }}
             <div class="ui-row-flex ui-whitespace ui-row-flex-ver shop-box">
             <div class="ui-col f-shop-header">
-                <div class="ui-row-flex ui-whitespace">
+                <div class="ui-row-flex ui-whitespace" style="margin-top: 8px;">
                     <div class="ui-col ui-col-3">
                         <label class="ui-checkbox f-chk">
                          <input class="s-active" type="checkbox" fId="{{d[i].favoriteId}}" onclick="javascript:WST.changeIconStatus($(this), 1);">
                         </label>
                         <div class="shopImg" onclick="goToShop({{d[i].shopId}})"><img src="__ROOT__/{{d[i].shopImg}}"></div>
                     </div>
-                    <div class="ui-col ui-col-1" onclick="goToShop({{d[i].shopId}})">
-                        <div class="f-shopname ui-nowrap ui-whitespace">{{d[i].shopName}}</div>
+                    <div class="ui-col ui-col-1" onclick="goToShop({{d[i].shopId}})" style="line-height: 60px;">
+                        <div class="f-shopname ui-nowrap ui-whitespace" style="line-height: 60px;padding: 0px;">{{d[i].shopName}}</div>
                          
-                        <div class="f-goshops" onclick="goToShop({{d[i].shopId}})">进入店铺></div>
+                        <div class="f-goshops" onclick="goToShop({{d[i].shopId}})" style="margin-right: -15px;">进入店铺&nbsp></div>
                     </div>
                 </div>
             </div>

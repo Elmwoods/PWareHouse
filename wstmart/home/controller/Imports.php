@@ -2,6 +2,7 @@
 namespace wstmart\home\controller;
 use wstmart\admin\validate\express;
 use wstmart\home\model\GoodsAttr;
+use wstmart\home\model\SaleAttr;
 use wstmart\home\model\GoodsCsv;
 use wstmart\home\model\Imports as M;
 use wstmart\home\model\ShopsId;
@@ -35,31 +36,31 @@ class Imports extends Base{
                 exit;
             }
             /*用于CSV文件的导入*/
-            /*$content = preg_split('/\n/', unicodeToUtf8(file_get_contents($filename)));      //对内容进行中文转码,并按换行符分离每一行数据
-            array_splice($content, -1);     //去除最后一个空数组
-            $fieldArr = preg_split('/[\,]/', $content[0]);      //对第一行按逗号分割,获取数据表字段
-            $fieldNum = count($fieldArr);   //获取数据表字段数
-            $splitArr = array();            //初始化分割数组
-            foreach (array_splice($content, 1) as $k => $v) {   //去除第一行的数据
-                $splitArr[] = preg_split('/[\,]/', $v);         //将每一行按逗号分割获取单元格的数据
-            }
-            for ($i=0; $i < count($splitArr); $i++) {           //循环获取二维数组的值
-                for ($j=0; $j < $fieldNum; $j++) {
-                    $splitArr[$i][$fieldArr[$j]] = $splitArr[$i][$j];       //将字段键名写进关联数组
-                }
-                array_splice($splitArr[$i], 0, $fieldNum);      //去除索引键名
-            }
-            $goodsCsv = new GoodsAttr();
-            $result = array();
-            foreach($splitArr as $item){
-                $result[] = $goodsCsv->allowField(true)->data($item)->isUpdate(false)->save();      //循环写入数据库
-            }
-            if ($result) {
-                echo 'success';
-            }else {
-                echo 'error';
-            }
-            exit();*/
+            // $content = preg_split('/\n/', unicodeToUtf8(file_get_contents($filename)));      //对内容进行中文转码,并按换行符分离每一行数据
+            // array_splice($content, -1);     //去除最后一个空数组
+            // $fieldArr = preg_split('/[\,]/', $content[0]);      //对第一行按逗号分割,获取数据表字段
+            // $fieldNum = count($fieldArr);   //获取数据表字段数
+            // $splitArr = array();            //初始化分割数组
+            // foreach (array_splice($content, 1) as $k => $v) {   //去除第一行的数据
+            //     $splitArr[] = preg_split('/[\,]/', $v);         //将每一行按逗号分割获取单元格的数据
+            // }
+            // for ($i=0; $i < count($splitArr); $i++) {           //循环获取二维数组的值
+            //     for ($j=0; $j < $fieldNum; $j++) {
+            //         $splitArr[$i][$fieldArr[$j]] = $splitArr[$i][$j];       //将字段键名写进关联数组
+            //     }
+            //     array_splice($splitArr[$i], 0, $fieldNum);      //去除索引键名
+            // }
+            // $goodsCsv = new GoodsAttr();
+            // $result = array();
+            // foreach($splitArr as $item){
+            //     $result[] = $goodsCsv->allowField(true)->data($item)->isUpdate(false)->save();      //循环写入数据库
+            // }
+            // if ($result) {
+            //     echo 'success';
+            // }else {
+            //     echo 'error';
+            // }
+            // exit();
 
 
             /*用于好商城数据导入*/

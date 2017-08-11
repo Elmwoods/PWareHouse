@@ -29,7 +29,22 @@ class Index extends Base{
 			$rs= $rs[0];
 			$t = new T();
 			$rs['ads'] = $t->listAds('wx-ads-'.$limit,'1');
-			$rs['goods'] = Db::name('goods')->where(['goodsCatIdPath'=>['like',$rs['catId'].'_%'],'isSale'=>1,'dataFlag'=>1,'goodsStatus'=>1])->field('goodsId,goodsName,goodsImg,shopPrice,saleNum')->order('isHot desc')->limit(6)->select();
+
+			//原代码
+			// $rs['goods'] = Db::name('goods')->where(['goodsCatIdPath'=>['like',$rs['catId'].'_%'],'isSale'=>1,'dataFlag'=>1,'goodsStatus'=>1])->field('goodsId,goodsName,goodsImg,shopPrice,saleNum,marketPrice')->order('isHot desc')->limit(6)->select();
+
+			//添加代码start
+			$catId = "'".$rs['catId']."|_%" ."'". "escape '|' ";
+			$rs['goods'] = Db::name('goods')->where(['isSale'=>1,'dataFlag'=>1,'goodsStatus'=>1])
+											->where("goodsCatIdPath like ".$catId)
+			                                ->field('goodsId,goodsName,goodsImg,shopPrice,saleNum,marketPrice')
+			                                ->where("isHot",1)
+			                                ->order('visitNum desc')
+			                                ->limit(6)
+			                                ->select();
+
+			//添加代码end
+			
 			$rs['currPage'] = $limit;
 		}
 		cache('WX_CATS_ADS'.$limit,$rs,86400);

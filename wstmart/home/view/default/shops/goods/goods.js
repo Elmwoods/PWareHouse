@@ -267,7 +267,8 @@ function fillSepcSale(){
 		ids = OBJ.saleSpec[i].specIds;
 		ids = ids.split(':');
 		for(var j=0;j<ids.length;j++){
-			tmpids.push(id2SepcNumConverter[ids[j]]);
+			tmpids.push(id2SepcNumConverter[ids[j]]);//原代码
+			// tmpids.unshift(id2SepcNumConverter[ids[j]]);//添加代码
 		}
 		tmpids = tmpids.join('-');
 		if(OBJ.saleSpec[i].isDefault)$('#isDefault_'+tmpids).attr('checked',true);

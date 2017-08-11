@@ -54,7 +54,7 @@
 	top:0px;
 	color: #ffffff;
     font-size: 0.15rem;
-    background: #e60b49;
+    background: #e00102;
 }
 .wst-ca-s .shopr{
 	height: 26px;
@@ -141,15 +141,15 @@
 	height:28px;
 	border:1px solid #dddddd;
 	text-align:center;
-	color:#e60b49;
+	color:#e00102;
 }
 .wst-buy_l1:focus,.wst-buy_l3:focus{
-	color:#e60b49;
+	color:#e00102;
 }
 .wst-buy_l2:focus{
 	width:38px;
 	height:28px;
-    border:1px solid #e60b49;
+    border:1px solid #e00102;
 }
 .wst-ca-s .bottom{
 	height: 23px;
@@ -158,7 +158,7 @@
 	margin-top:8px;
 }
 .wst-ca-s .bottom .price{
-	color: #e60b49;
+	color: #de0202;
 	text-align: right;
 	font-weight: bold;
 }
@@ -193,7 +193,7 @@
 	margin-right:6px;
 }
 .wst-ca-se .total span{
-	color: #e60b49;
+	color: #de0202;
 }
 .wst-ca-se .totalr .button{
 	float: right;
@@ -202,10 +202,10 @@
     color: #ffffff;
     margin-top:4px;
     font-size: 0.18rem;
-	background: #e60b49;
+	background: #e00102;
 	font-size: 0.18rem;
 	border-radius:3px;
-    border-bottom: 1px solid #e60b49;
+    border-bottom: 1px solid #e00102;
 }
 .wst-ca-se .totalr .button:not(.disabled):not(:disabled):active,.wst-ca-se .totalr .button.active {
 	color:#fbd6d6;

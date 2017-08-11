@@ -21,6 +21,17 @@ $(document).ready(function(){
                 WST.changeCartGoods(cid,$('#buyNum_'+cid).val(),1);
             }
         }
+        
+        //          $(".ui-icon-chooses.wst-active").length; 店铺按钮被选中长度
+		//          $(".ui-icon-chooses").length; 店铺按钮长度
+        //判断全选按钮是否选中
+        if($(".ui-icon-chooses.wst-active").length == $(".ui-icon-chooses").length){//全选按钮选中
+        	$(".ui-icon-choose").addClass("wst-active + ui-icon-success-block");
+        	$(".ui-icon-choose").removeClass("ui-icon-unchecked-s")
+        }else{//全选按钮不选中
+        	$(".ui-icon-choose").removeClass("wst-active + ui-icon-success-block")
+        	$(".ui-icon-choose").addClass("ui-icon-unchecked-s")
+        }
         statCartMoney();
     });
     //选中商品
@@ -28,25 +39,43 @@ $(document).ready(function(){
         if( $(this).attr('class').indexOf('wst-active') == -1 ){
         	var checked = 1;
         	WST.changeIconStatus($(this), 1);//选中
+        	
+            //      	$(this).parents(".wst-ca-s").find(".ui-icon-chooseg.wst-active").length；本店商品按钮被选中长度
+            //			$(this).parents(".wst-ca-s").find(".ui-icon-chooseg").length;本店铺商品按钮长度
+	       	if($(this).parents(".wst-ca-s").find(".ui-icon-chooseg.wst-active").length == $(this).parents(".wst-ca-s").find(".ui-icon-chooseg").length){
+	        	//店铺按钮选中
+	        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").addClass("wst-active + ui-icon-success-block");
+	        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").removeClass("ui-icon-unchecked-s");
+	        	//判断全选按钮是否选中
+		        if($(".ui-icon-chooses.wst-active").length == $(".ui-icon-chooses").length){//全选按钮选中
+		        	$(".ui-icon-choose").addClass("wst-active + ui-icon-success-block");
+		        	$(".ui-icon-choose").removeClass("ui-icon-unchecked-s");
+		        }else{//全选按钮不选中
+		        	$(".ui-icon-choose").removeClass("wst-active + ui-icon-success-block");
+		        	$(".ui-icon-choose").addClass("ui-icon-unchecked-s");
+        		}
+	        }else{//店铺按钮不选中
+	        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").removeClass("wst-active + ui-icon-success-block");
+	        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").addClass("ui-icon-unchecked-s");
+	        	//全选按钮不选中
+	        	$(".ui-icon-choose").removeClass("wst-active + ui-icon-success-block");
+	        	$(".ui-icon-choose").addClass("ui-icon-unchecked-s");
+	        }
         }else{
         	var checked = 0;
         	WST.changeIconStatus($(this), 2);//取消选中        	
+        	//店铺按钮不被选中
+        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").removeClass("wst-active + ui-icon-success-block")
+        	$(this).parents(".wst-ca-s").find(".ui-icon-chooses").addClass("ui-icon-unchecked-s")
+        	//全选按钮不选中
+        	$(".ui-icon-choose").removeClass("wst-active + ui-icon-success-block")
+        	$(".ui-icon-choose").addClass("ui-icon-unchecked-s")
         }
         var cid = $(this).attr('cartId');
         if(cid!=''){
 		    WST.changeCartGoods(cid,$('#buyNum_'+cid).val(),checked);
 		    statCartMoney();
 	    }
-        
-       /* var len = $(this).parent().parent().siblings().length;
-        console.log(len);
-        for(var i = 1;i<len-1;i++){
-        	 if(!$(this).parents("wst-ca-s").children().eq(i).find("i").hasClass("wst-active")){
-        	alert(i);
-           return;
-        }
-        }*/
-        
        
     });
     //选中合计
@@ -162,18 +191,43 @@ function del(goodsIds){
 }
 //结算
 function toSettlement(){
-    var goodsIconCount = $('.ui-icon-chooseg').length;//商品个数
-    var noGoodsSelected = true;
-    for(var i=0; i<goodsIconCount; i++){
-        if( $('.ui-icon-chooseg').eq(i).attr('class').indexOf('wst-active') != -1 ){
-            noGoodsSelected = false;
+    // alert(1111);return false;
+    //添加代码start     商城改成虚拟交易
+    //判断是否为  测试人员账号
+    $.post(WST.U('mobile/users/ceshiUser'),function(data){
+        var json = WST.toJson(data);
+        if(json.status==-1){
+            WST.msg('商城正在测试中，暂时无法结算');
+            return;
+        }else{
+            var goodsIconCount = $('.ui-icon-chooseg').length;//商品个数
+            var noGoodsSelected = true;
+            for(var i=0; i<goodsIconCount; i++){
+                if( $('.ui-icon-chooseg').eq(i).attr('class').indexOf('wst-active') != -1 ){
+                    noGoodsSelected = false;
+                }
+            }
+            if(noGoodsSelected){
+                WST.msg('请勾选要结算的商品','info');
+                return false;
+            }
+            location.href = WST.U('mobile/carts/settlement');
         }
-    }
-    if(noGoodsSelected){
-    	WST.msg('请勾选要结算的商品','info');
-        return false;
-    }
-    location.href = WST.U('mobile/carts/settlement');
+    });
+    //添加代码end
+
+    // var goodsIconCount = $('.ui-icon-chooseg').length;//商品个数
+    // var noGoodsSelected = true;
+    // for(var i=0; i<goodsIconCount; i++){
+    //     if( $('.ui-icon-chooseg').eq(i).attr('class').indexOf('wst-active') != -1 ){
+    //         noGoodsSelected = false;
+    //     }
+    // }
+    // if(noGoodsSelected){
+    // 	WST.msg('请勾选要结算的商品','info');
+    //     return false;
+    // }
+    // location.href = WST.U('mobile/carts/settlement');
 }
 
 

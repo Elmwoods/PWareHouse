@@ -130,7 +130,7 @@
 			<!-- <li class="spacer">|</li> -->
 
 				<li class="j-dorpdown">
-				<div class="drop-down"><a href="#" target="_blank">我的商城</a></div>
+				<div class="drop-downn" style="cursor:pointer;"><a>我的商城<i class="di-right1"><s>◇</s></i></a></div>
 				<div class='j-dorpdown-layer foucs-list'>
 				   <div><a href="{:Url('home/favorites/goods')}" onclick='WST.position(41,0)'>商品收藏</a></div>
 				   <div><a href="{:Url('home/favorites/shops')}" onclick='WST.position(46,0)'>店铺收藏</a></div>
@@ -143,21 +143,21 @@
 				   <div><a href="{:Url('home/favorites/shops')}" onclick='WST.position(46,0)'>店铺收藏</a></div>
 				</div>
 			</li> -->
-			<li class="spacer">|</li>
+			<!-- <li class="spacer">|</li>
 			<li class="j-dorpdown">
-				<div class="drop-down drop-down5 pdr5" ><a href="#" target="_blank">客户服务</a></div>
+				<div class="drop-down drop-down5 pdr5" style="cursor:pointer;"><a>客户服务</a></div>
 				<div class='j-dorpdown-layer des-list'>
 				   <div><a href='{:Url("home/helpcenter/view","id=1")}' target='_blank'>帮助中心</a></div>
 				   <div><a href='{:Url("home/helpcenter/view","id=8")}' target='_blank'>售后服务</a></div>
 				   <div><a href='{:Url("home/helpcenter/view","id=3")}' target='_blank'>常见问题</a></div>
 				</div>
-			</li>
+			</li> -->
 			<li class="spacer">|</li>
 			{if condition="session('WST_USER.userId') gt 0"}
 				{if condition="session('WST_USER.userType') eq 0"}
 
 				<li class="j-dorpdown">
-				<div class="drop-down pdl5" ><a href="#" target="_blank">商家管理<i class="di-right"><s>◇</s></i></a></div>
+				<div class="drop-down pdl5" style="cursor:pointer;"><a>商家管理<i class="di-right"><s>◇</s></i></a></div>
 				<div class='j-dorpdown-layer foucs-list'>
 				   <div><a href="{:url('home/shops/login')}">商家登录</a></div>
 				   <div><a href="javascript:shopApply();" rel="nofollow">我要开店</a></div>
@@ -179,7 +179,7 @@
 				{/if}
 			{else /}
 				<li class="j-dorpdown">
-				<div class="drop-down pdl5" ><a href="#" target="_blank">商家管理<i class="di-right"><s>◇</s></i></a></div>
+				<div class="drop-down pdl5" style="cursor:pointer;"><a>商家管理<i class="di-right"><s>◇</s></i></a></div>
 				<div class='j-dorpdown-layer foucs-list'>
 				   <div><a href="{:url('home/shops/login')}">商家登录</a></div>
 				   <div><a href="javascript:shopApply();" rel="nofollow">我要开店</a></div>

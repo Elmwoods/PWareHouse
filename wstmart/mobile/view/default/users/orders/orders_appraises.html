@@ -23,7 +23,7 @@
 
                 <div class="g-Img j-imgAdapt">
                   <a href="javascript:void(0);" onclick="javascript:WST.intoGoods({$g['goodsId']});">
-                    <img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{:WSTImg($g['goodsImg'],3)}">
+                    <img src="__ROOT__/{:WSTImg($g['goodsImg'],3)}">
                   </a>
                 </div>
 
@@ -47,7 +47,7 @@
 
         <script id="appraises-box" type="text/html">
             <ul class="ui-row appraise-box">
-                <li class="ui-col comment-lis-box">
+                <!--<li class="ui-col comment-lis-box">
                     <ul class="clearfix">
                         <li class="comment-img-lis comment-li-ls"></li>
                         <li class="comment-txt-lis comment-li-ls">好评</li>
@@ -56,11 +56,11 @@
                         <li class="comment-pic-lis comment-li-ls"></li>
                         <li class="comment-txt-lis comment-li-ls">差评</li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="ui-col">
                       <textarea class="appraisesContent" id="content"></textarea>
                 </li>
-                <div class="ui-col uploadfile-box" style="padding-top: 20px;">
+                <div class="ui-col uploadfile-box" style="">
                         <div id="filePicker">上传附件(最多5张)</div>
                         <ul class="complainFileBox" id="edit_chart">
                         </ul>

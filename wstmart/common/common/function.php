@@ -467,7 +467,7 @@ function WSTUploadFile(){
     	return json_encode(['msg'=>'上传文件不存在或超过服务器限制','status'=>-1]);
     }
     $validate = new \think\Validate([
-	    ['fileExt','fileExt:xls,xlsx,xlsm','只允许上传后缀为xls,xlsx,xlsm的文件']
+	    ['fileExt','fileExt:xls,xlsx,xlsm,csv','只允许上传后缀为xls,xlsx,xlsm,csv的文件']
 	]);
 	$data = ['fileExt'=> $file];
 	if (!$validate->check($data)) {
@@ -1154,4 +1154,170 @@ function redPacket($total, $num) {
     }
     $redPacket[$num]    =       sprintf('%.2f', $total);
     return $redPacket;
+}
+
+//数据分页
+function page($data, $page, $num) {
+    return array_slice($data, ($page-1)*$num, $num);
+}
+
+//获取token函数
+function getToken($member_id, $member_name, $member_avatar) {
+    srand((double)microtime()*1000000);
+
+    $appKey = 'n19jmcy5nejo9';
+    $appSecret = 'ql8rxPItynllG'; // 开发者平台分配的 App Secret。
+
+    $nonce = rand(); // 获取随机数。
+    $timestamp = time(); // 获取时间戳。
+
+    $signature = sha1($appSecret.$nonce.$timestamp);
+
+    $url = 'http://api.cn.ronghub.com/user/getToken.json';
+
+    $postData = 'userId=' . $member_id . '&name=' . $member_name . '&portraitUri=' . $member_avatar;
+
+    $httpHeader = array(
+
+        'App-Key:' . $appKey,   //平台分配
+
+        'Nonce:' . $nonce,        //随机数
+
+        'Timestamp:' . $timestamp,    //时间戳
+
+        'Signature:' . $signature,         //签名
+
+        'Content-Type: application/x-www-form-urlencoded',
+
+    );
+
+//创建http header
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    curl_setopt($ch, CURLOPT_POST, 1);
+
+    if ($postData != '') {
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+
+    } else {
+
+        showMsg(0, '缺少相应参数');
+
+    }
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    curl_setopt($ch, CURLOPT_HEADER, false);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeader);
+
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+
+    $result = curl_exec($ch);
+    /*print_r($result);
+    exit();*/
+    $token = json_decode($result) -> token;
+    curl_close($ch);
+    return $token;
+}
+
+function name_rand() {
+    //生成随机用户名
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    $length = 8;
+    $mobile_name = '';
+    for ($i = 0; $i < $length; $i++) {
+        $mobile_name .= $chars[mt_rand(0, strlen($chars) - 1)];     //随机生成的新用户名(昵称)
+    }
+    return $mobile_name;
+}
+
+function rsaDecrypt($data) {
+    $private_key = file_get_contents(APP_PATH."chat/controller/rsa_key/rsa_private_key.pem");
+//     $private_key = '-----BEGIN RSA PRIVATE KEY-----
+// MIIEpQIBAAKCAQEA+CpLs/07K7Ent0iWpJ0AH49+4FhX6FvhC/7xGPgWN3XdPpJ7
+// dLQLr8caRSlxV6aZGzky5iKk8brH0RdvepJ6xkkfh64mvwhDyeNtQRt1XqA+2pBP
+// lDURz576Q631a/jLqG02eQA5HMGp5VnBCju8Q5NkuDwXrU+zfQbfYoV0d5tlNJVR
+// ZxdoavtSS81jHZQzAWu3qKH3ZOlst8FybZPa/lZ8dEMut9lzco1LtE3ej9FK/a9o
+// ChMUd2K34vK/+uqhzofGgNuqUFZZQnsqlr3IGDAy77JtmRieXy8gDQvKvn6C8QXn
+// qWkEesfNonlnvXZnBveIE3biNolS6M779J1I2wIDAQABAoIBAFCZRA8IDsCo/9Iq
+// NCrwhsq5SybH6n0f4h6IRXurj2Oh1yJsZsZHd4g2bRTLWfFyvUU3NY3C8LlFxYHm
+// T6GKk2907lWdvR3MLGAUijZcGamK9/76Ya4r8kXxRyzWAeB4ZISmO8vew63QREKl
+// /Ok673EvHMYtVi9GtG/F3KVd3K6/WMrnVoEoYwros0i/XqRRmLc6Y8Pq5KoUPsB2
+// iwYYzO9FWWPRTqXIX2j8XOWDBs+YAH8uNbhFxwcQ0cfJsUjRUnruMvNK8l7DxTe7
+// zMwzWomkwEAveoPOOiCiGto+HRLpdmyRImrOCyTzPzSsqx4oPxEOpn6rxHnGJXPR
+// DruCuFECgYEA/ne8zRrHC9kLZNxlC0PTjk4jmpEaqdf+Vt36JnGmCZa/fo1ryx5J
+// As+pozVnd4Wjaxbn7zcr3X+zHC5YUzatFwW5hVoSJrq9Y39E12PecXaCtgv0uigg
+// etp5F65bUeFuRYw0tu0XK6/SxlzxBBtRBuSOAKuMU7ViA4CEEV4RDAkCgYEA+ajX
+// xzlJwZhsSXNFwpifQVt7Q/8Rt7D3DfPKNq0XrCSz7vY9aR6JiLXlI5Jx+Y9ubHxd
+// mOggE3Df1t9LVTL0ub9tpBsV/MAWjHtioIKG7eLizlCaWCzTdNks9t21o9k+jX60
+// gW1a87vh3fumoNFuyYN2p/Kip++FJ/Vdu36brsMCgYEAwppBSb2LsTTYMNcXcwj4
+// 1eBN/Bux/2eOO1JgxlutdbHSWm6+m8RaY4r6GTVzHgWWVwRadSeFJUxOZmPO6jxr
+// HKslGKUsMnAm+9tNg0b9y1mtVplIG8EqLam8Z27QqYqzsP4rJiWkzaUVlNto+hIF
+// 4jaRnlOS6kVRYoo69akxcjkCgYEAo1dihcfnh7Av+QZgN+cfGuW9iklR0DsKCKje
+// PlOVT11cFBYrK6F9HmLTnihsRXkgJ/5eRnJoug95g93oLb/++aBTHbFS+2C54APC
+// DX4YxX9SIOX/dX0uhB6rGoEIHEFAedbSRnPDs//S0SeaZ1FfCJzofw1yeiltly0j
+// vE4jkX0CgYEAr7EmawNoEjiqqBf/Ry5WEm1grSqhuXxERgGu1rfKJrfpd+Jbvt/c
+// ziga4iXje4bDfIidLyuQgibplIrt4goZW1dJrjfkWqwUQ1RMM/pkPb8FN9vXHRRx
+// EMRR1l8bbXecCjjGnpgjvtqRkJW9WuFCXvFQhpZpXymCZN7h0nZ3m/Q=
+// -----END RSA PRIVATE KEY-----';
+
+/*    $public_key = '-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+CpLs/07K7Ent0iWpJ0A
+H49+4FhX6FvhC/7xGPgWN3XdPpJ7dLQLr8caRSlxV6aZGzky5iKk8brH0RdvepJ6
+xkkfh64mvwhDyeNtQRt1XqA+2pBPlDURz576Q631a/jLqG02eQA5HMGp5VnBCju8
+Q5NkuDwXrU+zfQbfYoV0d5tlNJVRZxdoavtSS81jHZQzAWu3qKH3ZOlst8FybZPa
+/lZ8dEMut9lzco1LtE3ej9FK/a9oChMUd2K34vK/+uqhzofGgNuqUFZZQnsqlr3I
+GDAy77JtmRieXy8gDQvKvn6C8QXnqWkEesfNonlnvXZnBveIE3biNolS6M779J1I
+2wIDAQAB
+-----END PUBLIC KEY-----';*/
+
+//echo $private_key;
+    $pi_key =  openssl_pkey_get_private($private_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+//    $pu_key = openssl_pkey_get_public($public_key);//这个函数可用来判断公钥是否是可用的
+//        print_r($pi_key);echo "\n";
+//        print_r($pu_key);echo "\n";
+
+
+    $encrypted = "";
+    $decrypted = "";
+
+
+//        echo "public key encrypt:\n";
+//        openssl_public_encrypt('1234567',$encrypted,$pu_key);//公钥加密
+//        $encrypted = base64_encode($encrypted);
+//        echo $encrypted,"\n";
+
+//        echo "private key decrypt:\n";
+    openssl_private_decrypt(base64_decode($data),$decrypted,$pi_key);//私钥解密
+    return $decrypted;
+//        echo $decrypted,"\n";
+}
+
+
+//把用户输入的文本转义（主要针对特殊符号和emoji表情）
+function textEncode($str){
+    if(!is_string($str)) return $str;
+    if(!$str || $str=='undefined') return '';
+    $text = json_encode($str); //暴露出unicode
+    $text = preg_replace_callback("/(\\\u[ed][0-9a-f]{3})/i", function($str){
+        return addslashes($str[0]);
+    },$text); //将emoji的unicode留下,其他不变
+    return json_decode($text);
+}
+
+//解码上面的转义
+function textDecode($str){
+    $text = json_encode($str); //暴露出unicode
+    $text = preg_replace_callback('/\\\\\\\\/i', function($str){
+        return '\\';
+    }, $text); //将两条斜杠变成一条,其他不变
+    return json_decode($text);
 }

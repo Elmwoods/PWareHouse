@@ -46,4 +46,15 @@ class Messages extends Base{
 		$m = new M();
 		return $m->batchDel();
 	}
+	
+	/**
+    * 查看商城消息
+    */
+	public function search(){
+//		echo 'kkkkk';
+		
+			return $this->fetch('search');
+	
+		
+	}
 }

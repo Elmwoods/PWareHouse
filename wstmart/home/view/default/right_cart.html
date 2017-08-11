@@ -6,7 +6,7 @@
 			<div class="toolbar-panels j-panel">
 				<div style="visibility: hidden;" id="gb" class="j-content toolbar-panel tbar-panel-cart toolbar-animate-out">
 					<h3 class="tbar-panel-header j-panel-header">
-						<a href="" class="title"><i></i><em class="title">购物车</em></a>
+						<a href="{:Url('home/carts/index')}" class="title"><i></i><em class="title">购物车</em></a>
 						<span class="close-panel j-close" title='关闭' id="close-panel"></span>
 					</h3>
 					<div class="tbar-panel-main">
@@ -28,7 +28,7 @@
                                         shop = d[key];
 					                    for(var i=0;i<shop.list.length;i++){
                                            goods = shop.list[i];
-						                   goods.goodsImg = WST.conf.ROOT+"/"+goods.goodsImg.replace('.','_thumb.');
+						                   goods.goodsImg = WST.conf.ROOT+"/"+goods.goodsImg;
 						                   specs = '';
 						                   if(goods.specNames && goods.specNames.length>0){
 							                  for(var j=0;j<goods.specNames.length;j++){
@@ -75,21 +75,70 @@
 					<em class="arrow3 arrow-cart"></em>
 				</div>
 
-				<div style="visibility: hidden;" data-name="follow" class="j-content toolbar-panel tbar-panel-follow">
+				<div style="visibility: hidden;" data-name="follow" class="j-content toolbar-panel  tbar-panel-follow">
 					<h3 class="tbar-panel-header j-panel-header">
-						<a href="#" target="_blank" class="title"> <i></i> <em class="title">我的关注</em> </a>
+						<a href="{:Url('home/favorites/goods')}" target="_blank" class="title"> <i></i> <em class="title">我的关注</em> </a>
 						<span class="close-panel j-close" title='关闭'></span>
 					</h3>
 					<div class="tbar-panel-main">
 						<div class="tbar-panel-content j-panel-content">
-							<div class="tbar-tipbox2">
-								<div class="tip-inner"> <i class="i-loading"></i> </div>
+							<div class="tbar-tipbox">
+								<div class="tip-inner">
+									<ul id="list-goods">
+										<!-- <li class="lii">
+											<a href=""><img src="" style="width:100px;height:100px; border:1px red solid"></a>
+											<a href="" class="add-cart-button1">取消关注</a>
+											<p>￥1222</p>
+										</li>
+										<li class="lii">
+											<a href=""><img src=""></a>
+											<a href="" class="add-cart-button1">取消关注</a>
+											<p>￥1222</p>
+										</li>
+										<li class="lii">
+											<a href=""><img src=""></a>
+											<a href="" class="add-cart-button1">取消关注</a>
+											<p>￥1222</p>
+										</li>
+										<li class="lii">
+											<a href=""><img src=""></a>
+											<a href="" class="add-cart-button1">取消关注</a>
+											<p>￥1222</p>
+										</li>
+										<li class="lii">
+											<a href=""><img src=""></a>
+											<a href="" class="add-cart-button1">取消关注</a>
+											<p>￥1222</p>
+										</li> -->
+										
+									</ul>
+								</div>	
 							</div>
 						</div>
 					</div>
 					<div class="tbar-panel-footer j-panel-footer"></div>
 				</div>
-				
+				<script id="list" type="text/html">
+					{{# for(var i = 0; i < d.length; i++){}}
+						<li class="lii">
+							<a href=""><img src="__ROOT__/{{ d[i].goodsImg }}" title="{{ d[i].goodsName }}" style="width:100px;height:100px;"></a>
+							<a href="javascript:void(0);" class="add-cart-button1" onclick="javascript:cancelFavorite({{ d[i].favoriteId }},0)">取消关注</a>
+							<p>￥{{ d[i].marketPrice }}</p>
+						</li>
+					{{# } }}
+
+					<script type="text/javascript">
+						$('.lii').hover(
+							function(){
+								
+								$(this).find('.add-cart-button1').show();
+							},function(){
+								
+								$(this).find('.add-cart-button1').hide();
+						});
+					</script>
+
+				</script>	
 				<div style="visibility: hidden;" class="j-content toolbar-panel tbar-panel-history toolbar-animate-in">
 					<h3 class="tbar-panel-header j-panel-header">
 						<a href="#none" class="title"> <i></i> <em class="title">我的足迹</em> </a>
@@ -102,7 +151,7 @@
 								<script id="list-history-goods" type="text/html">
 								{{# 
                                  for(var i = 0; i < d.length; i++){ 
-                                  d[i].goodsImg = WST.conf.ROOT+"/"+d[i].goodsImg.replace('.','_thumb.');
+                                  d[i].goodsImg = WST.conf.ROOT+"/"+d[i].goodsImg;
                                  }}
 								   <li class="jth-item">
 										<a target='_blank' href="{{WST.U('home/goods/detail','id='+d[i].goodsId)}}" class="img-wrap"><img src="{{d[i].goodsImg}}" height="100" width="100"> </a>
@@ -125,10 +174,11 @@
 				<div class="toolbar-tab tbar-tab-self tab-fade" >
 					<i class="tab-ico"></i>
 					<em class="tab-fade-box i-tab-login">
+						<span id="close" title='关闭' ></span>
 						<div class="tab-fade-photo">
-							<img class='usersImg' data-original="{:WSTUserPhoto(session('WST_USER.userPhoto'))}"/>
+							<img class='usersImg' data-original="{:WSTUserPhoto(session('WST_USER.userPhoto'))}" />
 						</div>
-						<span style="font-size: 16px;font-style: normal;color: #8C8C8C;">欢迎您，{:session('WST_USER.userName')?session('WST_USER.userName'):session('WST_USER.loginName')}
+						<span class="logged">欢迎您，{:session('WST_USER.userName')?session('WST_USER.userName'):session('WST_USER.loginName')}
 								&nbsp;|&nbsp;<a href="javascript:WST.logout();" style="font-size: 16px;color: #000000;">退出</a>
 						</span>
 						<!-- <div style="position: absolute;bottom: 20px;text-align: center;width: 280px;">
@@ -144,9 +194,10 @@
 				<div class="toolbar-tab tbar-tab-self tab-fade" >
 					<i class="tab-ico"></i>
 					<em class="tab-fade-box i-tab-login">
+					<span id="close" title='关闭' ></span>
 						<div class="tab-fade-photo"></div>
-						<span style="font-size: 16px;font-style: normal;color: #8C8C8C;">您好&nbsp;请先&nbsp;<a href="#" onclick='WST.loginWindow()' style="font-size: 16px;color: #000000;">登录</a>&nbsp;!</span>
-						<div style="position: absolute;bottom: 20px;text-align: center;width: 280px;">
+						<span class="no_logged" >您好&nbsp;请先&nbsp;<a href="#" onclick='WST.loginWindow()' style="font-size: 16px;color: #000000;">登录</a>&nbsp;!</span>
+						<div class="register">
 							<a href="{:Url('home/users/regist')}">注册</a>
 							<a  class="fgxl" href="#" style="margin:0px 5px -3px 5px;"></a>
 							<a href="#">第三方登录</a>
@@ -166,30 +217,27 @@
 				</div>
 				<div class="fgx"></div>
 				
-				<!-- 添加代码start -->
-				<div class="toolbar-tab tbar-tab-follow" <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
+				<div class="toolbar-tab tbar-tab-follow" <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' ";}else{ echo "onclick='WST.collection()'"; } ?>>
 					<i class="tab-ico"></i>
 					<em class="tab-text">收藏</em>
-					<span class="tab-sub j-count hide">0</span> 
+					<!-- <span class="tab-sub j-count hide">0</span>  -->
 				</div>
 				<div class="fgx"></div>
 			
-				<div class=" toolbar-tab tbar-tab-history " <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
+				<div class=" toolbar-tab tbar-tab-history " <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()'";}else{ echo "onclick='WST.record()'";} ?>>
 					<i class="tab-ico"></i>
 					<em class="tab-text">浏览记录</em>
-					<span class="tab-sub j-count hide"></span>
+					<!-- <span class="tab-sub j-count hide">1</span> -->
 				</div>
 				<div class="fgx"></div>
-				<div class="toolbar-tab tbar-tab-message" <?php  if(session('WST_USER.userId') == 0){ echo "onclick='WST.loginWindow()' " ; } ?>>
-				  <a target='_blank' href='{:Url("home/messages/index")}' onclick='WST.position(50,0)'>
+				 <a target='_blank' href='{:Url("home/messages/index")}' onclick='WST.position(50,0)'>
+				<div class="toolbar-tab tbar-tab-message">
+				 
 					<i class="tab-ico"></i>
 					<em class="tab-text">信息</em>
 					<span class="tab-sub j-message-count hide"></span> 
-				  </a>
-				</div>
-				<!-- 添加代码end -->
-				
-				</div>
+				 
+				</div> </a>
 				<div class="fgx"></div>
 			</div>
 			
@@ -197,7 +245,7 @@
 				<!-- <div class="toolbar-tab tbar-tab-service"> 
 					<a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">客服</em> </a>
 				</div> -->
-				<div class="toolbar-tab tbar-tab-code tab-fade"> 
+				<div class="toolbar-tab tbar-tab-code tab-fade" id="code"> 
 					<a href="#"> 
 						<i class="tab-ico  "></i> 
 						<span class="tab-fade-box i-tab-code">
@@ -208,7 +256,7 @@
 					</a> 
 				</div>
 				<script type="text/javascript">
-					$(".tab-fade").hover(function(){$(this).find(".tab-fade-box").show();},function(){$(this).find(".tab-fade-box").hide();});
+					$("#code").hover(function(){$(this).find(".tab-fade-box").show();},function(){$(this).find(".tab-fade-box").hide();});
 				</script>
 				 <a href="#return_top"><div class="toolbar-tab tbar-tab-top" style="margin-top:0px;"> <i class="tab-ico  "></i> <em class="footer-tab-text">返回顶部</em>  </div></a>
 				<div class=" toolbar-tab tbar-tab-feedback"  style='display:none'> <a href="#" target="_blank"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
@@ -220,18 +268,6 @@
 		<div id="j-toolbar-load-hook"></div>		
 	</div>
 </div>
+<script type='text/javascript' src='__STYLE__/users/favorites/favorites.js?v={$v}'></script>
 <script type='text/javascript' src='__STYLE__/js/right_cart.js?v={$v}'></script>
-<script type="text/javascript">
-	var flag=false;
-	$(".tbar-tab-cart").click(function(){
-		flag=!flag;
-		if(flag){
-			$(this).find(".tab-cart-buy-num").css({"color":"#C81623","background-color":"#ffffff"});
-		}else{
-			$(this).find(".tab-cart-buy-num").css({"color":"#ffffff","background-color":"#C81623"});
-		}
-	});
-	$(".tbar-tab-cart").mouseenter(function(){
-		$(this).find(".tab-cart-buy-num").css({"color":"#C81623","background-color":"#ffffff"});
-	})
-</script>
+

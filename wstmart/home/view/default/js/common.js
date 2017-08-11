@@ -64,9 +64,26 @@ WST.searchIpt = function(){
 		$(this).css({"border-left":"2px solid #e23c3d"});
 		$(this).find('i').removeClass('over').addClass('arrow');
 	});
+	// 固定在顶部的搜索
+	$('.j-search-box1').hover(function(){
+		$(".j-type-list1").show();
+		$(this).find('i').removeClass('arrow').addClass('over');
+		$(this).css({"border-left":"2px solid #e23c3d"});
+	},function(){
+		$(".j-type-list1").hide();
+		$(this).css({"border-left":"2px solid #e23c3d"});
+		$(this).find('i').removeClass('over').addClass('arrow');
+	});
 
 	$('j-type-list').hover(function(){
 		$(".j-type-list").show();
+		$(this).find('i').removeClass('arrow').addClass('over');
+		$(this).css({"border-left":"2px solid #e23c3d"});
+	});
+
+	// 固定在顶部的搜索
+	$('j-type-list1').hover(function(){
+		$(".j-type-list1").show();
 		$(this).find('i').removeClass('arrow').addClass('over');
 		$(this).css({"border-left":"2px solid #e23c3d"});
 	});
@@ -86,7 +103,30 @@ WST.searchIpt = function(){
 		$(".j-type-list").hide();
 		$(".j-search-type").find('i').removeClass('over').addClass('arrow');
 	});
+
+	// 固定在顶部的搜索
+	$("#fixed-list div").click(function(){
+		
+		$("#fixed-type").val($(this).attr("data"));
+
+		$("#ss-type span").html($(this).html());
+		
+		if($(this).attr("data")==1){
+			
+			$(this).attr("data",0);
+			$(this).html('商品');
+			$('#fixed-ipt').attr('placeholder',$('#lan').val());
+		}else{
+			$(this).attr("data",1);
+			$(this).html('店铺');
+			$('#fixed-ipt').attr('placeholder',$('#yu').val());
+		}
+		$("#fixed-list").hide();
+		$("#fixed-type").find('i').removeClass('over').addClass('arrow');
+	});
 }
+
+// 主页默认的搜索
 WST.search = function(){
 	if($("#search-type").val()==1){
 		WST.shopSearch($.trim($('#search-ipt').val()));
@@ -95,11 +135,16 @@ WST.search = function(){
 	}
 }
 
+// 固定在顶部的搜索
 WST.fixed = function(){
+
 	if($("#fixed-type").val()==1){
+		
 		WST.shopSearch($.trim($('#fixed-ipt').val()));
 	}else{
+	
 		WST.goodsSearch($.trim($('#fixed-ipt').val()));
+
 	}
 }
 
@@ -194,6 +239,9 @@ WST.Sidebar = function(){
     });
     $(".dd-inner").hover(function() { //整个导航菜单悬浮，是否显示二级导航到出厂
         $("#index_menus_sub").show();
+        $(window).scroll(function(){
+    		$('#nn').hide();
+    	});
 
     }, function() {
         $("#index_menus_sub").hide();
@@ -393,22 +441,43 @@ WST.goTo = function(obj){
 WST.getVerify = function(id){
     $(id).attr('src',WST.U('home/index/getVerify','rnd='+Math.random()));
 }
+
 WST.loginWindow = function(){
-	
+	// $('.tbar-panel-follow').css('visibility','hidden');
+	// $('.tbar-panel-history').css('visibility','hidden');
+	console.log($('.tbar-panel-follow').css('visibility','hidden'));
 	$.post(WST.U('home/users/toLoginBox'),{},function(data){
 		WST.open({type:1,area:['550px','320px'],offset:'auto',title:'用户登录',content:data});
 	});
+
+
+
 }
 /********************* 选项卡切换隐藏 **********************/
+// $.fn.TabPanel = function(options){
+// 	var defaults = {tab: 0}; 
+// 	var opts = $.extend(defaults, options);
+// 	var t = this;
+	
+// 	$(t).find('#md li').click(function(){
+		
+// 		$(this).addClass("one_li").siblings().removeClass();
+// 		var index = $(this).index();
+// 		$(t).parent('#goodsTabs').next('.aa').find('.parameter').eq(index).show().siblings().hide();
+// 		if(opts.callback)opts.callback(index);
+// 	});
+// 	$(t).find('.wst-tab-nav li').eq(opts.tab).click();
+// }
+
 $.fn.TabPanel = function(options){
 	var defaults = {tab: 0}; 
 	var opts = $.extend(defaults, options);
 	var t = this;
-	
-	$(t).find('#md li').click(function(){
-		
+	$(t).find('.wst-tab-nav li').click(function(){
+		$(this).addClass("on").siblings().removeClass();
 		$(this).addClass("one_li").siblings().removeClass();
 		var index = $(this).index();
+		$(t).find('.wst-tab-content .wst-tab-item').eq(index).show().siblings().hide();
 		$(t).parent('#goodsTabs').next('.aa').find('.parameter').eq(index).show().siblings().hide();
 		if(opts.callback)opts.callback(index);
 	});
@@ -567,6 +636,11 @@ WST.changeIptNum = function(diffNum,iptId,btnId,id,func){
 		var fn = window[func];
 		fn();
 	}
+
+	var right_cart = parseFloat($('#j-goods-total-money').text()).toFixed(2);
+	$('#j-goods-total-money').html(right_cart);
+
+	
 }
 WST.shopQQ = function(val){
 	if(WST.blank(val) !=''){

@@ -10,15 +10,15 @@ a{
 .wst-header,.wst-in-header{
 	border-bottom:1px solid #e8e8e8;
 	background:#ffffff;
-	height: 42px;
-    line-height: 42px;
+	height: 44px;
+    line-height: 44px;
 }
 .wst-header h1{
 	color:#59595c;
 }
 .wst-header .ui-icon-return{
-	height: 42px;
-    line-height: 42px;
+	height: 44px;
+    line-height: 44px;
 }
 .wst-border-bs{
 	font-size:0.16rem;
@@ -30,8 +30,8 @@ a{
     right: 8px;
     color:#59595c;
     min-width: 32px;
-	height: 42px;
-    line-height: 42px;
+	height: 44px;
+    line-height: 44px;
     font-size:0.181rem;
 }
 .wst-header .edit:active{
@@ -39,17 +39,18 @@ a{
 }
 /*搜索*/
 .wst-in-active{
-	height: 42px;
-    line-height: 42px;
-   	background:#000000;
-   	filter:alpha(opacity=50); /*IE滤镜*/
-	-moz-opacity:0.5; /*Firefox*/
-	opacity:0.5;/*其他*/
+	height: 44px;
+    line-height: 44px;
+   	background:#FFFFFF;
+   	border-bottom:1px solid #e8e8e8;
+   	/*filter:alpha(opacity=50); IE滤镜*/
+	/*-moz-opacity:0.5; Firefox*/
+	/*opacity:0.5;其他*/
 }
 .wst-in-icon .cats,.wst-in-activei .cats{
 	position: fixed;
     width: 36px;
-    height:42px;
+    height:44px;
     top: 0px;
     left: 10px;
     z-index: 100;
@@ -57,7 +58,7 @@ a{
 .wst-in-icon .news,.wst-in-activei .news{
 	position: fixed;
     width: 36px;
-    height:42px;
+    height:44px;
     top: 0px;
     right: 10px;
     z-index: 100;
@@ -77,12 +78,13 @@ a{
 	background: url(../img/icon_indextop.png) 0px 8px no-repeat;
 	background-size: 700%;
 }
-.wst-in-activei .news{
+/*.wst-in-activei .news{
 	background: url(../img/icon_indextop.png) -69px 7px no-repeat;
 	background-size: 700%;
-}
+}*/
 .wst-in-icon .calogos{
-	background: url(../img/img/logo1.png) 0px 5px no-repeat;
+	/*background: url(../img/img/logo1.png) 0px 5px no-repeat;*/
+	/*background: red;*/
     background-size: 90%;
 }
 .search{
@@ -92,12 +94,12 @@ a{
 	top:0px;
 	z-index: 100;*/
 	
-	width: 62%;
+	width: 70%;
     position: fixed;
-    left: 20%;
+    left: 13%;
     top: 7px;
     z-index: 100;
-    border: 1px solid #333;
+    border: 1px solid #999;
     border-radius: 10px;
    
 }
@@ -105,7 +107,8 @@ a{
 	float:left;
 	width: 82%;
 	height:26px;
-	font-size:0.181rem;
+	font-size: 14px;
+	/*font-size:0.181rem;*/
 	/*margin-top:6px;*/
 	outline: none;
 	border:none;
@@ -148,7 +151,7 @@ a{
 	outline: none;
 	border:none;
 	position:relative;
-	color: #ffffff;
+	color: #333333;
     background: transparent;
 }
 .wst-in-actives .seleft{
@@ -169,13 +172,13 @@ a{
 	width: 100%;
 	border-bottom: 1px solid #ffffff;
 }
-.wst-in-actives .ui-icon-search{
+/*.wst-in-actives .ui-icon-search{
 	position: absolute;
-	/*top: -2px;*/
+	top: -2px;
     right: -5px;
     font-size:0.45rem;
 	color: #ffffff;
-}
+}*/
 
 /*导航*/
 .wst-footer-btns{
@@ -196,7 +199,7 @@ a{
     height: 16px; 
     line-height: 16px;
     -webkit-border-radius: 10px;
-    padding: 0 6px;
+    min-width: 16px;
     background-clip: padding-box;
     font-size: 0.1rem;
     position: absolute;
@@ -214,13 +217,7 @@ a{
 	display: block;
 	margin-top:2px;
 }
-.wst-menus p span.img{
-	width:36px;
-	height:28px;
-	display: block;
-	margin-top:2px;
-}
-.home-word,.category-word,.cart-word,.follow-word,.user-word{
+.home-word,.category-word,.cart-word,.back-word,.user-word{
 	float:left;
 	width:100%;
 	text-align: center;
@@ -229,7 +226,7 @@ a{
 	height: 16px; 
     line-height: 16px;
 }
-.home-active-word,.category-active-word,.cart-active-word,.follow-active-word,.user-active-word{
+.home-active-word,.category-active-word,.cart-active-word,.back-active-word,.user-active-word{
 	float:left;
 	width:100%;
 	text-align: center;
@@ -238,86 +235,45 @@ a{
 	height: 16px; 
     line-height: 16px;
 }
-/*.gou-word,.money-word,.mark-word{
-	float:left;
-	width:100%;
-	text-align: center;
-	font-size:0.13rem;
-	color:#2c2c2c;
-	height: 16px; 
-    line-height: 16px;
-}
-.gou-active-word,.money-active-word,.mark-active-word{
-	float:left;
-	width:100%;
-	text-align: center;
-	font-size:0.13rem;
-	color:#e60b49;
-	height: 16px; 
-    line-height: 16px;
-}
-.wst-menus span.gougou{
-	background: url(../img/img/gougoua.png) 5px 0 no-repeat;
-	background-size: 80%;
-}
-.wst-menus span.moneybox{
-	background: url(../img/img/qiandaizia.png) 5px 0 no-repeat;
-	background-size: 70%;
-}
-.wst-menus span.markets{
-	background: url(../img/img/shangcheng_a.png) 5px 0 no-repeat;
-	background-size: 70%;
-}
-.wst-menus span.gougou-active{
-	background: url(../img/img/gougoua.png) 5px 0 no-repeat;
-	background-size: 80%;
-}
-.wst-menus span.moneybox-active{
-	background: url(../img/img/qiandaizia.png) 5px 0 no-repeat;
-	background-size: 70%;
-}
-.wst-menus span.markets-active{
-	background: url(../img/img/shangcheng_b.png) 5px 0 no-repeat;
-	background-size: 70%;
-}*/
+
 .wst-menus .home{
-	background: url(../img/icon_bottomnav.png) -44px -12px no-repeat;
+	background: url(../img/icon_bottomnav.png) -46px -12px no-repeat;
     background-size: 1190%;
 }
 .wst-menus .category{
-	background: url(../img/icon_bottomnav.png) -120px -12px no-repeat;
+	background: url(../img/icon_bottomnav.png) -118px -12px no-repeat;
     background-size: 1190%;
 }
 .wst-menus .cart{
-	background: url(../img/icon_bottomnav.png) -197px -12px no-repeat;
+	background: url(../img/icon_bottomnav.png) -191px -12px no-repeat;
     background-size: 1190%;
 }
-.wst-menus .follow{
-	background: url(../img/icon_bottomnav.png) -274px -12px no-repeat;
-    background-size: 1190%;
+.wst-menus .back{
+	background: url(../img/fabu.png) 5px 3px no-repeat;
+    background-size: 70%;
 }
 .wst-menus .user{
-	background: url(../img/icon_bottomnav.png) -349px -12px no-repeat;
+	background: url(../img/icon_bottomnav.png) -335px -12px no-repeat;
     background-size: 1190%;
 }
 .wst-menus .home-active{
-	background: url(../img/icon_bottomnav.png) -44px -48px no-repeat;
+	background: url(../img/icon_bottomnav.png) -46px -46px no-repeat;
     background-size: 1190%;
 }
 .wst-menus .category-active{
-	background: url(../img/icon_bottomnav.png) -120px -48px no-repeat;
+	background: url(../img/icon_bottomnav.png) -118px -46px no-repeat;
     background-size: 1190%;
 }
 .wst-menus .cart-active{
-	background: url(../img/icon_bottomnav.png) -197px -48px no-repeat;
+	background: url(../img/icon_bottomnav.png) -191px -46px no-repeat;
     background-size: 1190%;
 }
-.wst-menus .follow-active{
-	background: url(../img/icon_bottomnav.png) -274px -48px no-repeat;
-    background-size: 1190%;
+.wst-menus .back-active{
+	background: url(../img/fabu.png) 5px 3px no-repeat;
+    background-size: 70%;
 }
 .wst-menus .user-active{
-	background: url(../img/icon_bottomnav.png) -349px -48px no-repeat;
+	background: url(../img/icon_bottomnav.png) -335px -46px no-repeat;
     background-size: 1190%;
 }
 
@@ -348,36 +304,6 @@ a{
 	font-size:0.12rem;
 	margin-top:18px;
 }
-/*悬浮框*/
-/*.xuanfu{
-	width: 0.56rem;
-	height: 0.56rem;
-	position: fixed;
-	right: 0.36rem;
-	bottom: 0.8rem;
-	background: red;
-	border-radius: 50%;
-	z-index: 100;
-	background: url(../img/img/dayuanjia.png) -45px -36px no-repeat;
-}
-.xuanfu-active{
-	transform: rotate(45deg);
-	-ms-transform: rotate(45deg);             /* IE 9 */
-	/*-webkit-transform: rotate(45deg);      /* Safari and Chrome */
-	/*-o-transform: rotate(45deg);              /* Opera */*/
-	/*-moz-transform: rotate(45deg);         /* Firefox */*/
-}*/*/
-/*.xuanfu span{
-	width: 0.6rem;
-	height: 0.6rem;
-	display: block;
-	background: yellow;
-	position: absolute;
-}
-.xuanfu span.toTop{
-	right: 0.72rem;
-	bottom: 2.33rem;
-}*/
 /*内容为空提示*/
 .wst-flexslp{
 	margin-top:120px;
@@ -475,7 +401,7 @@ a{
 }
 /*选中*/
 .wst-active{
-	color:#E60B49;
+	color: #E60B49;
 }
 /*上传图片*/
 .upload-modal{
@@ -561,7 +487,7 @@ a{
 	background-size: 100%;
 }
 .ui-header ~ .ui-container{
-	border-top: 42px solid transparent;
+	border-top: 44px solid transparent;
 }
 .ui-footer ~ .ui-container{
 	border-bottom: 88px solid transparent;

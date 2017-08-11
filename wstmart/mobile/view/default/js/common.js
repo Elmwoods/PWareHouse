@@ -33,12 +33,12 @@ WST.initFooter = function(tab){
     var homeImage = (tab=='home') ? 'home-active' : 'home';
     var categoryImage = (tab=='category') ? 'category-active' : 'category';
     var cartImage = (tab=='cart') ? 'cart-active' : 'cart';
-    var followImage = (tab=='brand') ? 'follow-active' : 'follow';
+    var backImage = (tab=='brand') ? 'back-active' : 'back';
     var usersImage = (tab=='user') ? 'user-active' : 'user';
     $('#home').append('<span class="icon '+homeImage+'"></span><span class="'+homeImage+'-word">首页</span>');
     $('#category').append('<span class="icon '+categoryImage+'"></span><span class="'+categoryImage+'-word">分类</span>');
     $('#cart').prepend('<span class="icon '+cartImage+'"></span><span class="'+cartImage+'-word">购物车</span>');
-    $('#follow').append('<span class="icon '+followImage+'"></span><span class="'+followImage+'-word">关注</span>');
+    $('#back').append('<span class="icon '+backImage+'"></span><span class="'+backImage+'-word">返回</span>');
     $('#user').append('<span class="icon '+usersImage+'"></span><span class="'+usersImage+'-word">我的</span>');
 }
 //变换选中框的状态
@@ -214,6 +214,7 @@ WST.showHide = function(t,str){
  * @param stayTime      显示时间
  */
 WST.msg = function(content,type,stayTime){
+	
 	if(!stayTime){
 		stayTime = '1200';
 	}
@@ -249,7 +250,7 @@ WST.noload = function(){
 //滚动到顶部
 WSTrunToTop = function (){  
 	currentPosition=document.documentElement.scrollTop || document.body.scrollTop; 
-	currentPosition-=20;
+	currentPosition-=200;
 	if(currentPosition>0){
 		window.scrollTo(0,currentPosition);  
 	}  
@@ -266,7 +267,7 @@ WST.inArray = function(str,arrs){
 	return -1;
 }
 $(function(){
-	echo.init();//图片懒加载
+	// echo.init();//图片懒加载
     // 滚动到顶部	
     $(window).scroll(function(){
         if( $(window).scrollTop() > 200 ){

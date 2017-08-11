@@ -1,21 +1,34 @@
 @CHARSET "UTF-8";
 .wst-useri_portrait{
-	margin-top:-10px;
-	width: 65px;
+	/*margin-top:-10px;
+	width: 65px;*/
+	width: 50px;
+	padding-top: 0px;
     border-radius: 1000px;
 }
 .wst-useri_line{
 	border-bottom: 1px solid #EDEDED;
 }
 /*上传头像*/
+
 .uploadfile-input{
-	width: 70%;
-	height: 90px;
+	width: 96%;
+	/*height: 90px;*/
+	height: 100%;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
+    z-index: 10;
 }
+/*新增*/
+
+.ui-list-info{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+
 /*修改昵称*/
 .wst-useri_determine{
 	position: relative;
@@ -54,10 +67,11 @@
 .wst-list-infose2{
 	float:right;
 	width:32px;
-	margin-top:-45px;
+	margin-top:-48px;
 }
 .wst-icon-checked-s_se{
-	color:#de0301;
+	/*color:#de0301;*/
+	color: #E60B49;
 }
 /*我的关注*/
 .wst-fav_search{

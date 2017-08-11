@@ -7,6 +7,7 @@ function getOrderList(){
     param.type = $('#type').val();
     param.pagesize = 10;
     param.page = Number( $('#currPage').val() ) + 1;
+    // console.log(param)
     $.post(WST.U('mobile/orders/getOrderList'), param, function(data){
         var json = WST.toJson(data);
         var html = '';
@@ -225,14 +226,14 @@ function complain(oid){
 
 //余额支付
 function walletPay(){
-	var payPwd = $('#payPwd').val();
-	if(!payPwd){
-		WST.msg('请输入支付密码','info');
-		return;
-	}
-	WST.load('正在核对密码···');
+	// var payPwd = $('#payPwd').val();
+	// if(!payPwd){
+	// 	WST.msg('请输入支付密码','info');
+	// 	return;
+	// }
+	// WST.load('正在核对密码···');
 	var params = {};
-    params.payPwd = payPwd;
+    // params.payPwd = payPwd;
     params.orderNo = $('#orderNo').val();
     params.isBatch = $('#isBatch').val();
     $('.wst-btn-dangerlo').attr('disabled', 'disabled');
@@ -259,7 +260,7 @@ function choicePay(orderNo,isBatch){
 //跳转支付
 function toPay(orderNo,isBatch,n){
 	if(n=='alipays'){
-		   location.href=WST.U('mobile/alipays/toAliPay',{'orderNo':orderNo,'isBatch':isBatch});
+		location.href=WST.U('mobile/alipays/toAliPay',{'orderNo':orderNo,'isBatch':isBatch});
 	}else if(n=='wallets'){
 		location.href = WST.U('mobile/wallets/payment',{"orderNo":orderNo,'isBatch':isBatch});
 	}

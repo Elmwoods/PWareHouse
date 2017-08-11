@@ -14,8 +14,17 @@ namespace wstmart\home\controller;
  * 默认控制器
  */
 class Index extends Base{
-	
+
+    public function turn() {
+        $needle = strrpos($_SERVER['SERVER_NAME'], '.') + 1;        //获取最后一次 . 出现的位置
+        $suffix =  substr($_SERVER['SERVER_NAME'], $needle);        //获取域名后缀
+        if ($suffix == 'cn') {
+            $this -> redirect("http://www.jingomall.com/mall");
+        }
+    }
+
     public function index(){
+        $this -> turn();
     	$categorys = model('GoodsCats')->getFloors();
     	$this->assign('floors',$categorys);
     	$this->assign('hideCategory',1);

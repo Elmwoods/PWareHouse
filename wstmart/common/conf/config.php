@@ -153,6 +153,7 @@ return [
 
     // 异常页面的模板文件
     'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+    //'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'index.tpl',
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',
     // 显示错误信息
@@ -237,5 +238,23 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+
+    //数据库配置信息
+    'db_config1' => [
+        // 数据库类型
+        'type'        => 'mysql',
+        // 服务器地址
+        'hostname'    => 'rm-bp112h403424k2tvt.mysql.rds.aliyuncs.com',
+        // 数据库名
+        'database'    => 'jingo',
+        // 数据库用户名
+        'username'    => 'holyflaman',
+        // 数据库密码
+        'password'    => 'Qweasd321',
+        // 数据库编码默认采用utf8
+        'charset'     => 'utf8',
+        // 数据库表前缀
+        'prefix'      => 'jingo_',
     ]
 ];

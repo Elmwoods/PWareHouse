@@ -5,32 +5,12 @@
 <link rel="stylesheet"  href="__MOBILE__/js/share/nativeShare.css?v={$v}">
 {/block}
 {block name="header"}
-<!--<script>-->
-	<!--var phoneWidth = parseInt(window.screen.width);-->
-	<!--var phoneHeight = parseInt(window.screen.height);-->
-	<!--var phoneScale = phoneWidth / 750;-->
-
-	<!--var ua = navigator.userAgent;-->
-	<!--if(/Android (\d+\.\d+)/.test(ua)) {-->
-		<!--var version = parseFloat(RegExp.$1);-->
-		<!--// andriod 2.3-->
-		<!--if(version > 2.3) {-->
-			<!--document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');-->
-			<!--// andriod 2.3以上-->
-		<!--} else {-->
-			<!--document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');-->
-		<!--}-->
-		<!--// 其他系统-->
-	<!--} else {-->
-		<!--document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');-->
-	<!--}-->
-<!--&lt;!&ndash;&lt;!&ndash;</script>&ndash;&gt;-->
 	{php}$cartNum = WSTCartNum();{/php}
 	<header class="ui-header ui-header-positive wst-header">
 	    <i class="ui-icon-return" onclick="history.back()"></i>
 	    <ul class="ui-tab-nav">
 	        <!--<li class="switch active" onclick="javascript:pageSwitch(this,1);">商品</li>-->
-	        <li class="switch" onclick="javascript:pageSwitch(this,2);">宝贝详情</li>
+	        <li class="switch" >商品详情</li>
 	        <!--<li class="switch" id="appr" onclick="javascript:pageSwitch(this,3);">评价</li>-->
     	</ul>
 	    <!--<a href="{:url('mobile/carts/index')}"><span class="cart" >{if($cartNum>0)}<span>{php} echo $cartNum;{/php}</span>{/if}</span></a>-->
@@ -44,13 +24,13 @@
 	</div>
 	<input type="hidden" name="" value="{$info['goodsId']}" id="goodsId" autocomplete="off">
 	<input type="hidden" name="" value="{$info['goodsType']}" id="goodsType" autocomplete="off">
-    <footer class="ui-footer wst-footer-btns" style="height:40px; border-top: 1px solid #e8e8e8;" id="footer">
-        <!--<div class="wst-toTop" id="toTop">-->
-	  		<!--<i class="wst-toTopimg"><span>顶部</span></i>-->
-		<!--</div>-->
+    <footer class="ui-footer wst-footer-btns" style="height:45px; border-top: 1px solid #e8e8e8;" id="footer">
+        <div class="wst-toTop" id="toTop">
+	  		<i class="wst-toTopimg"><span>顶部</span></i>
+		</div>
 		<div class="ui-row-flex">
 			<div class="ui-col ui-col-3 wst-go-icon">
-				<div class="icon"><a href="tel:{$info['shop']['shopTel']}"><span class="img tel"></span><span class="word">私聊</span></a></div>
+				<!-- <div class="icon"><a href="tel:{$info['shop']['shopTel']}"><span class="img tel"></span><span class="word">私聊</span></a></div> -->
 				<div class="icon"><a href="{:url('mobile/shops/home',['shopId'=>$info['shop']['shopId']])}"><span class="img shop"></span><span class="word">店铺</span></a></div>
 				{if($info['favGood']==0)}
 				<button class="but" type="button"><span class="img imgfollow nofollow" onclick="javascript:WST.favorites({$info['goodsId']},0);"></span><span class="word">收藏</span></button>
@@ -75,31 +55,32 @@
 {if($info['goodsId']>0)}
 	 {/* 商品  */}
      <section class="ui-container" id="goods1">
-        <div class="ui-slider" style="padding-top:100%;">
-		    <ul class="ui-slider-content" style="width: 300%">
+        <div class="ui-slider swiper-container" style="padding-top:100%;">
+		    <ul class="ui-slider-content swiper-wrapper">
 		        {volist name="info['gallery']" id="ga"}
-		        <li><span><img style="width:100%; height:100%; display:block;" src="__ROOT__/{:WSTImg($ga,2)}"></span></li>
+		        <li class="advert1  swiper-slide"><span><img style="width:100%; height:100%; display:block;" src="__ROOT__/{:WSTImg($ga,2)}"></span></li>
 		        {/volist}
 		    </ul>
+		     <script type="text/javascript">
+		       	var len = $(".ui-slider-content li").length;
+                 leng = len*100+"%"
+	             $(".ui-slider-content").css({'width':leng})
+		       </script>
 		</div>
+
 		<div class="ui-nowrap-multi ui-whitespace wst-go-name">{if $info['isFreeShipping']==1}<span class='wst-red'>【包邮】</span>{/if}{$info['goodsName']}</div>
 		<div class="ui-row-flex wst-go-price">
 		    <div class="ui-col ui-col-2">
 				<div class="discount">
 					<p class="price">¥{$info['shopPrice']}</p>
-					<p class="member">会员价</p>
+					<p class="member">经销价</p>
 				</div>
 				<span class="market">原价：¥{$info['marketPrice']}</span>
 				<div class="tips">
 					<span>销量：{$info['saleNum']}</span>
-					<span>收藏：666</span>
-					<span>默认快递</span>
+					<span>7天无理由退货</span>
 				</div>
-				<div class="ensure">
-					<span><em></em>退货补运费</span>
-					<span><em></em>7天无理由退货</span>
-					···
-				</div>
+				
 		    </div>
 		     {:hook('mobileDocumentGoodsDetailTips',["goods"=>$info])}
 		</div>
@@ -112,32 +93,35 @@
 		        <span class="icon">···</span>
 		    </li>
 		    {/if}
-		    <li style="display: block;" class="activity">
-		        <div class="ui-list-info">
-		            <h5 class="ui-nowrap"><span class="word">优惠活动</span></h5>
-		        </div>
-				<div class="coupon">
-					<div><i>¥</i>5<p class="condition">满58元使用</p></div>
-					<div><i>¥</i>15<p class="condition">满148元使用</p></div>
-					<div><i>¥</i>20<p class="condition">满180元使用</p></div>
-				</div>
-		    </li>
+		  <!--   <li style="display: block;" class="activity">
+		      <div class="ui-list-info">
+		          <h5 class="ui-nowrap"><span class="word">优惠活动</span></h5>
+		      </div>
+		  				<div class="coupon">
+		  					<div><i>¥</i>5<p class="condition">满58元使用</p></div>
+		  					<div><i>¥</i>15<p class="condition">满148元使用</p></div>
+		  					<div><i>¥</i>20<p class="condition">满180元使用</p></div>
+		  				</div>
+		  </li> -->
 			<div class="seller">
-				<div class="head">
-					<img src="__MOBILE__/img/seller.png" alt=""/>
-					<span class="nickname">C小小XIAO</span><i></i>
-					<!--<div class="collection">+收藏</div>-->
-					<!--<div class="collection" oncliock =  'WST.cancelFavorite(9,1)'>+收藏</div>
-					<div id="collect-notice">收藏成功</div>-->
-					
+				<div class="head" onclick="location.href='{:url('mobile/shops/home',['shopId'=>$info['shop']['shopId']])}'">
+					 <div class="ui-list-thumb" style="float: left;">
+			            <span><img src="__ROOT__/{:WSTImg($info['shop']['shopImg'],3)}" title="{$info['shop']['shopName']}"></span>
+			        </div>
+					<div class="ui-list-info info" style="float: left;line-height: 80px;">
+				    	<p class="name">{$info['shop']['shopName']}</p>
+		        	</div>
+					<div class="collection">去看看</div>
+					<span class="icon"></span>
 				</div>
-			
-				<div class="detail" >
-					<ul class="details" style="background: white;">
-						<li class="active">评论</li>
-						<li>宝贝详情</li>
-						<li>购物帮助</li>
-					</ul>
+				<div class="" style="height: 46px;position: relative;margin-top: 20px;">
+					<div class="detail" >
+						<ul class="details" style="background: white;">
+							<li class="active">评论</li>
+							<li>商品详情</li>
+							<!-- <li>购物帮助</li> -->
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!--修改-->
@@ -150,64 +134,45 @@
 		    </li>
 		    {/if}
 
-		    <li onclick="javascript:pageSwitch($('#appr'),3);">
+		    <li id="conmentText"  onclick="javascript:pageSwitch($('#appr'),3);">
 		        <div class="ui-list-info">
 		            <h5 class="ui-nowrap">买家评论(<span class="red">{$info['appraiseNum']}</span>)</h5>
 		        </div>
 		        <span class="icon"></span>
 		    </li>
 		</ul>
-		<ul class="ui-list ui-list-one ui-list-link wst-go-shop">
-		    <!--<li onclick="javascript:location.href='{:url('mobile/shops/home',['shopId'=>$info['shop']['shopId']])}';">-->
-		        <!--<div class="ui-list-thumb">-->
-		            <!--<span><img src="__ROOT__/{:WSTImg($info['shop']['shopImg'],3)}" title="{$info['shop']['shopName']}"></span>-->
-		        <!--</div>-->
-		     <!--<div class="ui-list-info info">-->
-		    	<!--<p class="name">{$info['shop']['shopName']}</p><br/>-->
-		        <!--<p class="ui-nowrap-flex name2">主营：{$info['shop']['cat']}</p>-->
-        	<!--</div>-->
-		    <!--</li>-->
+		<ul class="ui-list ui-list-one ui-list-link wst-go-shop" onclick="javascript:pageSwitch($('#appr'),3);">
+		    <!-- <li onclick="javascript:location.href='{:url('mobile/shops/home',['shopId'=>$info['shop']['shopId']])}';">
+		        <div class="ui-list-thumb">
+		            <span><img src="__ROOT__/{:WSTImg($info['shop']['shopImg'],3)}" title="{$info['shop']['shopName']}"></span>
+		        </div>
+			     <div class="ui-list-info info">
+			    	<p class="name">{$info['shop']['shopName']}</p><br/>
+			        <p class="ui-nowrap-flex name2">主营：{$info['shop']['cat']}</p>
+	        	</div>
+		    </li> -->
 		    <div class="ui-whitespace">
-				<div class="ui-row-flex score">
+				<div class="ui-row-flex score"  style="display: none;">
 					<div class="ui-col ui-col">质量很好<span class="red">{$info['shop']['goodsScore']}</span></div>
 					<div class="ui-col ui-col">物流快<span class="red">{$info['shop']['timeScore']}</span></div>
 					<div class="ui-col ui-col">服务很好<span class="red">{$info['shop']['serviceScore']}</span></div>
 				</div>
 			</div>
 			<div class="comment">
-				<div class="head"><img src="__MOBILE__/img/touxiang_03.png" alt=""/><span class="nickname">啦啦啦</span></div>
-				<div class="describe">衣服真的很好看，料子也很好，已经爱上他们的衣服了。</div>
-				<div class="time">昨天16:30</div>
-				<div class="imgshow">
-					<img src="__MOBILE__/img/show1.png" alt="看不见我"/><img src="__MOBILE__/img/show2.png" alt="看不见我"/><img src="__MOBILE__/img/show3.png" alt=""/>
-				</div>
+				
 			</div>
 
 		</ul>
-		 <!--猜你喜欢-->
-		<!--<div class="wst-shl-ads">-->
-	     	<!--<div class="title">猜你喜欢</div>-->
-	     	<!--{wst:goods type='best' cat="$info['shop']['catId']" num='6'}-->
-	     	<!--<div class="wst-go-goods" onclick="javascript:WST.intoGoods({$vo['goodsId']});">-->
-	     		<!--<div class="img j-imgAdapt">-->
-	     			<!--<a href="javascript:void(0);" onclick="javascript:WST.intoGoods({$vo['goodsId']});"><img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{:WSTImg($vo['goodsImg'],3)}" title="{$vo['goodsName']}"></a>-->
-	     		<!--</div>-->
-	     		<!--<p class="name ui-nowrap-multi">{$vo['goodsName']}</p>-->
-	     		<!--<div class="info"><span class="ui-nowrap-flex price">¥{$vo['shopPrice']}</span></div>-->
-	     	<!--</div>-->
-	     	<!--{/wst:goods}-->
-		    <!--<div class="wst-clear"></div>-->
-	    <!--</div>-->
-	    <!--<div class="wst-go-top" style="display: block;">上拉查看图文详情</div>-->
+		
      </section>
     {/* 详情  */}
-    <section class="ui-container" id="goods2" style="display: block;border:none;">
+    <section class="ui-container" id="goods2" style="display: block;">
     	<div class="wst-go-details">{$info['goodsDesc']}</div>
     </section>
 
 	<!--购物帮助-->
-	<div id="help" style="width: 100%;height:640px;">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere reiciendis blanditiis porro nulla velit accusamus atque! Est eum debitis magnam hic totam aperiam quae quos! Fugiat dicta esse suscipit animi?
+	<div id="help" style="border-bottom: 30px solid transparent;border-top: 42px solid transparent;padding: 0 10px;    display: none;">
+		<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere reiciendis blanditiis porro nulla velit accusamus atque! Est eum debitis magnam hic totam aperiam quae quos! Fugiat dicta esse suscipit animi? -->
 	</div>
 
     {/* 评价  */}
@@ -215,6 +180,7 @@
     <input type="hidden" name="" value="" id="currPage" autocomplete="off">
     <input type="hidden" name="" value="" id="totalPage" autocomplete="off">
     <section class="ui-container" id="goods3" style="display: none;">
+    	<div class="comment-m"><span onclick="history.go(0)" class="em">&times;</span>买家评论</div>
     	<div id="evaluate-list"></div>
     </section>
 <script id="list" type="text/html">
@@ -261,12 +227,12 @@
 	</ul>
 {{# } }}
 </script>
-{else}
- <ul class="ui-row-flex wst-flexslp">
+<!--{else}
+ <ul class="ui-row-flex ">
 	<li class="ui-col ui-flex ui-flex-pack-center">
 	<p>对不起，没有找到商品。</p>
 	</li>
-</ul>
+</ul>-->
 {/if}
 {/block}
 {block name="include"}
@@ -279,37 +245,18 @@
 	<!--<div class="title"><em><span id="j-shop-price">¥{$info['shopPrice']}</span></em><span>请选择 颜色,尺码</span><i class="ui-icon-close-page" onclick="javascript:dataHide();"></i><div class="wst-clear"></div></div>-->
 	<!--<div class="thumb"></div>-->
 
-
-	<!--添加-->
-	<!--<div class="content" id="content">-->
-		<!--<ul>-->
-			<!--<li class="color">-->
-				<!--<p>颜色</p>-->
-				<!--<span>白色+粉色</span><span>白色+粉色</span>-->
-			<!--</li>-->
-			<!--<li class="size">-->
-				<!--<p>尺码</p>-->
-				<!--<span>S</span><span>M</span><span>L</span>-->
-			<!--</li>-->
-			<!--<li class="number">-->
-				<!--<p>数量</p>-->
-				<!--<span>-->
-					<!--<button>-</button>-->
-					<!--<input type="text" value="1"/>-->
-					<!--<button>+</button>-->
-				<!--</span>-->
-			<!--</li>-->
-		<!--</ul>-->
-		{volist name="$info['attrs']" id="at"}
+		<!--{volist name="$info['attrs']" id="at"}
 			{$at['attrName']}：{$at['attrVal']}<br/>
-		{/volist}
+		{/volist}-->
 	</div>
-	<button class="button" onclick="javascript:dataHide();">确认</button>
+	<!--<button class="button" onclick="javascript:dataHide();">确认</button>-->
 </div>
 {/if}
 
 {/*分享 */}
 <script type='text/javascript' src='__MOBILE__/js/share/nativeShare.js?v={$v}'></script>
+<script type="text/javascript" src="https://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+
 <script>
 	var config = {
 		url: "{:url('mobile/goods/index','goodsId='.$info['goodsId'].'&shareUserId='.base64_encode(session('WST_USER.userId')),true,true)}",
@@ -330,9 +277,9 @@
 	};
 </script>
 <div class="wst-cart-box" id="frame-share" style="padding-top:10px;" >
-	<div class="content" id="nativeShare" style="padding-bottom:50px;">
+	<!-- <div class="content" id="nativeShare" style="padding-bottom:50px;"> -->
 		<!-- JiaThis Button BEGIN -->
-		<div class="jiathis_style_32x32">
+		<!-- <div class="jiathis_style_32x32">
 			<div class="ui-form-item ui-form-item-show ui-border-b">
 				<a class="jiathis_button_qzone" onclick="jiathis_mh5.sendTo('qzone');" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone" style="margin-top:5px;"></span><span>分享到QQ空间</span></a>
 			</div>
@@ -346,6 +293,10 @@
 				<a class="jiathis_button_renren" onclick="jiathis_mh5.sendTo('renren');" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren" style="margin-top:5px;"></span><span>分享到人人网</span></a>
 			</div>
 		</div>
+	</div>
+	 -->
+	<div class="soshm">
+		<div class="datasetconfig" data-title="分享标题" data-sites="weixin,weixintimeline,qq,qzone"></div>
 	</div>
 	
 	<button class="button" onclick="javascript:shareHide();">取消</button>
@@ -365,8 +316,8 @@
 	{if!empty($info['spec'])}
 	{volist name="$info['spec']" id="sp"}
 	<div class="spec">
-		<p>{$sp['name']}</p>
-		{volist name="sp['list']" id="sp2"}
+		
+		<p>{$sp['name']}</p>{volist name="sp['list']" id="sp2"}
 		{if $sp2['itemImg']!=''}
 			<img class="j-option img" data-val="{$sp2['itemId']}" src="__ROOT__/{:WSTImg($sp2['itemImg'],3)}" title="{$sp2['itemName']}">
 		{else}
@@ -382,7 +333,7 @@
 		<p>数量</p>
 		<div class="stock">库存：<span id="goods-stock">0</span>{$info['goodsUnit']}</div>
 	  	<div class="wst-buy_l">
-           <input class="wst-buy_l1" type="button" value="-" onclick='javascript:WST.changeIptNum(-1,"#buyNum")'><input id="buyNum" class="wst-buy_l2" data-min='1' data-max='' type="number" value="1" autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum")'><input class="wst-buy_l3" type="button" value="+" onclick='javascript:WST.changeIptNum(1,"#buyNum")'>
+           <button class="wst-buy_l1" type="button" value="" onclick='javascript:WST.changeIptNum(-1,"#buyNum")'>-</button><input id="buyNum" class="wst-buy_l2" data-min='1' data-max='' type="number" value="1" autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum")'/><button class="wst-buy_l3" type="button" value="" onclick='javascript:WST.changeIptNum(1,"#buyNum")'>+</button>
       	</div>
 		<div class="wst-clear"></div>
 	</div>
@@ -416,59 +367,98 @@ function shareHide(){
 }
 </script>
 <script type='text/javascript' src='__MOBILE__/js/jquery.min.js'></script>
+<script type='text/javascript' src='__MOBILE__/js/soshm.js'></script>
+<script type='text/javascript' src='__MOBILE__/js/swiper.min.js'></script>
 <script type='text/javascript' src='__MOBILE__/js/goods_detail.js?v={$v}'></script>
 <script>
-	$(function(){
-
-			$(window).scroll(function(){
-				//	导航标签到页面顶部的距离  top0
-				var top0=$('.detail').offset().top,
-				//  评论部分到页面顶部的距离  top1
-					top1=$(".wst-go-shop").offset().top-40,
-				//	宝贝详情图片到页面的距离  top2
-					top2=$("#goods2").offset().top-100,
-				//  购物帮助   top3
-					top3=$("#help").offset().top-50,
-
-					$tab = $(".details li");
-					$tab.bind('click',function () {
-						var index = $(this).index(),
-								serial = eval("top"+(index+1));
-						$tab.eq(index).siblings().removeClass();
-						$tab.eq(index).addClass('active');
-						document.body.scrollTop = serial;
-						
-					});
-				//页面滚动的距离 top4
-				var top4=$(window).scrollTop(), list=$(".details li");
-				$('.details').css({"position":"fixed","top":"42px","left":0,"zIndex":100,"background":"rgba(255,255,255,1)","width":"100%"});
-				$(list).siblings().removeClass();
-				if( top4 >= (top1-60)){
-					if(top4 < (top2-100) ){
-						list.eq(0).addClass('active');
-					}else if(top4 >= (top2-100) && top4 < top3){
-						list.eq(1).addClass('active');
-					} else if(top4 >= top3){
-						list.eq(2).addClass('active');
-					}
-				} else if(top4 < (top1-60) && top4 >= (top0-44)){
-					list.eq(0).addClass('active');
-				}else{
-					$('.details').css({"position":"static"});
-					$(list).siblings().removeClass("active");
-					list.eq(0).addClass('active');
-				}
-			})
-			
-//			$("#collect-notice").css({"position":"fixed","top":"220px","left":"50%","width":"120px","height":"35px","background":"rgba(0,0,0,0.7)","text-align":"center","margin-left":"-60px","color":"#fff","border-radius":"5px","line-height":"35px"})
-//				$("#collect-notice").hide();
-//				$(".collection").click(function(){
-//					$("#collect-notice").show();
-//					setTimeout(function(){
-//						$("#collect-notice").hide();
-//					},1000)
-//				})
-
-	})
+//分享
+	  soshm('.datasetconfig', {
+	  	title: "{$info['goodsName']}",
+	  	digest: "{$info['goodsName']}",
+	    sites: ['weixin', 'weixintimeline', 'qq', 'qzone' ]
+	  })
 </script>
+<script>
+   $(function(){
+   	  //<!--轮播启动-->
+		var mySwiper = new Swiper('.ui-slider', {
+			direction: 'horizontal',//左右轮播
+	        // direction: 'vertical',//上下轮播
+			// loop: true,
+			// speed: 500,
+			// pagination: '.swiper-pagination',
+			// autoplay: 2000,
+			// autoplayDisableOnInteraction: false
+		});
+   	  
+      var $tab = $(".details li");
+      $tab.bind('click',function(e) {
+         //  评论部分到页面顶部的距离  top1
+         var top1 = $(".wst-go-shop").offset().top  - 130,
+         // 宝贝详情图片到页面的距离  top2
+             top2 = $("#goods2").offset().top - 90,
+         //  购物帮助   top3
+            top3 = $("#help").offset().top - 45;
+         $(".details").css({"position":"fixed","top":"44px","left":0,"zIndex":100,"background":"#fff","width":"100%"});
+         // $tab.forEach(function(index){
+         //    $(index).removeClass('active');
+         // });
+         // $(e.target).addClass('active');
+         var index = $(e.target).index(),
+             serial = eval("top"+(index+1));
+//       $(window).scrollTop(serial);
+         jQuery("html,body").animate({scrollTop:serial},500);
+      });
+      $(window).scroll(function(){
+         // 导航标签到页面顶部的距离  top0
+         var top0=$('.detail').offset().top,
+         //  评论部分到页面顶部的距离  top1
+               top1=$(".wst-go-shop").offset().top  - 44,
+            
+         // 宝贝详情图片到页面的距离  top2
+               top2=$("#goods2").offset().top - 100,
+         //  购物帮助   top3
+               top3=$("#help").offset().top + 70,
+               $tab = $(".details li");
+         //页面滚动的距离 top4
+         var top4 = $(window).scrollTop();
+         var topStop = $(".head").offset().top-58;
+         if(top4>topStop){ $(".details").css({"position":"fixed","top":"44px","left":0,"zIndex":100,"background":"#fff","width":"100%"});}
+         else{ $(".details").css({"position":"relative","top":"","zIndex":100,"background":"#fff","width":"100%"});}
+        
+         $tab.forEach(function(index){
+            $(index).removeClass('active');
+         });
+         if( top4 >= top1){
+            if(top4 < top2 ){
+               $tab.eq(0).addClass('active');
+            }else if(top4 >= top2 && top4 < top3){
+               $tab.eq(1).addClass('active');
+            }else if(top4 >= top3){
+               $tab.eq(2).addClass('active');
+            }
+         }else if(top4 < top1 && top4 >= (top0 -42)){
+            $tab.eq(0).addClass('active');
+         }else{
+            $('.details').css({"position":"static"});
+            $tab.eq(0).addClass('active');
+         }
+      })
+   })
+   
+   
+   
+   setTimeout(function(){
+   	if($("#evaluate-list>div").length>0){
+   	 $("#evaluate-list>div").eq(0).clone().appendTo(".comment");
+   	 $(".ui-row-flex.score").show()
+
+   	 }else{
+   	 	$(".comment").html("<p style='text-align: center;font-weight: bold;line-height: 50px;min-height: 50px;color: #999999;'>暂时没有评论<p>");
+   	 	// $(".ui-row-flex.score").hide()
+   	 }
+   },1000)
+</script>
+ 
+    
 {/block}

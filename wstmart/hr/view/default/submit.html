@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京歌通讯录</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        a {
+            color:#fff;
+            text-decoration: none;
+        }
+        a:hover {
+            color:#06c804;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function start(){
+            var firstInput=document.getElementsByTagName("input")[0];
+            firstInput.select();
+        }
+    </script>
+</head>
+<!--<body>
+<form>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+</form>
+</body>-->
+<body onload="start();" style="text-align:center;padding:150px;background: url('http://www.jingomall.com/wstmart/hr/view/default/img/back.jpg') no-repeat;background-size: 100%;">
+<form name="phoneBook" action="{:url('hr/index/add')}" enctype="multipart/form-data" method="post">
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" placeholder="请输入姓名" name="info[1][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    　　<input type="text" placeholder="请输入手机号" name="info[1][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    　　<input type="text" placeholder="请输入首字母缩写" name="info[1][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[2][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[2][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[2][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[3][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[3][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[3][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[4][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[4][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[4][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[5][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[5][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[5][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[6][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[6][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[6][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p style="clear: both;margin:10px 0 10px 10%;">
+        <input type="text" name="info[7][name]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[7][phone]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+        　　<input type="text" name="info[7][short]" class="form-control" style="width: 28%;display: inline-block;float: left;margin:10px;"/>
+    </p>
+    <p>
+        <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+            提交
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+        <a href="{:url('hr/index/index')}">返回搜索页</a>
+        </button>　　
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+            <a href="{:url('hr/index/check')}">通讯录列表</a>
+        </button>
+    </p>
+</form>
+        <!--<form name="phoneBook" action="{:url('hr/index/add')}" enctype="multipart/form-data" method="post">
+            <div style="width: 20%;margin-left:20%;height: 230px;">
+                <input type="text" class="form-control" style="float: left;" placeholder="请输入姓名" name="name">
+                <input type="text" class="form-control" style="float: left;" placeholder="请输入手机号" name="phone">
+                <input type="text" class="form-control" style="float: left;" placeholder="请输入首字母缩写" name="short">
+            </div>
+            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="display: none;">
+                查找
+            </button>
+        </form>
+        <br />
+        {if condition="isset($phone)"}
+        {volist name="phone" id="v"}
+        <p class="bg-info" style="font-size: 40px;width: 60%;color:purple;margin-left:20%;">
+            {$v.name}
+            <br />
+            {$v.phone}
+        </p>
+        {/volist}
+        {/if}-->
+
+</body>
+</html>

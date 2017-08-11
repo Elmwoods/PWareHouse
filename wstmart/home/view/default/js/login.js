@@ -1,15 +1,11 @@
 function login(typ){
 	var params = WST.getParams('.ipt');
-	if(!$('#loginName').isValid())return;
-	if(!$('#loginPwd').isValid())return;
-	if(!$('#verifyCode').isValid())return;
-	
+	// if(!$('#loginName').isValid())return;
+	// if(!$('#loginPwd').isValid())return;
+	// if(!$('#verifyCode').isValid())return;
 	var ll = WST.load({msg:'正在处理数据，请稍后...'});
-
 	$.post(WST.U('home/users/checkLogin'),params,function(data,textStatus){
-		
 		var json = WST.toJson(data);
-
 		if(json.status=='1'){
 			WST.msg(json.msg, {icon: 1});
 			if(typ==2){
@@ -29,7 +25,6 @@ function login(typ){
 	});
 	return true;
 }
-
 
 function showProtocol(){
 	layer.open({
@@ -124,11 +119,13 @@ function initRegist(){
 	$('#reg_form').validator({
 	    rules: {
 	    	loginName: function(element) {
-	    		if(/^[a-zA-Z]\w{3,}/.test(element.value)){
-	    			$("#mobileCodeDiv").hide();
-	    			$("#authCodeDiv").show();
-	    			$("#nameType").val('2');
-	    		}else if(this.test(element, "mobile")===true){
+	    		// if(/^[a-zA-Z]\w{3,}/.test(element.value)){
+	    		// 	$("#mobileCodeDiv").hide();
+	    		// 	$("#authCodeDiv").show();
+	    		// 	$("#nameType").val('2');
+	    		// }else 
+	    		// console.log(this.test(element,"mobile"));
+	    		if(this.test(element, "mobile")===true){
 	    			if(window.conf.SMS_OPEN=='1'){
 		    			$("#mobileCodeDiv").show();
 		    			$("#authCodeDiv").hide();
@@ -136,15 +133,20 @@ function initRegist(){
 	    			}else{
 		    			$("#nameType").val('2');
 	    			}
-	    		}else if(this.test(element, "email")===true){
-	    			$("#mobileCodeDiv").hide();
-	    			$("#authCodeDiv").show();
-	    			$("#nameType").val('1');
+	    		}else{
+	    			
+	    			$("#loginName").val('');
 	    		}
-	            return /^[a-zA-Z]\w{3,}/.test(element.value) ||
-	                   this.test(element, "mobile")===true ||
-	                   this.test(element, "email")===true ||
-	                   '请填写用户名、手机号或者邮箱';
+	    		// }else if(this.test(element, "email")===true){
+	    		// 	$("#mobileCodeDiv").hide();
+	    		// 	$("#authCodeDiv").show();
+	    		// 	$("#nameType").val('1');
+	    		// }
+	            return 
+	            		// /^[a-zA-Z]\w{3,}/.test(element.value) ||
+	                   this.test(element, "mobile")===true //||
+	                   // this.test(element, "email")===true ||
+	                    '请填写用户名、手机号或者邮箱';
 	        },
 	        mobileCode: function(element){
 	        	if(window.conf.SMS_OPEN=='1'){

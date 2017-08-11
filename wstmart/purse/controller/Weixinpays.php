@@ -227,7 +227,7 @@ class Weixinpays extends Base{
 					// 支付成功业务逻辑
 					$m = new LM();
 					$rs = $m->complateRecharge ( $obj );
-					
+
 				}else{//订单支付
 					$userId = (int)$pkeys [1];
 					$out_trade_no = $pkeys[2];

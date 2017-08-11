@@ -161,3 +161,69 @@ function WSTShopMessageBox(){
 	}
 	return implode('||',$msg);
 }
+
+
+//获取token函数
+function getToken($member_id, $member_name, $member_avatar) {
+	srand((double)microtime()*1000000);
+
+	$appKey = 'p5tvi9dsp4v14';
+	$appSecret = 'ySJHJumM2i'; // 开发者平台分配的 App Secret。
+
+	$nonce = rand(); // 获取随机数。
+	$timestamp = time(); // 获取时间戳。
+
+	$signature = sha1($appSecret.$nonce.$timestamp);
+
+	$url = 'http://api.cn.ronghub.com/user/getToken.json';
+
+	$postData = 'userId=' . $member_id . '&name=' . $member_name . '&portraitUri=' . $member_avatar;
+
+	$httpHeader = array(
+
+		'App-Key:' . $appKey,   //平台分配
+
+		'Nonce:' . $nonce,        //随机数
+
+		'Timestamp:' . $timestamp,    //时间戳
+
+		'Signature:' . $signature,         //签名
+
+		'Content-Type: application/x-www-form-urlencoded',
+
+	);
+
+//创建http header
+
+	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_URL, $url);
+
+	curl_setopt($ch, CURLOPT_POST, 1);
+
+	if ($postData != '') {
+
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+
+	} else {
+
+		showMsg(0, '缺少相应参数');
+
+	}
+
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	curl_setopt($ch, CURLOPT_HEADER, false);
+
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeader);
+
+	curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+
+	$result = curl_exec($ch);
+	$token = json_decode($result) -> token;
+	curl_close($ch);
+	return $token;
+}

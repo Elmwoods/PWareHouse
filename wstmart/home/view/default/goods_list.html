@@ -8,24 +8,24 @@
 <link href="__STYLE__/css/goodslist.css?v={$v}" rel="stylesheet">
 {/block}
 {block name="nav"}
-	{include file="default/header" /}
+  {include file="default/header" /}
 {/block}
 {block name="main"}
 {/* 推荐热卖   */}
 <!-- <div class='wst-hot-sales'>
    <div class='wst-sales-logo'>
-   		&nbsp;<span class="wst-hot-icon">热卖推荐</span>
+      &nbsp;<span class="wst-hot-icon">热卖推荐</span>
    </div>
    <ul class='wst-sales-box'>
      {wst:goods type='recom' cat='$catId' num='4'}
       <li class="item">
-     	<div class="img"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" title="{$vo['goodsName']}" alt="{$vo['goodsName']}" /></a></div>
-     	<div class="des">
-     		<div class="p-sale">已售{$vo['saleNum']}件</div>
-     		<div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
-     		<div class="p-price">￥{$vo['shopPrice']}</div>
-     		<div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
-     	</div>
+      <div class="img"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" title="{$vo['goodsName']}" alt="{$vo['goodsName']}" /></a></div>
+      <div class="des">
+        <div class="p-sale">已售{$vo['saleNum']}件</div>
+        <div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
+        <div class="p-price">￥{$vo['shopPrice']}</div>
+        <div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
+      </div>
       </li>
      {/wst:goods}
    </ul>
@@ -33,20 +33,20 @@
 
 <!-- <div class='wst-hot-sales'>
    <div class='wst-sales-logo'>
-   		
+      
    </div> -->
 
 
 <!--    <ul class='wst-sales-box'>
      {wst:goods type='recom' cat='$catId' num='4'}
       <li class="item">
-     	<div class="img"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" title="{$vo['goodsName']}" alt="{$vo['goodsName']}" /></a></div>
-     	<div class="des">
-     		<div class="p-sale">已售{$vo['saleNum']}件</div>
-     		<div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
-     		<div class="p-price">￥{$vo['shopPrice']}</div>
-     		<div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
-     	</div>
+      <div class="img"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" title="{$vo['goodsName']}" alt="{$vo['goodsName']}" /></a></div>
+      <div class="des">
+        <div class="p-sale">已售{$vo['saleNum']}件</div>
+        <div class="p-name"><a target='_blank' href='{:Url("home/goods/detail","id=".$vo["goodsId"])}'>{$vo['goodsName']}</a></div>
+        <div class="p-price">￥{$vo['shopPrice']}</div>
+        <div class="p-buy"><a href="javascript:WST.addCart({$vo['goodsId']})">加入购物车</a></div>
+      </div>
       </li>
      {/wst:goods}
    </ul> -->
@@ -55,40 +55,40 @@
 
 
   <!--  <div class="wst-sales-box">
-   		<div class="left"></div>
-   		<div class="right">
-   			<dl>
-   				<dt class="ys">已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt class="ys">$<span>已售0件</span></dt>
-   			</dl>
-   			<button>加入购物车</button>
-   		</div>
+      <div class="left"></div>
+      <div class="right">
+        <dl>
+          <dt class="ys">已售0件</dt>
+          <dt>已售0件</dt>
+          <dt>已售0件</dt>
+          <dt class="ys">$<span>已售0件</span></dt>
+        </dl>
+        <button>加入购物车</button>
+      </div>
    </div>
    <div class="wst-sales-box">
-   		<div class="left"></div>
-   		<div class="right">
-   			<dl>
-   				<dt class="ys">已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt class="ys">$<span>已售0件</span></dt>
-   			</dl>
-   			<button>加入购物车</button>
-   		</div>
+      <div class="left"></div>
+      <div class="right">
+        <dl>
+          <dt class="ys">已售0件</dt>
+          <dt>已售0件</dt>
+          <dt>已售0件</dt>
+          <dt class="ys">$<span>已售0件</span></dt>
+        </dl>
+        <button>加入购物车</button>
+      </div>
    </div>
    <div class="wst-sales-box">
-   		<div class="left"></div>
-   		<div class="right">
-   			<dl>
-   				<dt class="ys">已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt>已售0件</dt>
-   				<dt class="ys">$<span>已售0件</span></dt>
-   			</dl>
-   			<button>加入购物车</button>
-   		</div>
+      <div class="left"></div>
+      <div class="right">
+        <dl>
+          <dt class="ys">已售0件</dt>
+          <dt>已售0件</dt>
+          <dt>已售0件</dt>
+          <dt class="ys">$<span>已售0件</span></dt>
+        </dl>
+        <button>加入购物车</button>
+      </div>
    </div>
 
 </div> -->
@@ -104,15 +104,15 @@
 <input type="hidden" id="order" class="sipt" value='{php}echo ($order=="0")?"1":"0";{/php}' autocomplete="off"/>
 <input type="hidden" id="areaId" class="sipt" value='{$areaId}' />
 <div class='wst-filters'>
-  <div style="margin-top: 14px;padding-top: 10px;">
+  <div style="height:36px;">
    <div class='item' style="padding-left: 8px;">
-      <a class='link' href='__ROOT__'>首页</a>
+      <a class='link' href='{$Request.root.true}/mall'>首页</a>
       <i class="arrow">></i>
    </div>
    {if($catId)}
    {volist name=":WSTPathGoodsCat($catId)" id='vo'}
    <div class='wst-lfloat'>
-   	<div class='item dorpdown'>
+    <div class='item dorpdown'>
      <div class='drop-down'>
         <a class='link' href='__ROOT__'>{$vo['catName']}</a>
         <i class="drop-down-arrow"></i>
@@ -121,19 +121,19 @@
          {volist name=":WSTGoodsCats($vo['parentId'])" id='vo2'}
          <div class="{$vo['parentId']>0?'cat2':'cat1'}"><a href='{:Url("home/goods/lists","cat=".$vo2["catId"])}'>{$vo2['catName']}</a></div>
          {/volist}
-	</div>
-	</div>
-	<i class="arrow">></i>
+  </div>
+  </div>
+  <i class="arrow" style="padding-top:8px;">></i>
    </div>
   
    {/volist}
    {volist name="$selector" id='vo'}
-   <div class='item dorpdown'>
+   <div class='itemm dorpdown' style="margin-top: 7px;">
    <a class='v-item' href='javascript:void(0);' onclick="javscript:removeFilter('{$vo['type']}')">
      <span>{$vo['label']}：{$vo['val']}</span>
      <i>x</i>
    </a>
-   <i class="arrow">></i>
+   <i class="arrow"></i>
    </div>
    {/volist}
    {else}
@@ -200,17 +200,16 @@
 
 {/* 商品展示  */}
 <div class="wst-container">
-	<div class='goods-side'>
-		<div class="guess-like">
-			<!-- <div class="title">猜你喜欢</div> -->
-		<!-- 	{wst:goods type='best' cat="$catId" num='3'}
-			<div class="item">
-				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
-				<div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-				<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
-			</div>
-			{/wst:goods} -->
-
+  <div class='goods-side'>
+    <div class="guess-like">
+      <!-- <div class="title">猜你喜欢</div> -->
+    <!--  {wst:goods type='best' cat="$catId" num='3'}
+      <div class="item">
+        <div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
+        <div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
+        <div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
+      </div>
+      {/wst:goods} -->
 
 
       <!-- 添加代码start -->
@@ -219,7 +218,10 @@
       <div class="item">
         <div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' id="img" data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
         <div class="p-name hei"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-        <div class="p-price hei1">现价￥{$vo['shopPrice']}<div class="p-mprice"><span class="v-price">市场价<del>￥{$vo['marketPrice']}</del></span></div></div>
+        <div class="p-price hei" >
+          <div class="v-price">经销价<span>￥{$vo['shopPrice']}</span></div>
+          <div class"yj">原价<span>￥{$vo['marketPrice']}</span></div>
+        </div>
       </div>
       {/volist}
       <!-- 添加代码end -->
@@ -236,135 +238,135 @@
       </div> -->
 
 
-		</div>
+    </div>
 
-		<!-- <div class="hot-goods">
-			<div class="title">热销商品</div>
-			{wst:goods type='hot' cat="$catId" num='3'}
-			<div class="item">
-				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
-				<div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-				<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
-			</div>
-			{/wst:goods}
-		</div> -->
-	</div>
-	<div class='goods-main'>
-	   <div class='goods-filters'>
-	   	  <div class='line'>
-	   	  <div class='wst-lfloat chk'>发货地</div>
-	        <div class='city wst-address'>
-		    <div class='item dorpdown'>
-		     <div class='drop-down'>
-		        <a class='link' href='__ROOT__'>
-		        	{if empty($areaInfo['areaName'])}
-		        	请选择
-		        	{else /}
-		        		{$areaInfo['areaName']}
-		        	{/if}
-		        </a>
-		        <i class="drop-down-arrow"></i>
-		     </div>
+    <!-- <div class="hot-goods">
+      <div class="title">热销商品</div>
+      {wst:goods type='hot' cat="$catId" num='3'}
+      <div class="item">
+        <div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
+        <div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
+        <div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
+      </div>
+      {/wst:goods}
+    </div> -->
+  </div>
+  <div class='goods-main'>
+     <div class='goods-filters'>
+        <div class='line1'>
+        <div class='wst-lfloat chk'>发货地</div>
+          <div class='city wst-address'>
+        <div class='item dorpdown'>
+         <div class='drop-down'>
+            <a class='link' href='__ROOT__'>
+              {if empty($areaInfo['areaName'])}
+              请选择
+              {else /}
+                {$areaInfo['areaName']}
+              {/if}
+            </a>
+            <i class="drop-down-arrow"></i>
+         </div>
 
 
      <div class="dorp-down-layer">
-     	<div class="tab-header">
-     	 <ul class="tab">
-     	 	<li class="tab-item1" id="fl_1_1" onclick="gpanelOver(this);" c="1" >
-     	 		{if isset($areaInfo)}
-     	 		<a href='javascript:void(0)'>{$areaInfo[0]['areaName']}</a>
-     	 		{else /}
-     	 		<a href='javascript:void(0)'>请选择</a>
-     	 		{/if}
-     	 	</li>
+      <div class="tab-header">
+       <ul class="tab">
+        <li class="tab-item1" id="fl_1_1" onclick="gpanelOver(this);" c="1" >
+          {if isset($areaInfo)}
+          <a href='javascript:void(0)'>{$areaInfo[0]['areaName']}</a>
+          {else /}
+          <a href='javascript:void(0)'>请选择</a>
+          {/if}
+        </li>
 
-     	 	{if isset($areaInfo)}
-     	 	<li class="tab-item1" id="fl_1_2" onclick="gpanelOver(this);" c="1" >
-				<a href="javascript:void(0)">{$areaInfo[1]['areaName']}</a>
-			</li>
-			<li class="tab-item1 j-tab-selected1" id="fl_1_3" onclick="gpanelOver(this);" c="1" >
-				<a href="javascript:void(0)">{$areaInfo[2]['areaName']}</a>
-			</li>
-			{else /}
-			<li class="tab-item1" id="fl_1_2" onclick="gpanelOver(this);" c="1" pid="" >
-				<a href="javascript:void(0)">请选择</a>
-			</li>
-			<li class="tab-item1 j-tab-selected1" id="fl_1_3" onclick="gpanelOver(this);" c="1" pid="" >
-				<a href="javascript:void(0)">请选择</a>
-			</li>
-			{/if}
-
-
-			
-     	 </ul>
-     	</div>
-     	 <ul class="area-box" id="fl_1_1_pl" style="display:none;">
-     	 	{volist name="$area1" id="area1"}
-			<li onclick="choiceArea(this,{$area1['areaId']})"><a href="javascript:void(0)">{$area1['areaName']}</a></li>
-			{/volist}
-		</ul>
-		<ul class="area-box" id="fl_1_2_pl" style="display:none;">
-			{volist name="$area2" id="area2"}
-			<li onclick="choiceArea(this,{$area2['areaId']})"><a href="javascript:void(0)">{$area2['areaName']}</a></li>
-			{/volist}
-		</ul>
-
-		<ul class="area-box" id="fl_1_3_pl" >
-			{volist name="$area3" id="area3"}
-			<li onclick="choiceArea(this,{$area3['areaId']})"><a href="javascript:void(0)">{$area3['areaName']}</a></li>
-			{/volist}
-		</ul>
-
-	</div>
-			</div>
-			</div>
+        {if isset($areaInfo)}
+        <li class="tab-item1" id="fl_1_2" onclick="gpanelOver(this);" c="1" >
+        <a href="javascript:void(0)">{$areaInfo[1]['areaName']}</a>
+      </li>
+      <li class="tab-item1 j-tab-selected1" id="fl_1_3" onclick="gpanelOver(this);" c="1" >
+        <a href="javascript:void(0)">{$areaInfo[2]['areaName']}</a>
+      </li>
+      {else /}
+      <li class="tab-item1" id="fl_1_2" onclick="gpanelOver(this);" c="1" pid="" >
+        <a href="javascript:void(0)">请选择</a>
+      </li>
+      <li class="tab-item1 j-tab-selected1" id="fl_1_3" onclick="gpanelOver(this);" c="1" pid="" >
+        <a href="javascript:void(0)">请选择</a>
+      </li>
+      {/if}
 
 
+      
+       </ul>
+      </div>
+       <ul class="area-box" id="fl_1_1_pl" style="display:none;">
+        {volist name="$area1" id="area1"}
+      <li onclick="choiceArea(this,{$area1['areaId']})"><a href="javascript:void(0)">{$area1['areaName']}</a></li>
+      {/volist}
+    </ul>
+    <ul class="area-box" id="fl_1_2_pl" style="display:none;">
+      {volist name="$area2" id="area2"}
+      <li onclick="choiceArea(this,{$area2['areaId']})"><a href="javascript:void(0)">{$area2['areaName']}</a></li>
+      {/volist}
+    </ul>
 
-	      <!--   <div class='chk'>
-			 <div class="checkbox-box-s">
-		     <input name='isStock' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="stock" {if $isStock==1}checked{/if}/>
-		     <label for="stock"></label>
-		     </div>
-	         仅显示有货</div>
-	        <div class='chk'>
-	         <div class="checkbox-box-s">
-		     <input name='isNew' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="new" {if $isNew==1}checked{/if}/>
-		     <label for="new"></label>
-		     </div>
-	        新品</div>
-	        <div class='chk'>
-	         <div class="checkbox-box-s">
-		     <input name='isFreeShipping' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="freeShipping" {if $isFreeShipping==1}checked{/if}/>
-		     <label for="freeShipping"></label>
-		     </div>
-	        包邮</div> -->
+    <ul class="area-box" id="fl_1_3_pl" >
+      {volist name="$area3" id="area3"}
+      <li onclick="choiceArea(this,{$area3['areaId']})"><a href="javascript:void(0)">{$area3['areaName']}</a></li>
+      {/volist}
+    </ul>
+
+  </div>
+      </div>
+      </div>
+
+
+
+        <!--   <div class='chk'>
+       <div class="checkbox-box-s">
+         <input name='isStock' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="stock" {if $isStock==1}checked{/if}/>
+         <label for="stock"></label>
+         </div>
+           仅显示有货</div>
+          <div class='chk'>
+           <div class="checkbox-box-s">
+         <input name='isNew' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="new" {if $isNew==1}checked{/if}/>
+         <label for="new"></label>
+         </div>
+          新品</div>
+          <div class='chk'>
+           <div class="checkbox-box-s">
+         <input name='isFreeShipping' value='1' class="sipt wst-checkbox-s" onclick="goodsFilter(this,4)" type='checkbox' id="freeShipping" {if $isFreeShipping==1}checked{/if}/>
+         <label for="freeShipping"></label>
+         </div>
+          包邮</div> -->
 
 
           
-	      </div>
-	      <div class='line line2'>
-	        <a class="{if condition="$orderBy eq 0"}curr {/if}" href='javascript:void(0)' onclick='javascript:goodsOrder(0)'>销量<span class="{if condition="$orderBy neq 0"}store{/if}{if condition="$orderBy eq 0 and $order eq 1"}store2{/if}{if condition="$orderBy eq 0 and $order eq 0"}store3{/if}"></span></a>
-	        <a class="{$orderBy==1?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(1)'>价格<span class="{if condition="$orderBy neq 1"}store{/if}{if condition="$orderBy eq 1 and $order eq 1"}store2{/if}{if condition="$orderBy eq 1 and $order eq 0"}store3{/if}"></span></a>
-	       <!--  <a class="{$orderBy==2?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(2)'>评论数<span class="{if condition="$orderBy neq 2"}store{/if}{if condition="$orderBy eq 2 and $order eq 1"}store2{/if}{if condition="$orderBy eq 2 and $order eq 0"}store3{/if}"></span></a> -->
-	        <a class="{$orderBy==3?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(3)'>人气<span class="{if condition="$orderBy neq 3"}store{/if}{if condition="$orderBy eq 3 and $order eq 1"}store2{/if}{if condition="$orderBy eq 3 and $order eq 0"}store3{/if}"></span></a>
-	        <a class="{$orderBy==4?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(4)'>上架时间<span class="{if condition="$orderBy neq 4"}store{/if}{if condition="$orderBy eq 4 and $order eq 1"}store2{/if}{if condition="$orderBy eq 4 and $order eq 0"}store3{/if}"></span></a>
-        	<div class="wst-price-ipts">
-			<span class="wst-price-ipt1">￥</span><span class="wst-price-ipt2">￥</span>
-			<input type="text" class="sipt wst-price-ipt" id="sprice" value="{$sprice}" style="margin-left:8px;" onkeypress='return WST.isNumberdoteKey(event);' onkeyup="javascript:WST.isChinese(this,1)">
-			- <input type="text" class="sipt wst-price-ipt" id="eprice" value="{$eprice}" onkeypress='return WST.isNumberKey(event);' onkeyup="javascript:WST.isChinese(this,1)">
-			</div>
-			<button class="wst-price-but" type="submit" style="width:60px;height: 25px;" onclick='javascript:goodsOrder()'>确定</button>
-			
+        </div>
+        <div class='line line2'>
+          <a class="{if condition="$orderBy eq 0"}curr {/if}" href='javascript:void(0)' onclick='javascript:goodsOrder(0)'>销量<span class="{if condition="$orderBy neq 0"}store{/if}{if condition="$orderBy eq 0 and $order eq 1"}store2{/if}{if condition="$orderBy eq 0 and $order eq 0"}store3{/if}"></span></a>
+          <a class="{$orderBy==1?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(1)'>价格<span class="{if condition="$orderBy neq 1"} price{/if}{if condition="$orderBy eq 1 and $order eq 1"} price2{/if}{if condition="$orderBy eq 1 and $order eq 0"} price3{/if}"></span></a>
+          <!-- <a class="{$orderBy==2?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(2)'>评论数<span class="{if condition="$orderBy neq 2"}store{/if}{if condition="$orderBy eq 2 and $order eq 1"}store2{/if}{if condition="$orderBy eq 2 and $order eq 0"}store3{/if}"></span></a> -->
+          <a class="{$orderBy==3?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(3)'>人气<span class="{if condition="$orderBy neq 3"}store{/if}{if condition="$orderBy eq 3 and $order eq 1"}store2{/if}{if condition="$orderBy eq 3 and $order eq 0"}store3{/if}"></span></a>
+          <a class="{$orderBy==4?'curr':''}" href='javascript:void(0)' onclick='javascript:goodsOrder(4)'>上架时间<span class="{if condition="$orderBy neq 4"}store{/if}{if condition="$orderBy eq 4 and $order eq 1"}store2{/if}{if condition="$orderBy eq 4 and $order eq 0"}store3{/if}"></span></a>
+          <div class="wst-price-ipts">
+      <span class="wst-price-ipt1">￥</span><span class="wst-price-ipt2">￥</span>
+      <input type="text" class="sipt wst-price-ipt" id="sprice" value="{$sprice}" style="margin-left:8px;" onkeypress='return WST.isNumberdoteKey(event);' onkeyup="javascript:WST.isChinese(this,1)">
+      - <input type="text" class="sipt wst-price-ipt" id="eprice" value="{$eprice}" onkeypress='return WST.isNumberKey(event);' onkeyup="javascript:WST.isChinese(this,1)">
+      </div>
+      <button class="wst-price-but" type="submit" style="width:60px;height: 25px;" onclick='javascript:goodsOrder()'>确定</button>
+      
 
-			<div class="page" style="float:right;">
-			<a href="javascript:;"  onclick="page('prev')">上一页</a>
-			<a href="javascript:;"  onclick="page('next')" >下一页</a>
-			</div>
+      <div class="page" style="float:right;">
+      <a href="javascript:;"  onclick="page('prev')">上一页</a>
+      <a href="javascript:;"  onclick="page('next')" >下一页</a>
+      </div>
 
 
-	      </div>
-	   </div>
+        </div>
+     </div>
 
      <!-- <div class="goods-list">
       {volist name='goodsPage["Rows"]' id='vo'}
@@ -386,59 +388,59 @@
         {/volist}
      </div> -->
 
-	   <div class="goods-list">
-	      {volist name='goodsPage["Rows"]' id='vo'}
-	      <div class="goods">
-	      	<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" class='goodsImg2' data-original="__ROOT__/{$vo['goodsImg']}"/></a></div>
-	      	<div class="p-name"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}" class="wst-redlink" title="{$vo['goodsName']}">{$vo['goodsName']}</a></div>
-	      	<div>
-	      		<div class="p-price">￥{$vo['shopPrice']}</div>
-	      		<div class="p-hsale">
-	      			<div class="sale-num">成交数：<span class="wst-fred">{$vo['saleNum']}</span></div>
-		      		<a class="p-add-cart" style="display:none;" href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
-	      		</div>
-	      		<div class='wst-clear'></div>
-	      	</div>
-	      	<div>
-	      		<div class="p-mprice">市场价<span>￥{$vo['marketPrice']}</span></div>
-	      		<div class="p-appraise">已有<span class="wst-fred">{$vo['appraiseNum']}</span>人评价</div>
-	      		<div class='wst-clear'></div>
-	      	</div>
-	      	<div class="p-shop"><a href="{:Url('home/shops/home','shopId='.$vo['shopId'])}" target='_blank' class="wst-redlink">{$vo['shopName']}</a></div>
-	      </div>
-	      
-	      {/volist}
-	     <div class='wst-clear'></div>
-	   	</div>
+     <div class="goods-list">
+        {volist name='goodsPage["Rows"]' id='vo'}
+        <div class="goods">
+          <div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" class='goodsImg2' data-original="__ROOT__/{$vo['goodsImg']}"/></a></div>
+          <div class="p-name"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}" class="wst-redlink" title="{$vo['goodsName']}">{$vo['goodsName']}</a></div>
+          <div>
+            <div class="p-price">经销价&nbsp;<span>￥{$vo['shopPrice']}</span></div>
+            <div class="p-hsale">
+              <div class="sale-num">成交数：<span class="wst-fred">{$vo['saleNum']}</span></div>
+              <a class="p-add-cart" style="display:none;" href="javascript:WST.addCart({$vo['goodsId']});">加入购物车</a>
+            </div>
+            <div class='wst-clear'></div>
+          </div>
+          <div>
+            <div class="p-mprice">原价<span>￥{$vo['marketPrice']}</span></div>
+            <div class="p-appraise">已有<span class="wst-fred">{$vo['appraiseNum']}</span>人评价</div>
+            <div class='wst-clear'></div>
+          </div>
+          <div class="p-shop"><a href="{:Url('home/shops/home','shopId='.$vo['shopId'])}" target='_blank' class="wst-redlink">{$vo['shopName']}</a></div>
+        </div>
+        
+        {/volist}
+       <div class='wst-clear'></div>
+      </div>
 
 
 
 
 
-	   	<div style="position: absolute;bottom: -50px;width:980px;">
-	  		<div id="wst-pager"></div>
-		</div>
-		
-	</div>
-	<div class='wst-clear'></div>
-	<div style="height: 50px;"></div>
-	
-	{/* 您最近浏览的商品 */}
-	{if cookie("history_goods")!=''}
-	<div class="wst-gview">
-		<div class="title">您最近浏览的商品</div>
-		<div class="view-goods">
-	       {wst:goods type='history' cat="$catId" num='7'}
-			<div class="item">
-				<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
-				<div class="p-name"><a class="wst-hide wst-redlink" href="{:Url('home/goods/detail','id='.$vo['goodsId'])}">{$vo['goodsName']}</a></div>
-				<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
-			</div>
-	       {/wst:goods}
-	     	<div class='wst-clear'></div>
-	   	</div>
-	</div>
-	{/if}
+      <div style="position: absolute;bottom: -50px;width:980px;">
+        <div id="wst-pager"></div>
+    </div>
+    
+  </div>
+  <div class='wst-clear'></div>
+  <div style="height: 50px;"></div>
+  
+  {/* 您最近浏览的商品 */}
+  {if cookie("history_goods")!=''}
+  <div class="wst-gview">
+    <div class="title">您最近浏览的商品</div>
+    <div class="view-goods">
+         {wst:goods type='history' cat="$catId" num='7'}
+      <div class="item">
+        <div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img class='goodsImg' data-original="__ROOT__/{:WSTImg($vo['goodsImg'])}" alt="{$vo['goodsName']}" title="{$vo['goodsName']}"/></a></div>
+        <div class="p-name"><a class="wst-hide wst-redlink" href="{:Url('home/goods/detail','id='.$vo['goodsId'])}">{$vo['goodsName']}</a></div>
+        <div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
+      </div>
+         {/wst:goods}
+        <div class='wst-clear'></div>
+      </div>
+  </div>
+  {/if}
 </div>
 {include file="default/right_cart"/}
 {/block}
@@ -446,9 +448,9 @@
 <script type='text/javascript' src='__STYLE__/js/goodslist.js?v={$v}'></script>
 <script type='text/javascript'>
 $(function(){
-	{if !isset($areaInfo)}
-	$('#fl_1_1').click();
-	{/if}
+  {if !isset($areaInfo)}
+  $('#fl_1_1').click();
+  {/if}
 })
 laypage({
     cont: 'wst-pager',
@@ -462,13 +464,13 @@ laypage({
     }(), 
     jump: function(e, first){ //触发分页后的回调
         if(!first){ //一定要加此判断，否则初始时会无限刷新
-        	var nuewurl = WST.splitURL("page");
-        	var ulist = nuewurl.split("?");
-        	if(ulist.length>1){
-        		location.href = nuewurl+'&page='+e.curr;
-        	}else{
-        		location.href = '?page='+e.curr;
-        	}
+          var nuewurl = WST.splitURL("page");
+          var ulist = nuewurl.split("?");
+          if(ulist.length>1){
+            location.href = nuewurl+'&page='+e.curr;
+          }else{
+            location.href = '?page='+e.curr;
+          }
             
         }
     }
@@ -478,26 +480,26 @@ laypage({
 
 var total = {$goodsPage["TotalPage"]};
 function page(t){
-	var page = location.search.match(/page=(\d+)/);
-	var curr = 1;
-	if(page && page.length>1){ //说明当前url上有page参数
-		curr = page[1]; // 当前页
-	}
-	var nuewurl = WST.splitURL("page"); // 当前url
-	var ulist = nuewurl.split("?"); // 将传递的参数与url分开
-	// 说明当前有参数. 需要带着参数一起传递
-	var url = (ulist.length>1)?nuewurl+'&page=':'?page=';
+  var page = location.search.match(/page=(\d+)/);
+  var curr = 1;
+  if(page && page.length>1){ //说明当前url上有page参数
+    curr = page[1]; // 当前页
+  }
+  var nuewurl = WST.splitURL("page"); // 当前url
+  var ulist = nuewurl.split("?"); // 将传递的参数与url分开
+  // 说明当前有参数. 需要带着参数一起传递
+  var url = (ulist.length>1)?nuewurl+'&page=':'?page=';
 
-	if(t=='prev'){ // 上一页
-		if(curr<=1)return;
-		curr = parseInt(curr)-1;
-		location.href = url+curr;
-	}else{ // 下一页
-		if(curr>=total)return;
-		curr = parseInt(curr)+1;
-		location.href = url+curr;
-	}
-	
+  if(t=='prev'){ // 上一页
+    if(curr<=1)return;
+    curr = parseInt(curr)-1;
+    location.href = url+curr;
+  }else{ // 下一页
+    if(curr>=total)return;
+    curr = parseInt(curr)+1;
+    location.href = url+curr;
+  }
+  
 }
 </script>
 {/block}

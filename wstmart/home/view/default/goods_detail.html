@@ -8,18 +8,18 @@
 <link href="__STYLE__/css/goods.css?v={$v}" rel="stylesheet">
 {/block}
 {block name="nav"}
-	{include file="default/header" /}
+  {include file="default/header" /}
 {/block}
 {block name="main"}
 <div class='wst-w' style='margin-bottom:0px'>
 <div class='wst-filters'>
-   <div class='item' style="border-left:2px solid #df2003;padding-left: 8px;">
+   <div class='item' >
       <a class='link' href='__ROOT__'>首页</a>
       <i class="arrow">></i>
    </div>
    {volist name=":WSTPathGoodsCat($goods['goodsCatId'])" id='vo'}
    <div class='wst-lfloat'>
-   	<div class='item dorpdown'>
+    <div class='item dorpdown'>
      <div class='drop-down'>
         <a class='link' href='{:Url("home/goods/lists",["cat"=>$vo["catId"]])}'>{$vo['catName']}</a>
         <i class="drop-down-arrow"></i>
@@ -28,9 +28,9 @@
          {volist name=":WSTGoodsCats($vo['parentId'])" id='vo2'}
          <div class="{$vo['parentId']>0?'cat2':'cat1'}"><a href='{:Url("home/goods/lists","cat=".$vo2["catId"])}'>{$vo2['catName']}</a></div>
          {/volist}
-	</div>
-	</div>
-	<i class="arrow">></i>
+  </div>
+  </div>
+  <i class="arrow">></i>
    </div>
    {/volist}
    <div class='wst-clear'></div>
@@ -40,7 +40,7 @@
    <div class='wst-container'>
       <div class='goods-img-box'>
           <div class="goods-img spec-preview" id="preview">
-          	<img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" src="__ROOT__/{:WSTImg($goods['goodsImg'])}" class="cloudzoom" data-cloudzoom="zoomImage:'__ROOT__/{$goods['goodsImg']}'" height="530" width="420">
+            <img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" src="__ROOT__/{:WSTImg($goods['goodsImg'])}" class="cloudzoom" data-cloudzoom="zoomImage:'__ROOT__/{$goods['goodsImg']}'">
           </div>
           <div class="goods-pics">
             <a class="prev">&lt;</a>
@@ -48,10 +48,10 @@
             <div class="items">
                <ul>
                {volist name="$goods['gallery']" id='vo'}
-                   <li><img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" class='cloudzoom-gallery' src="__ROOT__/{:WSTImg($vo)}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo)}', zoomImage:'__ROOT__/{$vo}' " width="60" height="76"></li>
+                   <li><img title="{$goods['goodsName']}" alt="{$goods['goodsName']}" class='cloudzoom-gallery' src="__ROOT__/{:WSTImg($vo)}" data-cloudzoom="useZoom: '.cloudzoom', image:'__ROOT__/{:WSTImg($vo)}', zoomImage:'__ROOT__/{$vo}' " ></li>
                {/volist}
-			   </ul>	
-			</div>
+         </ul>  
+      </div>
          </div>
       </div>
       <div class='intro'>
@@ -60,49 +60,63 @@
           <span class='tips'>{$goods['goodsTips']}</span>  
           </div>    
           <div class='summary'>
-          	<div class="infol">
-             <div class='item'>
-               <div class='dt'>市场价：</div>
+            <div class="infol">
+            <div class="infol_left">
+             <div class='item market'>
+               <div class='dt marp'>原&nbsp;&nbsp;&nbsp;价：</div>
                <div class='dd market-price' id='j-market-price'>￥{$goods['marketPrice']}</div>
              </div>
-             <div class='item'>
-               <div class='dt'>价格：</div>
-               <div class='dd price' id='j-shop-price'>￥{$goods['shopPrice']}</div>
+             <div class='item price1'>
+               <div class='dt marp1'><div>经销价</div></div>
+               <div class='dd price' id='j-shop-price'><span>￥</span>{$goods['shopPrice']}</div>
              </div>
-             <div class='goods-intro-bg'>
-               <div class='item'>
-                 <div class='dt'>商品评分：</div>
-                 <div class='dd'>
-          		    {for start="0" end="$goods['scores']['totalScores']"}
-          					<img src="__STATIC__/plugins/raty/img/star-on.png">
-          				{/for}
-          				{for start="1" end="6-$goods['scores']['totalScores']"}
-          					<img src="__STATIC__/plugins/raty/img/star-off.png">
-          				{/for}
-          				<div class='appraise'>累计评价：<span class='appraise-num'>{$goods['appraiseNum']}</span>（销量：<span class='appraise-num'>{$goods['saleNum']}</span>）</div>
-          				</div>
-               </div>
-               <div class='item'>
-                 <div class='dt'>商品编号：</div>
-                 <div class='dd'>{$goods['goodsSn']}</div>
-               </div>
-               <div class='item'>
-                 <div class='dt'>运费：</div>
-                 <div class='dd'>{if $goods['isFreeShipping']==1}免运费{else}系统计算{/if}</div>
-               </div>
-               <!-- <div class="infor">
-                <div id='qrcode' style='width:125px;height:125px;margin-left:18px;'></div>
-                <div style='text-align: center;'>微信端扫购有惊喜</div>
-               </div> -->
-             </div>
+            </div>
+            <div class="infol_right">
+                <div style="width:200px;">
+                  <span>商品评分：</span>
+                   {for start="0" end="$goods['scores']['totalScores']"}
+                    <img src="__STATIC__/plugins/raty/img/star-on.png">
+                  {/for}
+                  {for start="1" end="6-$goods['scores']['totalScores']"}
+                    <img src="__STATIC__/plugins/raty/img/star-off.png">
+                  {/for}
+                </div>
+                <div style="width:200px;">累计评价：<span class='appraise-num'>{$goods['appraiseNum']}</span>（销量：<span class='appraise-num'>{$goods['saleNum']}</span>）</div>
+            </div>
              </div>             
              <div class='wst-clear'></div>
           </div>
+             <div class='goods-intro-bg'>
+               <div class='item number_freight' >
+                 <div class='dt'>商品编号：</div>
+                 <div class='dd'>{$goods['goodsSn']}</div>
+               </div>
+               <div class='item number_freight'>
+                 <div class='dt'>运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费：</div>
+                 <div class='dd'>{if $goods['isFreeShipping']==1}免运费{else}系统计算{/if}</div>
+               </div>
+             </div>
+
+
           <div class='spec'>
              {if condition="($goods['isSpec'] == 1)"}
              {volist name="$goods['spec']" id='vo'}
              <div class='item'>
-               <div class='dt'>{$vo['name']}：</div>
+               <div class='dt'>
+                  
+
+                  <?php if($vo['name'] == '颜色'){ ?>
+                    颜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：
+                  <?php }else if($vo['name'] == '尺寸'){ ?>
+                    尺&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;寸：
+                  <?php }else if($vo['name'] == '尺码'){ ?>
+                    尺&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：
+                  <?php }else{ ?>
+                      {$vo['name']}：
+                  <?php } ?>   
+                 
+                      
+               </div>
                <div class='dd'>
                {volist name="$vo['list']" id='vo2'}
                   {if $vo2['itemImg']!=''}
@@ -115,17 +129,16 @@
                <div class='wst-clear'></div>
              </div>
              {/volist}
-              <!-- 添加代码start -->
-              {elseif condition = "($goods['isSpec'] == 2 OR $goods['isSpec'] == 3) AND (isset($goodsSpec))"}
+               <!-- 添加代码start -->
+              {elseif condition = "($goods['isSpec'] == 2) AND (isset($goodsSpec))"}
               <style>
                   td {
-                      padding: 5px;
-                      width: 75px;
+                      padding: 1px;
                       height: 25px;
                   }
 
                   button {
-                      width: 75px;
+                      width: 85px;
                       height: 25px;
                   }
 
@@ -146,10 +159,6 @@
                   }
               </style>
               <div id="goodsSpec" style="display: none;">{$goodsSpec}</div>
-              <!--<div id="box">
-                  <div> <span class="dt">颜色: </span><span id="color" class="dd"></span></div><br />
-                  <div> <span class="dt">尺码：</span><span id="size" class="dd"></span></div>
-              </div>-->
               <table id="table_genre"></table>
               <script type="text/javascript">
                   var table = document.getElementById("table_genre");
@@ -268,27 +277,26 @@
                       tr += "</tr>";
                       table.innerHTML += tr;
                   }
-                  $('#table_genre').find("tr").eq(0).find("td").eq(0).html("颜色:");
-                  $('#table_genre').find("tr").eq(1).find("td").eq(0).html("尺寸:");
-                  $('#table_genre').find("tr").eq(0).find("td").eq(0).css("margin","0 0 0 -12px");
-                  $('#table_genre').find("tr").eq(1).find("td").eq(0).css("margin","0 0 0 -12px");
+                  $('#table_genre').find("tr").eq(0).find("td").eq(0).html("颜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：");
+                  $('#table_genre').find("tr").eq(1).find("td").eq(0).html("尺&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;寸：");
+                  $('#table_genre').find("tr").eq(0).find("td").eq(0).css("margin","0 0 0 -6px");
+                  $('#table_genre').find("tr").eq(1).find("td").eq(0).css("margin","0 0 0 -6px");
               </script>
               <!-- 添加代码end -->
-
              {/if}
           </div>
           <div class='buy'>
              <div class='item'>
-                <div class='dt'>数量：</div>
+                <div class='dt'>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</div>
                 <div class='dd'>
-	                <a href='#none' class='buy-btn' id='buy-reduce' style='color:#ccc;' onclick='javascript:WST.changeIptNum(-1,"#buyNum","#buy-reduce,#buy-add")'>-</a>
-	                <input type='text' id='buyNum' class='buy-num' value='1' data-min='1' autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum","#buy-reduce,#buy-add")' onkeypress="return WST.isNumberKey(event);" maxlength="6"/>
-	                <a href='#none' class='buy-btn' id='buy-add' onclick='javascript:WST.changeIptNum(1,"#buyNum","#buy-reduce,#buy-add")'>+</a>
+                  <a href='#none' class='buy-btn' id='buy-reduce' style='color:#ccc;' onclick='javascript:WST.changeIptNum(-1,"#buyNum","#buy-reduce,#buy-add")'>-</a>
+                  <input type='text' id='buyNum' class='buy-num' value='1' data-min='1' autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum","#buy-reduce,#buy-add")' onkeypress="return WST.isNumberKey(event);" maxlength="6"/>
+                  <a href='#none' class='buy-btn' id='buy-add' onclick='javascript:WST.changeIptNum(1,"#buyNum","#buy-reduce,#buy-add")'>+</a>
                     &nbsp; &nbsp;（库存：<span id='goods-stock'>0</span>&nbsp;{$goods['goodsUnit']}）
                 </div>
              </div>
              <div class='item'>
-                <div class='dt'>服务：</div>
+                <div class='dt'>服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</div>
                 <div class='dd'>服务由  <a href='{:Url("home/shops/home","shopId=".$shop["shopId"])}' target='_blank'>{$shop['shopName']}</a> 发货并提供 售后服务。</div>
              </div>
              <div class='item' style='padding-left:75px;margin-top:20px;'>
@@ -313,142 +321,60 @@
              </div>
              
              {:hook('homeDocumentGoodsDetail',['goods'=>$goods,'getParams'=>input()])}
-			
+      
              <div style="clear: both;"></div>
-			<!-- 	<div style="margin-top:10px;float: right;">
-				
-				<div class="jiathis_style_24x24">
-					<a class="jiathis_button_qzone"></a>
-					<a class="jiathis_button_tsina"></a>
-					<a class="jiathis_button_tqq"></a>
-					<a class="jiathis_button_weixin"></a>
-					<a class="jiathis_button_cqq"></a>
-					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>					
-				</div>
-				<div style="clear: both;"></div>
-				</div> -->
-				
-			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+        
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
              
              
           </div>
-      </div>
 
-      <!-- <div class='seeing'>
-         <div class='head'>看了又看</div>
-         <div class='body'>
-          {wst:goods type="visit" cat="$goods['goodsCatId']" num="5" id="visit" num="6"}
-          <a href="{:Url('home/goods/detail','id='.$visit['goodsId'])}">
-          <div class="see-item">
-            <div class="see-img">
-              <img title="{$visit['goodsName']}" class="goodsImg" alt="{$visit['goodsName']}" data-original="__ROOT__/{$visit['goodsImg']}">
-              <span class="see-price">￥{$visit['shopPrice']}</span>
+          <div class="cl">
+            <div class="promise">
+              <span>承&nbsp;&nbsp;诺：</span>
+              <a href="#" class="mar"><img src="__STYLE__/img/aaa.png">正品保障</a>
+              <a href="#"><img src="__STYLE__/img/aaa.png">先行赔付</a>
+              <a href="#"><img src="__STYLE__/img/aaa.png">十五日内退换</a>
+            </div>
+            <div class="support">
+            <span>支&nbsp;&nbsp;持：</span>
+              <a href="#" class="mar1">钱袋子快捷支付</a>，
+              <a href="#">信用卡</a>，
+              <a href="#">银联卡</a>，
+              <a href="#">支付宝</a>，
+              <a href="#">微信</a>
             </div>
           </div>
-          </a>
-          {/wst:goods}
-
-          
-
-
-         </div>
-      </div> -->
+      </div>
       <div class='wst-clear'></div>
    </div>
 </div>
 <div class='wst-w'>
    <div class='wst-container'>
-      <!--  <div class='wst-side'>
-           <div class='shop-intro'>
-                <div class='title'>{$shop['shopName']}</div>
-                <div class='body'>
-                    <div class='totalScore'><img class="shopsImg" data-original="__ROOT__/{$shop['shopImg']}" title="{$shop['shopName']}" style="width:75px;height:75px;"></div>
-                    <div class='itemScore'>商品评价：{if ($shop['goodsScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
-                    <div class='itemScore'>服务评分：{if ($shop['serviceScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
-                    <div class='itemScore'>物流速度：{if ($shop['timeScore']!=0)}{$shop['goodsScore']}{else /}5{/if}</div>
-                </div>
-                <div class='footer'>
-                   <a class="home" href='{:Url("home/shops/home","shopId=".$shop["shopId"])}' target='_blank'>进店逛逛</a>
-                   {if ($goods['favShop']>0)}
-                   <a class="j-fav" href='javascript:void(0);' onclick='WST.cancelFavorite(this,1,{$shop["shopId"]},{$goods['favShop']})'>已关注</a>
-                   {else}
-                   <a class="j-fav2" href='javascript:void(0);' onclick='WST.addFavorite(this,1,{$shop["shopId"]},{$goods['favShop']})'>关注店铺</a>
-                   {/if}
-                   <div class='wst-clear'></div>
-                </div>
-           </div>
-		   <div class="goods-side">
-				<div class="guess-like">
-					<div class="title">猜你喜欢</div>
-					{wst:goods type='best' cat="$goods['goodsCatId']" num='3'}
-					<div class="item">
-						<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" src="__ROOT__/{:WSTImg($vo['goodsImg'])}"></a></div>
-						<div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-						<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
-					</div>
-					{/wst:goods}
-				</div>
-				<div class="hot-goods">
-					<div class="title">热销商品</div>
-					{wst:goods type='hot' num='3'}
-					<div class="item">
-						<div class="img"><a target='_blank' href="{:Url('home/goods/detail','id='.$vo['goodsId'])}"><img title="{$vo['goodsName']}" alt="{$vo['goodsName']}" src="__ROOT__/{:WSTImg($vo['goodsImg'])}"></a></div>
-						<div class="p-name"><a class="wst-hide wst-redlink">{$vo['goodsName']}</a></div>
-						<div class="p-price">￥{$vo['shopPrice']}<span class="v-price">￥{$vo['marketPrice']}</span></div>
-					</div>
-					{/wst:goods}
-				</div>
-			</div>
-		</div> -->
-		<div class='goods-desc'>
-		    <div  class="wst-tab-box">
-				<!-- <ul id='goodsTabs' class="wst-tab-nav">
-				   <li>商品参数</li>
-				   <li>商品详情<span class='appraise-num'>（{$goods['appraiseNum']}）</span></li>
-           {if !$goods['read'] && $goods['goodsType']==0}
-           <a id='addCart2' href='javascript:addCart(1,"#buyNum")'>立即购买</a>
-           {/if}
-           <li>商品评价</li>
-           <li>商品咨询</li>
-           <li>购买须知</li>
-				</ul> -->
+    <div class='goods-desc'>
+        <div  class="wst-tab-box">
         <div  id='goodsTabs' class="wst-tab-nav">
           <div style="width:1200px;margin:0 auto;" id="tab">
-          <ul id="md">
+          <ul id="md" class="wst-tab-nav">
              <li class="one_li">商品参数<span>|</span></li>
-             <!-- <li><a href="#goods_xx">商品详情</a><span>|</span></li> -->
              <li>商品评价&nbsp;(&nbsp;{$goods['appraiseNum']}&nbsp;)</li>
-             <!-- <li><a href="#goods_zx">商品咨询</a><span>|</span></li> -->
-             <!-- <li><a href="#goods_xz">购买须知</a></li> -->
           </ul>
           <div class="wst-tab_right" id="zf">
-            <span class="wst-tab_right_pay">&nbsp;&nbsp;<a href="">扫一扫手机支付</a>
             <div class="code"><img src="#"></div></span>
             
-            <span class="wst-tab_right_shopping">&nbsp;&nbsp;<a href="javascript:addCart(1,'#buyNum')">立即购买</a></span>
+            <a href="javascript:addCart(1,'#buyNum')"><span class="wst-tab_right_shopping">&nbsp;&nbsp;立即购买</span></a>
           </div>
           </div>
         </div>
 
         <div class="aa">
         <div class="parameter bb">
-          <div class="goods_img">
+          <div class="goods_img" style="width:800px;margin:0 auto;">
            {$goods['goodsDesc']|htmlspecialchars_decode}
           </div>
    
         </div>
-
-       <!--  <div>
-        <a name="goods_xx" class="wst-tab_goods">
-          <h3>商品详情<span>2</span></h3>
-          <div class="goods_img">
-            <img src="" >
-            <img src="" >
-          </div>
-        </a>
-      </div> -->
-
-      <div  class="parameter" style="display: none;">
+        <div  class="parameter" style="display: none;">
         
           
           <script id="tblist" type="text/html" style="display: none;">
@@ -467,7 +393,6 @@
                   {{# }  }}
                   {{# if(d[i]['shopReply']!='' && d[i]['shopReply']!=null){ }}
                   <div class="reply-box">
-                     <!-- <p class="reply-content"><a href="javascript:void(0)" onclick="goShop({{d[i]['shopId']}})">{{d[i]['shopName']}}</a>：{{d[i]['shopReply']}}</p> -->
                      <p class="reply-time">{{d[i]['replyTime']}}</p>
                  </div>
                  {{# } }}
@@ -512,45 +437,16 @@
         </a>
         </div> -->
 
-       <!--  <script type="text/javascript">
-          $(function(){
-              $('.wst-tab-nav li').hover(
-                function(){
-                  $(this).css({'color':'#e60b49','border-bottom':'2px #e60b49 solid'}).siblings().css({'color':'','border-bottom':''});
-                  $(this).find('a').addClass('goods_a');
-                  $('.one_li').removeClass();
-                },
-                function(){
-                  $(this).find('a').removeClass('goods_a');
-                }
-              );
-
-              $('.wst-tab_right_pay').hover(
-                function(){
-                  $('.code').slideDown(200,function(){
-                    $(this).show();
-                  });
-                  $(this).css({'background':'#ccc'});
-                },
-                function(){
-                   $('.code').slideUp(200,function(){
-                    $(this).hide();
-                  });
-                  $(this).css({'background':''});
-                }
-              );
-           });
-         
-        </script> -->
-			  <!-- <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
-			       <div class="wst-tab-item goods-desc-box" style="position: relative;">
-			       <ul class='wst-attrs-list'>
+        
+        <!-- <div class="wst-tab-content" style='width:99%;margin-bottom: 10px;min-height:1312px;'>
+             <div class="wst-tab-item goods-desc-box" style="position: relative;">
+             <ul class='wst-attrs-list'>
                 {volist name="$goods['attrs']" id="vo"}
                   <li title='{$vo['attrVal']}'>{$vo['attrName']}：{$vo['attrVal']}</li>
                 {/volist}
              </ul>
              {$goods['goodsDesc']|htmlspecialchars_decode}
-			       </div>
+             </div>
              <script id="tblist" type="text/html">
                {{# for(var i = 0; i < d.length; i++){ }}
                <div class="appraises-box">
@@ -585,29 +481,29 @@
               </div> 
                {{# } }}
                </script>
-			       <div class="wst-tab-item" style="position: relative;display:none;">
+             <div class="wst-tab-item" style="position: relative;display:none;">
                 <div id='ga-box'></div>
                 <div id='pager' style='text-align:center;'></div>
-			       </div>
-		    </div> -->
-		</div>	
-		<div class='wst-clear'></div>
-	</div>
-	<div class='wst-clear'></div>
+             </div>
+        </div> -->
+    </div>  
+    <div class='wst-clear'></div>
+  </div>
+  <div class='wst-clear'></div>
 </div>
 {include file="default/right_cart"/}
 {/block}
 {block name="js"}
 <script>
 var goodsInfo = {
-	id:{$goods['goodsId']},	
-	isSpec:{$goods['isSpec']},
-	goodsStock:{$goods['goodsStock']},
-	marketPrice:{$goods['marketPrice']},
-	goodsPrice:{$goods['shopPrice']}
-	{if isset($goods['saleSpec'])}
-	,sku:{:json_encode($goods['saleSpec'])}
-	{/if}
+  id:{$goods['goodsId']}, 
+  isSpec:{$goods['isSpec']},
+  goodsStock:{$goods['goodsStock']},
+  marketPrice:{$goods['marketPrice']},
+  goodsPrice:{$goods['shopPrice']}
+  {if isset($goods['saleSpec'])}
+  ,sku:{:json_encode($goods['saleSpec'])}
+  {/if}
 }
 </script>
 <script type='text/javascript' src='__STYLE__/js/cloudzoom.js?v={$v}'></script>
@@ -615,11 +511,11 @@ var goodsInfo = {
 <script type='text/javascript' src='__STYLE__/js/qrcode.js?v={$v}'></script>
 <script>
 $(function(){
-	var qr = qrcode(10, 'M');
-	var url = '{:url("wechat/goods/detail","","html",true)}?goodsId={$goods["goodsId"]}';
-	qr.addData(url);
-	qr.make();
-	$('#qrcode').html(qr.createImgTag());
+  var qr = qrcode(10, 'M');
+  var url = '{:url("wechat/goods/detail","","html",true)}?goodsId={$goods["goodsId"]}';
+  qr.addData(url);
+  qr.make();
+  $('#qrcode').html(qr.createImgTag());
 });
 function goShop(id){
   location.href=WST.U('home/shops/home','shopId='+id);

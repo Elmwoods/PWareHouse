@@ -21,7 +21,7 @@
    <tr>
      <th width='120'>退款金额<font color='red'>*</font>：</th>
      <td>
-       <input type='text' id='money' maxLength='10' onkeyup="javascript:WST.isChinese(this,1)" onkeypress="return WST.isNumberdoteKey(event,true)" onblur='javascript:WST.limitDecimal(this,2)'>(金额不能超过<font color='red'>¥{$object['realTotalMoney']}</font>)
+       <input type='text' id='money' maxLength='10' value="{$object['realTotalMoney']}" onkeyup="javascript:WST.isChinese(this,1)" onkeypress="return WST.isNumberdoteKey(event,true)" onblur='javascript:WST.limitDecimal(this,2)'>(金额不能超过<font color='red'>¥{$object['realTotalMoney']}</font>)
      </td>
    </tr>
    <tr>

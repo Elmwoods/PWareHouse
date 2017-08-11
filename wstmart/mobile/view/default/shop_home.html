@@ -77,7 +77,7 @@
                 {wst:shopgoods type='recom' num='4' id='re' shop="$data['shop']['shopId']"}
                     <div class="swiper-slide" style="width:33.333333%;">
                          <div class="wst-gol-img j-imgRec">
-                            <a href="javascript:void(0)" onclick="WST.intoGoods({$re['goodsId']})"><img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{$re['goodsImg']}"></a>
+                            <a href="javascript:void(0)" onclick="WST.intoGoods({$re['goodsId']})"><img src="__ROOT__/{$re['goodsImg']}"></a>
                         </div>
                          <p>¥{$re['shopPrice']}</p>
                     </div>
@@ -110,11 +110,11 @@
              <div class="wst-in-goods" onclick="WST.intoGoods({{d[i].goodsId}})">
              <div class="img j-imgAdapt" onclick="WST.intoGoods({{d[i].goodsId}})">
              <a href="javascript:void(0)" onclick="WST.intoGoods({{d[i].goodsId}})">
-             <img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{d[i].goodsImg }}" title="{{d[i].goodsName}}"/>
+             <img src="__ROOT__/{{d[i].goodsImg }}" title="{{d[i].goodsName}}"/>
              </a>
              </div>
              <div class="name ui-nowrap-multi">{{ d[i].goodsName}}</div>
-             <div class="info"><span class="price">¥{{ d[i].shopPrice}}</span><span class="deal">成交数:{{d[i].saleNum}}</span></div>
+             <div class="info"><span class="price">经销价：¥{{ d[i].shopPrice}}</span><span class="marketprice">原价:¥{{d[i].marketPrice}}</span></div>
              </div>
           {{# } }}
         </script>
@@ -184,14 +184,14 @@
         <div class="wst-scrollerr goodscate1" {if($k!=1)}style="display:none;"{/if}>
 
             <ul>
-                <li class="wst-goodsca">
-                    <a href="javascript:void(0);" onclick="javascript:getGoodsList({$go['catId']});"><span>&nbsp;{$go.catName}</span></a>
-                    <a href="javascript:void(0);" onclick="javascript:getGoodsList({$go['catId']});"><i class="ui-icon-arrow"></i></a>
+<!--                 <li class="wst-goodsca">
+                    <a href="javascript:void(0);" onclick="javascript:goGoodsList({$go['catId']});"><span>&nbsp;{$go.catName}</span></a>
+                    <a href="javascript:void(0);" onclick="javascript:goGoodsList({$go['catId']});"><i class="ui-icon-arrow"></i></a>
                 </li>
-                <li>
+ -->                <li>
                     <div class="wst-goodscat">
                         {volist name="$go['children']" id="go1"}
-                        <span><a href="javascript:void(0);" onclick="javascript:getGoodsList({$go['catId']},{$go1['catId']});">{$go1.catName}</a></span>
+                        <span><a href="javascript:void(0);" onclick="javascript:goGoodsList({$go['catId']},{$go1['catId']},'{$go1.catName}');">{$go1.catName}</a></span>
                         {/volist}
                     </div>
                 </li>

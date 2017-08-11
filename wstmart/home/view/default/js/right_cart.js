@@ -1,6 +1,19 @@
 $(document).ready(function(){
 	var cartHeight = WST.pageHeight()-120;
-	$('.toolbar-tab').hover(function (){ $(this).find('.tab-text').addClass("tbar-tab-hover"); $(this).find('.footer-tab-text').addClass("tbar-tab-footer-hover"); $(this).addClass("tbar-tab-selected");},function(){ $(this).find('.tab-text').removeClass("tbar-tab-hover"); $(this).find('.footer-tab-text').removeClass("tbar-tab-footer-hover"); $(this).removeClass("tbar-tab-selected"); });
+	$('.toolbar-tab').hover(function (){
+		$(this).find('.tab-text').addClass("tbar-tab-hover");
+		$(this).find('.footer-tab-text').addClass("tbar-tab-footer-hover");
+		$(this).addClass("tbar-tab-selected");
+		$(this).find('.tab-cart-buy-num').addClass('tab-cart-buy-num-hover');
+	}, function(){
+		$(this).find('.tab-text').removeClass("tbar-tab-hover");
+		$(this).find('.footer-tab-text').removeClass("tbar-tab-footer-hover");
+		$(this).removeClass("tbar-tab-selected");
+		$(this).find('.tab-cart-buy-num').removeClass('tab-cart-buy-num-hover');
+		if($(this).hasClass('tbar-tab-click-selected')){
+			$(this).find('.tab-cart-buy-num').addClass('tab-cart-buy-num-hover');
+		}
+	});
 	$(".tbar-tab-code").click(function(){
 		$(".tab-code-img").show();
 	});
@@ -21,12 +34,34 @@ $('.j-close').each(function(){
 		}
 	});
 });
-	
-	
 
-	$('.tbar-tab-cart').click(function (){ 
+	$(".tbar-tab-self").bind('click',function(){
+		var target = $(".j-panel")[0];
+		var tab = $(".tab-fade-box")[0];
+		var condition = $(tab).css("display");
+		if(condition == 'block'){
+			$(tab).hide();
+			$(".tbar-tab-self").removeClass("add-color");
+		}else{
+			$(tab).show();
+			$(".tbar-tab-self").addClass("add-color");
+		}
+		$(target).children("div").css({"visibility":"hidden"});
+		$(".toolbar-tabs").children("div").removeClass("tbar-tab-click-selected");
+		$('.toolbar-wrap').removeClass('toolbar-open');
+	});
+	function self(){
+		$($('.tab-fade-box')[0]).css({"display":"none"});
+		$('.tbar-tab-self').removeClass("add-color");
+	}
+
+	// 首页右侧购物车模块
+	$('.tbar-tab-cart').click(function (){
+
 		if($('.toolbar-wrap').hasClass('toolbar-open')){
-			if($(this).find('.tab-text').length > 0){
+
+			if($(this).find('.tab-text1').length > 0){
+
 				if(! $('.tbar-tab-follow').find('.tab-text').length > 0){
 					var info = "<em class='tab-text '>收藏</em>";
 					$('.tbar-tab-follow').append(info);
@@ -40,33 +75,47 @@ $('.j-close').each(function(){
 					$('.tbar-panel-history').css({'visibility':"hidden","z-index":"-1"});
 				}
 				$(this).addClass('tbar-tab-click-selected'); 
-				$(this).find('.tab-text').remove();
+				$(this).find('.tab-text1').remove();
 				$('.tbar-panel-cart').css({'visibility':"visible","z-index":"1"});
 				getRightCart();
+
 			}else{
-//				var info = "<em class='tab-text '>收藏</em>";
+				var info = "<em class='tab-text '>收藏</em>";
 				$('.toolbar-wrap').removeClass('toolbar-open');
-//				$(this).append(info);
+				// $(this).append(info);
 				$(this).removeClass('tbar-tab-click-selected');
 				$('.tbar-panel-cart').css({'visibility':"hidden","z-index":"-1"});
+
+
 			}
-		}else{ 
+		}else{
+		
 			$(this).addClass('tbar-tab-click-selected'); 
-			$(this).find('.tab-text').remove();
+			$(this).find('.tab-text1').remove();
 			$('.tbar-panel-cart').css({'visibility':"visible","z-index":"1"});
 			$('.tbar-panel-follow').css('visibility','hidden');
 			$('.tbar-panel-history').css('visibility','hidden');
-			$('.toolbar-wrap').addClass('toolbar-open'); 
 			$('#cart-panel').css('height',cartHeight+"px").css('overflow-y','auto');
+			$('.tbar-tab-cart').find('.tab-cart-buy-num').addClass('tab-cart-buy-num-hover');
+			$('.toolbar-wrap').addClass('toolbar-open');
 			getRightCart();
-		};
-		
+			self();
+		}
 	});
-	$('.tbar-tab-follow').click(function (){ 
+
+
+
+	// 首页右侧收藏模块
+	WST.collection = function(){
+		freGoodsList();
+	// $('.tbar-tab-follow').click(function (){
+		$($('.tab-fade-box')[0]).css({"display":"none"});
+		$('.tbar-tab-self').removeClass("add-color");
 		if($('.toolbar-wrap').hasClass('toolbar-open')){
-			if($(this).find('.tab-text').length > 0){
-				if(! $('.tbar-tab-cart').find('.tab-text').length > 0){
-					var info = "<em class='tab-text '>购物车</em>";
+
+			if($('.tbar-tab-follow').find('.tab-text').length > 0){
+				if(! $('.tbar-tab-cart').find('.tab-text1').length > 0){
+					var info = "<em class='tab-text1'></em>";
 					$('.tbar-tab-cart').append(info);
 					$('.tbar-tab-cart').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-cart').css({'visibility':"hidden","z-index":"-1"});
@@ -77,65 +126,81 @@ $('.j-close').each(function(){
 					$('.tbar-tab-history').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-history').css({'visibility':"hidden","z-index":"-1"});
 				}
-				$(this).addClass('tbar-tab-click-selected'); 
-				$(this).find('.tab-text').remove();
+				$('.tbar-tab-follow').addClass('tbar-tab-click-selected'); 
+				$('.tbar-tab-follow').find('.tab-text').remove();
 				$('.tbar-panel-follow').css({'visibility':"visible","z-index":"1"});
+
 				
 			}else{
 				var info = "<em class='tab-text '>收藏</em>";
 				$('.toolbar-wrap').removeClass('toolbar-open');
-				$(this).append(info);
-				$(this).removeClass('tbar-tab-click-selected');
+				$('.tbar-tab-follow').append(info);
+				$('.tbar-tab-follow').removeClass('tbar-tab-click-selected');
 				$('.tbar-panel-follow').css({'visibility':"hidden","z-index":"-1"});
 			}
-			 
-			
 		}else{ 
-			$(this).addClass('tbar-tab-click-selected'); 
-			$(this).find('.tab-text').remove();
+			$('.tbar-tab-follow').addClass('tbar-tab-click-selected'); 
+			$('.tbar-tab-follow').find('.tab-text').remove();
 			$('.tbar-panel-cart').css('visibility','hidden');
 			$('.tbar-panel-follow').css({'visibility':"visible","z-index":"1"});
 			$('.tbar-panel-history').css('visibility','hidden');
-			$('.toolbar-wrap').addClass('toolbar-open'); 
+			$('.toolbar-wrap').addClass('toolbar-open');
+			self();
 		}
-	});
-	$('.tbar-tab-history').click(function (){ 
+	}
+
+	
+											
+			
+
+		
+		
+												
+			// $(this).find('.add-cart-button1').hide();
+
+
+	// 首页右侧浏览记录模块
+	WST.record = function(){
+	// $('.tbar-tab-history').click(function (){
+		$($('.tab-fade-box')[0]).css({"display":"none"});
+		$('.tbar-tab-self').removeClass("add-color");
 		if($('.toolbar-wrap').hasClass('toolbar-open')){
-			if($(this).find('.tab-text').length > 0){
+			if($('.tbar-tab-history').find('.tab-text').length > 0){
 				if(! $('.tbar-tab-follow').find('.tab-text').length > 0){
 					var info = "<em class='tab-text '>收藏</em>";
 					$('.tbar-tab-follow').append(info);
 					$('.tbar-tab-follow').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-follow').css({'visibility':"hidden","z-index":"-1"});
 				}
-				if(! $('.tbar-tab-cart').find('.tab-text').length > 0){
-					var info = "<em class='tab-text '>购物车</em>";
+				if(! $('.tbar-tab-cart').find('.tab-text1').length > 0){
+					var info = "<em class='tab-text1'></em>";
 					$('.tbar-tab-cart').append(info);
 					$('.tbar-tab-cart').removeClass('tbar-tab-click-selected'); 
 					$('.tbar-panel-cart').css({'visibility':"hidden","z-index":"-1"});
 				}
-				$(this).addClass('tbar-tab-click-selected'); 
-				$(this).find('.tab-text').remove();
+				$('.tbar-tab-history').addClass('tbar-tab-click-selected'); 
+				$('.tbar-tab-history').find('.tab-text').remove();
 				$('.tbar-panel-history').css({'visibility':"visible","z-index":"1"});
 				getHistoryGoods();
 			}else{
 				var info = "<em class='tab-text '>我的足迹</em>";
 				$('.toolbar-wrap').removeClass('toolbar-open');
-				$(this).append(info);
-				$(this).removeClass('tbar-tab-click-selected');
+				$('.tbar-tab-history').append(info);
+				$('.tbar-tab-history').removeClass('tbar-tab-click-selected');
 				$('.tbar-panel-history').css({'visibility':"hidden","z-index":"-1"});
 			}
-			
 		}else{ 
-			$(this).addClass('tbar-tab-click-selected'); 
-			$(this).find('.tab-text').remove();
+			$('.tbar-tab-history').addClass('tbar-tab-click-selected'); 
+			$('.tbar-tab-history').find('.tab-text').remove();
 			$('.tbar-panel-cart').css('visibility','hidden');
 			$('.tbar-panel-follow').css('visibility','hidden');
 			$('.tbar-panel-history').css({'visibility':"visible","z-index":"1"});
 			$('.toolbar-wrap').addClass('toolbar-open'); 
 			getHistoryGoods();
+			self();
 		}
-	});
+	// });
+	}
 });
 function getRightCart(){
 	$.post(WST.U('home/carts/getCart'),'',function(data) {
@@ -203,6 +268,7 @@ function statRightCartMoney(){
 			goodsMoney = parseFloat($('#gprice_'+cartId).html(),10);
 			tmpGoodsNum++;
 			tmpGoodsMoney += goodsMoney*goodsNum;
+			tmpGoodsMoney = parseFloat(tmpGoodsMoney).toFixed(2);
 		}
 	})
 	if(tmpGoodsNum==0){

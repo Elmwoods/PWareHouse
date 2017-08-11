@@ -61,6 +61,26 @@
      <td colspan='2'><input type='text' class='j-ipt' id='goodsSeoKeywords' maxLength='100' value='{$object["goodsSeoKeywords"]}'/></td>
   </tr>
   <tr>
+     <th>供应商<font color='red'>*</font>：</th>
+     <td colspan='2'><input type='text' class='j-ipt' id='supplier' value='{$object["supplier"]}' maxLength='10'/></td>
+  </tr>
+  <tr>
+     <th>省<font color='red'>*</font>：</th>
+     <td colspan='2'><input type='text' class='j-ipt' id='locationState' value='{$object["locationState"]}' maxLength='10'/></td>
+  </tr>
+  <tr>
+     <th>市<font color='red'>*</font>：</th>
+     <td colspan='2'><input type='text' class='j-ipt' id='locationCity' value='{$object["locationCity"]}' maxLength='10'/></td>
+  </tr>
+   <tr>
+     <th>店铺货号<font color='red'>*</font>：</th>
+     <td colspan='2'><input type='text' class='j-ipt' id='instoreNo' value='{$object["instoreNo"]}' maxLength='14'/></td>
+  </tr>
+   <tr>
+     <th>有效时间<font color='red'>*</font>：</th>
+     <td colspan='2'><input type='text' class='j-ipt' id='validTime' value='{$object["validTime"]}' maxLength='10' data-rule='有效时间:required;integer[+0]'/></td>
+  </tr>
+  <tr>
      <th>商品促销信息：</th>
      <td colspan='2'><textarea class='j-ipt' id='goodsTips' maxLength='100' style='width:500px;height:50px'>{$object["goodsTips"]}</textarea></td>
   </tr>
@@ -79,17 +99,17 @@
      <td colspan='2'>
       <div class="checkbox-box">
         <label>
-	        <input id="isRecom" name='isRecom' class="j-ipt wst-checkbox" {if $object['isRecom']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isRecom"></label>推荐
-	    </label>
-	    <label>
-	        <input id="isBest" name="isBest" class="j-ipt wst-checkbox" {if $object['isBest']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isBest"></label>精品
-	    </label>
-	    <label>
-	        <input id="isNew" name="isNew" class="j-ipt wst-checkbox" {if $object['isNew']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isNew"></label>新品
-	    </label>
-	    <label>
-	        <input id="isHot" name="isHot" class="j-ipt wst-checkbox" {if $object['isHot']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isHot"></label>热销
-	    </label>  
+          <input id="isRecom" name='isRecom' class="j-ipt wst-checkbox" {if $object['isRecom']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isRecom"></label>推荐
+      </label>
+      <label>
+          <input id="isBest" name="isBest" class="j-ipt wst-checkbox" {if $object['isBest']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isBest"></label>精品
+      </label>
+      <label>
+          <input id="isNew" name="isNew" class="j-ipt wst-checkbox" {if $object['isNew']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isNew"></label>新品
+      </label>
+      <label>
+          <input id="isHot" name="isHot" class="j-ipt wst-checkbox" {if $object['isHot']==1}checked{/if} value="1" type="checkbox"/><label class="mt-1" for="isHot"></label>热销
+      </label>  
       </div>     
      </td>
   </tr>
@@ -106,11 +126,11 @@
      <th>商城分类<font color='red'>*</font>：</th>
      <td colspan='2'>
          <select id="cat_0" class='ipt j-goodsCats' level="0" onchange="WST.ITGoodsCats({id:'cat_0',val:this.value,isRequire:true,className:'j-goodsCats',afterFunc:'lastGoodsCatCallback'});getBrands('brandId',this.value)">
-	      	<option value="">-请选择-</option>
-	      	{volist name=":WSTGoodsCats(0)" id="vo"}
-	        <option value="{$vo['catId']}">{$vo['catName']}</option>
-	        {/volist}
-	     </select>
+          <option value="">-请选择-</option>
+          {volist name=":WSTGoodsCats(0)" id="vo"}
+          <option value="{$vo['catId']}">{$vo['catName']}</option>
+          {/volist}
+       </select>
      </td>
   </tr>
   <tr>

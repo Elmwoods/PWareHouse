@@ -24,41 +24,45 @@ class Carts extends Base{
 		$userId = (int)session('WST_USER.userId');
 		$goodsId = (int)input('post.goodsId');
 		$goodsSpecId = (int)input('post.goodsSpecId');
-
+		$specIds = input('post.specIds');
         //添加代码start
         //获得goodsSpecId
-        $specIds = '';
-        $color =  input('post.color') ?  input('post.color') : '';
-        $size  =  input('post.size') ?  input('post.size') : '';
-        $flag = 1;
-        if(!empty($color)){
-            $values = $color;
-        }else{
-            $values = $size;
-        }
+        if($goodsSpecId == 0){
+        	// $specIds = '';
+        	if(empty($specIds)){
+        		$color =  input('post.color') ?  input('post.color') : '';
+		        $size  =  input('post.size') ?  input('post.size') : '';
+		        $flag = 1;
+		        if(!empty($color)){
+		            $values = $color;
+		        }else{
+		            $values = $size;
+		        }
 
 
-        if(empty($color) || empty($size)){
-            $res = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$values]);
-        }else{
-            $flag = 2;
-            $res = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$color]);
-            $sizeID = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$size]);
-        }
-        foreach ($res as $key => $value) {
-            if($flag == 2){
-                for ($i=0; $i<1 ; $i++) {
-                    $specIds = $value['itemId'].':'.$sizeID[$i]['itemId'];
-                }
-            }else{
-                $specIds = $value['itemId'];
-            }
-        }
-
-        //根据specIds 查出goodsSpecId
-        $goods_specs = Db::query("SELECT * FROM `jingo_goods_specs` where goodsId = ? AND specIds =? ",[$goodsId,$specIds]);
-        foreach ($goods_specs as $value) {
-            $goodsSpecId = $value['id'];
+		        if(empty($color) || empty($size)){
+		            $res = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$values]);
+		        }else{
+		            $flag = 2;
+		            $res = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$color]);
+		            $sizeID = Db::query("SELECT * FROM   `jingo_spec_items` where goodsId=? and itemName=? limit 1",[$goodsId,$size]);
+		        }
+		        foreach ($res as $key => $value) {
+		            if($flag == 2){
+		                for ($i=0; $i<1 ; $i++) {
+		                    $specIds = $value['itemId'].':'.$sizeID[$i]['itemId'];
+		                }
+		            }else{
+		                $specIds = $value['itemId'];
+		            }
+		        }
+        	}
+	        
+	        //根据specIds 查出goodsSpecId
+	        $goods_specs = Db::query("SELECT * FROM `jingo_goods_specs` where goodsId = ? AND specIds =? ",[$goodsId,$specIds]);
+	        foreach ($goods_specs as $value) {
+	            $goodsSpecId = $value['id'];
+	        }
         }
         //添加代码end
 
@@ -128,7 +132,7 @@ class Carts extends Base{
 				}
 			}
 			
-			if($defaultGoodsSpecId==0)return WSTReturn("添加失败，无效的商品信息", -1);//有规格却找不到规格的话就报错
+			if($defaultGoodsSpecId==0)return WSTReturn("添加失败，无效的商品信息", -1);//有规格却找不到规格的话就报错0
 			if(!$isFindSpecId)return WSTReturn("", 1,['goodsSpecId'=>$defaultGoodsSpecId,'stock'=>$defaultGoodsSpecStock,'goodsType'=>$goods['goodsType']]);//如果没有找到的话就取默认的规格
 			return WSTReturn("", 1,['goodsSpecId'=>$goodsSpecId,'stock'=>$goodsStock,'goodsType'=>$goods['goodsType']]);
 		}else{
@@ -199,6 +203,13 @@ class Carts extends Base{
 	 * 获取购物车列表
 	 */
 	public function getCarts($isSettlement = false, $uId=0){
+
+		//添加代码start
+        if (session('WST_USER.userId') > 0) {
+            $info = Db::name('users')->where('userId',session('WST_USER.userId'))->find();
+        }
+        //添加代码end
+        
 		$userId = ($uId==0)?(int)session('WST_USER.userId'):$uId;
 		$where = [];
 		$where['c.userId'] = $userId;
@@ -207,7 +218,7 @@ class Carts extends Base{
 		           ->join('__SHOPS__ s','s.shopId=g.shopId','left')
 		           ->join('__GOODS_SPECS__ gs','c.goodsSpecId=gs.id','left')
 		           ->where($where)
-		           ->field('c.goodsSpecId,c.cartId,s.userId,s.shopId,s.shopName,g.goodsId,s.shopQQ,shopWangWang,g.goodsName,g.shopPrice,g.goodsStock,g.isSpec,gs.specPrice,gs.specStock,g.goodsImg,c.isCheck,gs.specIds,c.cartNum,g.goodsCatId,g.isFreeShipping')
+		           ->field('c.goodsSpecId,c.cartId,s.userId,s.shopId,s.shopName,g.goodsId,s.shopQQ,shopWangWang,g.goodsName,g.shopPrice,g.goodsStock,g.isSpec,gs.specPrice,gs.marketPrice,gs.specStock,g.goodsImg,c.isCheck,gs.specIds,c.cartNum,g.goodsCatId,g.isFreeShipping')//添加marketPrice
 		           ->select();
 		$carts = [];
 		$goodsIds = [];
@@ -224,8 +235,19 @@ class Carts extends Base{
 			if($v['isFreeShipping']==0 && $carts[$v['shopId']]['isFreeShipping'])$carts[$v['shopId']]['isFreeShipping'] = false;
 			$carts[$v['shopId']]['shopWangWang'] = $v['shopWangWang'];
 			if($v['isSpec']==1){
-				$v['shopPrice'] = $v['specPrice'];
-				$v['goodsStock'] = $v['specStock'];
+
+				//添加代码start
+				if (!empty($info['salesendID'])) {
+					$v['shopPrice'] = $v['specPrice']; // 经销商价格
+					$v['goodsStock'] = $v['specStock'];
+				}else{
+					$v['shopPrice'] = $v['marketPrice'];// 非经销商价格
+					$v['goodsStock'] = $v['specStock'];
+				}
+				//添加代码end
+				
+				// $v['shopPrice'] = $v['specPrice'];//原代码
+				// $v['goodsStock'] = $v['specStock'];//原代码
 			}
 			//判断能否购买，预设allowBuy值为10，为将来的各种情况预留10个情况值，从0到9
 			$v['allowBuy'] = 10;

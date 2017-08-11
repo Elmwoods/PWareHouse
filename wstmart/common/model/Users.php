@@ -19,80 +19,103 @@ class Users extends Base{
      * 用户登录验证
      */
     public function checkLogin($loginSrc = 0){
-    	$loginName = input("post.loginName");
-    	$loginPwd = input("post.loginPwd");
-    	$code = input("post.verifyCode");
-    	$rememberPwd = input("post.rememberPwd",1);
-    	if(!WSTVerifyCheck($code) && strpos(WSTConf("CONF.captcha_model"),"4")>=0){
-    		return WSTReturn('验证码错误!');
-    	}
-    	
-    	$rs = $this->where("loginName|userEmail|userPhone",$loginName)
-    				->where(["dataFlag"=>1, "userStatus"=>1])
-    				->find();
-    	
-    	hook("beforeUserLogin",["user"=>&$rs]);
-    	
-    	
-    	if(!empty($rs)){
-            if($rs['loginPwd']!=md5($loginPwd.$rs['loginSecret']))return WSTReturn("密码错误");
+        $loginName = input("post.loginName");  //用户名
+        $phoneName = input("post.loginName1"); //手机号
+        $loginPwd = input("post.loginPwd");    //密码
+        $mobileCode=input('post.mobileCode');  //手机校验码
+        $code = input("post.verifyCode");      //验证码
+        $rememberPwd = input("post.rememberPwd",1); //记住密码
+
+        if(!WSTVerifyCheck($code) && strpos(WSTConf("CONF.captcha_model"),"4")>=0){
+            return WSTReturn('验证码错误!');
+        }
+
+        //添加代码 start
+        if($loginPwd != ''){
+            $rs = $this->where("loginName|userPhone",$loginName)
+                    ->where(["dataFlag"=>1, "userStatus"=>1])
+                    ->find();
+            if($rs){
+                if($rs['loginPwd']!=md5($loginPwd.$rs['loginSecret']))return WSTReturn("密码错误");
+            }else{
+                return WSTReturn("用户名或密码错误"); 
+            }
+             
+        }else{
+            $rs = $this->where("loginName|userPhone",$phoneName)
+                    ->where(["dataFlag"=>1, "userStatus"=>1])
+                    ->find();
+            if($rs){
+                $model=Db::name('user_code');
+                $id=$model->where('mobile',$phoneName)->max('id');
+                $model->where('mobile',$phoneName)->where('id','lt',$id)->delete();
+                $model->where('mobile',$phoneName)->where('reg_time','lt',time()-30*60)->delete();
+                if (!$model->where('mobile',$phoneName)->where('code',$mobileCode)->find()) {
+                    return WSTReturn("短信验证码错误"); 
+                }   
+            }else{
+                return WSTReturn("该手机号未注册或未绑定"); 
+            }
+        }
+        //添加代码 end
+        
+        hook("beforeUserLogin",["user"=>&$rs]);
+        if(!empty($rs)){
+
             if($rs['userPhoto']=='')$rs['userPhoto'] = WSTConf('CONF.userLogo');
-    		$userId = $rs['userId'];
-    		//获取用户等级
-	    	$rrs = Db::name('user_ranks')->where(['dataFlag'=>1])->where('startScore','<=',$rs['userTotalScore'])->where('endScore','>=',$rs['userTotalScore'])->field('rankId,rankName,rebate,userrankImg')->find();
-	    	$rs['rankId'] = $rrs['rankId'];
-	    	$rs['rankName'] = $rrs['rankName'];
-	    	$rs['userrankImg'] = $rrs['userrankImg'];
-    		if(input("post.typ")==2){
-    			$shoprs=$this->where(["dataFlag"=>1, "userStatus"=>1,"userType"=>1,"userId"=>$userId])->find();
-    			if(empty($shoprs)){
-    				return WSTReturn('您还没申请店铺!');
-    			}
-    		}
-    		$ip = request()->ip();
-    		$update = [];
-    		$update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
-    		$wxOpenId = session('WST_WX_OPENID');
-    		if($wxOpenId){
-    			$update['wxOpenId'] = $rs['wxOpenId'] = session('WST_WX_OPENID');
-    		}
-    		$this->where(["userId"=>$userId])->update($update);
-    		
-    		
-    		//如果是店铺则加载店铺信息
-    		if($rs['userType']>=1){
-    			$shop = model('shops')->where(["userId"=>$userId,"dataFlag" =>1])->find();
-    			if(!empty($shop))$rs = array_merge($shop->toArray(),$rs->toArray());
-    		}
-    		//记录登录日志
-    		$data = array();
-    		$data["userId"] = $userId;
-    		$data["loginTime"] = date('Y-m-d H:i:s');
-    		$data["loginIp"] = $ip;
+            $userId = $rs['userId'];
+            //获取用户等级
+            $rrs = Db::name('user_ranks')->where(['dataFlag'=>1])->where('startScore','<=',$rs['userTotalScore'])->where('endScore','>=',$rs['userTotalScore'])->field('rankId,rankName,rebate,userrankImg')->find();
+            $rs['rankId'] = $rrs['rankId'];
+            $rs['rankName'] = $rrs['rankName'];
+            $rs['userrankImg'] = $rrs['userrankImg'];
+            if(input("post.typ")==2){
+                $shoprs=$this->where(["dataFlag"=>1, "userStatus"=>1,"userType"=>1,"userId"=>$userId])->find();
+                if(empty($shoprs)){
+                    return WSTReturn('您还没申请店铺!');
+                }
+            }
+            $ip = request()->ip();
+            $update = [];
+            $update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
+            $wxOpenId = session('WST_WX_OPENID');
+            if($wxOpenId){
+                $update['wxOpenId'] = $rs['wxOpenId'] = session('WST_WX_OPENID');
+            }
+            $this->where(["userId"=>$userId])->update($update);
+            //如果是店铺则加载店铺信息
+            if($rs['userType']>=1){
+                $shop = model('shops')->where(["userId"=>$userId,"dataFlag" =>1])->find();
+                if(!empty($shop))$rs = array_merge($shop->toArray(),$rs->toArray());
+            }
+            //记录登录日志
+            $data = array();
+            $data["userId"] = $userId;
+            $data["loginTime"] = date('Y-m-d H:i:s');
+            $data["loginIp"] = $ip;
             $data['loginSrc'] = $loginSrc;
-    		Db::name('log_user_logins')->insert($data);
-    
-    		$rd = $rs;
-    		//记住密码
-    		cookie("loginName", $loginName, time()+3600*24*90);
-    		if($rememberPwd == "on"){
-    			$datakey = md5($rs['loginName'])."_".md5($rs['loginPwd']);
-    			$key = $rs['loginSecret'];
-    			//加密
-    			$base64 = new \org\Base64();
-    			$loginKey = $base64->encrypt($datakey, $key);
-    			cookie("loginPwd", $loginKey, time()+3600*24*90);
-    		}else{
-    			cookie("loginPwd", null);
-    		}
-    		session('WST_USER',$rs);
-    		
-    		hook('afterUserLogin',['user'=>$rs]);
-    		
-    		return WSTReturn("登录成功","1");
-    	
-    	}
-    	return WSTReturn("用户不存在");
+            Db::name('log_user_logins')->insert($data);
+            $rd = $rs;
+            //记住密码
+            cookie("loginName", $loginName, time()+3600*24*90);
+            if($rememberPwd == "on"){
+                $datakey = md5($rs['loginName'])."_".md5($rs['loginPwd']);
+                $key = $rs['loginSecret'];
+                //加密
+                $base64 = new \org\Base64();
+                $loginKey = $base64->encrypt($datakey, $key);
+                cookie("loginPwd", $loginKey, time()+3600*24*90);
+            }else{
+                cookie("loginPwd", null);
+            }
+            session('WST_USER',$rs);
+            
+            hook('afterUserLogin',['user'=>$rs]);
+            
+            return WSTReturn("登录成功","1");
+        
+        }
+        return WSTReturn("用户不存在");
     }
     
     /**
@@ -105,6 +128,15 @@ class Users extends Base{
     	$data['loginPwd'] = input("post.loginPwd");
     	$data['reUserPwd'] = input("post.reUserPwd");
     	$loginName = $data['loginName'];
+
+        //添加代码 start
+        //不能使用邮箱注册  
+        $preg = "/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/";
+        if(preg_match($preg,$loginName)){
+            return WSTReturn("请使用 用户名或手机号注册!");
+        }
+        //添加代码 end
+        
     	//检测账号是否存在
     	$crs = WSTCheckLoginKey($loginName);
     	if($crs['status']!=1)return $crs;
@@ -144,6 +176,25 @@ class Users extends Base{
     	unset($data['reUserPwd']);
     	unset($data['protocol']);
     	//检测账号，邮箱，手机是否存在
+        //添加代码 start
+        $maxId = Db::name('users')->max('userId');
+        $flag = ($maxId+1)%100 ;
+        $a =(string)floor(($maxId+1)/100) ;
+        if ($flag == 0) { //如果 userId 是 100 的倍数  则加一个客服
+            $data1['loginName'] = 'server'.$a;
+            $data1["loginSecret"] = rand(1000,9999);
+            $data1['loginPwd'] = md5('123456789'.$data1['loginSecret']);
+            $data1['userType'] = 0;
+            $data1['userName'] = '客服'.$a;
+            $data1['userQQ'] = "";
+            $data1['userScore'] = 0;
+            $data1['createTime'] = date('Y-m-d H:i:s');
+            $data1['dataFlag'] = 1;
+            $data1['userSex'] = 1;
+            Db::name('users')->insert($data1);
+        }
+        //添加代码 end
+
     	$data["loginSecret"] = rand(1000,9999);
     	$data['loginPwd'] = md5($data['loginPwd'].$data['loginSecret']);
     	$data['userType'] = 0;
@@ -162,6 +213,7 @@ class Users extends Base{
 				$data['userPhoto'] = $userinfo['headimgurl'];
 			}
     	}
+        $data['userSex'] = 1;//添加代码 
     	Db::startTrans();
         try{
 	    	$userId = $this->data($data)->save();
@@ -219,40 +271,40 @@ class Users extends Base{
     }
 
     /**
-     * 修改用户密码
+     * 修改用户密码  原代码
      */
-    public function editPass($id){
-    	$data = array();
-    	$data["loginPwd"] = input("post.newPass");
-    	if(!$data["loginPwd"]){
-    		return WSTReturn('密码不能为空',-1);
-    	}
-    	$rs = $this->where('userId='.$id)->find();
-    	//核对密码
-    	if($rs['loginPwd']){
-    		if($rs['loginPwd']==md5(input("post.oldPass").$rs['loginSecret'])){
-    			$data["loginPwd"] = md5(input("post.newPass").$rs['loginSecret']);
-    			$rs = $this->update($data,['userId'=>$id]);
-    			if(false !== $rs){
-    				hook("afterEditPass",["userId"=>$id]);
-    				return WSTReturn("密码修改成功", 1);
-    			}else{
-    				return WSTReturn($this->getError(),-1);
-    			}
-    		}else{
-    			return WSTReturn('原始密码错误',-1);
-    		}
-    	}else{
-    		$data["loginPwd"] = md5(input("post.newPass").$rs['loginSecret']);
-    		$rs = $this->update($data,['userId'=>$id]);
-    		if(false !== $rs){
-    			hook("afterEditPass",["userId"=>$id]);
-    			return WSTReturn("密码修改成功", 1);
-    		}else{
-    			return WSTReturn($this->getError(),-1);
-    		}
-    	}
-    }
+    // public function editPass($id){
+    // 	$data = array();
+    // 	$data["loginPwd"] = input("post.newPass");
+    // 	if(!$data["loginPwd"]){
+    // 		return WSTReturn('密码不能为空',-1);
+    // 	}
+    // 	$rs = $this->where('userId='.$id)->find();
+    // 	//核对密码
+    // 	if($rs['loginPwd']){
+    // 		if($rs['loginPwd']==md5(input("post.oldPass").$rs['loginSecret'])){
+    // 			$data["loginPwd"] = md5(input("post.newPass").$rs['loginSecret']);
+    // 			$rs = $this->update($data,['userId'=>$id]);
+    // 			if(false !== $rs){
+    // 				hook("afterEditPass",["userId"=>$id]);
+    // 				return WSTReturn("密码修改成功", 1);
+    // 			}else{
+    // 				return WSTReturn($this->getError(),-1);
+    // 			}
+    // 		}else{
+    // 			return WSTReturn('原始密码错误',-1);
+    // 		}
+    // 	}else{
+    // 		$data["loginPwd"] = md5(input("post.newPass").$rs['loginSecret']);
+    // 		$rs = $this->update($data,['userId'=>$id]);
+    // 		if(false !== $rs){
+    // 			hook("afterEditPass",["userId"=>$id]);
+    // 			return WSTReturn("密码修改成功", 1);
+    // 		}else{
+    // 			return WSTReturn($this->getError(),-1);
+    // 		}
+    // 	}
+    // }
     /**
      * 修改用户支付密码
      */

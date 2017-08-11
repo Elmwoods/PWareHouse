@@ -172,6 +172,7 @@ $(function(){
             var json = WST.toJson(data);
             if(json.status=='1'){
                 WST.msg("操作成功",{icon:1});
+                location.href = location.href;    //添加跳转代码
                 return;
             }else{
                   WST.msg(json.msg,{icon:2});

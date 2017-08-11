@@ -55,6 +55,9 @@ class Alipays extends Base{
 				$subject = '钱袋子充值 ¥'.$orderAmount.'元';
 				$body = '钱袋子充值';
 
+				// 启动事务
+				\think\Db::startTrans();
+				try{
 				//将信息添加到充值表
 				$arr['pdr_sn'] = $pay_sn = $out_trade_no;
 				$arr['pdr_user_id'] = session('WST_USER.userId');
@@ -63,10 +66,19 @@ class Alipays extends Base{
 				$arr['pdr_payment_name'] = '支付宝';
 				$arr['pdr_add_time'] = date('Y-m-d H:i:s');
 				\think\Db::name('pd_recharge')->insert($arr);
+					// 提交事务
+					\think\Db::commit();
+				} catch (\Exception $e) {
+					// 回滚事务
+					\think\Db::rollback();
+				}
 			} else {
 				$subject = '金豆充值 ¥'.$orderAmount.'元';
 				$body = '金豆充值';
 
+				// 启动事务
+				\think\Db::startTrans();
+				try{
 				//将信息添加到充值表
 				$arr['imr_sn'] = $pay_sn = $out_trade_no;
 				$arr['imr_user_id'] = session('WST_USER.userId');
@@ -75,6 +87,12 @@ class Alipays extends Base{
 				$arr['imr_payment_name'] = '支付宝';
 				$arr['imr_add_time'] = date('Y-m-d H:i:s');
 				\think\Db::name('im_recharge')->insert($arr);
+				// 提交事务
+				\think\Db::commit();
+			} catch (\Exception $e) {
+				// 回滚事务
+				\think\Db::rollback();
+			}
 			}
 		}elseif($payObj=="loan"){//还款
 			$orderAmount = input("needPay");
@@ -84,13 +102,16 @@ class Alipays extends Base{
 				$targetId = (int)session('WST_USER.shopId');
 			}
 			$data["status"] = $orderAmount>0?1:-1;
-			$out_trade_no = $loan->makeSn();
+			$out_trade_no = $this->makeSn();
 			$extra_common_param = $payObj."@".$targetId."@".$targetType;
 			if($data["status"]==1){
 
 				$subject = '还款 ¥'.$orderAmount.'元';
 				$body = '还款';
 
+				// 启动事务
+				\think\Db::startTrans();
+				try{
 				//将信息添加到还贷款表
 				$arr['al_sn'] = $pay_sn = $out_trade_no;
 				$arr['user_id'] = session('WST_USER.userId');
@@ -101,6 +122,12 @@ class Alipays extends Base{
 				$arr['al_status'] = '待还款';
 				$arr['al_add_time'] = date('Y-m-d H:i:s');
 				\think\Db::name('also_loan')->insert($arr);
+					// 提交事务
+					\think\Db::commit();
+				} catch (\Exception $e) {
+					// 回滚事务
+					\think\Db::rollback();
+				}
 			}
 		}else{
 			$obj["orderNo"] = input("orderNo/s");
@@ -173,9 +200,14 @@ class Alipays extends Base{
 			if($extras[0]=="recharge"){//充值
 				$out_trade_no = $_GET['out_trade_no'];
 				$trade_no = $_GET['trade_no'];
+
+
 				//将充值表修改为充值成功
 				$da['pdr_payment_state'] = 1;
 				$da['pdr_payment_time'] = date('Y-m-d H:i:s');
+				// 启动事务
+				\think\Db::startTrans();
+				try{
 				$pd = \think\Db::name('pd_recharge')->where(['pdr_sn'=>$out_trade_no])->update($da);
 				if($pd) {
 					//获取充值表的信息
@@ -194,13 +226,15 @@ class Alipays extends Base{
 					$insert['money'] = $pdInfo['pdr_amount'];
 					$insert['tradeNo'] = $out_trade_no;
 					$insert['payType'] = 1;
-					$insert['createTime'] = date('Y-m-d H:i:s');
+					$insert['createTime'] = $pdInfo['pdr_add_time'];
+					$insert['endTime'] = date('Y-m-d H:i:s');
 					$insert['remark'] = '钱袋子充值';
 					$in = \think\Db::name('log_moneys')->insert($insert);
 
 				} else {
 					$data['imr_payment_state'] = 1;
 					$data['imr_payment_time'] = date('Y-m-d H:i:s');
+
 					\think\Db::name('im_recharge')->where(['imr_sn'=>$out_trade_no])->update($data);
 					//获取充值表的信息
 					$pdInfo = \think\Db::name('im_recharge')->where(['imr_sn'=>$out_trade_no])->find();
@@ -228,22 +262,32 @@ class Alipays extends Base{
 					$ins['money'] = $pdInfo['imr_amount'];
 					$ins['tradeNo'] = $out_trade_no;
 					$ins['payType'] = 1;
-					$ins['createTime'] = date('Y-m-d H:i:s');
+					$ins['createTime'] = $pdInfo['imr_add_time'];
+					$ins['endTime'] = date('Y-m-d H:i:s');
 					$ins['remark'] = '金豆充值';
 					$ins = \think\Db::name('log_moneys')->insert($ins);
 
 				}
-
+					// 提交事务
+					\think\Db::commit();
+				} catch (\Exception $e) {
+					// 回滚事务
+					\think\Db::rollback();
+				}
 				$this->redirect(url("purse/consume/index"));
 			}elseif($extras[0]=="loan"){//还款
 				$out_trade_no = $_GET['out_trade_no'];
 				$trade_no = $_GET['trade_no'];
 				//将还贷款表修改为还款成功
 				$da['al_status'] = '还款成功';
+				// 启动事务
+				\think\Db::startTrans();
+				try{
 				$al = \think\Db::name('also_loan')->where(['al_sn'=>$out_trade_no])->update($da);
 				if($al) {
 					//获取表的信息
 					$alInfo = \think\Db::name('also_loan')->where(['al_sn'=>$out_trade_no])->find();
+					
 					//获取users表的信息
 					$user = \think\Db::name('users')->where(['userId'=>$alInfo['user_id']])->find();
 					//修改users表的信息
@@ -258,11 +302,18 @@ class Alipays extends Base{
 					$insert['money'] = $alInfo['al_amonut'];
 					$insert['tradeNo'] = $out_trade_no;
 					$insert['payType'] = 1;
-					$insert['createTime'] = date('Y-m-d H:i:s');
+					$insert['createTime'] = $alInfo['al_add_time'];
+					$insert['endTime'] = date('Y-m-d H:i:s');
 					$insert['remark'] = '还款';
 					$in = \think\Db::name('log_moneys')->insert($insert);
 
 				}
+					// 提交事务
+					\think\Db::commit();
+				} catch (\Exception $e) {
+				// 回滚事务
+				\think\Db::rollback();
+			}
 				$this->redirect(url("purse/consume/index"));
 			}else{
 				$this->redirect(url("home/orders/waitReceive"));

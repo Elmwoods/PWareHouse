@@ -91,6 +91,7 @@
                     <li><a href="javascript:goSort('type',4)">消费</a></li>
                     <li><a href="javascript:goSort('type',5)">贷款</a></li>
                     <li><a href="javascript:goSort('type',6)">信用卡还款</a></li>
+                    <li><a href="javascript:goSort('type',7)">撒金豆</a></li>
                 </ul>
             </div>
             <div class="menu_zt2">
@@ -213,12 +214,10 @@
                               <table style="border:0;">
                                 <tr>
                                   <th class="time">创建时间</th>
-                                  <th class="time">交易时间</th>
                                   <th class="time">结束时间</th>
                                 </tr>
                                 <tr>
                                   <td class="time1" id='createTime'></td>
-                                  <td class="time1" id='createTime_j'></td>
                                   <td class="time1" id='createTime_z'></td>
                                 </tr>
                                 </table>
@@ -401,8 +400,7 @@
                 $('#dataFlag').html('进行中');
             }
             $('#createTime').html(data['createTime']);
-            $('#createTime_j').html(data['createTime']);
-            $('#createTime_z').html(data['createTime']);
+            $('#createTime_z').html(data['endTime']);
 
             var mt = data['moneyType'];
             if(mt==1){

@@ -18,6 +18,7 @@
 </div>
 {/block}
 {block name="js"}
+<script type='text/javascript' src='__STYLE__/js/carts.js?v={$v}'></script>
 <script type='text/javascript' src='__STYLE__/js/qrcode.js?v={$v}'></script>
 <script>
 
@@ -39,7 +40,7 @@
             dataType:"json",
             success:function(data){
                 if(data.status==1){
-                    location.href = "{:url('consume/index')}";
+                    location.href = "{:url('purse/consume/index')}";
                 }
             }
         });

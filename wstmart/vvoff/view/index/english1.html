@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>HANGZHOU JINGE TECHNOLOGY CORPORATION  GLOBAL DISTRIBUTARY SYSTEM OF COMMODITY CURRENCTY</title>
+		<link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/Eng_index.css"/>
+		
+	</head>
+	<style type="text/css">
+	    .team {
+	        width: 1200px;
+	        margin: 0 auto;
+	    }
+	    .terrace_show {
+	        width: 200px;
+	        margin: 0 12px;
+	        float: left;
+	    }
+	</style>
+	
+
+	<body  style="background: #0f1210;">
+
+		
+		<!--PC端 >=992-->
+		<!--<div class="visible-lg-block visible-md-block">-->
+		<div class="zhezhao"></div>
+			<div class="header" id="header">
+				<div class="header_top">
+					<div class="list">
+						<ul>
+							<li><a href="#01" onfocus="this.blur()";>ABOUT</a></li>
+							<li><a href="#02" onfocus="this.blur()";>VVCHAT</a></li>
+							<li><a href="#03" onfocus="this.blur()";>CASHBAG</a></li>
+							<li><a href="#04" onfocus="this.blur()";>JINGOMALL</a></li>
+							<li><a href="#05" onfocus="this.blur()");>FUTURE</a></li>
+							<li><a href="#06" onfocus="this.blur()";>TEAMS</a></li>
+							<li><a href="#07" onfocus="this.blur()";>NEWS</a></li>
+							<li><a href="<?php echo url('index')?>" onfocus="this.blur()";>中文版</a></li>
+
+							<li style="" id="li">
+								<a href="javascript:void(0)"  id="li_a">
+		                    		<span class="code_down ">Download<img src="__VVOFF__/images/down.png" alt="" id="sjx"/>
+										<!--<span class="sjx ">-->
+										<!--二维码下载-->
+		                    		  	<div class="code">
+									    	<div class="code_img">
+									    		<img src="__VVOFF__/images/QR_down.png"/>
+									    	</div>
+									    	<p>App-Scan and download VV APP</p>
+									    </div>
+										<!--</span>-->
+		                    		</span>
+								</a>
+							</li>
+
+							{if condition="$Think.session.WST_USER.userName != ''"}
+								<li style="margin: 0;width: 100px;text-align: center;" id="demo1">
+									<span id="user_id" >
+										{$Think.session.WST_USER.userName} <img src="__VVOFF__/images/down.png" alt="" />
+									</span>
+
+									<div class="user_detail">
+										<div class="touxiang left">
+											<img src="__VVOFF__/img/touxiang.png"/>
+										</div>
+										<span class="left WID" style="letter-spacing: 1px;">
+											VVID : {$Think.session.WST_USER.userName}
+										</span>
+										<span class="left WID">
+											Credit score : 50
+										</span>
+										<span class="quit">
+											Exit
+										</span>
+									</div>
+								</li>
+							{else /}
+								<li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="demo right denglu" style="width:50px;">Sign In</a></li>
+								<i class="sx"></i>
+								<li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="zhuce">Sign Up</a></li>
+							{/if}
+							<!-------登录注册-------->
+							<!--<li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="demo right denglu" >sign in</a></li>
+							<i class="sx"></i>
+							<li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="zhuce">sign up</a></li>-->
+							<!-------登陆后显示用户信息--------->
+
+
+						</ul>
+					</div>
+					<div class="logo">
+						<img src="__VVOFF__/img/logo.png"/>
+					</div>
+				</div>
+			</div>
+
+
+			<!--扫码登陆-->
+		<form action="{:url('vvoff/login/logon')}" method="post" class="code_login">
+				<a href="javascript:void(0)">
+					<img class="tab1" src="__VVOFF__/images/tab_1.png"/>
+				</a>
+				<a href="javascript:void(0)" class="close_d">
+					<img class="close_s" src="__VVOFF__/images/button_close.png"/>
+				</a>
+				<div class="code_p">
+					<img src="__VVOFF__/serialize/{$data}/{$serialize}.png" class="code_s" style="width: 140px;height: 140px;margin:auto;"/>
+					<img src="__VVOFF__/img/failure_e.jpg" class="code_cs"  style="width: 140px;height: 140px;display: none"/>
+				</div>
+				<p>Please logon with VV APP SCAN</p>
+
+				<span class="other">
+			<a href="javascript:void(0)" class="downvv">Download VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="accounts">Account Sign In</a>
+		</span>
+		</form>
+
+			<!--短信登录-->
+			<form action="{:url('vvoff/login/reg')}" method="post" class="code_login_d">
+				<a href="javascript:void(0)">
+					<img class="tab2" src="__VVOFF__/images/tab_2.png"/>
+				</a>
+				<a href="javascript:void(0)" class="close_d2">
+					<img class="close_s" src="__VVOFF__/images/button_close.png"/>
+				</a>
+				<div class="phone_m">
+					<p class="white" style="text-align:center;">SMS Sign In</p>
+					
+					<div class="phone_n">
+						<input class="phone_nk sjh sjyzm" type="text" name="mobile" id="zh_03" value="" placeholder="Enter phone number"/>
+					</div>
+					<p class="sjgs" style="text-align: center;">*The phone number is not in the correct format*</p>
+					<div class="phone_n" style="margin:0;">
+						<input class="phone_nk" type="password" name="code" id="" value="" placeholder="Input validation code"/>
+
+					</div>
+					<button class="send_yzm" id="send_yzm2" >Send</button>
+
+					<input type="submit" value="Sign In"  class="post_tj" style="color: black"/>
+					<p class="agreement">Read and accept <br /><a href="javascript:void(0)">《Jinge User's Agreement》</a></p>
+				</div>
+
+
+				<span class="other">
+			<a href="javascript:void(0)" class="downvv">Download VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="accounts">Account Sign In</a>
+		</span>
+			</form>
+
+
+			<!--帐号登入-->
+			<form action="{:url('vvoff/login/engLogon')}" method="post" class="user_login">
+				<a href="javascript:void(0)">
+					<img class="tab2" src="__VVOFF__/images/tab_2.png"/>
+				</a>
+				<a href="javascript:void(0)" class="close_d2">
+					<img class="close_s" src="__VVOFF__/images/button_close.png"/>
+				</a>
+				<div class="phone_m">
+					<p class="white">Account Sign In</p>
+
+					<div class="phone_n">
+						<input class="phone_nk sjh" type="text" name="username" id="zh_02" value=""
+							   placeholder="Enter phone number |VV ID"/>
+					</div>
+					<p class="sjgs"></p>
+					<div class="phone_n shangyi">
+						<input class="phone_nk" type="password" name="password" id="" value=""
+							   placeholder="Please input a password"/>
+					</div>
+					<input type="submit" value="Sign In" class="zh_login" style="color: black;"/>
+				</div>
+				<span class="other">
+			<a href="javascript:void(0)" class="downvv">Download VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="note_login">SMS Sign In</a>
+		</span>
+			</form>
+
+
+
+			<!--注册-->
+			<form action="{:url('vvoff/login/reg')}" method="post" class="user_register">
+				<a href="javascript:void(0)" class="close_d2">
+					<img class="close_s" src="__VVOFF__/images/button_close.png"/>
+				</a>
+				<div class="phone_m_zc">
+					<p class="white_zc">Sign Up</p>
+
+					<div class="phone_n">
+						<input class="phone_nk sjh sjyzm" type="tel" name="mobile" id="zh_01" value="" placeholder="Enter phone number"/>
+					</div>
+					<p class="sjgs">*The phone number is not in the correct format*</p>
+					<div class="phone_n">
+						<input class="phone_nk" type="text" name="code" id="" value="" placeholder="Input Validation Code"/>
+					</div><button class="send_yzm" id="send_yzm1" >Send</button>
+					<input type="submit" value="Sign Up"  class="zh_login_r" style="color: black"/>
+					<p class="agreement">Read and accept <br /><a href="{:url('vvoff/index/agreement')}">《Jinge User's Agreement》</a></p>
+				</div>
+				<span class="other">
+			<a href="javascript:void(0)" class="downvv">Download VV APP</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="note_login">Sign In</a>
+		</span>
+			</form>
+
+
+			<!--------下载VV---------->
+
+			<div class="code_down_b">
+
+				<a href="javascript:void(0)" class="close_d">
+					<img class="close_s" src="__VVOFF__/images/button_close.png"/>
+				</a>
+
+				<div class="code_p">
+					<img src="__VVOFF__/images/QR_down.png" class="code_b code_big"/>
+				</div>
+				<p>App-Scan and download VV APP</p>
+
+				<span class="other">
+			<a href="javascript:void(0)" class="denglu">Sign In</a>
+			<i class="sx1"></i>
+			<a href="javascript:void(0)" class="zhuce">Sign Up</a>
+		</span>
+			</div>
+
+			<div class="menu">
+				<div class="top">
+					<img class="top_img" src="__VVOFF__/img/Eng_img/2017s.png"/>
+					<div class="btn_a">
+						<button class="btn_lt"><img src="__VVOFF__/images/BUTTON_EINGLISH_VVCHAT.png"/></button>
+						<button class="btn_qdz"><!--<a href="{:url('vvoff/index/purse')}" target="_blank">--><img src="__VVOFF__/images/BUTTON_EINGLISH_CASHBAG.png"/><!--</a>--></button>
+						<button class="btn_sc"><!--<a href="{:url('home/index/index')}" target="_blank">--><img src="__VVOFF__/images/BUTTON_EINGLISH_JINGOMALL.png" alt="" /><!--</a>--></button>
+					</div>
+					<!--{if condition="empty($_COOKIE['WSTMART_name'])"}-->
+						<div id="check" style="display: none;">{$serialize}</div>
+						<!--<div class="menu_img">
+							<div>
+								<dl>
+									<dt><img src="" width="150" height="150" class="_img"></dt>
+									<dd> <span>Sign in QR code</span></dd>
+								</dl>
+							</div>
+							<div>
+								<dl>
+									<dt><img src="" width="150" height="150" class="_img"></dt>
+									<dd> <span>register QR code</span></dd>
+								</dl>
+							</div>
+						</div>
+					{else /}
+						<p class="menu_top_p">hello,<b style="font-size:42px;color:red;"><?php echo $_COOKIE['WSTMART_name']; ?>!</b>Welcome back!</p>
+					{/if}-->
+					<img src="__VVOFF__/img/Eng_img/2017xia.png"/>
+				</div>
+				
+			</div>
+			
+			<div class="hot" id="01">
+				<div class="hot_top">
+					<div class="top">
+						<img src="__VVOFF__/img/Eng_img/about.png"/>
+					</div>
+					<div class="hot_span">
+						<span>Hangzhou Jingo Technology Co., Ltd. takes the leads to set off a new round of technological transformation for monetary settlement system in the world.</span>
+						<br />
+						<br />
+						<br />
+						<span> It makes use of advanced technology of modern network modularization, and combines it with financial settlement system of distributed account book. In that way, the traditional idea of cash on delivery can be modified. Besides, “commodity”and “currency”can be automatically distributed. By means of reducing and cutting the time of commodity circulation and monetary settlement, it can increase social energy consumption, and further liberate social productivity. </span>
+						<br />
+						<br />
+						<br />
+						<span>“Hangzhou Jingo Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingo, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
+						<br />
+						<br />
+						<br />
+						<span>Game software in moneybag such as casting (golden) beans, and planting golden beans, etc. can take modern people away from their busy work simply by games like weeding, catching insects, watering and fertilizing, etc. These games are not only interesting, but also a way to accumulate money. Breeding bean sprouts under outdoor sunshine can lead users go outside for exercises and improve their physical health, and, it can make users feel the real experience of hard working and perspiration in this gold-digging games. </span>
+						<br />
+						<br />
+						<br />
+						<span>Hangzhou Jingo Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support.</span>
+						<br />
+						<br />
+						<br />
+						<span>This is also the theme that Jingo is committed to serve the society: “World changes for you!”</span>
+					</div>
+				</div>
+
+			</div>
+			<div class="news" id="02">
+				<div class="news_top">
+					<div class="top">
+						<img src="__VVOFF__/img/Eng_img/VVCHAT.png"/>
+					</div>
+					<div class="bottom">
+						<<span>“Hangzhou Jingo Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingo, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
+					</div>
+					<div id="pics2">
+						<a href="#" style="display: block">
+							<img src="__VVOFF__/img/060.png"/>
+						</a>
+						<a href="#">
+							<img src="__VVOFF__/img/061.png"/>
+						</a>
+						<!--<a href="#" style="display: block">-->
+							<!--<img src="__VVOFF__/img/phone/1140.png"/>-->
+						<!--</a>-->
+						<!--<a href="#">-->
+							<!--<img src="__VVOFF__/img/phone/1141.png"/>-->
+						<!--</a>-->
+					</div>
+				</div>
+			</div>
+			<div class="column" id="03">
+				<div class="column_top">
+					<div class="top">
+						<img src="__VVOFF__/img/Eng_img/CASHBAG.png"/>
+					</div>
+					<div id="pics3">
+						<a href="#" style="display: block">
+							<img src="__VVOFF__/img/06031403.png" alt="">
+						</a>
+						<a href="#">
+							<img src="__VVOFF__/img/06031404.png" alt="">
+						</a>
+						<a href="#" style="display: block">
+							<img src="__VVOFF__/img/06031406.png" alt="">
+						</a>
+						<!--<a href="#">-->
+							<!--<img src="__VVOFF__/img/5.png" alt="">-->
+						<!--</a>-->
+					</div>
+					<div class="col_bot">
+						<span>Game software in moneybag such as casting (golden) beans, and planting golden beans, etc. can take modern people away from their busy work simply by games like weeding, catching insects, watering and fertilizing, etc. These games are not only interesting, but also a way to accumulate money. Breeding bean sprouts under outdoor sunshine can lead users go outside for exercises and improve their physical health, and, it can make users feel the real experience of hard working and perspiration in this gold-digging games.</span>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="shop" id="04">
+				<div class="shop_top">
+					<div class="top">
+						<img src="__VVOFF__/img/Eng_img/JINGOMALL.png"/>
+					</div>
+					<div class="shop_txt">	
+						<span>"Jingomall.com (JINGO·China)" is a network trading platform for global customer service under the flag of Hangzhou Jinge Technology Co., Ltd. The transaction contains all kinds of social goods including financial products. For the convenience of (global) customers’ online commodity trading, Jinge developed cloud computing data systems and mobile client systems.</span>
+						<br />
+						<br />
+						<br />
+						<br />
+						<span>Currency·Commodity Distributary Technology is known as the world's most complex, most profound financial theory, it can break trade barriers of countries and facilitate commodity circulation, reduce commodity trading time and the cost of currency exchange. The Chain Sales Model that commodity is the point where the sales happen is known as the Internet of things 3.0 Technology, which can link personal credit to consumers’ spending habits. These two kinds of technologies integrate each other deeply in the trading platform, which not only subverts the original commodity circulation model, but also is in line with modern people’s psychological service needs that more convenience, more refinement is required.</span>
+						<br />
+						<br />
+						<br />
+						<br />
+						<span>To contribute to economic development of China and the rest of the world, Hangzhou Jinge Technology Co., Ltd. takes on heavy responsibilities and struggles to innovate, to promote the development of social civilization…</span>
+					</div>
+				</div>
+			</div>
+			<div class="weilai" id="05">
+                <div class="weilai_top">
+                    <div class="w_top">
+                        <img src="__VVOFF__/img/Eng_img/FUTURE .png"/>
+                    </div>
+                    <div class="w_txt">
+                        <span>
+                         	Hangzhou Jingo Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support
+                        </span>
+                    </div>
+                </div>
+			</div>
+			
+			<div style="background:#0f1210;width:100%;min-height: 2125px;margin-bottom:10px;">
+				<div class="team" id="06">
+				<div class="team_t">
+					<div class="top">
+						<img src="__VVOFF__/img/Eng_img/teams.png"/>
+					</div>
+                <div class="col-lg-12 col-md-12 msg" style="background: #0f1210">
+					<!-- <div class="col-lg-1 col-md-1"></div> -->
+					<?php foreach ($ensta as $v):?>
+					<div class="col-lg-2 col-md-2 terrace_show">
+						<dl>
+							<dt>
+								<img src="<?php echo '/'.$v['e_headimg']?>"/>
+								<span>
+									<h4>Personal Profile</h4>
+									<p><?php echo $v['e_introduction']?></p>
+								</span>
+							</dt>
+							<dd>
+								<p class="dd-tit"><span class="dd-tit-1"><?php echo $v['e_name']?></span></p>
+								<br />
+								<p class="dd-con"><?php echo $v['e_job']?></p>
+								<p class="dd-con">Motto：<?php echo $v['e_motto']?></p>
+							</dd>
+						</dl>
+					</div>
+					<?php endforeach;?>
+					<!-- <div class="col-lg-1 col-md-1"></div> -->
+				</div>
+				
+				
+				
+				
+				</div>
+				</div>
+
+
+			</div>
+			</div>
+			</div>
+			
+			<div class="service" id="07" style="width: 100%;">
+                <div class="se_top" style="width: 1200px;background: #0f1210">
+                    <div class="top">
+                        <img src="__VVOFF__/img/Eng_img/NEWS.png"/>
+                    </div>
+           	<?php foreach ($enart as $v):?>
+                    <div class="se_list">
+                        <ul class="se_ul">
+							<a href="{:url('vvoff/index/webnew', ['id'=>$v['id']])}">
+                        		 <li>
+	                                <dl>
+	                                    <dt>
+	                                		<img src="<?php echo '/'.$v['e_art_img']?>"/>
+	                                    </dt>
+	                                    <dd>
+	                                    	<h2><?php echo $v['e_art_name']?></h2>
+	                                    	<p><?php echo $v['e_art_addtime']?></p>
+	                                    	<span style="width: 600px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;"><?php echo $v['e_art_content']?></span>
+	                                    </dd>
+	                                </dl>
+	                            </li>
+                        	</a>
+                        </ul>
+                    </div>
+                <?php endforeach;?>
+                 	<div class="bnt">
+                 		<!--<span>加载更多</span>-->
+                 	</div>
+                </div>
+			</div>
+			<div class="overs">
+				<div class="over_box">
+					<div class="over_img">
+						<img src="__VVOFF__/images/foot03/zfew.jpg"/>
+					</div>
+					<div class="over_txt">
+						<p>Hangzhou Jinge Technology Co., Ltd. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-167-5655</p>
+						<p>Address:Room 3202，Wealth Financial Center, No. 37 Jiefang East Road, Jianggan District, Hangzhou</p>
+						<p>Zhejiang ICP prepared No. 17002020</p>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!--</div>-->
+
+		<div id="remote" style="display: none;">{:url('vvoff/index/check')}</div>
+		<div id="send" style="display: none;">{:url('vvoff/login/send')}</div>
+		<div id="sends" style="display: none;">{:url('vvoff/login/sends')}</div>
+		<div id="quit" style="display: none;">{:url('vvoff/login/enquit')}</div>
+		<div id="back" style="display: none;">{:url('vvoff/index/english')}</div>
+		<div id="serialize" style="display: none;">__VVOFF__</div>
+		<div id="setqrcode" style="display: none;">{:url('vvoff/index/setqrcode')}</div>
+		<div id="phone" style="display: none;">{:url('vvoff/index/phone')}</div>
+	</body>
+	<script src="__VVOFF__/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/Eng_index.js"></script>
+	<script src="__VVOFF__/js/remote_en.js"></script>
+	<script src="__VVOFF__/js/Eheader.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__VVOFF__/js/bootstrap.min.js"></script>
+
+	
+</html>

@@ -1,5 +1,6 @@
 <?php
 namespace wstmart\common\model;
+use wstmart\common\model\GoodsCats;
 use think\Db;
 /**
  * ============================================================================
@@ -52,7 +53,7 @@ class GoodsCats extends Base{
      */
     public function getFloors(){
 	    $cats1 = Db::name('goods_cats')->where(['dataFlag'=>1, 'isShow' => 1,'parentId'=>0,'isFloor'=>1])
-		             ->field("catName,catId")->order('catSort asc')->limit(10)->select();
+		             ->field("catName,catId")->order('catId asc')->limit(10)->select();
 		if(!empty($cats1)){
 			$ids = [];
 			foreach ($cats1 as $key =>$v){
@@ -60,7 +61,7 @@ class GoodsCats extends Base{
 			}
 			$cats2 = [];
 			$rs = Db::name('goods_cats')->where(['dataFlag'=>1, 'isShow' => 1,'parentId'=>['in',$ids],'isFloor'=>1])
-				             ->field("parentId,catName,catId")->order('catSort asc')->select();
+				             ->field("parentId,catName,catId")->order('catId asc')->select();
 			foreach ($rs as $key => $v){
 				$cats2[$v['parentId']][] = $v;
 			}
@@ -68,6 +69,32 @@ class GoodsCats extends Base{
 				$cats1[$key]['children'] = (isset($cats2[$v['catId']]))?$cats2[$v['catId']]:[];
 			}
 		}
+
+		//添加代码start
+		$gc = new GoodsCats();
+		if(!empty($cats1)){
+			foreach ($cats1 as $key =>$v){
+				$catId = "'".$v['catId']."|_%" ."'". "escape '|' ";
+				header("content-type:text/html; charset=utf-8");
+				$rs = Db::name('goods')->where("goodsCatIdPath like ".$catId)
+									   ->where("isHot",1)
+									   ->where("isSale",1)
+									   ->where("goodsStatus",1)
+									   ->where("dataFlag",1)
+									   ->order('visitNum desc')
+				                       ->limit(7)->select();
+				foreach ($rs as $key1 => $v1){
+					if($key1 == 0){
+						$cats1[$key]['left'] = $v1;
+						unset($rs[$key1]);
+						break;
+					}
+				}
+				$cats1[$key]['data'] = $rs;
+			}
+		}
+		//添加代码end
+
 		return $cats1;
     }
 }

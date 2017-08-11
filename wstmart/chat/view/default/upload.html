@@ -5,10 +5,62 @@
     <title>一键注册</title>
 </head>
 <body>
-<form name="register" action="{:url('circle/add')}" enctype="multipart/form-data" method="post">
-    <input type="file" name="pic[]" />
-    <input type="file" name="pic[]" />
-    <p><input type="submit" value="上传" /></p>
+<div>
+获取用户信息
+<form action="{:url('chat/api/userInfo')}" enctype="multipart/form-data" method="post">
+    <input type="text" name="token_id" />
+    <input type="text" name="token" />
+    <input type="submit" value="测试" />
 </form>
+</div>
+<br />
+<div>
+发送emoji表情
+<form action="{:url('chat/circle/aaa')}" method="post">
+    <input type="text" name="test" />
+    <input type="submit" value="测试" />
+</form>
+</div>
+<br />
+新增电子名片
+<form action="{:url('chat/card/add')}" method="post">
+    <!--ID: <input type="text" name="id" /><br />-->
+    用户ID: <input type="text" name="userId" /><br />
+    姓  名: <input type="text" name="name" /><br />
+    手机号: <input type="text" name="phone" /><br />
+    邮  箱: <input type="text" name="email" /><br />
+    公  司: <input type="text" name="company" /><br />
+    职  务: <input type="text" name="job" /><br />
+    账  户: <input type="text" name="account" /><br />
+    地  址: <input type="text" name="address" /><br />
+    V C R: <input type="text" name="vcr" /><br />
+    <input type="submit" value="测试" />
+</form>
+</div>
+<br />
+发布群公告
+<form action="{:url('chat/group/commitNotice')}" method="post">
+    <input type="text" name="userId" />
+    <input type="text" name="groupID" />
+    <input type="text" name="content" />
+    <input type="submit" value="测试" />
+</form>
+</div>
+<br />
+设置聊天背景
+<form action="{:url('chat/user/setBackground')}" enctype="multipart/form-data" method="post">
+    <input type="text" name="userId" />
+    <input type="file" name="userBG" />
+    <input type="submit" value="测试" />
+</form>
+</div>
+<br />
+上传文件
+<form action="{:url('chat/api/uploadFile')}" enctype="multipart/form-data" method="post">
+    <input type="file" name="vvFile" />
+    <input type="submit" value="测试" />
+</form>
+</div>
+<br />
 </body>
 </html>

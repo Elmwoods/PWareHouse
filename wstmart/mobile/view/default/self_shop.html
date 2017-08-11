@@ -17,92 +17,14 @@
     <div class="wst-in-icon" id="j-icon">
         <span class="cats" style="left:initial;right:2px;" onclick="javascript:dataShow();"></span>
     </div>
-<!--slide-->
-<div class="swiper-container" style="margin-top: 42px;box-shadow: 0px 1px 3px 0px #6e6e6e;">
-    	
-    <div class="slider swiper-wrapper"style="width: 200%;">
-    	<div class="slider-L slider-0 slider-L-active swiper-slide">
-    		<a href="#">
-    			<i class="sli-active"></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/xingxing_png.png"/>
-    				<span>星范</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-1 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/nan_png.png"/>
-    				<span>型男社</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-2 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/xizhuang_png.png"/>
-    				<span>新绅士</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-3 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/wanghongjihe_png.png"/>
-    				<span>网红集合</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-4 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/huangguan_png.png"/>
-    				<span>女王范儿</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-1 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/nan_png.png"/>
-    				<span>型男社</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-2 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/xizhuang_png.png"/>
-    				<span>新绅士</span>
-    			</div>
-    		</a>
-    	</div>
-    	<div class="slider-L slider-3 swiper-slide">
-    		<a href="#">
-				<i></i>
-    			<div class="sli-content">
-    				<img src="__MOBILE__/img/img/wanghongjihe_png.png"/>
-    				<span>网红集合</span>
-    			</div>
-    		</a>
-    	</div>
-    </div>
-</div>
 {/block}
 
 {block name="main"}
 <input type="hidden" name="" value="{$data.shop.shopId}" id="shopId" autocomplete="off">
 <input type="hidden" name="" value="-1" id="currPage" autocomplete="off">
 
-     <section class="ui-container" style="border-top: 0;">
-         <!--<div class="shop-banner" {if $data['shop']['shopBanner']!=''}style="background:url(__ROOT__/{$data['shop']['shopBanner']}) no-repeat center top;background-size:cover;" {/if}>
+     <section class="ui-container" >
+         <div class="shop-banner" {if $data['shop']['shopBanner']!=''}style="background:url(__ROOT__/{$data['shop']['shopBanner']}) no-repeat center top;background-size:cover;" {/if}>
             <div class="ui-row-flex ui-whitespace">
                 <div class="ui-col ui-col-3 banner-box" style="margin-right:-60px;">
                     <div class="shop-photo">
@@ -118,20 +40,20 @@
 
                 <div class="ui-col ui-col banner-box">
                     <div class="ui-btn-group">
-                    <button class="ui-btn-lg shop-btn" id="fBtn" onclick="{if ($isFavor>0)}WST.cancelFavorite({$isFavor},1){else /}WST.favorites(1,1){/if}">
-                        {if ($isFavor>0)}
-                        <img src="__MOBILE__/img/icon_gz.png">
-                            <span id="fStatus">已关注</span>
-                        {else /}
-                        <img src="__MOBILE__/img/icon_gz.png">
-                            <span id="fStatus">关注店铺</span>
-                        {/if}
-                    </button>
+                        <button class="ui-btn-lg shop-btn" id="fBtn" onclick="{if ($isFavor>0)}WST.cancelFavorite({$isFavor},1){else /}WST.favorites(1,1){/if}">
+                            {if ($isFavor>0)}
+                            <img src="__MOBILE__/img/icon_gz.png">
+                                <span id="fStatus">已关注</span>
+                            {else /}
+                            <img src="__MOBILE__/img/icon_gz.png">
+                                <span id="fStatus">关注店铺</span>
+                            {/if}
+                        </button>
                     </div>
                 </div>
 
             </div>
-         </div>-->
+         </div>
          {if !empty($data['shop']['shopAds'])}
          <div class="shop-ads" style="display: none;">
             <div class="ui-slider">
@@ -145,7 +67,7 @@
          {/if}
 
 
-         <!--<div class="wst-shl-ads" >
+         <div class="wst-shl-ads" >
             <div class="title">店主推荐</div>
            <div class="wst-gol-adsb">
             <div class="swiper-container">
@@ -159,7 +81,7 @@
               </div>
             </div>
             </div>
-        </div>-->
+        </div>
 
         <!--<div class="wst-shl-ads" >
             <div class="title">热卖商品</div>
@@ -200,7 +122,7 @@
         </script>
 
         <!-- 商品列表 -->
-        <div id="goods-list"></div>
+        <div id="goods-list" ></div>
 
 {/* 遮盖层  */}
 <div class="wst-cover" id="cover"></div>
@@ -262,5 +184,14 @@ $(function(){
    {/if}
    WST.initFooter('home');
 });
+
+//slider
+var sliderLis=$(".swiper-slide");
+    	sliderLis.each(function(index){
+    		sliderLis.click(function(){
+    			$(this).eq(index).addClass("slider-L-active");
+    			sliderLis.not($(this)).eq(index).removeClass("slider-L-active");
+    		})
+    	})
 </script>
 {/block}

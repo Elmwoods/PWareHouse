@@ -70,11 +70,11 @@ class  index extends Controller
         }
 		$this->assign('art2',$arr);
 		$this->assign('art',$dd);
-		$serialize = $this->setqrcode();
+        $serialize = $this->setqrcode();
         $date = date("Ymd",time());
         $this->assign('data',$date);
-		$this -> assign('serialize', $serialize);
-		return  $this->fetch('index');
+        $this -> assign('serialize', $serialize);
+        return  $this->fetch('index');
 	}
 
     public function phone()

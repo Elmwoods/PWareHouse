@@ -18,6 +18,7 @@ class ListenProtectedUrl
     public function run(&$params){
 	    $request = request();
 	    $urls = WSTConf('protectedUrl');
+//		dump($urls);die;
         $visit = strtolower($request->module()."/".$request->controller()."/".$request->action());
  
         //受保护资源进来检测身份
@@ -31,7 +32,7 @@ class ListenProtectedUrl
 		        if($request->isAjax()){
 		        	echo json_encode(['status'=>-999,'msg'=>'对不起，您还没有登录，请先登录']);
 		        }else{
-		        	header("Location:".url('home/users/login'));
+		        	header("Location:".url('purse/index/login'));
 		        }
 		        exit();
         	}

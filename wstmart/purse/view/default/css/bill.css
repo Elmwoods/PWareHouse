@@ -99,7 +99,13 @@ a{text-decoration:none;}
     /*border-radius: 50%;*/
     background: #1b6d85;
 }
-
+.hot img{
+    width:100%;
+    height:100%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+}
 .header .header_main dd {
     float: left;
     width: 661px;
@@ -116,7 +122,7 @@ a{text-decoration:none;}
 
 .header .header_main .max .top_left {
     float: left;
-    width: 140px;
+    width: 190px;
     font-size:18px;
     margin-top: 30px;
 
@@ -124,7 +130,7 @@ a{text-decoration:none;}
 
 .header .header_main .max .top_right {
     float: left;
-    width: 330px;
+    width: 160px;
     font-size: 14px;
     margin-top: 33px;
     margin-left: 40px;
@@ -137,6 +143,80 @@ a{text-decoration:none;}
 
 }
 
+.header .header_main .max .top_vv{
+    float:left;
+    margin-top: 33px;
+    font-size: 14px;
+
+}
+.header .header_main .max .top_vv a{
+    cursor:pointer;
+    color:#fff;
+}
+.header .header_main .max .top_vv img{
+    margin-left:10px;
+}
+#vvid h4{
+    text-align: center;
+    font-weight:700;
+}
+#vvid .mrid{
+    width:497px;
+    margin:0 auto;
+    height:50px;
+    line-height:50px;
+    font-size:16px;
+    margin-top:30px;
+}
+#vvid .message{
+    width:497px;
+    border-bottom:1px #ccc solid;
+    margin:0 auto;
+    font-size:16px;
+    height:40px;
+}
+#vvid .message .hk{
+    height:40px;
+    line-height:40px;
+}
+#vvid .message .hk img{
+    float:right;
+    margin-top:12px;
+    cursor:pointer;
+}
+#vvid .message .hk input{
+    width:200px;
+}
+#vvid  .ed{
+    margin:10px 0px 0px 35px;
+    font-size:12px;
+    display: none;
+    color:#666;
+}
+#vvid #subm{
+    width:250px;
+    margin:0 auto;
+    color:white;
+    font-size: 18px;
+    border:0;
+    height:50px;
+    background:#E60B49;
+    float:left;
+    border-radius:4px;
+}
+#vvid .ts{
+    /*clear: both;*/
+    float:left;
+    width:248px;
+    margin-top:10px;
+    text-align:center;
+    background: url("");
+}
+#vvid .ts img{
+    margin:-5px 10px 0px 0px;
+    font-size:12px;
+
+}
 .header .header_main .button {
     width: 661px;
     height: 69px;
@@ -176,7 +256,7 @@ a{text-decoration:none;}
 .skip .skip_ds{
     width:100%;
     height: 100px;
-    padding-top:250px;
+    padding-top:160px;
 }
 .skip .skip_ds p{
     font-size: 25px;

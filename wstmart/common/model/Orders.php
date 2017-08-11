@@ -2,6 +2,9 @@
 namespace wstmart\common\model;
 use think\Db;
 use think\Loader;
+use addons\kuaidi\Kuaidi as KU;
+use wstmart\home\controller\Orders as CO;
+use wstmart\purse\controller\Commision;
 /**
  * ============================================================================
  * WSTMart多用户商城
@@ -203,6 +206,7 @@ class Orders extends Base{
 		$userId = ($uId==0)?(int)session('WST_USER.userId'):$uId;
 		$isUseScore = (int)input('isUseScore');
 		$useScore = (int)input('useScore');
+		$userPhone = input('post.userPhone');//添加代码
 		//检测购物车
 		$carts = model('common/carts')->getCarts(true, $userId);
 		if(empty($carts['carts']))return WSTReturn("请选择要购买的商品");
@@ -247,7 +251,18 @@ class Orders extends Base{
 				$orderScore = 0;
 				//创建订单
 				$order = [];
-				$order = array_merge($order,$address);
+				// $order = array_merge($order,$address);//原代码
+				//添加代码start
+				if (!$userPhone) {
+					$userPhone1=Db::name('user_address')->field('userPhone')->where(['userId'=>$userId,'isDefault'=>1])->find();
+					$userPhone=$userPhone1['userPhone'];
+				}
+				$order['userPhone'] = $userPhone;
+				$order['areaId'] = $address['areaId'];
+				$order['userName'] = $address['userName'];
+				$order['userAddress'] = $address['userAddress'];
+				//添加代码end
+			
 				$order['orderNo'] = $orderNo;
 				$order['userId'] = $userId;
 				$order['shopId'] = $shopOrder['shopId'];
@@ -258,7 +273,8 @@ class Orders extends Base{
 				if($shopOrder['isFreeShipping']){
                     $order['deliverMoney'] = 0;
 				}else{
-					$order['deliverMoney'] = ($deliverType==1)?0:WSTOrderFreight($shopOrder['shopId'],$order['areaId2']);				
+					// $order['deliverMoney'] = ($deliverType==1)?0:WSTOrderFreight($shopOrder['shopId'],$order['areaId2']);//原代码
+					$order['deliverMoney'] = ($deliverType==1)?0:WSTOrderFreight($shopOrder['shopId'],$address['areaId2']);//添加代码			
 				}
 				$order['totalMoney'] = $order['goodsMoney']+$order['deliverMoney'];
                 //积分支付-计算分配积分和金额
@@ -295,9 +311,14 @@ class Orders extends Base{
 				$order['dataFlag'] = 1;
 				$order['payRand'] = 1;
 				$order['createTime'] = date('Y-m-d H:i:s');
-				$result = $this->data($order,true)->isUpdate(false)->allowField(true)->save($order);
+
+				// $result = $this->fetchSql(true)->data($order,true)->isUpdate(false)->allowField(true)->save($order);//源代码
+				$result = Db::name('orders')->insert($order);//添加代码
+				$orderId = Db::name('orders')->getLastInsID();//添加代码
+
 				if(false !== $result){
-					$orderId = $this->orderId;
+					// $orderId = $this->orderId;//原代码
+					$orderId = $orderId;//添加代码
 					$orderTotalGoods = [];
 					$commissionFee = 0;
 					foreach ($shopOrder['list'] as $gkey =>$goods){
@@ -327,7 +348,7 @@ class Orders extends Base{
                         }
 						//修改库存
 						if($goods['goodsSpecId']>0){
-					        Db::name('goods_specs')->where('id',$goods['goodsSpecId'])->update([
+					        $res = Db::name('goods_specs')->where('id',$goods['goodsSpecId'])->update([
 					        	'specStock'=>['exp','specStock-'.$goods['cartNum']],
 					        	'saleNum'=>['exp','saleNum+'.$goods['cartNum']]
 					        ]);
@@ -555,6 +576,9 @@ class Orders extends Base{
 		              o.orderStatus,o.deliverType,deliverMoney,isPay,payType,payFrom,o.orderStatus,needPay,isAppraise,isRefund,orderSrc,o.createTime,o.useScore,oc.complainId,orf.id refundId')
 			         ->order('o.createTime', 'desc')
 			         ->paginate(input('pagesize/d'))->toArray();
+
+
+
 	    if(count($page['Rows'])>0){
 	    	 $orderIds = [];
 	    	 foreach ($page['Rows'] as $v){
@@ -589,6 +613,42 @@ class Orders extends Base{
 	    	 }
 	    	 hook('afterQueryUserOrders',['page'=>&$page]);
 	    }
+
+            
+        //添加代码start   自动确认收货
+        $kuaidi = new KU();  
+        $CO = new CO();
+        $userId = (int)session('WST_USER.userId');
+        $now = time();
+
+        foreach ($page['Rows'] as $key => $value) {
+        	$signfor = $kuaidi->signfor($value['orderId']);
+        	if (!empty($signfor) && !empty($signfor['state'])) {  
+	            if($signfor['state'] == '3'){
+	            	foreach ($signfor['data'] as $key1 => $value1) {
+	            		if ($key1 == 0) {
+	            			$signforTime = strtotime($value1['time']);//快递签收时间
+	            			break;
+	            		}
+	            	}
+	            	$day1 = ($now-$signforTime)/(3600*24);
+	            	//确认收货时间为 7 天
+	            	if ($day1 > 7) {
+	            		//自动 确认收货 并付款给商家
+	            		$CO->receive1($value['orderId'],$userId);
+	            	}
+	            }
+        	}else{
+        	     $orderTime = strtotime($value['createTime']);//订单时间
+        	     $day2 = ($now-$orderTime)/(3600*24);
+        	     if ($day2 > 7) {
+	            		//自动 确认收货 并付款给商家
+	            		$CO->receive1($value['orderId'],$userId);
+	             }
+	        }
+        }
+        //添加代码end
+
 	    return $page;
 	}
 	
@@ -717,10 +777,194 @@ class Orders extends Base{
 		$order = $this->alias('o')->join('__SHOPS__ s','o.shopId=s.shopId','left')
 		              ->where(['o.userId'=>$userId,'o.orderId'=>$orderId,'o.orderStatus'=>1])
 		              ->field('o.orderId,o.orderNo,o.payType,s.userId,s.shopId,o.orderScore,o.realTotalMoney,commissionFee')->find();
+
 		if(!empty($order)){
 			Db::startTrans();
 		    try{
-				$data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s')];
+
+		    	//添加代码start
+				$info = Db::name('users')->where('userId',session('WST_USER.userId'))->field('userId,userScore,salesendID')->find(); //买家信息
+				//订单成功  增加 用户 信用分
+				$useScore  = $info['userScore']+$order['realTotalMoney']*0.1;//信用分 
+			    Db::name('users')->where('userId',session('WST_USER.userId'))->update(['userScore'=>$useScore]);
+			    session('WST_USER.userScore',$useScore);
+
+			    //该用户有经销终端则   计算佣金  佣金 = 交易利润 * 0.5
+			    if ($info['salesendID'] > 0) {
+				    // 交易利润=实际销货价-总进货价
+					// 实际销货价——订单表realTotalMoney
+					// 进货价——商品表costPrice
+					// 总进货价 = 进货价 * 商品的数量  
+					$orderGoods = Db::name('order_goods')->where('orderId',$order['orderId'])->find(); //该订单 商品的数量 和 商品 goodsId
+					$goods = Db::name('goods')->where('goodsId',$orderGoods['goodsId'])->field('costPrice')->find(); //进货价
+					$Profit = $order['realTotalMoney'] - $goods['costPrice'] * $orderGoods['goodsNum'];  // 交易利润
+
+					$dealer = Db::name('users')->where('userId',$info['salesendID'])->field('isProvince,userPhone')->find();//经销商信息
+				    
+				    // 计算订单佣金    佣金 = 交易利润 * 0.5    
+				    $CommissionFee = $Profit * 0.5;
+				    $salesend = Db::name('salesend');
+				    $TotalCommission = $salesend->where(['salesendID'=>$info['salesendID'],'userID'=>$info['userId']])->sum('CommissionFee');//该经销商之前的总佣金
+				    $TotalCommission = $TotalCommission + $CommissionFee; //总佣金
+				    
+				    //获取 经销终端 所属省份
+				    $_GET['p'] = $dealer['userPhone'];
+			        $Commision = new Commision();
+			        $ProvinceJson = $Commision->phone();
+			        $Province = json_decode($ProvinceJson)->province;
+
+			        //添加数据 到  经销终端表
+			        $data['orderId'] = $order['orderId'];
+				    $data['salesendID'] = $info['salesendID'];
+				    $data['userID'] = $info['userId'];
+				    $data['isProvince'] = $dealer['isProvince'];
+				    $data['CommissionFee'] = $CommissionFee;
+				    $data['money'] = $order['realTotalMoney'];//实际销货价
+				    $data['Province'] = $Province;
+				    $data['TotalCommission'] =  $TotalCommission;
+				    $data['createTime'] =  date('Y-m-d H:i:s');
+				    $res = $salesend->insert($data);
+
+				    //修改 订单状态 和 添加分佣时间
+				    $commisionTime=date('Y-m-d H:i:s',time()+(86400*30));//  分佣时间
+					$data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s'),'commisionTime'=>$commisionTime];
+			    }else{
+			    	$data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s')];
+			    }
+			    //添加代码end
+
+		    	// $data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s')]; //原代码
+			    $result = $this->where('orderId',$order['orderId'])->update($data);
+				if(false != $result){
+					//确认收货后执行钩子
+					hook('afterUserReceive',['orderId'=>$orderId]);
+					
+					if(WSTConf('CONF.statementType')==1){
+                        //修改商家未计算订单数
+						$prefix = config('database.prefix');
+						$upSql = 'update '.$prefix.'shops set noSettledOrderNum=noSettledOrderNum+1,noSettledOrderFee=noSettledOrderFee-'.$order['commissionFee'].' where shopId='.$order['shopId'];
+						Db::execute($upSql);
+					}else{
+						//即时结算
+						model('common/Settlements')->speedySettlement($orderId);
+					}
+					
+					//新增订单日志
+					$logOrder = [];
+					$logOrder['orderId'] = $orderId;
+					$logOrder['orderStatus'] = 2;
+					$logOrder['logContent'] = "用户已收货";
+					$logOrder['logUserId'] = $userId;
+					$logOrder['logType'] = 0;
+					$logOrder['logTime'] = date('Y-m-d H:i:s');
+					Db::name('log_orders')->insert($logOrder);
+					//发送一条商家信息
+					$tpl = WSTMsgTemplates('ORDER_RECEIVE');
+	                if($tpl['tplContent']!=''){
+	                    $find = ['${ORDER_NO}'];
+	                    $replace = [$order['orderNo']];
+	                    WSTSendMsg($order['userId'],str_replace($find,$replace,$tpl['tplContent']),['from'=>1,'dataId'=>$orderId]);
+	                }
+					
+					//给用户增加积分  
+					if(WSTConf("CONF.isOrderScore")==1 && $order['orderScore']>0){
+						$score = [];
+						$score['userId'] = $userId;
+						$score['score'] = $order['orderScore'];
+						$score['dataSrc'] = 1;
+						$score['dataId'] = $orderId;
+						$score['dataRemarks'] = "交易订单【".$order['orderNo']."】获得积分".$order['orderScore']."个";
+						$score['scoreType'] = 1;
+						model('UserScores')->add($score);
+					}
+					//微信消息
+		            if((int)WSTConf('CONF.wxenabled')==1){
+		            	$params = [];
+		                $params['ORDER_NO'] = $order['orderNo'];  
+		                $params['ORDER_TIME'] = date('Y-m-d H:i:s');
+	                    WSTWxMessage(['CODE'=>'WX_ORDER_RECEIVE','userId'=>$order['userId'],'URL'=>Url('wechat/orders/sellerorder','',true,true),'params'=>$params]);
+		            } 
+					Db::commit();
+					return WSTReturn('操作成功',1);
+				}
+		    }catch (\Exception $e) {
+		    	echo $e->getMessage();
+				echo $e->getCode();
+				echo $e->getFile();
+				echo $e->getLine();	
+	            Db::rollback();
+	            return WSTReturn('操作失败',-1);
+	        }
+		}
+		return WSTReturn('操作失败，请检查订单状态是否已改变');
+	}
+
+
+	/**
+	 * 签收    添加代码
+	 */
+	public function receive1($orderId = 0,$userId = 0){
+		$order = $this->alias('o')->join('__SHOPS__ s','o.shopId=s.shopId','left')
+		              ->where(['o.userId'=>$userId,'o.orderId'=>$orderId,'o.orderStatus'=>1])
+		              ->field('o.orderId,o.orderNo,o.payType,s.userId,s.shopId,o.orderScore,o.realTotalMoney,commissionFee')->find();
+
+		if(!empty($order)){
+			Db::startTrans();
+		    try{
+		    	
+
+		    	//添加代码start
+				$info = Db::name('users')->where('userId',session('WST_USER.userId'))->field('userId,userScore,salesendID')->find(); //买家信息
+				//订单成功  增加 用户 信用分
+				$useScore  = $info['userScore']+$order['realTotalMoney']*0.1;//信用分 
+			    Db::name('users')->where('userId',session('WST_USER.userId'))->update(['userScore'=>$useScore]);
+			    session('WST_USER.userScore',$useScore);
+
+			    //该用户有经销终端则   计算佣金  佣金 = 交易利润 * 0.5
+			    if ($info['salesendID'] > 0) {
+				    // 交易利润=实际销货价-总进货价
+					// 实际销货价——订单表realTotalMoney
+					// 进货价——商品表costPrice
+					// 总进货价 = 进货价 * 商品的数量  
+					$orderGoods = Db::name('order_goods')->where('orderId',$order['orderId'])->find(); //该订单 商品的数量 和 商品 goodsId
+					$goods = Db::name('goods')->where('goodsId',$orderGoods['goodsId'])->field('costPrice')->find(); //进货价
+					$Profit = $order['realTotalMoney'] - $goods['costPrice'] * $orderGoods['goodsNum'];  // 交易利润
+
+					$dealer = Db::name('users')->where('userId',$info['salesendID'])->field('isProvince,userPhone')->find();//经销商信息
+				    
+				    // 计算订单佣金    佣金 = 交易利润 * 0.5    
+				    $CommissionFee = $Profit * 0.5;
+				    $salesend = Db::name('salesend');
+				    $TotalCommission = $salesend->where(['salesendID'=>$info['salesendID'],'userID'=>$info['userId']])->sum('CommissionFee');//该经销商之前的总佣金
+				    $TotalCommission = $TotalCommission + $CommissionFee; //总佣金
+				    
+				    //获取 经销终端 所属省份
+				    $_GET['p'] = $dealer['userPhone'];
+			        $Commision = new Commision();
+			        $ProvinceJson = $Commision->phone();
+			        $Province = json_decode($ProvinceJson)->province;
+
+			        //添加数据 到  经销终端表
+			        $data['orderId'] = $order['orderId'];
+				    $data['salesendID'] = $info['salesendID'];
+				    $data['userID'] = $info['userId'];
+				    $data['isProvince'] = $dealer['isProvince'];
+				    $data['CommissionFee'] = $CommissionFee;
+				    $data['money'] = $order['realTotalMoney'];//实际销货价
+				    $data['Province'] = $Province;
+				    $data['TotalCommission'] =  $TotalCommission;
+				    $data['createTime'] =  date('Y-m-d H:i:s');
+				    $res = $salesend->insert($data);
+
+				    //修改 订单状态 和 添加分佣时间
+				    $commisionTime=date('Y-m-d H:i:s',time()+(86400*30));//  分佣时间
+					$data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s'),'commisionTime'=>$commisionTime];
+			    }else{
+			    	$data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s')];
+			    }
+			    //添加代码end
+
+			    // $data = ['orderStatus'=>2,'receiveTime'=>date('Y-m-d H:i:s')]; //原代码
 			    $result = $this->where('orderId',$order['orderId'])->update($data);
 				if(false != $result){
 					//确认收货后执行钩子
@@ -772,15 +1016,14 @@ class Orders extends Base{
 	                    WSTWxMessage(['CODE'=>'WX_ORDER_RECEIVE','userId'=>$order['userId'],'URL'=>Url('wechat/orders/sellerorder','',true,true),'params'=>$params]);
 		            } 
 					Db::commit();
-					return WSTReturn('操作成功',1);
 				}
 		    }catch (\Exception $e) {
 	            Db::rollback();
-	            return WSTReturn('操作失败',-1);
 	        }
 		}
-		return WSTReturn('操作失败，请检查订单状态是否已改变');
 	}
+
+
 	/**
 	 * 用户取消订单
 	 */
@@ -1504,8 +1747,8 @@ class Orders extends Base{
 		}
 	    //获取用户钱包
 	    $user = model('users')->get($userId);
-	    if($user->payPwd=='')return WSTReturn('您未设置支付密码，请先设置密码',-1);
-	    if($user->payPwd!=md5($payPwd.$user->loginSecret))return WSTReturn('您的支付密码不正确',-1);
+	    // if($user->payPwd=='')return WSTReturn('您未设置支付密码，请先设置密码',-1);
+	    // if($user->payPwd!=md5($payPwd.$user->loginSecret))return WSTReturn('您的支付密码不正确',-1);
 		if($needPay > $user->userMoney)return WSTReturn('您的钱包余额不足',-1);
 		
 		Db::startTrans();
@@ -1536,7 +1779,9 @@ class Orders extends Base{
 					$lm['targetType'] = 0;
 					$lm['targetId'] = $userId;
 					$lm['dataId'] = $order->orderId;
-					$lm['dataSrc'] = 1;
+					// $lm['dataSrc'] = 1;//原代码
+					$lm['dataSrc'] = '消费';//添加代码
+					$lm['tradeNo'] = $orderNo;//添加代码
 					$lm['remark'] = '交易订单【'.$order->orderNo.'】支出¥'.$tmpNeedPay;
 					$lm['moneyType'] = 0;
 					$lm['money'] = $tmpNeedPay;

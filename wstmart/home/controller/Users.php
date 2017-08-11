@@ -3,6 +3,7 @@ namespace wstmart\home\controller;
 use wstmart\common\model\Users as MUsers;
 use wstmart\common\model\LogSms;
 use think\Db;
+use wstmart\common\model\Orders as M;
 /**
  * ============================================================================
  * WSTMart多用户商城
@@ -165,10 +166,63 @@ class Users extends Base{
 	 * 用户中心
 	 */
 	public function index(){
-		session('WST_MENID0',0);
-		session('WST_MENUID30',0);
-		return $this->fetch('users/index');
-	}
+        session('WST_MENID0',0);
+        session('WST_MENUID30',0);
+        //添加代码start
+        //待付款
+        $d=[];
+        //待收货
+        $e=[];
+        //已取消
+        $f=[];
+        //待评价
+        $g=[];
+        //退款
+        $h=[];
+        $total=Db::name('orders')->where('userId',session('WST_USER.userId'))->select();
+        foreach ($total as $key => $value) {
+            if ($value['orderStatus']==-2) {
+                $d[]=$value;
+            }else if($value['orderStatus']==1){
+                $e[]=$value;
+            }else if($value['orderStatus']==-1){
+                $f[]=$value;
+            }else if($value['orderStatus']==2 && $value['isAppraise']==0){
+                $g[]=$value;
+            }else if($value['orderStatus']==-3 || $value['orderStatus']==-4 || $value['orderStatus']==-5){
+                $h[]=$value;
+            }
+        }
+        $m = new M();
+        $orders=$m->userOrdersByPage(-2);
+        if (input('get.a')==3) {
+            $orders = $m->userOrdersByPage(-2);  
+        }else if(input('get.a')==5){
+            $orders = $m->userOrdersByPage([0,1]);
+        }else if(input('get.a')==7){
+            $orders = $m->userOrdersByPage(-1);
+        }else if(input('get.a')==6){
+            $orders = $m->userOrdersByPage(2,0);
+        }else if(input('get.a')==8){
+            $orders = $m->userOrdersByPage([-3,-4,-5]);
+        }
+        $orderId=input('post.id');
+        Db::name('orders')->where('orderId',$orderId)->update(['orderStatus'=>2]);
+        //unset($_GET['id']);
+        //待付款
+        $this->assign('d',$d);
+        //待收货
+        $this->assign('e',$e);
+        //已取消
+        $this->assign('f',$f);
+        //待评价
+        $this->assign('g',$g);
+        //退款
+        $this->assign('h',$h);
+        $this->assign('orders',$orders);
+        //添加代码end
+        return $this->fetch('users/index');
+    }
 	
 
 	/**
@@ -894,6 +948,34 @@ class Users extends Base{
         $rs['isDraw'] = ((float)WSTConf('CONF.drawCashUserLimit')<=$rs['userMoney'])?1:0;
         unset($rs['payPwd']);
         return WSTReturn('',1,$rs);
+    }
+
+    /**
+     * 检查 手机号是否为用户绑定的手机 添加代码
+     */
+    public function check(){
+        $mobile = input('post.mobile');
+        $userId = (int)session('WST_USER.userId');
+        $res = Db::name('users')->where(['userId'=>$userId,'userPhone'=>$mobile])->find();
+        if ($res) {
+            return WSTReturn('success',1);
+        }else{
+            return WSTReturn('error',-1);
+        }
+    }
+
+    /**
+     * 检查 登录账号是否为 测试人员 添加代码
+     */
+    public function ceshiUser(){
+        $userId = (int)session('WST_USER.userId'); 
+        $userIds = [2,56,17,180,279,336,22,28,63,98];//测试人员  userId
+       
+        if (in_array($userId, $userIds)) {
+            return WSTReturn('success',1);
+        }else{
+            return WSTReturn('error',-1);
+        }
     }
 }
 

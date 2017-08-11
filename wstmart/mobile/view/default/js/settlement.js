@@ -89,6 +89,7 @@ function submitOrder(){
     param.isInvoice = $('#invoicesh').val();
     param.invoiceClient = $('#invoiceClient').val();
     $('.wst-se-confirm .button').attr('disabled', 'disabled');
+    param.userPhone=$('#Phone').val();//添加代码
 	$.post(WST.U('mobile/orders/submit'),param,function(data,textStatus){
 		var json = WST.toJson(data);
 	    WST.noload();

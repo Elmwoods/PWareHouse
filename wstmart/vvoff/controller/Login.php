@@ -43,9 +43,17 @@ class  Login  extends Controller {
             $info = $this->api->reg($param['mobile'], $param['code']);
 
             if (json_decode($info) -> result == 'success') {
-                $value = Db::table('jingo_users') -> field(['userName', 'userId']) -> where('userPhone', $param['mobile']) -> find();
-                session('WST_USER.userName',$value['userName']);
-                session('WST_USER.userId',$value['userId']);
+                $value = Db::table('jingo_users') -> where('userPhone', $param['mobile']) -> find();
+                if($value['userPhoto'] == ''){
+                    $value['userPhoto'] = "upload/sysconfigs/2016-10/5804800d5841e.png";
+                }
+                session('WST_USER',$value);
+                //将登录时间和ip存入数据表
+                $ip = request()->ip();
+                $update = [];
+                $update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
+//                dump($update);die;
+                \think\Db::name('users')->where(["userId"=>$value['userId']])->update($update);
                 return view('jump');
             }else {
                 $this -> error('注册失败,请稍后重试');
@@ -198,9 +206,17 @@ class  Login  extends Controller {
             $info = $this->logon($param['username'], $param['password']);
             if (!empty($info) && json_decode($info) -> result == 'success') {
                 $value = json_decode($info) -> value;
-                session('WST_USER.userName',$value -> member_name);
-                session('WST_USER.userId',$value -> member_id);
-                //$this -> redirect('vvoff/index/index');
+                $user = Db::table('jingo_users')->where('userId',$value -> member_id)->find();
+                if($user['userPhoto'] == ''){
+                    $user['userPhoto'] = "upload/sysconfigs/2016-10/5804800d5841e.png";
+                }
+                session('WST_USER',$user);
+                //将登录时间和ip存入数据表
+                $ip = request()->ip();
+                $update = [];
+                $update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
+//                dump($update);die;
+                \think\Db::name('users')->where(["userId"=>$user['userId']])->update($update);
                 return view('jump');
             }else {
                 $this -> error('登录失败,请稍后重试');
@@ -214,8 +230,17 @@ class  Login  extends Controller {
             $info = $this->logon($param['username'], $param['password']);
             if (!empty($info) && json_decode($info) -> result == 'success') {
                 $value = json_decode($info) -> value;
-                session('WST_USER.userName',$value -> member_name);
-                session('WST_USER.userId',$value -> member_id);
+                $user = Db::table('jingo_users')->where('userId',$value -> member_id)->find();
+                if($user['userPhoto'] == ''){
+                    $user['userPhoto'] = "upload/sysconfigs/2016-10/5804800d5841e.png";
+                }
+                session('WST_USER',$user);
+                //将登录时间和ip存入数据表
+                $ip = request()->ip();
+                $update = [];
+                $update = ["lastTime"=>date('Y-m-d H:i:s'),"lastIP"=>$ip];
+//                dump($update);die;
+                \think\Db::name('users')->where(["userId"=>$user['userId']])->update($update);
                 return view('engjump');
                 //$this -> redirect('vvoff/index/english');
             }else {
@@ -226,16 +251,14 @@ class  Login  extends Controller {
 
     public function quit() {
         if (session('WST_USER.userName')) {
-            session('WST_USER.userName', null);
-            session('WST_USER.userId', null);
+            session('WST_USER', null);
         }
         $this -> redirect('vvoff/index/index');
     }
 
     public function enquit() {
         if (session('WST_USER.userName')) {
-            session('WST_USER.userName', null);
-            session('WST_USER.userId', null);
+            session('WST_USER', null);
         }
         $this -> redirect('vvoff/index/english');
     }

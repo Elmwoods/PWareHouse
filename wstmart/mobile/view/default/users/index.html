@@ -26,12 +26,12 @@
 		   <div class="ui-col ui-col-2">
 		   		<a href="{:url('mobile/messages/index')}"><span class="wst-msg-icon">
 		   			{if ($data['message']['num']>0)}
-		    		<span class="ui-badge-corner wait-payment" id="msgNum">{$data['message']['num']}</span>
+		    		<span class="ui-badge-corner wait-payment" id="msgNum" style="color: #E60B49;background: #FFFFFF;">{$data['message']['num']}</span>
 		    		{/if}
 		   		</span>
 		   		</a>
 		   		<br/>
-		   		<span class="wst-users_infor" style="display:inline-block;float:right;padding:5px 10px 0px 0px" onclick="location.href='{:url('mobile/users/edit')}'">
+		   		<span class="wst-users_infor" style="display:inline-block;float:right;padding:20px 10px 0px 0px" onclick="location.href='{:url('mobile/users/edit')}'">
 		    		账户管理
 		    	</span>
 		   </div>
@@ -50,13 +50,13 @@
 		    	<br />
 		    	我的优惠券
 		    </div> -->
-		    <div class="ui-col ui-col">
+		    <!-- <div class="ui-col ui-col">
 		    <a href="{:url('mobile/userscores/index')}">
 		    	<span>{$user['userScore']}</span>
 		    	<br />
 		    	我的积分
 		    	</a>
-		    </div>
+		    </div> -->
 		</div>
 
 		{:hook('mobileDocumentUserIndex')}
@@ -75,10 +75,15 @@
     		<li class="ui-col ui-col-50 view-order" onclick="location.href='{:url('mobile/orders/index')}'">查看全部订单  ></li>
     	</ul>
 		<div class="ui-row-flex ui-whitespace wst-users_icon pd10">
-			
+			<div class="ui-col ui-col">
+			    <a href="{:url('mobile/orders/index',['type'=>''])}">
+			    	<p  style="display:none;"><i class="wst-users_icon5"></i></p><p><i class="wst-users_icon5"></i></p>
+			    	<span class="ui-flex ui-flex-align-end ui-flex-pack-center pdl7">全部</span>
+			    </a>
+		    </div>
 		    <div class="ui-col ui-col">
 		    <a href="{:url('mobile/orders/index',['type'=>'waitPay'])}">
-		    	<p class="ui-badge-wrap" style="width:33px;">
+		    	<p class="ui-badge-wrap">
 		    		<i class="wst-users_icon1"></i>
 		    		{if ($data['order']['waitPay']>0)}
 		    		<span class="ui-badge-corner wait-payment ui-nowrap-flex ui-whitespace" id="waitPay">{$data['order']['waitPay']}</span>
@@ -88,8 +93,8 @@
 		    </a>
 		    </div>
 		    <div class="ui-col ui-col">
-		    <a href="{:url('mobile/orders/index',['type'=>'waitReceive'])}">
-		    	<p class="ui-badge-wrap" style="width:33px;">
+		    <a href="{:url('mobile/orders/index',['type'=>'waitSend'])}">
+		    	<p class="ui-badge-wrap">
 		    		<i class="wst-users_icon2"></i>
 		    		{if ($data['order']['waitSend']>0)}
 		    		<span class="ui-badge-corner wait-payment" id="waitSend">{$data['order']['waitSend']}</span>
@@ -100,7 +105,7 @@
 		    </div>
 		    <div class="ui-col ui-col">
 		    <a href="{:url('mobile/orders/index',['type'=>'waitReceive'])}">
-		    	<p class="ui-badge-wrap" style="width:33px;">
+		    	<p class="ui-badge-wrap">
 		    		<i class="wst-users_icon3"></i>
 		    		{if ($data['order']['waitReceive']>0)}
 		    		<span class="ui-badge-corner wait-payment" id="waitReceive">{$data['order']['waitReceive']}</span>
@@ -111,7 +116,7 @@
 		    </div>
 		    <div class="ui-col ui-col">
 		    <a href="{:url('mobile/orders/index',['type'=>'waitAppraise'])}">
-		    	<p class="ui-badge-wrap" style="width:33px;">
+		    	<p class="ui-badge-wrap">
 		    		<i class="wst-users_icon4"></i>
 		    		{if ($data['order']['waitAppraise']>0)}
 		    		<span class="ui-badge-corner wait-payment" id="waitAppraise">{$data['order']['waitAppraise']}</span>
@@ -120,12 +125,7 @@
 		    	<span class="ui-flex ui-flex-align-end ui-flex-pack-center pdl7">待评价</span>
 		    </a>
 		    </div>
-		    <div class="ui-col ui-col">
-		    <a href="{:url('mobile/orders/index',['type'=>'abnormal'])}">
-		    	<p  style="display:none;"><i class="wst-users_icon5"></i></p><p><i class="wst-users_icon5"></i></p>
-		    	<span class="ui-flex ui-flex-align-end ui-flex-pack-center pdl7">取消拒收</span>
-		    </a>
-		    </div>
+		    
 		    
 		</div>
 		
@@ -170,12 +170,12 @@
 		    	</a>
 		    </li>
 
-		    <li class="ui-col ui-col-25 user-icon-box">
+		   <!--  <li class="ui-col ui-col-25 user-icon-box">
 		    	<a href="{:url('mobile/userscores/index')}">
 		    	<p><i class="user-icon6"></i></p>
 		    	<span class="ui-flex ui-flex-align-end ui-flex-pack-center">我的积分</span>
 		    	</a>
-		    </li>
+		    </li> -->
 
 		    <!-- <li class="ui-col ui-col-25 user-icon-box border-b">
 		    	<a href="#">
@@ -218,11 +218,13 @@
 		    </li>
 		    {:hook('mobileDocumentUserIndexTools')}
 		</ul>
+		{if condition="$clientType != 1"}
 		<div class="ui-btn-wrap logout">
 		    <button class="ui-btn-lg ui-btn-danger logout-btn" onclick="WST.dialog('确定要退出吗?','logout()')">
 		        退出登录
 		    </button>
 		</div>
+		{/if}
 
      </section>
 {/block}

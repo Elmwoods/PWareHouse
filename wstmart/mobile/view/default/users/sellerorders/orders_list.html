@@ -18,7 +18,7 @@
     {{# for(var i = 0; i < d.length; i++){ }}
             <div class="order-item">
                 <div class="ui-row-flex ui-whitespace item-head" onclick="getOrderDetail({{d[i].orderId}})">
-                    <div class="ui-col ui-col-2 ui-nowrap-flex">订单号：{{d[i].orderNo}}</div>
+                    <div class="ui-col ui-col-1 ui-nowrap-flex">订单号：{{d[i].orderNo}}</div>
                     <div class="ui-col order-tr o-status">
                         {{ d[i].status }}
                         {{# if($.inArray(d[i].orderStatus,[-3,-4,-5])!=-1){ }}
@@ -46,7 +46,7 @@
                         {{# } }}
 
                     </div>
-                    <div class="ui-col order-tr" style="word-break:break-all;">￥{{d[i].list[g].goodsPrice}} x{{d[i].list[g].goodsNum}}</div>
+                    <div class="ui-col order-tr">￥{{d[i].list[g].goodsPrice}} <span>x {{d[i].list[g].goodsNum}}</span></div>
                 </div>
                 {{#  } }}
 
@@ -151,7 +151,7 @@
                     </p>
                     
                 </div>
-                <div class="ui-col order-tr" style="word-break:break-all;">￥{{d.goods[i].goodsPrice}} x {{d.goods[i].goodsNum}}</div>
+                <div class="ui-col order-tr">￥{{d.goods[i].goodsPrice}} <span>x {{d.goods[i].goodsNum}}</span></div>
             </div>
             {{# } }}
 

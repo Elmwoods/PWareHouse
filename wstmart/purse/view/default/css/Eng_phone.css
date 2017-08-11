@@ -1,0 +1,390 @@
+html, body {
+	position: relative;
+	/*height: 100%;*/
+}
+body {
+	background: #eee;
+	font-family: arial;
+	font-size: 12px;
+	color:#000;
+	margin: 0;
+	padding: 0;
+}
+.swiper-container {
+	width: 100%;
+	/*height: 100%;*/
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.p_top {
+	width: 640px;
+	height: 50px;
+	background: rgba(34,34,34,0.7);
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+}
+.p_top .p_logo {
+	float: left;
+	padding-left: 36px;
+	line-height:50px;
+}
+
+.p_top .p_list {
+	float: right;
+	padding-right: 8px;
+}
+.p_top .p_list li {
+	float: left;
+	padding: 0 9px;
+	line-height: 50px;
+}
+.p_top .p_list a {
+	float: left;
+	font-size: 12px;
+	color: #fff;
+}
+.p_top .p_list a:hover {
+	border-bottom: 3px solid #fff;
+}
+/*header*/
+.header {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/17.png) no-repeat center top;
+}
+/*.header img {
+	padding-top: 300px;
+}*/
+.header .menu_img img {
+	padding-top: 10px;
+}
+
+.header .menu_img dd {
+	color: #fff;
+	padding-top: 25px;
+}
+.header .menu_top_p{
+	color: #fff;
+	margin: 200px 0 94px 0;
+}
+.header form {
+	padding-top: 119px;
+}
+.header input {
+	width: 401px;
+	height: 50px;
+	opacity: 0.5;
+	color: #FFF;
+	margin-top: 19px;
+	border-radius: 10px;
+}
+.header .E_img {
+	padding-top: 20px;
+}
+.header #header_text {
+	padding-left:15px;
+}
+.header #header_pas {
+	padding-left:15px;
+}
+.header .ti {
+	width: 197px;
+	height: 52px;
+	margin-top: 40px;
+	border-radius: 25px;
+	background: #2e71f2;
+	opacity: 1;
+	font-size: 16px;
+}
+.header .img_b {
+	padding-top: 40px;
+}
+.header .menu_img {
+	width: 640px;
+	height: 200px;
+	margin-top: 140px;
+}
+.header .menu_img  dl {
+	width: 150px;
+	height: 200px;
+	float: left;
+	margin-left: 110px;
+}
+/*we*/
+.we {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/12.png);
+}
+.we img {
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+.we span {
+	display: block;
+	width: 480px;
+	margin-left: 95px;
+	font-size: 14px;
+	color: #fff;
+	text-align: left;
+	margin-bottom: 10px;
+}
+/*vv_contact*/
+.vv_contact {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/213.png) no-repeat;
+	text-align: center;
+}
+.vv_contact .IM {
+	margin-top: 100px;
+	margin-bottom: 10px;
+}
+.vv_contact #pics {
+	width: 640px;
+	height: 570px;
+	overflow: hidden;
+	margin: 0 0 35px 100px;
+}
+.vv_contact span {
+	display: block;
+	font-size: 16px;
+	margin: 0 60px;
+	color: #1A1A1A;
+	text-align: left;
+}
+
+
+/*bag*/
+.bag {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/13.png) no-repeat;
+	text-align: center;
+}
+.bag .EM {
+	margin-top: 100px;
+	margin-bottom: 10px;
+}
+
+.bag  #pics1 {
+	width: 640px;
+	height: 570px;
+	overflow: hidden;
+	margin: 0 0 35px 100px;
+}
+
+.bag span {
+	display: block;
+	font-size: 16px;
+	margin: 0 60px;
+	color: #1A1A1A;
+	text-align: left;
+}
+
+
+
+/*shop*/
+.shopping {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/11.png) no-repeat;
+	text-align: center;
+}
+.shopping img{
+	margin-top: 100px;
+	margin-bottom: 150px;
+}
+.shopping span {
+	display: block;
+	color: #fff;
+	font-size: 16px;
+	margin: 0 60px;
+	text-align: left;
+}
+/*wei*/
+.wei {
+	width: 640px;
+	height: 1134px;
+	background: url(../img/phone/phoneweila.png) no-repeat top;
+	text-align: center;
+}
+.wei img {
+	margin: 100px 0 150px 0;
+}
+.wei span {
+	display: block;
+	color: #fff;
+	font-size: 16px;
+	margin: 0 60px;
+	text-align: left;
+	
+}
+/*teams*/
+.teams {
+	width: 640px;
+	/*height: 100%;*/
+	background: #0f1210;
+
+}
+.teams .T_img {
+	margin-top: 100px;
+}
+#teamlist {
+	margin-left: 40px;
+	margin-top: 30px;
+}
+#teamlist li {
+	margin: 40px 30px 40px 30px;
+}
+
+.mteam_img dd {
+	height: 200px;
+	text-align: left;
+}
+.mteam_img dt {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin-right: 42px;
+}
+
+.mteam_img p {
+	display: inline-block;
+	font-size: 23px;
+	color:#fff;
+	opacity: 0.7;
+}
+.mteam_img span {
+	font-size: 16px;
+	color:#fff;
+	opacity: 0.7;
+}
+.teams button {
+	font-size: 12px;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+	background: #2e71f2;
+	color: #fff;
+	border: 0;
+	margin-top: 50px;
+	margin-bottom: 86px;
+}
+
+/*newss*/
+.newss {
+	width: 640px;
+	height: 1134px;
+	background: #0f1210;
+	text-align: center;
+}
+.newss .new_img {
+	margin: 100px 84px 60px 86px;
+}
+.newss .se_list .se_ul {
+	margin-left: 85px;
+	margin-right: 86px;
+}
+.newss .se_list .se_ul img {
+	width: 100px;
+	height: 100px;
+}
+.newss .se_list .se_ul li {
+	border-bottom: 1px solid #1b1b1b;
+	height: 260px;
+	padding-top: 20px;
+}
+.newss .se_list .se_ul dt {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+.newss .se_list .se_ul dd {
+	float: left;
+	margin-left: 20px;
+	width: 340px;
+	text-align: left;
+	height: 100px;
+	line-height: 26px;
+}
+.newss .se_list .se_ul h2 {
+	font-size: 18px;
+	font-weight: 400;
+	color: #f8f8f8;
+	margin-bottom: 20px;
+	display: inline-block;
+
+}
+.newss .se_list .se_ul span {
+	font-size: 14px;
+	color: #DDDDDD;
+	display: block;
+}
+
+	
+/*over*/
+.over {
+	width: 640px;
+	height: 60px;
+	background: #000;
+	text-align: center;
+}
+.over span {
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+	color: #fff;
+}
+.header img.tou{
+display: block;
+margin: 100px auto 0;
+}
+
+
+img.phone_code{
+margin-top: 150px;
+}
+
+.left{
+float: left;
+}
+
+.phone_width{
+width: 640px;
+/*margin: 0 auto;*/
+text-align: center;
+height: 40px;
+margin-top: 50px;
+}
+li.li_img{
+width: 160px;
+margin-left: 40px;
+margin-top:0px ;
+display: block;
+float: left;
+
+}
+
+
+
+

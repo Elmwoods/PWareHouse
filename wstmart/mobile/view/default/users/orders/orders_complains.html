@@ -10,7 +10,7 @@
 	<div id="useri_infos">
       <header style="background:#ffffff;" class="ui-header ui-header-positive ui-border-b wst-header">
         <!--<a href="{:url('mobile/users/index')}"><i class="ui-icon-return"></i></a><h1 class="useri_info">订单投诉</h1>-->
-        <a href="#" onclick="history.back()"><i class="ui-icon-return"></i></a><h1 class="useri_info">订单投诉</h1>
+        <i class="ui-icon-return"onclick="history.go(-1)"></i><h1 class="useri_info">订单投诉</h1>
         <i onclick="javascript:closeUploadArea()" style="display:none;" id="upload_close">关闭</i>
         <a href="javascript:void(0);"  class="wst-btns" style="display:none;" id="upload_button">上传</a> 
         </header>
@@ -54,7 +54,7 @@
                 <div class="ui-col">
                     <div class="o-Img j-imgAdapt">
                       <a href="javascript:void(0);" onclick="javascript:WST.intoGoods({{d.goods[i]['goodsId']}});">
-                        <img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{{d.goods[i].goodsImg}}">
+                        <img src="__ROOT__/{{d.goods[i].goodsImg}}">
                       </a>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     </p>
                     
                 </div>
-                <div class="ui-col order-tr" style="word-break:break-all;">￥{{d.goods[i].goodsPrice}} x {{d.goods[i].goodsNum}}</div>
+                <div class="ui-col order-tr">￥{{d.goods[i].goodsPrice}} <span style="display: block;">x {{d.goods[i].goodsNum}}</span></div>
             </div>
             {{# } }}
 
@@ -110,7 +110,7 @@
 
       </ul>
 
-      <div id="filePicker" style='margin-left:0px;width:250px;overflow:hidden;height:25px;'>上传附件(最多5张)</div>
+      <div id="filePicker" style='margin-left:0px;width:250px;height:25px;'>上传附件(最多5张)</div>
     </div>
 
     <div class="ui-btn-wrap" style="padding:0px;padding-bottom:5px;">

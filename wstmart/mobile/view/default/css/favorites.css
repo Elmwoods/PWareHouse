@@ -41,8 +41,10 @@ body {
 	position: absolute;
     top: 8px;
     right:10px;
-    background: #e60b49;
-    border-bottom: 1px solid #e60b49;
+    /*background: #e00102;
+    border-bottom: 1px solid #e00102;*/
+   	background: #E60B49;
+    border-bottom: 1px solid #E60B49;
 }
 .f-btn{
 	min-width: 85px;

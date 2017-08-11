@@ -71,8 +71,44 @@
                         <!--</span>-->
                     <div style="color:#666;font-weight: 700;display: inline-block;float: left;margin-left: 130px;margin-top: 3px;">提现金额：<span name="ceshi"></span></div>
                 </div>
+                <script type="text/javascript">
+                    $("input[name='im_number']").blur(function(){
+                        var value=$(this).val();
+                        if(value == null || value == ''){
+                            return false;
+                        }
+                        if(!isNaN(value)){
+                            var userreg=/^[0-9]+([.]{1}[0-9]{1,2})?$/;
+                            if(userreg.test(value)){
+                                if(parseInt(value).toString().length > 10){
+                                    $(this).val("");
+                                    $('#yu_q').show();
+                                    $('#yu_e').show().html('整数不得大于10位数');
+                                    return false;
+                                }
+                            }else{
+                                var numindex = parseInt(value.indexOf("."),10);
+                                if(numindex == 0){
+                                    $(this).val("");
+                                    $('#yu_q').show();
+                                    $('#yu_e').show().html('输入的数字不规范');
+                                    return false;
+                                }
+                                var head = value.substring(0,numindex);
+                                var bottom = value.substring(numindex,numindex+3);
+                                var fianlNum = head+bottom;
+                                $(this).val(fianlNum);
 
-                <div class="form-group explain">
+                            }
+                        }else{
+                            $(this).val("");
+                            $('#yu_q').show();
+                            $('#yu_e').show().html('请输入数字');
+                            return false;
+                        }
+                    });
+                </script>
+                <!-- <div class="form-group explain">
                     <dl class="ye">
                         <dt>
                             <input type="hidden" name="payment_code" value="alipay">
@@ -81,20 +117,24 @@
                         </dt>
                     </dl>
 
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">账　　号：</label>
-                    <div class="col-md-2">
-                        <input name="name" type="text" class="form-control" data-rule="账号: required;" data-msg-required="请输入账号" data-tip="请输入账号">
-                    </div>
+                    <label class="control-label" id="aa" value="" >{:session('WST_USER.loginName')}</label>
+                    <!-- <div class="col-md-2">aaa -->
+                        <!-- <input name="name" type="text" class="form-control" data-rule="账号: required;" data-msg-required="请输入账号" data-tip="请输入账号"> -->
+                    <!-- </div> -->
+                </div>
+                 <div class="form-group">
+                    <label for="inputPassword3" style="margin-left:112px;"><span style="color:#e60b49;font-weight: 700;">*</span>备注：只能体现到钱袋子</label>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" id="sub">下一步</button>
+                        <button type="button" id="sub" >下一步</button>
                     </div>
                 </div>
             </form>
-            <div id="mymodal" class="modal fade" role="dialog" aria-labelledby="myModalLabel">
+           <!--  <div id="mymodal" class="modal fade" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" style="margin-top: 250px">
                     <div class="modal-content">
                         <form action="" method="post" class="form-horizontal">
@@ -112,7 +152,7 @@
                                         </label>
 
                                     </div>
-                                   <!-- <div class="bank">
+                                    <div class="bank">
                                         <label for="banks">
                                             <input type="radio" name="bank" id="banks" value="weixin">
 
@@ -126,7 +166,7 @@
 
                                             <img class="img3" src="__STYLE__/img/chinabank_logo.gif" alt="" name="bank">
                                         </label>
-                                    </div>-->
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
@@ -136,7 +176,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -173,5 +213,21 @@
         })
     });
 </script>
+<script type="text/javascript">
+    $('#sub').on('click',function(){
+        var value=$(":input[name='im_number']").val();
+//        console.log(value);
+        $.post(WST.U('purse/Predeposit/withdrawals_imazamox'), {im_number:value}, function(data){
+            var json = WST.toJson(data);
+            if(json.status==1 || json.status==-1){
+                WST.msg(json.msg,{icon:1});
+                setTimeout("location.href=WST.U('purse/Consume/index')",300);
+            }else{
+                WST.msg(json.msg,{icon:2});
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

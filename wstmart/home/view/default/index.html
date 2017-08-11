@@ -30,7 +30,7 @@
 	</div>
 </div>
 {/* 顶部广告位 */}
-<div class=" wst-container">
+<!-- <div class=" wst-container">
     <div class="ads-lunbobottom">
 	{wst:ads code="ads-lunbobottom" num='5' cache='86400'}
         <a {if ($vo['isOpen'])}target='_blank'{/if} {if ($vo['adURL']!='')}onclick="WST.recordClick({$vo['adId']})"{/if} href="{$vo.adURL}" onfocus="this.blur()">
@@ -38,7 +38,7 @@
         </a>
     {/wst:ads}
 	</div>
-</div>	
+</div> -->	
 <div class='wst-main'>
    {/* 横栏商品-推荐/最新/精品/热销 */}
 	<div class='wst-container'>
@@ -302,60 +302,84 @@
 
 	
 <div id="floor-box-all">
-		
+<?php
 
-{volist name="$floors" id="vo" key="l" length="10"}		
-<div class="floor-box">
+	foreach ($floors as $key => $value) {
+		foreach ($value['data'] as $k => $vv) {
+			$good = $vv;
+			break;
+		}
+?>
+        <div class="floor-box">
 		<!--这是头部的图片文字-->
 	
-	<div class="floor-header c1" id="c1">
+			<div class="floor-header c1" id="c1">
 		<div class="floor-header-f1">
 			<p class="floor-left-title">
 				<a name="1F"></a></p>
 			<!-- <img src="wstmart/home/view/default/img/louTi1.png"/> -->
-			<h1 style="height: 32px;line-height: 32px;border-left: 2px solid red;padding-left: 10px;margin-top: 20px;">{:str_replace('、','、',$vo['catName'])}</h1>
+			<h1 style="height: 32px;line-height: 32px;border-left: 2px solid red;padding-left: 10px;margin-top: 20px;">{:str_replace('、','、',$value['catName'])}</h1>
 		</div>
    	</div>
 
-
-	{volist name="vo['children']" id='vo1' key="l2"}
-   		 {wst:goods type='hot' cat="vo1['catId']" cache="86400" num='2' id='cs'}
-            <div class="left-big-pic">
-            	<a href="{:Url('home/goods/detail','id='.$cs['goodsId'])}"><img src="__ROOT__/{$cs['goodsImg']}" style="width: 279px;height:397px; title="{$cs['goodsName']}"></a>
+		   	<div class="left-big-pic">
+		   		{if (!empty($value['left']))}
+	            <a href="{:Url('home/goods/detail','id='.$value['left']['goodsId'])}"><img class="left-big-pic-img" src="__ROOT__/{$value['left']['goodsImg']}" title="{$value['left']['goodsName']}"></a>
+            	<dl class="left-big-name">
+            		<dt>{:WSTMSubstr($value['left']['goodsName'],0,33)}</dt>
+            		<dd class="jx-price"><span class="jx">经销价</span> ￥<span class="price">{$value['left']['shopPrice']}</span></dd>&nbsp;&nbsp;
+            		<dd class="yj-price">原价 ￥<span>{$value['left']['marketPrice']}</span></dd>
+            	</dl>
+		   		{/if}
 			</div>
-		{/wst:goods}
-			
+
 			<div class="right-small-pics">
-			
-				{wst:goods type='hot' cat="vo1['catId']" cache="86400" num='6' id='cs'}
-				<div class="right-big-one ">
-					<div class="top"></div>
+	<?php	
+				foreach ($value['data'] as $k => $cs) {
+	?>				
+						<a  target='_blank' href="{:Url('home/goods/detail','id='.$cs['goodsId'])}">
+						<div class="right-big-one ">
+								<div class="top"></div>
 					<div class="left"></div>
 					<div class="bottom"></div>
 					<div class="right"></div>
-					<a  target='_blank' href="{:Url('home/goods/detail','id='.$cs['goodsId'])}">
-					<img src="__ROOT__/{$cs['goodsImg']}" title="{$cs['goodsName']}" align="" data-original="__ROOT__/{$cs['goodsImg']}" /></a>
 
-				</div>
-				 {/wst:goods}
+					
+					<img src="__ROOT__/{$cs['goodsImg']}" title="{$cs['goodsName']}" align="" data-original="__ROOT__/{$cs['goodsImg']}" />
+					<dl class="right-small-name">
+						<dt>{:WSTMSubstr($cs['goodsName'],0,33)}</dt>
+						<dd>
+							<div class="jx">经销价</div>
+							<div class="jx-price"><span class="colour">￥</span><span class="price">{$cs['shopPrice']}</span></div>
+							<div class="yj-price"><span>原价</span> ￥<span>{$cs['marketPrice']}</span></div>
+							
+						</dd>
+					</dl>
 
+									    
+
+						</div>
+						</a>
+	<?php
+				}
+	?>
 			</div>
-	{/volist}	
-			
-</div>
-{/volist}
-		</div>
-	</div>
-</div>
+		</div>	
+<?php
+	}	    
+?>
+</div>		
+
+
 <script type="text/javascript">
 	$(".right-big-one").mouseenter(function(){
 	// $(this).children("p").animate({
 	// 	"height":"40px",
 	// },500);
-	$(this).children("div:even").animate({
+	$(this).children("div:even").stop().animate({
 		"width":"100%",
 	},500).css("background","#333");
-	$(this).children("div:odd").animate({
+	$(this).children("div:odd").stop().animate({
 		"height":"100%",
 	},500).css("background","#333");
 });
@@ -364,12 +388,59 @@ $(".right-big-one").mouseleave(function(){
 	// $(this).children("p").animate({
 	// 	"height":"0px"
 	// });
-	$(this).children("div:even").animate({
+	$(this).children("div:even").stop().animate({
 		"width":"0%",
 	},500).css("background","#333");
-	$(this).children("div:odd").animate({
+	$(this).children("div:odd").stop().animate({
 		"height":"0%",
 	},500).css("background","#333");
+
+});
+
+
+</script>
+
+
+
+<script type="text/javascript">
+	 $(function(){
+
+	 	var offsetTop = $('.wst-ads').offset().top; //元素距离顶部的高度
+	 
+	    $(window).scroll(function(){
+	     var scrollTop = $(document).scrollTop();
+	     if(scrollTop>offsetTop){
+	        $('#fixed').show();
+	        $('#fixed').css({'position':'fixed'});
+	        $('#classify').css({'position':'fixed','top':'10px','width':'190px'});
+
+
+	        // var toleft =parseInt($(".fixed_top").css('left'))+200;
+	        // console.log(toleft);
+	        $("#classification").css({"background":"#E60B49",'width':'190px','height':'40px'});
+	        $('#index_menus_sub').css({'margin-top':'16px'});
+
+	        // 搜索框
+
+	        // $('.wst-search-box').css({'position':'fixed','top':0,'margin-left':'','z-index':'10',"height":"60px"});
+	        // $('.wst-search').css({'margin-top':'9px'});
+	       // $('.fixed_top').html($('#lll').html());
+	       // $('.wst-search').css({'position':'relative','width':'531px','margin-top':'9px','margin-left':'400px','z-index':'4'});
+	     }else{
+	        $('#fixed').hide();
+	        $("#fixed").css("position", "static");
+	        $('#classify').css({'position':'static','width':''}); 
+	         $("#classification").css({"background-color":"#8a072c",'height':'36px'});
+	         $('#index_menus_sub').css({'margin-top':''});
+
+	         // 搜索框
+	         // $('.wst-search-box').css({'position':'static'});
+	         // $('.wst-search').css({'margin-top':'','left':''});
+	          // $('.wst-search').css({'position':'','width':'','margin-top':'','margin-left':'','z-index':''});
+	     }
+	   });
+
+ 
 
 });
 </script>
@@ -427,10 +498,10 @@ $(".right-big-one").mouseleave(function(){
 	</li>
 	<li class="lnav Louti" id="F10">
 		<img src="__STYLE__/img/lfte2.png"/><span>汽车用品</span>
-		<div class="screen-left-nav-line"></div>
+		<!-- <div class="screen-left-nav-line"></div> -->
 	</li>
 	<!-- <li class="lnav Louti" id="F11">
-		<img src="__STYLE__/img/left11.png"/><span>玩具乐器</span>
+		<img src="wstmart/home/view/default/img/left11.png"/><span>玩具乐器</span>
 		<div class="screen-left-nav-line"></div>
 	</li> -->
 	

@@ -15,7 +15,7 @@ function userAddrEditInit(){
                   ok:"",
                 },
                 userPhone: {
-                  rule:"required;length[~50, true]",
+                  rule:"required;digits:true;length[11, true];",
                   msg:{required:"联系电话"},
                   tip:"请输入您的联系电话",
                   ok:"",

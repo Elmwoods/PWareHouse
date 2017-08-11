@@ -294,14 +294,7 @@ function loadImg(){
 		x.siblings().not(y).children("span").hide().children("img");
 		x.siblings().not(y).children("img").show();
  	}
- 	/*$("#floornav li").mouseenter(function(){
- 		$(this).css("background","#E60B49").children(".screen-left-nav-line").hide(0);
-		$(this).children("img").hide();
-		$(this).children("span").show();
-		$(this).siblings().not(".myStyle").css("background","").children(".screen-left-nav-line").show(0);
-		$(this).siblings().not(".myStyle").children("span").hide().children("img");
-		$(this).siblings().not(".myStyle").children("img").show();
- 	});*/
+ 
  $("#floornav li").mouseenter(function(){
  	floorShow($(this),".myStyle");
  })
@@ -312,12 +305,45 @@ function loadImg(){
  	});
  
  
- 
+ 	
  	function leftNav(){  //左侧楼梯距左侧的距离
-		var containerW = $('.wst-container').offset().left;
-		left = containerW - 90;
-		$('#screen-left-nav').css('left', left);
-		$('#screen-left-nav').css('top', 120);
+	
+ 		// if(window.screen.width <= 1024){
+ 		// 	console.log('小于1024');
+ 		// 	// $('#screen-left-nav').css({'positoin':'fixed','left':'10px'});
+ 		// }else if(window.screen.width >= 1024){
+ 		// 	console.log('大于1024');
+ 		// 	var containerW = $('.wst-container').offset().left;
+			// left = containerW - 70;
+			// $('#screen-left-nav').css('left', left);
+			// $('#screen-left-nav').css('top', 120);
+ 		// }else if(window.screen.width >= 1366){
+ 		// 	console.log('大于等于1366');
+ 		// 	var containerW = $('.wst-container').offset().left;
+			// left = containerW - 90;
+			// $('#screen-left-nav').css('left', left);
+			// $('#screen-left-nav').css('top', 120);
+ 		// }
+
+ 		if( window.innerWidth <= 1365){
+ 			
+			$('#screen-left-nav').css('left', 10);
+			$('#screen-left-nav').css('top', 120);
+
+ 		}else if(window.innerWidth >= 1366 && window.innerWidth < 1440){
+ 			
+ 			var containerW = $('.wst-container').offset().left;
+			left = containerW - 50;
+			$('#screen-left-nav').css('left', left);
+			$('#screen-left-nav').css('top', 120);
+ 		}else if(window.innerWidth >= 1440 ){
+ 			
+ 			var containerW = $('.wst-container').offset().left;
+			left = containerW - 70;
+			$('#screen-left-nav').css('left', left);
+			$('#screen-left-nav').css('top', 120);
+ 		}
+ 		
 }
 	$(window).resize(function(){
 		leftNav();

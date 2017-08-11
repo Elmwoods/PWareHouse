@@ -92,8 +92,8 @@ function checkGoodsStock(){
 		goodsPrice = goodsInfo.goodsPrice;
 	}
 	$('#goods-stock').html(stock);
-	$('#j-market-price').html('￥'+marketPrice);
-	$('#j-shop-price').html('￥'+goodsPrice);
+	$('#j-market-price').html('<span>￥</span>'+marketPrice);
+	$('#j-shop-price').html('<span>￥</span>'+goodsPrice);
 	if(stock<=0){
 		$('#addBtn').addClass('disabled');
 		$('#buyBtn').addClass('disabled');
@@ -201,7 +201,20 @@ function addCart(type,iptId){
 	//添加代码
     var color  = $('.rect_select:eq(0)').html();
     var size  = $('.rect_select:eq(1)').html();
+    var length = $('#table_genre tr').length;
 
+    if(length == 2){  
+     	if(color==undefined || size==undefined){
+     		alert('请选择你要购买的商品信息');
+     		exit();
+     	}
+	}else if(length == 1){
+		if(color==undefined && size==undefined){
+     		alert('请选择你要购买的商品信息');
+     		exit();
+     	}
+	}  
+	
     $.post(WST.U('home/carts/addCart'),{goodsId:goodsInfo.id,goodsSpecId:goodsSpecId,buyNum:buyNum,color:color,size:size,rnd:Math.random()},function(data,textStatus){
 	     var json = WST.toJson(data);
 	     if(json.status==1){

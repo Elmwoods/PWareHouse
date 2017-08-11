@@ -55,20 +55,21 @@ function showPayBox(){
     $("#payPwdBox").dialog("show");
 }
 function checkSecret(){
-	var payPwd = $.trim($('#payPwd').val());
-	if(payPwd==''){
-		WST.msg('请输入支付密码','info');
-		return;
-	}
-	$.post(WST.U('mobile/logmoneys/checkPayPwd'),{payPwd:payPwd},function(data){
-		var json = WST.toJson(data);
-		if(json.status==1){
-			$("#payPwdBox").dialog("hide");
-			location.href=WST.U('mobile/cashconfigs/index');
-		}else{
-			WST.msg(json.msg);
-		}
-	})
+	// var payPwd = $.trim($('#payPwd').val());
+	// if(payPwd==''){
+	// 	WST.msg('请输入支付密码','info');
+	// 	return;
+	// }
+	location.href=WST.U('mobile/cashconfigs/index');
+	// $.post(WST.U('mobile/logmoneys/checkPayPwd'),{},function(data){
+	// 	var json = WST.toJson(data);
+	// 	if(json.status==1){
+	// 		$("#payPwdBox").dialog("hide");
+	// 		location.href=WST.U('mobile/cashconfigs/index');
+	// 	}else{
+	// 		WST.msg(json.msg);
+	// 	}
+	// })
 }
 //资金流水
 function toRecord(){
@@ -122,10 +123,10 @@ function drawMoney(){
 		WST.msg('请输入提现金额','info');
 		return
 	}
-	if(payPwd==''){
-		WST.msg('请输入支付密码','info');
-		return
-	}
+	// if(payPwd==''){
+	// 	WST.msg('请输入支付密码','info');
+	// 	return
+	// }
 	var param = {};
 	param.accId = accId;
 	param.money = money;

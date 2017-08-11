@@ -79,21 +79,21 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="hidden" id="payCode" name="payCode" />
-{volist name="payments" id="payment"}
-{if condition="$payment['isOnline'] eq 1"}
-{if condition="$payment['payCode'] eq 'wallets'"}
-{else \}
-<div class="bank">
-    <label for="bank">
-        <input  type="radio" name="payment_code" id="bank" value="{$payment['payCode']}">
-        <input type="hidden" id="payPurse" value="purse">
-        <img class="img1" src="{$payment['payCode']=='alipays'?'__STYLE__/img/alipay_logo.gif':'__STYLE__/img/wxpay_logo.gif'}" alt="" name="bank">
-    </label>
+                                        {volist name="payments" id="payment"}
+                                        {if condition="$payment['isOnline'] eq 1"}
+                                        {if condition="$payment['payCode'] eq 'wallets'"}
+                                        {else \}
+                                        <div class="bank">
+                                            <label for="bank">
+                                                <input  type="radio" name="payment_code" id="bank" value="{$payment['payCode']}">
+                                                <input type="hidden" id="payPurse" value="purse">
+                                                <img class="img1" src="{$payment['payCode']=='alipays'?'__STYLE__/img/alipay_logo.gif':'__STYLE__/img/wxpay_logo.gif'}" alt="" name="bank">
+                                            </label>
 
-</div>
-{/if}
-{/if}
-{/volist}
+                                        </div>
+                                        {/if}
+                                        {/if}
+                                        {/volist}
                                        </div>
                                       <!-- <div class="bank">
                                            <label for="bankss">

@@ -49,18 +49,29 @@
   padding:5px 0;
   padding-left:10px;
 }
+.ui-col-57{
+  width: 57%;
+  margin-bottom: 20px;
+}
+.ui-col-40{
+  width: 40%;
+  text-align: center;
+}
 </style>
 {/* 遮盖层  */}
 <div class="wst-cover" id="cover"></div>
 {/* 分类层  */}
 <div class="wst-fr-box" id="frame">
+    <!-- 添加代码 -->
+    <div class="errorNotice" style="background: rgba(0,0,0,0.5);display: none;  position: absolute; color: #fff; top: 0;width: 90%;left: 5%;height: 40px;text-align: center;line-height: 40px;z-index: 99999;"></div>
+
     <div class="title"><span id="contentTitle">通过邮箱找回密码</span><i class="ui-icon-close-page" onclick="javascript:dataHide();"></i><div class="wst-clear"></div></div>
     <div class="content" id="content">
         <ul class="ui-row">
           <li class="ui-col ui-col-33">用户名：</li>
           <li class="ui-col ui-col-67" id="loginName">{$forgetInfo.loginName}</li>
 
-          <div class='phoneBox'>
+          <div class='phoneBox' style="background: #fff;">
             <li class="ui-col ui-col-33">手机号码：</li>
             <li class="ui-col ui-col-67" id="email">{$forgetInfo.userPhone}</li>
 
@@ -73,14 +84,16 @@
               </div>
             </li>
 
-            <li class="ui-col ui-col-50"><input type="text" id="checkCode" placeholder="手机校验码" style="height:30px;"></li>
-            <li class="ui-col ui-col-50">
+            <li class="ui-col ui-col-57"><input type="text" id="checkCode" placeholder="手机校验码" style="height:30px;width: 100%;"></li>
+            <li class="ui-col ui-col-40">
               <div class="ui-btn-wrap" style="padding:0px;">
                 <button class="ui-btn ui-btn-danger" id="timeObtain" onclick="phoneVerify2()" style="padding: 0px 10px;font-size: 0.12rem;">
                     获取校验码
                 </button>
               </div>
             </li>
+
+            
             <div class="ui-btn-wrap">
               <button class="ui-btn-lg ui-btn-danger" onclick="forgetPhone()">
                   下一步

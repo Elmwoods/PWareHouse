@@ -10,7 +10,7 @@ function editAddress(addressId){
 	$('.wst-ad-submit .button').attr('onclick','javascript:saveAddress('+addressId+');');
 	$('#defaults').removeClass('default').addClass('nodefault');
     if(addressId>0){
-    	$('.iziModal-header-title').html('修改收货地址<div class="address-save" onclick="javascript:saveAddress(0);">保存</div>');
+    	$('.iziModal-header-title').html('修改收货地址<div class="address-save" onclick="javascript:saveAddress('+addressId+');">保存</div>');
         $.post(WST.U('mobile/useraddress/getById'), {addressId:addressId}, function(data){
             var info = WST.toJson(data);
             if(info){
@@ -56,9 +56,14 @@ function saveAddress(addressId){
         return false;
     }
     if(userPhone==''){
-    	WST.msg('联系电话不能为空','info');
+        WST.msg('联系电话不能为空','info');
+        $('#cellphone').focus();
         return false;
-    }
+    }else if(!(/^[0-9]{11}$/.test(userPhone))){ //手机号长度
+        WST.msg('请输入正确号码','info'); 
+        $('#cellphone').focus(); 
+        return false; 
+    } 
     if(areaId==''){
     	WST.msg('请选择地址','info');
 	    $('#areaId').focus();
@@ -98,7 +103,7 @@ function saveAddress(addressId){
 //设为默认地址
 function inDefault(obj,id){
 	$(obj).addClass('default').removeClass('nodefault').siblings('.j-operate').addClass('nodefault').removeClass('default');
-	$(".wst-list-infose1").find("i").css("color","#f00");
+	// $(".wst-list-infose1").find("i").css("color","#f00");
 	$('.wst-ad-operate').css('position','relative');
 	//$(".default-address").css("display","inline");
     $.post(WST.U('mobile/useraddress/setDefault'), {id:id}, function(data){

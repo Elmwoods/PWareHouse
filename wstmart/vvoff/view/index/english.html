@@ -3,13 +3,33 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>HANGZHOU JINGE TECHNOLOGY CORPORATION  GLOBAL DISTRIBUTARY SYSTEM OF COMMODITY CURRENCTY</title>
+		<title>HANGZHOU JINGGE TECHNOLOGY CORPORATION  GLOBAL DISTRIBUTARY SYSTEM OF COMMODITY CURRENCTY</title>
 		<link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="__VVOFF__/css/Eng_index.css"/>
 		
 	</head>
+	 <script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneHeight = parseInt(window.screen.height);
+		var phoneScale = phoneWidth/640;
+		
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
 	<style type="text/css">
 	    .team {
 	        width: 1200px;
@@ -20,11 +40,19 @@
 	        margin: 0 12px;
 	        float: left;
 	    }
+	    iframe{display: none;}
+	    @media only screen and (max-width:640px ) {
+
+div,form{display: none;}
+iframe{display: block;}
+
+
+}
 	</style>
 	
 
 	<body  style="background: #0f1210;">
-
+<iframe src="{:url('vvoff/index/Ephone')}" width="640px" height="1134px"></iframe>
 		
 		<!--PC端 >=992-->
 		<!--<div class="visible-lg-block visible-md-block">-->
@@ -143,7 +171,7 @@
 					<button class="send_yzm">Send</button>
 
 					<input type="submit" value="Sign In"  class="post_tj" style="color: black"/>
-					<p class="agreement">Read and accept <br /><a href="javascript:void(0)">《Jinge User's Agreement》</a></p>
+					<p class="agreement">Read and accept <br /><a href="javascript:void(0)">《Jingge User's Agreement》</a></p>
 				</div>
 
 
@@ -202,7 +230,7 @@
 						<input class="phone_nk" type="text" name="code" id="" value="" placeholder="Input Validation Code"/>
 					</div><button class="send_yzm">Send</button>
 					<input type="submit" value="Sign Up"  class="zh_login_r" style="color: black"/>
-					<p class="agreement">Read and accept <br /><a href="{:url('vvoff/index/agreement')}">《Jinge User's Agreement》</a></p>
+					<p class="agreement">Read and accept <br /><a href="{:url('vvoff/index/agreement')}">《Jingge User's Agreement》</a></p>
 				</div>
 				<span class="other">
 			<a href="javascript:void(0)" class="downvv">Download VV APP</a>
@@ -270,7 +298,7 @@
 						<img src="__VVOFF__/img/Eng_img/about.png"/>
 					</div>
 					<div class="hot_span">
-						<span>Hangzhou Jingo Technology Co., Ltd. takes the leads to set off a new round of technological transformation for monetary settlement system in the world.</span>
+						<span>Hangzhou Jingge Technology Co., Ltd. takes the leads to set off a new round of technological transformation for monetary settlement system in the world.</span>
 						<br />
 						<br />
 						<br />
@@ -278,7 +306,7 @@
 						<br />
 						<br />
 						<br />
-						<span>“Hangzhou Jingo Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingo, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
+						<span>“Hangzhou Jingge Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingge, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
 						<br />
 						<br />
 						<br />
@@ -286,11 +314,11 @@
 						<br />
 						<br />
 						<br />
-						<span>Hangzhou Jingo Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support.</span>
+						<span>Hangzhou Jingge Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support.</span>
 						<br />
 						<br />
 						<br />
-						<span>This is also the theme that Jingo is committed to serve the society: “World changes for you!”</span>
+						<span>This is also the theme that Jingge is committed to serve the society: “World changes for you!”</span>
 					</div>
 				</div>
 
@@ -301,7 +329,7 @@
 						<img src="__VVOFF__/img/Eng_img/VVCHAT.png"/>
 					</div>
 					<div class="bottom">
-						<<span>“Hangzhou Jingo Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingo, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
+						<<span>“Hangzhou Jingge Technology Co., Ltd.” has developed an APP called “VV”, which is an intelligent cellphone social network software with complete set of service and advanced performance; not only can it be directly connected to  jingomall.com, an online trade platform in China which subordinates to Jingge, but also it covers various commodities in the world and allows for direct transaction as well. Such online and offline sales mode focusing on commodities not only provides customers with access to O2O experience stores, but also ties consumers’ consumption habits, social insurance and credit system together. “VV”APP is also embedded with the most advanced monetary settlement service system in the world. It integrates traditional bank transferring and bank loaning, etc. into moneybag project, which makes one-touch transferring and password-free payment become a normal social phenomenon in the future business world.</span>
 					</div>
 					<div id="pics2">
 						<a href="#" style="display: block">
@@ -351,7 +379,7 @@
 						<img src="__VVOFF__/img/Eng_img/JINGOMALL.png"/>
 					</div>
 					<div class="shop_txt">	
-						<span>"Jingomall.com (JINGO·China)" is a network trading platform for global customer service under the flag of Hangzhou Jinge Technology Co., Ltd. The transaction contains all kinds of social goods including financial products. For the convenience of (global) customers’ online commodity trading, Jinge developed cloud computing data systems and mobile client systems.</span>
+						<span>"Jingomall.com (JINGGE·China)" is a network trading platform for global customer service under the flag of Hangzhou Jingge Technology Co., Ltd. The transaction contains all kinds of social goods including financial products. For the convenience of (global) customers’ online commodity trading, Jingge developed cloud computing data systems and mobile client systems.</span>
 						<br />
 						<br />
 						<br />
@@ -361,7 +389,7 @@
 						<br />
 						<br />
 						<br />
-						<span>To contribute to economic development of China and the rest of the world, Hangzhou Jinge Technology Co., Ltd. takes on heavy responsibilities and struggles to innovate, to promote the development of social civilization…</span>
+						<span>To contribute to economic development of China and the rest of the world, Hangzhou Jingge Technology Co., Ltd. takes on heavy responsibilities and struggles to innovate, to promote the development of social civilization…</span>
 					</div>
 				</div>
 			</div>
@@ -372,7 +400,7 @@
                     </div>
                     <div class="w_txt">
                         <span>
-                         	Hangzhou Jingo Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support
+                         	Hangzhou Jingge Technology Co., Ltd. is not just limited to its current achievements, there is also space left for software development in the future. With the proceeding of research and development, we will add customer transaction and monetary settlement system for supermarket, shopping mall to “VV”APP. In the future, as long as users get “VV” APP installed on their phone, they can experience automatic payment and financial settlement in shopping mall and supermarket under hardware support
                         </span>
                     </div>
                 </div>
@@ -455,7 +483,7 @@
 						<img src="__VVOFF__/images/foot03/zfew.jpg"/>
 					</div>
 					<div class="over_txt">
-						<p>Hangzhou Jinge Technology Co., Ltd. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-167-5655</p>
+						<p>Hangzhou Jingge Technology Co., Ltd. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-167-5655</p>
 						<p>Address:Room 3202，Wealth Financial Center, No. 37 Jiefang East Road, Jianggan District, Hangzhou</p>
 						<p>Zhejiang ICP prepared No. 17002020</p>
 					</div>

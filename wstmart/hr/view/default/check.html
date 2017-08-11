@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京歌通讯录</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .input-lg {
+            width:300px;
+            text-align: center;
+            margin-left:15%;
+        }
+        .bg-info {
+            /*background: url('http://www.jingomall.com/wstmart/hr/view/default/img/table.jpg') no-repeat center center;*/
+            background: #E0FFFF;
+            display: block;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function start(){
+            var firstInput=document.getElementsByTagName("input")[0];
+            firstInput.select();
+        }
+    </script>
+</head>
+<body onload="start();" style="text-align:center;padding:50px;background: url('http://www.jingomall.com/wstmart/hr/view/default/img/back.jpg') no-repeat 0% 18%;background-size: 100%;">
+        <form class="form-search" name="phoneBook" action="{:url('hr/index/turn')}" enctype="multipart/form-data" method="post">
+            <div class="form-group" style="width: 60%;margin-left:20%;">
+                <input type="text" id="search" class="form-control" placeholder="请输入口令" name="code"><button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="display: none;">
+                过关
+            </button>
+            </div>
+        </form>
+</body>
+</html>

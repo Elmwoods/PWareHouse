@@ -22,7 +22,7 @@ class InitConfig
         $currModel = $request->module();
         
         hook('initConfigHook',['getParams'=>input()]);
-   
+//        dump($request);die;
         if($request->isMobile() &&  $currModel=='home'){
         	$url = url('mobile/index/index');
         	header("location:$url");

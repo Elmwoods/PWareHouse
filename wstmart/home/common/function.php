@@ -253,7 +253,7 @@ function combineSaleAttr($str) {
     }*/
 }
 
-//获取token函数
+/*//获取token函数
 function getToken($member_id, $member_name, $member_avatar) {
     srand((double)microtime()*1000000);
 
@@ -313,8 +313,10 @@ function getToken($member_id, $member_name, $member_avatar) {
 
 
     $result = curl_exec($ch);
+    print_r($result);
+    exit();
     $token = json_decode($result) -> token;
     curl_close($ch);
     return $token;
-}
+}*/
 

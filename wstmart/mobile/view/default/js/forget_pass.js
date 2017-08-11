@@ -129,7 +129,9 @@ var modes = '';
 /** 校验码 **/
 function phoneVerify2(){
 	if(!$('#smsVerify').val()){
-		WST.msg('请输入验证码','info');
+		// WST.msg('请输入验证码','info');
+		$(".errorNotice").html("请输入验证码").slideDown('200').delay('1500').slideUp("200");
+		$('#smsVerify').focus();
 		return false;
 	}
 
@@ -141,23 +143,37 @@ function phoneVerify2(){
 		var json = WST.toJson(data);
 		if(isSend )return;
 		isSend = true;
-		if(json.status!=1){
-			WST.msg(json.msg, 'info');
+		// if(json.status!=1){
+		// 	WST.msg(json.msg, 'info');
+		// 	WST.getVerify('#verifyImg2');
+		// 	time = 0;
+		// 	isSend = false;
+		// }
+		// 修改代码
+		if(json.status==-1){
+			/*WST.msg(json.msg, 'info');*/
+		$(".errorNotice").html("发送失败").slideDown('200').delay('1500').slideUp("200");
 			WST.getVerify('#verifyImg2');
 			time = 0;
 			isSend = false;
-		}if(json.status==1){
-			WST.msg('短信已发送，请注册查收');
+		}
+		else if(json.status==-2){
+			$(".errorNotice").html("验证码输入错误").slideDown('200').delay('1500').slideUp("200");
+		}
+
+		if(json.status==1){
+			// WST.msg('短信已发送，请查收');
+			$(".errorNotice").html("短信已发送，请查收").slideDown('200').delay('1500').slideUp("200");
 			time = 120;
 			$('#timeObtain').attr('disabled', 'disabled').css('background','#e8e6e6');
-			$('#timeObtain').html('获取手机验证码(120)').css('width','130px');
+			$('#timeObtain').html('获取验证码(120)').css('width','120px');
 			var task = setInterval(function(){
 				time--;
-				$('#timeObtain').html('重新发送验证码('+time+")");
+				$('#timeObtain').html('重发验证码('+time+"s)");
 				if(time==0){
 					isSend = false;						
 					clearInterval(task);
-					$('#timeObtain').html("重新获取验证码").css('width','100px');
+					$('#timeObtain').html("重获验证码").css('width','100px');
 					$('#timeObtain').removeAttr('disabled').css('background','#e23e3d');
 				}
 			},1000);

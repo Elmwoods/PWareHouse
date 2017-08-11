@@ -19,6 +19,26 @@ class Index extends Base{
      * 首页
      */
     public function index(){
+        $param = request() -> param();
+        //手机端自动登陆商城
+        if (!empty($param['user_id'])) {
+            $userToken = db('user_token');
+            $param['token'] = str_replace('\/', '/', $param['token']);
+            $arr = $userToken -> field('login_time') -> where('member_id', $param['user_id']) -> where('token', $param['token']) -> find();
+            if ($arr) {
+                if ((time() - intval($arr['login_time'])) < 7*24*3600) {
+                    session('WST_USER.userName',$param['user_name']);
+                    session('WST_USER.userId',$param['user_id']);
+                    session('clientType',1);
+                }else {
+                    session('WST_USER.userName',null);
+                    session('WST_USER.userId',null);
+                }
+            }else {
+                session('WST_USER.userName',null);
+                session('WST_USER.userId',null);
+            }
+        }
     	$m = new M();
     	hook('mobileControllerIndexIndex',['getParams'=>input()]);
     	$news = $m->getSysMsg('msg');

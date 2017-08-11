@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="Keywords" content="京歌科技 全球货币分流技术缔造者，京歌，杭州京歌科技有限公司"/>
+    <meta name="baidu-site-verification" content="v06vRwCU8q" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>京歌科技 全球货币分流技术缔造者</title>
     <link rel="icon" href="__VVOFF__/img/1.ico" type="image/x-icon">
@@ -9,6 +11,26 @@
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="__VVOFF__/css/index.css"/>
     <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneHeight = parseInt(window.screen.height);
+		var phoneScale = phoneWidth/640;
+		
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
     <!--<link rel="stylesheet" href="css/style.css">-->
     <!--<script src="js/mui.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>-->
@@ -23,11 +45,25 @@
         margin: 0 12px;
         float: left;
     }
+    .code_img img {
+        float: left;
+        margin:0 10px;
+    }
+    
+    iframe{display:none;}
+    @media only screen and (max-width:640px ) {
+
+div,form{display: none;}
+iframe{display: block;}
+
+
+}
 
 </style>
 
 
 <body  style="background: #0f1210">
+<iframe src="{:url('vvoff/index/phone')}" width="640px" height="1134px"></iframe>
 <div class="zhezhao">
 </div>
 
@@ -57,8 +93,12 @@
                     		  	<div class="code">
 							    	<div class="code_img">
 							    		<img src="__VVOFF__/images/QR_down.png"/>
+                                        <img src="__VVOFF__/images/ios.png"/>
+                                        <span style="float: left;height: 24px;line-height: 24px;margin: 5px 35px;">扫码下载安卓版本</span>
+                                        <span style="float: left;height: 24px;line-height: 24px;margin: 5px 35px;">扫码下载iOS版本</span>
 							    	</div>
-							    	<p>扫一扫下载VV APP</p>
+							    	<!--<p id="tab">点击切换下载IOS版本</p>-->
+
 							    </div>
                                 <!--</span>-->
                     		</span>
@@ -73,22 +113,41 @@
                             </span>
 
                             <div class="user_detail">
-                                <div class="touxiang left">
-                                    <img src="__VVOFF__/img/touxiang.png"/>
-                                </div>
-                                <span class="left WID" style="letter-spacing: 1px;">
-                                    VVID : {$Think.session.WST_USER.userName}
-                                </span>
-                                <span class="left WID">
-                                    信用分 : 50
-                                </span>
-                                <span class="quit">
-                                    退出
-                                </span>
+                                <dl>
+                                    <dt class="touxiang left">
+                                        <img src="__VVOFF__/img/touxiang.png"/>
+                                    </dt>
+                                    <dd class="WID left">
+                                        VVID : {$Think.session.WST_USER.loginName}
+                                    </dd>
+                                    <dd class="WID left">
+                                        信用分 : {$Think.session.WST_USER.userScore}
+                                    </dd>
+                                    <dd class="quit left">
+                                        退出
+                                    </dd>
+                                </dl>
+
+
+
+                                <!--<div class="touxiang left">-->
+                                    <!--<img src="__VVOFF__/img/touxiang.png"/>-->
+                                <!--</div>-->
+                                <!--<span class="left WID" style="letter-spacing: 1px;">-->
+                                    <!--VVID : {$Think.session.WST_USER.loginName}-->
+
+                                <!--</span>-->
+                                <!--<span class="left WID">-->
+                                    <!--信用分 : {$Think.session.WST_USER.userScore}-->
+                                <!--</span>-->
+
+                                <!--<span class="quit">-->
+                                    <!--退出-->
+                                <!--</span>-->
                             </div>
                         </li>
                     {else /}
-                    <li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="demo right denglu" >登陆</a></li>
+                    <li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="demo right denglu" >登录</a></li>
                     <i class="sx"></i>
                     <li style="margin: 0;text-align: center;"><a href="javascript:void(0)" class="zhuce">注册</a></li>
                     {/if}
@@ -103,7 +162,7 @@
         </div>
     </div>
 
-    <!--扫码登陆-->
+    <!--扫码登录-->
 <form action="{:url('vvoff/login/check')}" method="post" class="code_login">
 
         <a href="javascript:void(0)">
@@ -116,12 +175,12 @@
             <img src="__VVOFF__/serialize/{$data}/{$serialize}.png" class="code_s"  style="width: 140px;height: 140px;">
             <img src="__VVOFF__/img/failure.jpg" class="code_cs"  style="width: 140px;height: 140px;display: none"/>
         </div>
-        <p>请使用VV APP 扫码登陆</p>
+        <p>请使用VV APP 扫码登录</p>
 
         <span class="other">
 			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
 			<i class="sx1"></i>
-			<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+			<a href="javascript:void(0)" class="accounts">帐号登录</a>
 		</span>
 </form>
 
@@ -134,7 +193,7 @@
             <img class="close_s" src="__VVOFF__/images/button_close.png"/>
         </a>
         <div class="phone_m">
-            <p class="white" style="text-align:center;">短信登陆</p>
+            <p class="white" style="text-align:center;">短信登录</p>
             <div class="phone_n">
                 <input class="phone_nk sjh sjyzm" type="text" name="mobile" id="zh_03" value="" autocomplete="off" placeholder="请输入手机号"/>
             </div>
@@ -153,7 +212,7 @@
         <span class="other">
 			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
 			<i class="sx1"></i>
-			<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+			<a href="javascript:void(0)" class="accounts">帐号登录</a>
 		</span>
     </form>
 
@@ -167,7 +226,7 @@
             <img class="close_s" src="__VVOFF__/images/button_close.png"/>
         </a>
         <div class="phone_m">
-            <p class="white">帐号登陆</p>
+            <p class="white">帐号登录</p>
 
             <div class="phone_n">
                 <input class="phone_nk sjh" type="text" name="username" id="zh_02" value="" autocomplete="off" placeholder="请输入手机号 |VV ID"/>
@@ -182,7 +241,7 @@
         <span class="other">
 			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
 			<i class="sx1"></i>
-			<a href="javascript:void(0)" class="note_login">短信登陆</a>
+			<a href="javascript:void(0)" class="note_login">短信登录</a>
 		</span>
     </form>
 
@@ -209,7 +268,7 @@
         <span class="other">
 			<a href="javascript:void(0)" class="downvv">下载VV APP</a>
 			<i class="sx1"></i>
-			<a href="javascript:void(0)" class="note_login">登陆</a>
+			<a href="javascript:void(0)" class="note_login">登录</a>
 		</span>
     </form>
 
@@ -238,9 +297,10 @@
         <div class="top">
             <img class="top_img" src="__VVOFF__/img/11.png"/>
             <div class="btn_a">
-                <button class="btn_lt"><img src="__VVOFF__/images/button_VV.png"/></button>
-                <button class="btn_qdz"><!--<a href="{:url('vvoff/index/purse')}" target="_blank">--><img src="__VVOFF__/images/button_VVPAY.png"/><!--</a>--></button>
-                <button class="btn_sc"><!--<a href="{:url('home/index/index')}" target="_blank">--> <img src="__VVOFF__/images/button_jingomall.png" alt="" /><!--</a>--></button>
+
+                <a href="javascript:void(0)" class="btn_lt"><img src="__VVOFF__/images/button_VV.png"/></a>
+                <a class="btn_qdz" href="{:url('purse/consume/index')}" target="_blank"><img src="__VVOFF__/images/button_VVPAY.png"/></a>
+                <a class="btn_sc" href="{:url('home/index/index')}" target="_blank"><img src="__VVOFF__/images/button_jingomall.png" alt="" /></a>
             </div>
             
             <!--{if condition="empty($_COOKIE['WSTMART_name'])"}-->
@@ -249,7 +309,7 @@
                     <div>
                         <dl>
                             <dt><img src="" width="150" height="150" class="_img"></dt>
-                            <dd> <span>登陆二维码</span></dd>
+                            <dd> <span>登录二维码</span></dd>
                         </dl>
                     </div>
                     <div>
@@ -282,15 +342,15 @@
                 <br />
                 <br />
                 <br />
-                <span>“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是世界上唯一一款服务最全，性能最先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+                <span style='letter-spacing:1px;'>“杭州京歌科技有限公司”开发的一款“VV”APP手机社交软件是世界上唯一一款服务最全，性能最先进的智能化社交软件；不但能与公司旗下的jingomall.com金购·中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为点据点销售模式，不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统，把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程之中，让一键汇款和免密支付将成为未来商业社会常态。</span>
                 <br />
                 <br />
                 <br />
-                <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
+                <span>钱袋子里面的撒（金）豆子、种（金）豆子等游戏软件，能让现代人在繁忙工作中轻轻松松就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
                 <br />
                 <br />
                 <br />
-                <span>杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容，未来。只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算……</span>
+                <span>杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容。未来只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算……</span>
                 <br />
                 <br />
                 <br />
@@ -305,7 +365,7 @@
                 <img src="__VVOFF__/img/vv.png"/>
             </div>
             <div class="bottom">
-                <span>“杭州京歌科技有限公司”开发的一款手机“VV”APP手机社交软件是一款服务全，性能先进的智能化社交软件；不但能与公司旗下的jingomall.com金购.中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为据据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内嵌了世界上最先进的金融结算服务系统。把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程其中，让一键汇款和免密支付将成为未来商业社会常态。</span>
+                <span>“杭州京歌科技有限公司”开发的一款“VV”APP手机社交软件是一款服务全，性能先进的智能化社交软件；不但能与公司旗下的jingomall.com金购·中国网上交易平台直连，还能一览全球各类商品并直接交易，线上线下以物为点据点销售模式不仅把O2O体验店搬到了客户身边，还把客户的消费习惯、社会保障和信用体系联合在了一起。“VV”APP手机软件中还内“嵌了世界上最先进的金融结算服务系统，把传统意义上的银行汇款、银行贷款等融合到了钱袋子工程之中，让一键汇款和免密支付将成为未来商业社会常态。</span>
             </div>
             <div id="pics2">
                 <a href="#" style="display: block">
@@ -349,7 +409,7 @@
                 </a> -->
             </div>
             <div class="col_bot">
-                <span>钱袋子里面的撒（金）豆子、种金豆子等游戏软件，能让现代人在繁忙工作中轻轻一乐中就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
+                <span>钱袋子里面的撒（金）豆子、种（金）豆子等游戏软件，能让现代人在繁忙工作中轻轻松松就完成了锄草、捉虫、浇水和施肥等游戏活动，不仅好玩，而且聚财。外出晒太阳培育豆苗活动可引导用户到室外运动以增强身体体质，让用户在掘金游戏中也有辛勤汗水的真实体验。</span>
             </div>
 
         </div>
@@ -361,17 +421,17 @@
                 <img src="__VVOFF__/img/1234.png"/>
             </div>
             <div class="shop_txt">
-                <span>“jingomall.com（金购.中国）〞是“杭州京歌科技有限公司”旗下为全球客户服务的网络交易平台，交易包括金融在内的各类社会商品。为方便（全球）客户线上商品交易，还配套开发了云计算数据系统和移动客户端系统。</span>
+                <span>“jingomall.com（金购·中国）”是“杭州京歌科技有限公司”旗下为全球客户服务的网络交易平台，交易包括金融在内的各类社会商品。为方便（全球）客户线上商品交易，还配套开发了云计算数据系统和移动客户端系统。</span>
                 <br />
                 <br />
                 <br />
                 <br />
-                <span>货、币分流技术被世界称为最复杂、最深奥的金融理论技术，该技术能打破各国贸易藩篱服务商品流通，减少商品交易时间和降低货币兑换成本。以物为点、据点销售的链销模式被称为物联网3.0技术，该技术能把个人信用与客户消费习惯串联起来。两种技术在交易平台上深度融合，不仅颠覆了原有商品流通模式，还很符合现代人们更简便、更精致的服务心理需求。</span>
+                <span>货、币分流技术被世界称为最复杂、最深奥的金融理论技术，该技术能打破各国贸易藩篱服务商品流通，减少商品交易时间和降低货币兑换成本。以物为点据点销售的链销模式被称为物联网3.0技术，该技术能把个人信用与客户消费习惯串联起来。两种技术在交易平台上深度融合，不仅颠覆了原有商品流通模式，还很符合现代人们更简便、更精致的服务心理需求。</span>
                 <br />
                 <br />
                 <br />
                 <br />
-                <span>为了中国和世界的经济发展，杭州京歌科技有限公司勇挑重担努力创新，以推动社会文明发展为己任...</span>
+                <span>为了中国和世界的经济发展，杭州京歌科技有限公司勇挑重担努力创新，以推动社会文明发展为己任……</span>
             </div>
         </div>
     </div>
@@ -382,7 +442,7 @@
             </div>
             <div class="w_txt">
                         <span>
-                           	 杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容。未来，只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算…… 
+                           	 杭州京歌科技有限公司并不限于现有成就，在软件中还为未来发展预留了空间，随着研发的不断深入，还将会在“VV”APP手机软件增加超市、商城客户交易结算系统内容。未来，只要用户手机上安装了“VV”APP，在硬件的支持下就能实现让用户在商城、超市购物自动支付和结算…… 
                         </span>
             </div>
         </div>
@@ -532,6 +592,30 @@
         pagination: '.swiper-pagination',
         paginationClickable: true
     });
+
+//    var a = true;
+//    $("#tab").click(function () {
+//        if(a) {
+//            $(".code_img img").eq(0).css("display","none");
+//            $(".code_img img").eq(1).css("display","block");
+//            $("#tab").html("点击切换下载Android版本")
+//            a = false;
+//        } else {
+//            $(".code_img img").eq(1).css("display","none");
+//            $(".code_img img").eq(0).css("display","block");
+//            $("#tab").html("点击切换下载ios版本")
+//            a = true;
+//        }
+//
+//    });
+
+
+
+
+
+
+
+
 
 </script>
 </html>

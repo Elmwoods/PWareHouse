@@ -20,7 +20,16 @@ class Index extends Base{
 	/**
 	 * 跳去登录页
 	 */
+    public function turn() {
+        $needle = strrpos($_SERVER['SERVER_NAME'], '.') + 1;        //获取最后一次 . 出现的位置
+        $suffix =  substr($_SERVER['SERVER_NAME'], $needle);        //获取域名后缀
+        if ($suffix == 'cn') {
+            $this -> redirect("http://www.jingomall.com/jingomalladmin");
+        }
+    }
+
 	public function login(){
+        $this -> turn();
         model('CronJobs')->autoByAdmin();
 		return $this->fetch("/login");
 	}

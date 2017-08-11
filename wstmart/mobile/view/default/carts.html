@@ -35,7 +35,8 @@
      {volist name="$carts['carts']" id="ca" key="k"}
 	     <div class="wst-ca-s">
 			<div class="wst-ca-layout shop">
-				<div class="wst-ca-10 shopl"><i class="ui-icon-chooses ui-icon-unchecked-s" childrenId="clist{$k}" cartId="0" mval="0"></i>&nbsp;</div>
+				<div class="wst-ca-10 shopl">
+					<i class="ui-icon-chooses ui-icon-unchecked-s" childrenId="clist{$k}" cartId="0" mval="0"></i>&nbsp;</div>
 				<div class="wst-ca-90 shopr"><p class="ui-nowrap">{$ca['shopName']}</p></div>
 			</div>
 			{volist name="ca['list']" id="li"}
@@ -43,27 +44,27 @@
 				<div class="wst-ca-10 goodsl"><i class="ui-icon-chooseg {if($li['isCheck'])}ui-icon-success-block wst-active{else}ui-icon-unchecked-s{/if} clist{$k}" cartId="{$li['cartId']}" mval="{$li['shopPrice']}"></i>&nbsp;</div>
 				<div class="wst-ca-90">
 					<div class="wst-ca-24 goodsr">
-					<div class="img j-imgAdapt">
-						<a href="javascript:void(0);" onclick="javascript:WST.intoGoods({$li['goodsId']});">
-						<img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{:WSTImg($li['goodsImg'],3)}" title="{$li['goodsName']}">
-						</a>
-					</div>
+						<div class="img j-imgAdapt">
+							<a href="javascript:void(0);" onclick="javascript:WST.intoGoods({$li['goodsId']});">
+							<img src="__ROOT__/{:WSTImg($li['goodsImg'],3)}" title="{$li['goodsName']}">
+							</a>
+						</div>
 					</div>
 					<div class="wst-ca-76">
 						<div class="info">
-						<p class="name">{$li['goodsName']}</p>
-						{if($li['specNames'])}
-						<p class="spec">规格：
-						{volist name="li['specNames']" id="sp"}
-							{$sp['catName']}:{$sp['itemName']}
-						{/volist}
-						</p>
-						<p class="price">¥{$li['shopPrice']}</p>
-						
-						{/if}
-<div class="wst-buy_l">
- 	<input class="wst-buy_l1" type="button" value="-" onclick='javascript:WST.changeIptNum(-1,"#buyNum",{$li["cartId"]},"statCartMoney")'><input id="buyNum_{$li['cartId']}" class="wst-buy_l2" data-min='1' data-max='{$li["goodsStock"]}' type="number" value="{$li['cartNum']}" autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum",{$li["cartId"]},"statCartMoney")'><input class="wst-buy_l3" type="button" value="+" onclick='javascript:WST.changeIptNum(1,"#buyNum",{$li["cartId"]},"statCartMoney")'>
-</div>
+							<p class="name">{$li['goodsName']}</p>
+							{if($li['specNames'])}
+							<p class="spec">规格：
+							{volist name="li['specNames']" id="sp"}
+								{$sp['catName']}:{$sp['itemName']}
+							{/volist}
+							</p>
+							<p class="price">¥{$li['shopPrice']}</p>
+							
+							{/if}
+							<div class="wst-buy_l">
+							 	<button class="wst-buy_l1" type="button" value="" onclick='javascript:WST.changeIptNum(-1,"#buyNum",{$li["cartId"]},"statCartMoney")'>-</button><input id="buyNum_{$li['cartId']}" class="wst-buy_l2" data-min='1' data-max='{$li["goodsStock"]}' type="number" value="{$li['cartNum']}" autocomplete="off" onkeyup='WST.changeIptNum(0,"#buyNum",{$li["cartId"]},"statCartMoney")'/><button class="wst-buy_l3" type="button" value="" onclick='javascript:WST.changeIptNum(1,"#buyNum",{$li["cartId"]},"statCartMoney")'>+</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -86,16 +87,10 @@
 	       </li>
 	     
        </ul>-->
-        	<p class="wst-is-empty">购物车空空如也！</p>
+        	<p class="wst-is-empty">购物车空空如也</p>
+        	<!--<div class="wst-is-follow" type="button" onclick='location.href="http://www.jingo.com/mobile/index/index.html"'>跟我走跟我走!</div>-->
         
 		{/if}
-		 <!--大圆加，不能插入-->
-            <div class="dayaun-nav" style="z-index: 999;display: none;">
-           		<a><img class="dayuanjia" src="__MOBILE__/img/dayuanjia.png"/></a>
-				<a><img class="xiaoyuan1 xiaoyuan" src="__MOBILE__/img/xiaoyuan1.png"/></a>
-				<a href="__MOBILE__/users/history/list.html"><img class="xiaoyuan2 xiaoyuan" src="__MOBILE__/img/xiaoyuan2.png"/></a>
-				<a href="history/list.html"><img class="xiaoyuan3 xiaoyuan" src="__MOBILE__/img/xiaoyuan3.png"/></a>
-			</div>
      </section>
 {/block}
 {block name="include"}

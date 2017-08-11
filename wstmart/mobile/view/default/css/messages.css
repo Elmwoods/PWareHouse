@@ -46,14 +46,17 @@ body {
 	min-width: 85px;
 }
 .f-btn button{
-    background: #e60b49;
-    border-bottom: 1px solid #e60b49;
+    /*background: #e00102;
+    border-bottom: 1px solid #e00102;*/
+   background: #E60B49;
+    border-bottom: 1px solid #E60B49;
 }
 .ui-checkbox input:before, .ui-checkbox-s input:before {
 	font-size: 22px !important;
 }
 .ui-checkbox input:checked:before, .ui-checkbox-s input:checked:before{
-	color:#e32726 !important;
+	/*color:#e32726 !important;*/
+	color:#E60B49 !important;
 }
 .sactive{
 	margin-right:0px !important;

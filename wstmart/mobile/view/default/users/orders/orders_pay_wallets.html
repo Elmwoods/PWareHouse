@@ -52,11 +52,11 @@
 	    {/volist}
 	    <div class="wst-wa-info">
 	    	<p class="info">钱包余额：<span>￥{$userMoney}</span>，待支付订单总额：<span>￥{$needPay}</span></p>
-	    	<div class="pay">支付密码：<input type="password" id="payPwd" maxlength="6" autocomplete="off"></div>
+	    	<!-- <div class="pay">支付密码：<input type="password" id="payPwd" maxlength="6" autocomplete="off"></div> -->
 	    </div>
 	    <div class="wst-wa-forget ui-whitespace" style="display:none;"><a>忘记密码？</a></div>
 		<div style="text-align: center;">
-			<button type="button" class="ui-btn-lg wst-btn-dangerlo" onclick="javascript:walletPay();" style="width: 80%;  display: inline-block;color:#E60B49;">确认支付</button>
+			<button type="button" class="ui-btn-lg wst-btn-dangerlo" onclick="javascript:walletPay();" style="width: 80%;  display: inline-block;background: #E60B49;color: #fff;">确认支付</button>
 		</div>
 	{else}
 		<ul class="ui-row-flex wst-flexslp">

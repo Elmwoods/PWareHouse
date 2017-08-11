@@ -1,5 +1,6 @@
 <?php
 namespace wstmart\common\model;
+use think\Db;
 /**
  * ============================================================================
  * WSTMart多用户商城
@@ -60,7 +61,14 @@ class ShopApplys extends Base{
 			}
 		}
 		$data = array();
-		$data['userId'] = (int)session('WST_USER.userId');
+		//添加代码 start
+		if ((int)session('WST_USER.userId')) {
+			$data['userId'] = (int)session('WST_USER.userId');
+		}else{
+			$model=Db::name('users')->where('userPhone',$phoneNo)->find();
+			$data['userId'] = $model['userId'];
+		}
+		//添加代码 end
 		$data['phoneNo'] = $phoneNo;
 		$data['applyDesc'] = $applyDesc;
 		$data['applyStatus'] = 0;

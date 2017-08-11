@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 .j-global-toolbar div a {
-	margin: 0px;
-	padding: 0px;
-	font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    margin: 0px;
+    padding: 0px;
+    font: 12px/150% Arial,Verdana,"宋体";
+    color: #666;
 }
 .toolbar-wrap {
     position: fixed;
@@ -27,10 +27,8 @@
 }
 .toolbar-panels {
     position: absolute;
-    /*left: 40px;*/
-   	right: 40px;
+    right: 40px;
     top: 0px;
-    /*width: 270px;*/
     height: 100%;
     z-index: 2;
     background: #ECEAEA none repeat scroll 0% 0%;
@@ -50,9 +48,9 @@
     line-height: 40px;
     background: #ffffff none repeat scroll 0% 0%;
     font-family: "microsoft yahei";
-	font-weight: normal;
-	margin: 0px;
-	padding: 0px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
 }
 
 .tbar-panel-header .title {
@@ -79,6 +77,16 @@
     background-repeat: no-repeat;
     
 }
+#close{
+    position: relative;
+    right:10px;
+    float:right;
+    width:11px;
+    height:40px;
+    background: url("../img/right_cart.png") no-repeat;
+    background-position: 0px -240px;
+    display: inline-block;
+}
 .tbar-panel-header .title em {
     display: inline-block;
     vertical-align: top;
@@ -96,12 +104,12 @@
 .tbar-panel-main {
     position: relative;
     margin: 0px;
-	padding: 0px;
-	font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    padding: 0px;
+    font: 12px/150% Arial,Verdana,"宋体";
+    color: #666;
 }
 .tbar-tipbox{
-	display: block;
+    display: block;
 }
 .tbar-panel-content {
     width: 270px;
@@ -109,11 +117,52 @@
     overflow-x: hidden;
     position: relative;
 }
-.tbar-tipbox .tip-inner {
+/*.tbar-tipbox .tip-inner {
     padding: 6px 5px;
     border: 1px solid #EDD28B;
     background: #FFFDEE none repeat scroll 0% 0%;
     text-align: center;
+}*/
+.tbar-tipbox .tip-inner {
+    width:235px;
+    margin:0 auto;
+}
+
+.tbar-tipbox .tip-inner ul{
+    overflow: hidden;
+    margin-right: -15px;
+    margin-top: 0px;
+    list-style: outside none none;
+    padding: 0px;
+}
+
+.tbar-tipbox .tip-inner ul .lii{
+    float: left;
+    position: relative;
+    width: 100px;
+    height: 120px;
+    margin-right: 15px;
+    background: #FFF none repeat scroll 0% 0%;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+.tbar-tipbox .tip-inner ul .lii .add-cart-button1{
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+    position: absolute;
+    width: 100px;
+    bottom: 25px;
+    left: 5px;
+    z-index: 3;
+    color: #FFF;
+    background: rgba(28, 25, 28, 0.8) none repeat scroll 0% 0%;
+}
+.tbar-tipbox .tip-inner ul .lii .add-cart-button1:hover{
+    background:#e60b49;
 }
 .tbar-tipbox .tip-text {
     display: inline-block;
@@ -129,18 +178,18 @@
     margin-left: 5px;
     color: #FFF;
     vertical-align: middle;
-    background: #C81623 none repeat scroll 0% 0%;
+    background: #e60b49 none repeat scroll 0% 0%;
 }
 
 .tbar-panel-cart .tbar-panel-footer {
     height: 50px;
     background-color: #ffffff;
     margin: 0px;
-	padding: 0px;
-	position: absolute;
-	bottom: 0px;
-	border-top: 2px solid #CCCCCC;
-	width: 100%;
+    padding: 0px;
+    position: absolute;
+    bottom: 0px;
+    border-top: 2px solid #CCCCCC;
+    width: 100%;
 }
 .tbar-checkout {
     height: 40px;
@@ -155,16 +204,16 @@
 .tbar-checkout .jtc-number {
     line-height: 20px;
     font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    color: #666;
 }
 .tbar-checkout .jtc-sum {
     line-height: 20px;
     font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    color: #666;
 }
 .tbar-checkout .jtc-sum strong {
     font-family: verdana;
-    color: #C81623;
+    color: #e60b49;
 }
 .tbar-checkout .jtc-btn {
     position: absolute;
@@ -174,16 +223,16 @@
     height: 35px;
     font: 16px/35px "微软雅黑";
     text-align: center;
-    background: #C81623 none repeat scroll 0% 0%;
+    background: #e60b49 none repeat scroll 0% 0%;
     color: #FFF;
     border-radius: 5px;
 }
 .tbar-cart-list{
     width: 100%;
     margin: 0px;
-	padding: 0px;
-	font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    padding: 0px;
+    font: 12px/150% Arial,Verdana,"宋体";
+    color: #666;
 }
 .tbar-cart-item {
     padding: 0px 5px;
@@ -264,7 +313,7 @@
     display: none;
 }
 .tbar-panel-history div{
-	 padding: 0px;
+     padding: 0px;
 }
 .jt-history-wrap {
     width: 235px;
@@ -365,30 +414,41 @@
     cursor: pointer;
     background-color: #333333;
     font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
-	display: inline-block;
-	background-repeat: no-repeat;
+    color: #666;
+    display: inline-block;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+.toolbar-tab1 {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #333333;
+    font: 12px/150% Arial,Verdana,"宋体";
+    color: #666;
+    display: inline-block;
+    background-repeat: no-repeat;
     z-index: 10;
 }
 .tbar-tab-self{
     background-image: url("../img/right_self.png");
 }
 .tbar-tab-cart{
-	background-image: url("../img/right_gwc.png");
+    background-image: url("../img/right_gwc.png");
 }
 .tbar-tab-follow{
     background-image: url("../img/right_shoucang.png");
 }
 .tbar-tab-history{
-	background-image: url("../img/right_liulan.png");
+    background-image: url("../img/right_liulan.png");
 }
 .tbar-tab-message{
-	background-image: url("../img/right_xinxi.png");
+    background-image: url("../img/right_xinxi.png");
 }
-.tab-cart-buy-num-hover{
-	/*color: #C81623;
-	background-color: white;*/
-}
+
 .tab-ico {
     width: 34px;
     height: 35px;
@@ -408,13 +468,12 @@
     z-index: 1;
     left: 40px;
     top: 0px;
-    background-color: #c81623;
-    /*border-radius: 3px 0px 0px 3px;*/
+    background-color: #E60b49;
     transition: left 0.3s ease-in-out 0.1s;
     font-style: normal;
     margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    padding: 0px;
+    cursor: pointer;
 }
 .tab-sub {
     position: absolute;
@@ -423,7 +482,7 @@
     top: -5px;
     height: 11px;
     padding: 1px 2px;
-    border: 1px solid #B61D1D;
+    border: 1px solid #E60b49;
     overflow: hidden;
     color: #FFF;
     font: 11px/11px verdana;
@@ -431,37 +490,46 @@
     min-width: 11px;
     border-radius: 10px;
     background-color: #CC6060;
-    background-image: linear-gradient(to bottom, #CC6060 0px, #B61D1D 100%);
+    background-image: linear-gradient(to bottom, #E60b49 0px, #E60b49 100%);
 }
 .tab-cart-buy-num{
-	width: 20px;
-	height: 20px;
-	border-radius: 20px;
-	margin-left:11px;
-	background: #C81623;
-	display: block;
-	text-align: center;
-	line-height: 20px;
-	color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin-left:12px;
+    background: #E60b49;
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+}
+.tab-cart-buy-num-hover{
+    color:#E60b49;
+    background-color:#ffffff;
+}
+
+.tab-cart-buy-num-hover1{
+    color:#ffffff;
+    background-color:#E60b49;
 }
 .toolbar-footer {
     position: absolute;
     bottom: -1px;
     width: 100%;
-    height: 120px;
+    height: 85px;
     margin: 0px;
-	padding: 0px;
-	font: 12px/150% Arial,Verdana,"宋体";
-	color: #666;
+    padding: 0px;
+    font: 12px/150% Arial,Verdana,"宋体";
+    color: #666;
 }
 .toolbar-footer > div {
-	margin: 0px;
+    margin: 0px;
 }
 .tbar-tab-service {
-	background-image: url(../img/kefu.png);
+    background-image: url(../img/kefu.png);
 }
 .tbar-tab-code {
-	background-image: url(../img/right_erweima.png);
+    background-image: url(../img/right_erweima.png);
 }
 .tbar-tab-top {
     background-image: url(../img/top.png);
@@ -480,47 +548,50 @@
     z-index: 1;
     left: 40px;
     top: 0px;
-    background-color: #C81623;
-    /*border-radius: 3px 0px 0px 3px;*/
+    background-color: #E60b49;
     transition: left 0.3s ease-in-out 0.1s;
     font-style: normal;
     margin: 0px;
-	padding: 0px;
-	cursor: pointer;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.j-tab .add-color{
+  background-color: #e60b49;
 }
 .fgxl {
-	border-left: 2px solid #666666;
-	height: 14px;
-	display: inline-block;
+    border-left: 2px solid #666666;
+    height: 14px;
+    display: inline-block;
 }
 .tbar-tab-hover {
     left: -60px;
-    background-color: #C81623;
+    background-color: #e60b49;
    
 }
 .tbar-tab-footer-hover {
-	left: -60px;
-    background-color: #C81623;
+    left: -60px;
+    background-color: #E60b49;
 }
 .tbar-tab-selected {
-    background-color: #C81623;
+    background-color: #E60b49;
 }
 .tbar-tab-selected .tab-sub{
-    color: #C81623;
-	background-color: #FFF;
-	background-image: linear-gradient(to bottom, #FFF 0px, #FFF 100%);
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-	text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
+    color: #E60b49;
+    background-color: #FFF;
+    background-image: linear-gradient(to bottom, #FFF 0px, #FFF 100%);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
 }
 .tbar-tab-click-selected{
-	 background-color: #C81623;
+     background-color: #e60b49;
 }
 .tbar-tab-click-selected .tab-sub{
-    color: #C81623;
-	background-color: #FFF;
-	background-image: linear-gradient(to bottom, #FFF 0px, #FFF 100%);
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-	text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
+    color: #E60b49;
+    background-color: #FFF;
+    background-image: linear-gradient(to bottom, #FFF 0px, #FFF 100%);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
 }
 .survey-tab-ico {
     display: none;
@@ -533,16 +604,16 @@
     line-height: 15px;
     background: #C81623 none repeat scroll 0% 0%;
     color: #FFF;
-	text-align: center;
-	font-family: "微软雅黑";
-	position: absolute;
-	z-index: 1;
-	top: 0px;
-	border-radius: 3px 0px 0px 3px;
-	transition: left 0.3s ease-in-out 0.1s;
-	font-style: normal;
-	margin: 0px;
-	cursor: pointer;
+    text-align: center;
+    font-family: "微软雅黑";
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    border-radius: 3px 0px 0px 3px;
+    transition: left 0.3s ease-in-out 0.1s;
+    font-style: normal;
+    margin: 0px;
+    cursor: pointer;
 }
 .toolbar-open {
     /*right: 270px;*/
@@ -551,14 +622,14 @@
 
 
 .j-close:hover{
-	transform:rotate(180deg);
-	-webkit-transform:rotate(180deg);
-	-moz-transform:rotate(180deg);
-	-o-transform:rotate(180deg);
-	-ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
 }
 .tbar-panel-history .jth-item .add-cart-button:hover{
-	background: rgb(200, 22, 35) none repeat scroll 0% 0%;
+    background: rgb(200, 22, 35) none repeat scroll 0% 0%;
 }
 .tbar-cart-item .buy-btn {
     background: #eeeeee none repeat scroll 0 0;
@@ -573,76 +644,90 @@
 }
 
 .i-tab-login {
-	width: 280px;
-	height: 302px;
-	background: #ffffff;
-	position:absolute;
-	right: 40px;
-	top: 0px;
-	box-shadow: -1px 1px 5px 1px #888888;
-	text-align: center;
-	display: none;
+    width: 280px;
+    height: 302px;
+    background: #ffffff;
+    position:absolute;
+    right: 40px;
+    top: 0px;
+    box-shadow: -1px 1px 5px 1px #888888;
+    text-align: center;
+    display: none;
     z-index: 1000;
 }
 .tab-cart {
-	color:#fff;
-	width:20px;
-	display: block;
-	margin:18px 0px 10px 16px;
+    color:#fff;
+    width:20px;
+    display: block;
+    margin:18px 0px 10px 16px;
 }
 .tab-fade-photo {
     width: 110px;
     height: 110px;
     border-radius: 75px;
     margin: 30px auto;
-    /*background: #F06F69;*/
      background: url("../img/user_logo.png") no-repeat #f06f69;
      background-size:100% 100%;
 }
 
+.tab-fade-photo .usersImg{
+    border-radius: 50%;
+    width:120px;
+    height:120px;
+}
+
+.i-tab-login .logged{
+    font-size: 16px;font-style: normal;color: #8C8C8C;
+}
+.tab-fade-box .no_logged{
+    font-size: 16px;font-style: normal;color: #8C8C8C;
+}
+.tab-fade-box  .register{
+    position: absolute;bottom: 20px;text-align: center;width: 280px;
+}
 .tab-code-img {
     width: 120px;
     height: 120px;
     background: #FFFFFF;
 }
 .tab-code-img {
-	width: 120px;
-	height: 120px;
-	background: #FFFFFF;
+    width: 120px;
+    height: 120px;
+    background: #FFFFFF;
 }
 .i-tab-code {
-	width: 120px;
-	height: 120px;
-	position: absolute;
-	bottom: 0px;
-	right: 40px;
-	background: #ffffff;
-	box-shadow: -1px 1px 5px 1px #888888;
-	text-align: center;
-	display: none;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    bottom: 0px;
+    right: 40px;
+    background: #ffffff;
+    box-shadow: -1px 1px 5px 1px #888888;
+    text-align: center;
+    display: none;
 }
 .arrow3{
-	width: 0px;
-	height: 0px;
-	border: 7px solid;
-	border-color:#C81623 #C81623 #C81623 #FFFFFF;
-	z-index: 100;
-	border-right: none;
+    width: 0px;
+    height: 0px;
+    border: 7px solid;
+    border-color:#C81623 #C81623 #C81623 #FFFFFF;
+    z-index: 100;
+    border-right: none;
 }
 .arrow-cart {
-	position: absolute;
-	right: -7px;
-	top: 266px;
+    position: absolute;
+    right: -7px;
+    top: 266px;
 }
 .arrow-login {
-	position: absolute;
-	right: -7px;
-	top: 13px;
+    position: absolute;
+    right: -7px;
+    top: 13px;
 } 
 .arrow-code {
-	position: absolute;
-	right: -7px;
-	bottom: 13px;
+    position: absolute;
+    right: -7px;
+    bottom: 13px;
 }
 
 input.right-cart-buy-num[type="text"] {

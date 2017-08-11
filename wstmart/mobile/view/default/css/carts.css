@@ -54,7 +54,7 @@
 	top:0px;
 	color: #ffffff;
     font-size: 0.15rem;
-    background: #e60b49;
+    background: #e00102;
 }
 .wst-ca-s .shopr{
 	height: 26px;
@@ -101,7 +101,12 @@
 .wst-ca-s .info .name{
 	float: left;
 	width: 100%;
-	font-size: 0.14rem;
+	/*font-size: 0.14rem;*/
+
+	font-size: 14px;
+	height: 42px;
+	overflow: hidden;
+
 }
 .wst-ca-s .info .price{
    height: 28px;
@@ -116,7 +121,7 @@
 	width: 100%;
 	padding:3px 0px;
 	color:#a6a6a6;
-	font-size: 0.14rem;
+	font-size: 14px;
 }
 .wst-buy_l{
 	float:right;
@@ -124,36 +129,39 @@
 	margin-top:3px;
 	text-align: right;
 }
-.wst-buy_l1,.wst-buy_l3{
+.wst-buy_l1[type=button] , .wst-buy_l3[type=button]{
     width: 30px;
     height: 28px;
 	background:#FFF;
 	border:none;
 	border:1px solid #dddddd;
+	border-radius: 5px;
 }
-.wst-buy_l1{
+/*.wst-buy_l1{
 	border-top-left-radius:3px;
 	border-bottom-left-radius:3px;
 }
 .wst-buy_l3{
 	border-top-right-radius:3px;
 	border-bottom-right-radius:3px;
-}
+}*/
 .wst-buy_l2{
 	border:none;
 	width:38px;
 	height:28px;
 	border:1px solid #dddddd;
 	text-align:center;
-	color: #e60b49;
+	/*color: #e00102;*/
+	color: #E60B49;
+	border-radius: 5px;
 }
 .wst-buy_l1:focus,.wst-buy_l3:focus{
-	color:#e60b49;
+	color:#e00102;
 }
 .wst-buy_l2:focus{
 	width:38px;
 	height:28px;
-    border:1px solid #e60b49;
+    border:1px solid #e00102;
 }
 .wst-ca-s .bottom{
 	height: 23px;
@@ -162,8 +170,9 @@
 	margin-top:8px;
 }
 .wst-ca-s .bottom .price{
-	color:  #e60b49;
+	/*color:  #e00102;*/
 	text-align: right;
+	color: #E60B49;
 
 }
 .wst-cartts{
@@ -180,7 +189,7 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding-top: 160px;
+    padding-top: 40%;
 }
 
 .wst-carttsi img{
@@ -200,6 +209,15 @@
 	margin-top:15px;
 	clear: both;
 	color: #999;
+}
+.wst-is-follow{
+	width: 140px;
+	margin: 2px auto;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	background: #E60B49;
+	border-radius: 5px;
+	text-align: center;
 }
 .wst-ca-se{
 	padding: 0px 10px;
@@ -221,7 +239,8 @@
 	margin-right:6px;
 }
 .wst-ca-se .total span{
-	color: #e60b49;
+	/*color: #de0202;*/
+	color: #E60B49;
 }
 .wst-ca-se .totalr .button{
 	float: right;
@@ -230,10 +249,12 @@
     color: #ffffff;
     margin-top:4px;
     font-size: 0.18rem;
-	background: #e60b49;
+	/*background: #e00102;*/
+	background: #E60B49;
 	font-size: 0.18rem;
 	border-radius:3px;
-    border-bottom: 1px solid #e60b49;
+    /*border-bottom: 1px solid #e00102;*/
+   border-bottom: 1px solid #E60B49;
 }
 .wst-ca-se .totalr .button:not(.disabled):not(:disabled):active,.wst-ca-se .totalr .button.active {
 	color:#fbd6d6;

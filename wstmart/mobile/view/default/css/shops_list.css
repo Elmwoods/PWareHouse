@@ -22,11 +22,11 @@
 	padding:10px 0px;
 }
 .wst-shl-head .active{
-	color:#e60b49;
-	border-bottom: 2px solid #e60b49;
+	color:#de0202;
+	border-bottom: 2px solid #de0202;
 }
 .wst-shl-head .active select{
-	color:#e60b49;
+	color:#de0202;
 }
 .wst-shl-select select{
 	color:#6a6b6d;
@@ -35,7 +35,7 @@
 	color:#6a6a6a;
 }
 .wst-shl-select.active:after{
-	color:#e60b49;
+	color:#de0202;
 }
 .wst-shl-head .evaluate{
 	text-align:center;

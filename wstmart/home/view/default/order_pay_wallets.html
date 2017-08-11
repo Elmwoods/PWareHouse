@@ -24,8 +24,8 @@
 	        {if ($userMoney>$needPay)}
 	        <div class="pbox">
 	            <input type='hidden' id='key' value='{$paykey}' class='j-ipt' autocomplete="off" />
-	        	支付密码：<input type='password' class='u-query j-ipt' id='payPwd' autocomplete='off'>
-	        	<a class='pbox-tip' target='_blank' href='{:url("home/users/editPayPass")}'>忘记密码?</a>
+	        	<!-- 支付密码：<input type='password' class='u-query j-ipt' id='payPwd' autocomplete='off'>
+	        	<a class='pbox-tip' target='_blank' href='{:url("home/users/editPayPass")}'>忘记密码?</a> -->
 	        </div>
 	        <div class="pbox2">
 	        <button class="pay-btn" type="button" style="width:100px;height: 30px;" onclick='javascript:payByWallet()'>确认支付</button>

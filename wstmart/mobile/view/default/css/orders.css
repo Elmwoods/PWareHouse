@@ -7,9 +7,11 @@ body{
 	height:30px;
 	line-height: 30px;
 	padding: 0px;
-	background: #fff;
+	background: #FFFFFF;
 	/*padding: 0 0.16rem;*/
 	/*font-size: 0.24rem;*/
+	position: fixed;
+	z-index: 10;
 }
 .item-head{
 	padding:5px 10px;
@@ -19,7 +21,7 @@ body{
 	text-align: center;
 }
 .tab-curr{
-	border-bottom:2px solid red;
+	border-bottom:2px solid #e60b49;
 
 }
 .order-item{
@@ -36,24 +38,26 @@ body{
 	line-height: 22px;
 }
 .o-Img{
-	max-width: 124px;
-	max-height: 124px;
-	width: 0.823rem;
-	height: 0.823rem;
-	padding-top: 5px;
-	border-radius: 7px;
-	margin-top: 5px;
+	max-width: 60px;
+    max-height: 60px;
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    padding-top: 0;
 }
 .o-gInfo{
 	padding:5px;
 }
 .o-gName{
-	max-height: 40px;
 	padding-left: 10px;
 	padding-right: 10px;
+	height: 42px;
 }
 .o-gSpec{
 	color:#ccc;
+	padding: 2px 0px;
+	min-height: 20px;
+	font-size: 12px;
 }
 .border-b{
 	padding-bottom:5px;
@@ -137,7 +141,7 @@ body{
 .ui-dialog-cnt{
 	width: 2.17rem;
 	/*height: 0.45rem;*/
-	height: 135px;
+	/*height: 135px;*/
 	/*border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;*/
 }
@@ -146,10 +150,10 @@ body{
     font-size: 0.15rem;
 	/*width: 1.76rem;*/
 	width: 100%;
-	height: 0.45rem;
+	/*height: 0.45rem;*/
 	text-align: center;
 	color: #e60b49;
-	line-height: 0.45rem;
+	line-height: 0.4rem;
 	margin: 0 auto;
 	padding: 0;
 	/*padding-top: 1px;*/
@@ -191,7 +195,7 @@ body{
 	background: #fff;
 	border-bottom: none;
 	margin-bottom:5px;
-	font-size: 0.11rem;
+	font-size: 0.14rem;
 }
 .d-item{
 	background: #fff;
@@ -296,7 +300,7 @@ body{
 	font-size: 0.14rem;
 }
 #order-box{
-	padding: 0px 10px;
+	padding: 30px 10px;
 }
 .order-tr-pic{
 	display: inline-block;
@@ -347,4 +351,8 @@ body{
 	margin-top: 10px;
 	text-align: center;
 	color: #999999;
+}
+
+.ui-row-flex .ui-col-3{
+	position: relative;
 }

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta charset="UTF-8">
+		<title>钱袋子</title>
+		<link rel="shortcut icon"  href="__STYLE__/img/titlelogo.ico"/>
+		<link rel="stylesheet" type="text/css" href="__STYLE__/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="__STYLE__/css/purse.css" />
+		<style type="text/css">
+			.main {
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				top: 0px;
+				bottom: 0px;
+				overflow: auto;
+				background: url(__STYLE__/img/beijing.jpg) no-repeat;
+				background-size: 100% 100%;
+				min-width: 1200px;
+				/*#img.source-image {width: 100%;position: absolute;top: 0;l.0eft: 0;} */
+				
+			}
+			
+			header {
+				/*border: 1px black solid ;*/
+				width: 80%;
+				height: 10%;
+				margin: 0 auto;
+			}
+			
+			.logo1 {
+				float: left;
+				width: 13%;
+			}
+			
+			.go {
+				float: right;
+				width: 40%;
+				height: 100%;
+			}
+			
+			.go ul {
+				height: 100%;
+			}
+			
+			.go ul li {
+				float: left;
+				text-align: center;
+				font-size: 16px;
+				color: #FFFFFF;
+				width: 30%;
+				height: 100%;
+				/*line-height: 100%;*/
+				margin-top: 7%;
+			}
+			/*下划线*/
+			
+			.line {
+				border-top: 1px #FFFFFF solid;
+				border-bottom: 1px #FFFFFF solid;
+				opacity: 0.6;
+			}
+			
+			footer img {
+				position: fixed;
+				bottom: 0%;
+				width: 100%;
+			}
+			
+			.mid {
+				width: 100%;
+				height: 85.6%;
+				/*border: 1px solid black;*/
+			}
+			
+			.mid_left {
+				width: 60%;
+				height: 99%;
+				/*border: 1px yellow solid;*/
+				float: left;
+			}
+			
+			.mid_left img {
+				width: 34%;
+				margin-left: 33%;
+				margin-top: 20%;
+			}
+			
+			.mid_left p {
+				color: #FFFFFF;
+				font-size: 150%;
+				width: 100%;
+				text-align: center;
+				margin-top: 5%;
+			}
+			
+			.mid_right {
+				width: 39%;
+				/*border: 1px solid black;*/
+				height: 100%;
+				float: right;
+			}
+			
+			.login {
+				float: right;
+				width: 41%;
+				height:310px;
+				margin-top: 26%;
+				margin-right: 30%;
+				padding-bottom: 5%;
+			}
+			
+			.code_p {
+				margin-top: 22%;
+			}
+			
+			.code_login p {
+				margin-top: 5%;
+				font-size: 12px;
+				/*color: #FFFFFF;*/
+				margin-bottom: 5%;
+			}
+			
+			.tab1 {
+				width: 15%;
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+			.tab2 {
+	width: 15%;
+	
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.code_login_d p {
+	text-align: center;
+	font-size: 12px;
+	/*color: #FFFFFF;*/
+	line-height: 20px;
+	/*font-family: "微软雅黑"*/
+}
+
+		</style>
+	</head>
+
+	<body>
+	<div id="send" style="display: none;">{:url('purse/login/send')}</div>
+	<div id="sends" style="display: none;">{:url('purse/login/sends')}</div>
+				<div class="zhezhao">
+</div>
+		<div class="main">
+			<!--头部-->
+			<header>
+				<img src="__STYLE__/img/VVpaylogo.png"  class="logo1">
+				<div class="go">
+					<ul>
+						<li><a href="">VV聊天</a></li>
+						<li><a href="{:url('home/index/index')}">金购商城</a></li>
+						<li><a href="{:url('vvoff/index/index')}">京歌官网</a></li>
+					</ul>
+				</div>
+			</header>
+
+			<!--下划线-->
+			<div class="line">
+
+			</div>
+
+			<!--中间-->
+			<div class="mid">
+				<div class="mid_left">
+					<img src="__STYLE__/img/Iphone-White-Silver.png" />
+					<p>VV钱袋子你生活中的支付助手
+						<a href="javascript:void(0)" class="download_load">立即下载</a>
+					</p>
+				</div>
+				<div class="mid_right">
+
+					<!--扫码登录-->
+					<form action="{:url('purse/login/check')}" method="post" class="code_login login">
+
+						<a href="javascript:void(0)">
+							<img class="tab1" src="__STYLE__/img/tab1.png" />
+						</a>
+
+						<div class="code_p">
+
+							<img src="__VVOFF__/serialize/{$data}/{$serialize}.png" style="width: 55%;" />
+						</div>
+						<p>请使用VV APP 扫码登陆</p>
+
+						<span class="other">
+								<!--<a href="javascript:void(0)" class="downvv">下载VV APP</a>-->
+								<a href="javascript:void(0)" class="downvv">注册</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+							</span>
+					</form>
+					
+					
+					<!--短信登录-->
+						<form action="{:url('purse/login/reg')}" method="post" class="code_login_d login">
+							<a href="javascript:void(0)">
+								<img class="tab2" src="__STYLE__/img/tab2.png" />
+							</a>
+							
+							<div class="phone_m" style="margin-bottom: 10%;">
+								<p style="font-size: 18px">短信登陆</p>
+								<div class="phone_n">
+									<input class="phone_nk sjh sjyzm" type="text" name="mobile" id="zh_03" value="" placeholder="请输入手机号" />
+								</div>
+								<p class="sjgs" style="text-align: center;">*手机号码格式不正确*</p>
+								<div class="phone_n shangyi">
+									<input class="phone_nk" type="password" name="code" id="" value="" placeholder="请输入验证码" />
+
+								</div>
+								<button type="button" class="send_yzm" id="send_yzm2" style="left: 34%;" >发送验证码</button>
+
+								<input type="submit" value="提交" class="post_tj" />
+								<p class="agreement
+								" style="vertical-align: middle">
+									<input type="checkbox" id="ifcheck2"  checked >&nbsp;同意并接受
+
+									<a href="{:url('purse/index/agreement')}">《京歌用户协议》</a>
+
+								<p id="regnotice2"    style="display:none;color: #e60b49;text-align: center">你还没有同意京歌协议!</p>
+								</p>
+							</div>
+
+							<span class="other">
+								<a href="javascript:void(0)" class="downvv">注册</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="accounts">帐号登陆</a>
+							</span>
+						</form>
+					
+					<!--帐号登入-->
+						<form action="{:url('purse/login/cnlogon')}" method="post" id="account_login" class="user_login login" onsubmit="return check()">
+							
+							
+							<div class="phone_m">
+								<p>帐号登陆</p>
+
+								<div class="phone_n">
+									<input class="phone_nk sjh" type="text" name="username" id="zh_02" value="" autocomplete="off" placeholder="请输入手机号 |VV ID" />
+								</div>
+								<p class="sjgs">*手机号码格式不正确*</p>
+								<div class="phone_n shangyi">
+									<input class="phone_nk" type="password" name="password" id="" value="" autocomplete="off" placeholder="请输入密码" />
+								</div>
+								<input type="submit" value="登录" class="zh_login" />
+								<!--<p class="agreement">同意并接受<a href="javascript:void(0)">《京歌用户协议》</a></p>-->
+							</div>
+							<span class="other">
+								<a href="javascript:void(0)" class="downvv">注册</a>
+								<i class="sx1"></i>
+								<a href="javascript:void(0)" class="note_login">短信登陆</a>
+							</span>
+						</form>
+					<script>
+						function check(){
+							var username = $("input[name='username']").val();
+							var pwd = $("input[name='password']").val();
+							if(username==""){
+								alert("用户名不能为空！");
+								return false;//false:阻止提交表单
+							}
+							if(pwd==""){
+								alert("密码不能为空！");
+								return false;//false:阻止提交表单
+							}
+							/*$.post('/purse/Login/cnlogon',{username:username,password:pwd},function(data){
+
+								if(data=='error'){
+									alert('登录失败')
+									return false;
+								}else{
+
+								}
+							});*/
+						}
+					</script>
+					<!--注册-->
+						<form action="{:url('purse/login/reg')}" method="post" class="user_register a">
+							<!--<a href="javascript:void(0)" class="guan">
+								<img class="close_s" src="img/button_close.png" />
+							</a>-->
+							<div class="phone_m_zc">
+								<p class="zc">注册</p>
+
+								<div class="phone_n">
+									<input class="phone_nk sjh sjyzm" type="tel" name="mobile" id="zh_01" autocomplete="off" placeholder="请输入手机号" />
+								</div>
+								<p class="sjgs">*手机号码格式不正确*</p>
+								<div class="phone_n shangyi">
+									<input class="phone_nk" type="text" name="code" id="" value="" placeholder="请输入验证码" />
+								</div>
+								<button type="button" class="send_yzm" id="send_yzm1">发送验证码</button>
+								<input type="submit" value="注册" class="zh_login_r" />
+
+								<p class="agreement">
+									<input type="checkbox" checked>&nbsp;同意并接受
+									<a href="{:url('purse/index/agreement')}">《京歌用户协议》</a>
+								<p id="regnotice"    style="display:none;color: #e60b49;text-align: center">你还没有同意京歌协议!</p>
+								</p>
+							</div>
+							<span class="other" style="color: black;">
+								<!--<a href="javascript:void(0)" class="downvv">注册</a>
+								<i class="sx1"></i>-->
+								<a href="javascript:void(0)" class="note_login">登陆</a>
+							</span>
+						</form>
+
+
+<!--------下载VV---------->
+
+						<div class="code_down_b">
+
+							<a href="javascript:void(0)" class="guan">
+								<img class="close_s" src="__STYLE__/img/button_close.png" />
+							</a>
+
+							<div style="margin-top: 15%;">
+								<img src="__VVOFF__/images/QR_down.png" class="code_b code_big" />
+							</div>
+							<p style="color: black;">扫码下载VV APP</p>
+
+							<!--<span class="other">
+								<a href="javascript:void(0)" class="denglu1">登录</a>
+								<i class="sx1">|</i>
+								<a href="javascript:void(0)" class="zhuce1">注册</a>
+							</span>-->
+						</div>
+				</div>
+			</div>
+
+			<!--底部-->
+			<footer>
+				<img src="__STYLE__/img/down.png" />
+			</footer>
+		</div>
+	<div id="remote" style="display: none;">/purse/index/check.html</div>
+	<div id="back" style="display: none;">/purse/consume/index.html</div>
+	<div id="setqrcode" style="display: none;">{$serialize}</div>
+	</body>
+	<script src="__STYLE__/js/jquery.min.js"></script>
+	<script src="__STYLE__/js/purse.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STYLE__/js/remote_zh.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

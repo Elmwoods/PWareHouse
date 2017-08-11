@@ -323,10 +323,10 @@ WST.toJson = function(str){
 
 //刷新验证码
 WST.logout = function(){
-	$.post(WST.U('home/users/logout'),{},function(data,textStatus){
+	$.post(WST.U('purse/Login/quit'),{},function(data,textStatus){
 		var json = WST.toJson(data);
 		WST.msg(json.msg,{icon:1});
-		location.href=WST.U('home/index/index');
+		location.href=WST.U('purse/Index/login');
 	});
 }
 
@@ -1119,6 +1119,17 @@ WST.balance = function(){
 	});
 }
 
+WST.transfer_purse = function () {
+	$.post(WST.U('purse/Predeposit/withdrawals_imazamox'),{},function (data) {
+        var json = WST.toJson(data);
+        if(json.status==1){
+            WST.msg(json.msg,{icon:1});
+            location.href=WST.U('purse/Consume/bill');
+        }else{
+            WST.msg(json.msg,{icon:2});
+        }
+    });
+}
 
 // 用户名查询
 WST.Payment = function(){

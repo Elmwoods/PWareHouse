@@ -309,6 +309,7 @@ class Goods extends CGoods{
 		$shopId = (int)session('WST_USER.shopId');
 	    $goodsId = input('post.goodsId/d');
 	    $specsIds = input('post.specsIds');
+
 		$data = input('post.');
 		WSTUnset($data,'goodsId,dataFlag,statusRemarks,goodsStatus,createTime');
 		$ogoods = $this->where(['goodsId'=>$goodsId,'shopId'=>$shopId])->field('goodsStatus,goodsType')->find();
@@ -443,6 +444,13 @@ class Goods extends CGoods{
 		    				$goodsSpecIds[] = $specMap[$gvs];
 		    			}
 		    			$gspec = [];
+		    			// //添加代码start
+		    			// $ar = [];
+		    			// foreach ($goodsSpecIds as  $value) {
+		    			// 	array_unshift($ar, $value);
+		    			// }
+		    			// $goodsSpecIds = $ar;
+		    			// //添加代码end
 		    			$gspec['specIds'] = implode(':',$goodsSpecIds);
 		    			$gspec['productNo'] = Input('productNo_'.$v);
 			    		$gspec['marketPrice'] = (float)Input('marketPrice_'.$v);
@@ -454,6 +462,7 @@ class Goods extends CGoods{
 			    			$gspec['isDefault'] = 1;
 			    			$isFindDefaultSpec = true;
 		    				$defaultPrice = $gspec['specPrice'];
+		    				$defaultmarketPrice = $gspec['marketPrice']; //添加代码
 			    		}else{
 			    			$gspec['isDefault'] = 0;
 			    		}
@@ -476,7 +485,8 @@ class Goods extends CGoods{
 		    		    Db::name('goods_specs')->insertAll($gspecArray);
 		    		}
 		    		//更新推荐规格和总库存
-    	            $this->where('goodsId',$goodsId)->update(['isSpec'=>1,'shopPrice'=>$defaultPrice,'goodsStock'=>$totalStock]);
+    	            // $this->where('goodsId',$goodsId)->update(['isSpec'=>1,'shopPrice'=>$defaultPrice,'goodsStock'=>$totalStock]); 
+    	            $this->where('goodsId',$goodsId)->update(['isSpec'=>1,'shopPrice'=>$defaultPrice,'marketPrice'=>$defaultmarketPrice,'goodsStock'=>$totalStock]);//添加代码
     	        }
     	        //保存商品属性
     	        //删除之前的商品属性
@@ -538,6 +548,7 @@ class Goods extends CGoods{
 			$rs['attrs'] = Db::name('goods_attributes')->alias('ga')->join('attributes a','ga.attrId=a.attrId','inner')
 			                 ->where('goodsId',$goodsId)->field('ga.attrId,a.attrType,ga.attrVal')->select();
 		}
+
 		return $rs;
 	}
 	/**
@@ -600,6 +611,9 @@ class Goods extends CGoods{
 			$rs['favShop'] = $f->checkFavorite($rs['shopId'],1);
 			$rs['favGood'] = $f->checkFavorite($goodsId,0);
 		}
+		// header("content-type:text/html; charset=utf-8");
+  //           echo "<pre>";
+  //           print_r($rs);die;
 		return $rs;
 	}
 	
@@ -743,7 +757,7 @@ class Goods extends CGoods{
 		$goodsCatIds = model('GoodsCats')->getParentIs($goodsCatId);
 		$data = [];
 		if($goodsType==0){
-			$specs = Db::name('spec_cats')->where(['dataFlag'=>1,'isShow'=>1,'goodsCatId'=>['in',$goodsCatIds]])->field('catId,catName,isAllowImg')->order('isAllowImg desc,catSort asc,catId asc')->select();
+			$specs = Db::name('spec_cats')->where(['dataFlag'=>1,'isShow'=>1,'goodsCatId'=>['in',$goodsCatIds]])->field('catId,catName,isAllowImg,goodsCatPath')->order('isAllowImg desc,catSort asc,catId asc')->select();
 			$spec0 = null;
 			$spec1 = [];
 			foreach ($specs as $key => $v){
@@ -753,10 +767,31 @@ class Goods extends CGoods{
 					$spec1[] = $v;
 				}
 			}
+			//添加代码start
+			$spec11=[];
+			$b=[];
+			foreach ($spec1 as $vall) {
+				$a=explode('_',$vall['goodsCatPath']);
+				$b[]=count(array_filter($a));
+			}
+			$b=max($b);
+			foreach ($spec1 as $val) {
+				$a=explode('_',$val['goodsCatPath']);
+				$a=count(array_filter($a));
+				if ($a==$b) {
+					$spec11[]=$val;
+				}
+			}
+			//添加代码 end
 			$data['spec0'] = $spec0;
-			$data['spec1'] = $spec1;
+			$data['spec1'] = $spec11;
 		}
-		$data['attrs'] = Db::name('attributes')->where(['dataFlag'=>1,'isShow'=>1,'goodsCatId'=>['in',$goodsCatIds]])->field('attrId,attrName,attrType,attrVal')->order('attrSort asc,attrId asc')->select();
+		$bb=null;
+		foreach ($spec11 as $valu) {
+			$bb=$valu['goodsCatPath'];
+		}
+		//源代码'goodsCatId'=>['in',$goodsCatIds]]
+		$data['attrs'] = Db::name('attributes')->where(['dataFlag'=>1,'isShow'=>1,'goodsCatPath'=>['in',$bb]])->field('attrId,attrName,attrType,attrVal')->order('attrSort asc,attrId asc')->select();
 	    return WSTReturn("", 1,$data);
 	}
 	
@@ -809,7 +844,7 @@ class Goods extends CGoods{
 	/**
 	 * 获取分页商品记录
 	 */
-	public function pageQuery($goodsCatIds = []){
+	public function pageQuery($goodsCatIds = [],$isSearch = 0){
 		//查询条件
 		$isStock = input('isStock/d');
 		$isNew = input('isNew/d');
@@ -818,21 +853,43 @@ class Goods extends CGoods{
 		$where = $where2 = $where3 = [];
 		$where['goodsStatus'] = 1;
 		$where['g.dataFlag'] = 1;
-		$where['isSale'] = 1;
+		$where['g.isSale'] = 1;
 
-		//添加代码start 
-		if ($keyword!='') {
-			$re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
-			header("content-type:text/html; charset=utf-8");
-			if($re){
-				$where['goodsName'] = ['like','%'.$keyword.'%']; 
-			}else if(in_array(null,$goodsCatIds)){
-				$where['goodsName'] = ['=',''];
-			}else{
-				$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];  
+		//添加代码start
+		$flag = false;//判断商品是否存在
+		if(!empty($goodsCatIds)){
+			foreach ($goodsCatIds as $key => $value) {
+				if (is_array($value)) {
+					$rs = Db::name('goods')->where(['goodsCatIdPath'=>['like',implode('_',$value).'_%']])->find();
+		            if($rs){
+		            	$flag = true;
+		            	$where['goodsCatIdPath'] = ['like',implode('_',$value).'_%'];
+		            	break;
+		            }else if($isSearch ==0){
+						$where['goodsCatIdPath'] = ['like','-.,*(_+a_z!$^.<>_null_'];
+					}
+				}else{
+					$rs = Db::name('goods')->where(['goodsCatIdPath'=>['like',implode('_',$goodsCatIds).'_%']])->find();
+		            if($rs){
+		            	$flag = true;
+		            	$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];
+		            	break;
+		            }else if($isSearch ==0){
+						$where['goodsCatIdPath'] = ['like','-.,*(_+a_z!$^.<>_null_'];
+					}
+				}
+        	}
+		}
+
+		if($flag == false){
+			if ($keyword!=''){
+				$re = Db::name("goods")->where('goodsName','like','%'.$keyword.'%')->find();
+				if($re){
+					$where['goodsName'] = ['like','%'.$keyword.'%']; 
+				}else{
+					$where['goodsCatIdPath'] = ['like','-.,*(_+a_z!$^.<>_null_'];
+				}
 			}
-		}else{
-			if(!empty($goodsCatIds))$where['goodsCatIdPath'] = ['like',implode('_',$goodsCatIds).'_%'];  
 		}
 		//添加代码end
 		// $where['goodsName'] = ['like','%'.$keyword.'%'];
@@ -871,18 +928,22 @@ class Goods extends CGoods{
 			->paginate(input('pagesize/d',16))->toArray();
 
 		$list['cai'] = [];
-		foreach ($list['Rows'] as $key => $value) {
-			if (count($list['cai'])<3) {
-				if($value['isBest'] == 1){
-					$list['cai'][$key] = $value;
-				}	
-			}
+		// foreach ($list['Rows'] as $key => $value) {
+		// 	if (count($list['cai'])<3) {
+		// 		if($value['isBest'] == 1){
+		// 			$list['cai'][$key] = $value;
+		// 		}	
+		// 	}
 
-		}
+		// }
 		if(count($list['cai']) == 0){
+			$leng = count($list['Rows']);
 			foreach ($list['Rows'] as $key => $value) {
 				if (count($list['cai'])<3) {
-					$list['cai'][$key] = $value;
+					$key1 = rand(1,$leng);
+					if (!array_key_exists ($key1,$list['cai'])){
+						$list['cai'][$key1] = $value;
+					}
 				}
 			}
 		}

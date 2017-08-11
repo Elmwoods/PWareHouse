@@ -1,4 +1,15 @@
 @CHARSET "UTF-8";
+.wst-in-header{
+	/*background: rgba(255,255,255,0.3);*/
+	background: #FFFFFF;
+	border-bottom: none;
+}
+.wst-in-search input{
+	background: none;
+}
+#goods-list{
+	min-height: 500px;
+}
 .wst-in-adst .adst img,.wst-in-adsb img,.wst-in-adscats img{
 	width: 100%;
 	height: 100%;
@@ -64,6 +75,8 @@
 	padding:3px;
 	border: 1px solid #f2f1f1;
 }
+
+
 .wst-in-adsb{
 	padding:10px;
 	height: 110px;
@@ -74,6 +87,7 @@
 	font-size:0.165rem;
 	text-align: center;
 	color:#A4CB47;
+	line-height: 18px
 }
 .wst-in-title .left{
 	float:left;
@@ -107,30 +121,21 @@
 }
 .wst-in-title .left .line1,.wst-in-title .right .line1{
 	width: 10px;
+	opacity: 0;
 }
 .wst-in-title .left .line2,.wst-in-title .right .line2{
 	width: 5px;
+	opacity: 0;
 }
 /*
  轮播*/
-.swiper-container{
-	width: 100%;
-	height: 1.6rem;
-	overflow: hidden;
-	position: relative;
-}
 .swiper-wrapper{
-	height: 1.6rem;
+	position: absolute;
+	top: 0px;
+	left:0px;
 }
-.swiper-slide{
-	height: 1.6rem;
-	display: block;
-}
-.swiper-slide a,
-.swiper-slide img{
-	width: 100%;
-	height: 100%;
-	display: block;
+.ui-slider-indicators{
+	z-index: 2;
 }
 /*楼层颜色*/
 .colour0{
@@ -196,16 +201,17 @@
 .wst-in-adscats{
 	height: 60px;
 }
-/*.wst-in-goods{
+.wst-in-goods{
 	float:left;
 	width: 44.666666%;
 	padding:5px;
-	margin:5px 0px 5px 5px;
-	font-size:0.158rem;
+	margin:5px 0px 5px 1.6%;
+	/*font-size:0.158rem;*/
+	font-size: 14px;
 	background:#ffffff;
 	box-shadow: 0px 0px 3px #bbbbbb;
 	
-	border-radius: 10px;
+	/*border-radius: 10px;*/
 }
 .wst-in-goods .img{
 	float: left;
@@ -235,38 +241,43 @@
 .wst-in-goods .info{
 	float: left;
 	width: 100%;
-	margin-top:8px;
+	margin-top:3px;
 }
 .wst-in-goods .info .price{
-	float: left;
-	font-size:0.175rem;
+	/*float: left;*/
+	/*font-size:0.175rem;*/
+	font-size: 16px;
 	color:#e60b49;
+	display: block;
 }
-.wst-in-goods .info .deal{
-	float:right;
+.wst-in-goods .info .marketprice{
+	/*float:right;*/
 	color:#a0a0a0;
+	display: block;
 }
 .wst-in-num{
-	height: 12px;
-    line-height: 12px;
-    font-size: 0.11rem;
+	height: 16px;
+    line-height: 16px;
+    font-size: 0.11rem!important;
     position: absolute;
-    top: 6px;
-    right: 0px;
-    min-width: 12px;
+    left: 24px;
+    top: 3px;
+    min-width: 16px;
     text-align: center;
     border-radius: 5px;
-    padding: 0 1px;
     color: #ffffff;
-    background: #e60b49;
-}*/
+    background: #e60b49; 
+    padding: 0px;
+    border-radius: 50%;
+    right: 0;
+}
 
 /*.in-goods{
 	width: 98%;
 	height: 160px;
 	margin: 10px auto;
 }*/
-.wst-big-img{
+/*.wst-big-img{
 	width: 35%;
 	height: 160px;
 	float: left;
@@ -329,3 +340,4 @@
 .goods-price .deal{
 	text-decoration: line-through;
 }
+*/

@@ -1,6 +1,14 @@
 //列表
+//
+//
+//
+
+
+
 function indexList(){
-	 $('#Load').show();
+	var lenged = $(".wst-in-title").length-1;
+$('#currPage').val(lenged)
+	$('#Load').show();
 	 loading = true;
 	 var param = {};
 	 param.currPage = Number( $('#currPage').val() ) + 1;
@@ -18,9 +26,19 @@ function indexList(){
 	     $('#Load').hide();
     });
 }
-var currPage = 0;
+
+var currPage;
 var loading = false;
 $(document).ready(function(){
+	
+	
+	if(sessionStorage.aa){
+		$("#goods-list").html(sessionStorage.aa);
+		$(window).scrollTop(sessionStorage.bb)
+	}
+	
+	
+	
 	WST.initFooter('home');
 	//搜索
     $(window).scroll(function(){
@@ -48,9 +66,10 @@ $(document).ready(function(){
     }else{
     	$('.ui-slider').hide();
     }
-    
+   
+    	//中间大广告
 	var w = WST.pageWidth();
-	//中间大广告
+
 	var wl = (w-18)*47.222222/100;
 	var hl = wl*32/57;
 	if($('.wst-in-adst a').hasClass("advert2")){
@@ -82,16 +101,31 @@ $(document).ready(function(){
 
 
 	//刷新
-	indexList();
+	
+	if(!sessionStorage.bb){
+		indexList();
+	}
+	
 
     $(window).scroll(function(){
-        if (loading) return;
-        if (5 + ($(window).scrollTop()) >= ($(document).height() - $(window).height())) {
+        if (loading) return;                     /*$(window).height()*/
+        if (5 + ($(window).scrollTop()) >= ($(document).height() - 800)) {
             currPage = Number( $('#currPage').val() );
             if(currPage < 10 ){
                 indexList();
             }
         }
-    });
+        
+        var cctop = $(window).scrollTop();
+        var content = $("#goods-list").html();
+        sessionStorage.aa = content;
+        sessionStorage.bb = cctop;
+        sessionStorage.cc = currPage;
+        
+   }); 
+    
+  
+
+
 });
 

@@ -5,7 +5,7 @@
 {/block}
 {block name="header"}
     <header style="background:#ffffff;" class="ui-header ui-header-positive wst-header">
-    	<a href="{:url('mobile/carts/index')}"><i class="ui-icon-return"></i></a><h1>确认订单</h1>
+    	<i class="ui-icon-return" onclick="history.go(-1)"></i><h1>确认订单</h1>
     </header>
 {/block}
 {block name="footer"}
@@ -53,6 +53,8 @@
 		    <h4 onclick="javascript:addAddress(1);"><p class="infono">您还没添加收货地址，请添加。</p></h4>
 		    {else}
 		    <h5 onclick="javascript:addAddress(1,{$userAddress['addressId']});">
+			<input type="hidden" value="{$userAddress['userPhone']}" id='Phone'><!-- 添加代码 -->
+
 		    	<p class="infot">{$userAddress['userName']}    {$userAddress['userPhone']}</p>
 		    	<p class="infob"><i class="ui-icon-pin"></i>{$userAddress['areaName']}{$userAddress['userAddress']}</p>
 		    </h5>
@@ -81,7 +83,7 @@
 			    <li class="ui-col ui-col-25">
 			    	<div class="img j-imgAdapt">
 				    	<a href="javascript:void(0);" onclick="javascript:WST.intoGoods({$li['goodsId']});">
-				    	<img src="__ROOT__/{:WSTConf('CONF.goodsLogo')}" data-echo="__ROOT__/{:WSTImg($li['goodsImg'],3)}" title="{$li['goodsName']}">
+				    	<img src="__ROOT__/{:WSTImg($li['goodsImg'],3)}" title="{$li['goodsName']}">
 				    	</a>
 			    	</div>
 			    </li>
@@ -90,7 +92,7 @@
 			    		<li class="ui-col ui-col-75">
 			    			<div class="name"><p class="names">{$li['goodsName']}</p>
 			    			{if($li['specNames'])}
-			    			<p class="spec">规格：
+			    			<p class="spec">
 			    			{volist name="li['specNames']" id="sp"}
 								{$sp['catName']}:{$sp['itemName']}
 							{/volist}

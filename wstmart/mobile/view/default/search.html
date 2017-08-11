@@ -3,50 +3,166 @@
 {block name="css"}
 <link rel="stylesheet"  href="__MOBILE__/css/swiper.min.css">
 <link rel="stylesheet"  href="__MOBILE__/css/search.css?v={$v}">
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">  
 {/block}
 {block name="header"}
 	<header class="ui-header ui-header-positive wst-in-header">
 	    <i class="ui-icon-return" onclick="history.back()"></i>
     </header>
-    <div class="wst-in-search search">
-    	<span class="seleft"></span>
-        <input type="text" id="wst-search" value="{$goodsName}" placeholder="搜索本店商品">
-        <span class="seright"></span>
-        <p></p>
-        <span class="ui-icon-search" onclick="javascript:WST.search(2);"></span>
+    <div class="wst-in-search search" style="width: 80%;">
+    	<!--<span class="seleft"></span>-->
+        <input type="text" id="wst-search" value="" placeholder="">
+        <!--<span class="seright"></span>-->
+        <!--<p></p>-->
+        <span class="ui-icon-search" id="btn" onclick="javascript:WST.search(0);"></span>
     </div>
 {/block}
-	<body> 
+{block name="main"}
 		
-		<header>
-			<a class="goback" href="javascript:history.go(-1)">
-				<img src="../img/jiantou_png.png" />
-			</a>
-			<div class="searchBox">
-				<img class="fangdajing" src="../img/sousuo_png.png" />
-				<input  type="text" / placeholder="搜索店铺内商品" >
+		<div style="height: 42px;"></div>
+		<div id="searchRecored">浏览记录 
+			<a href=""  onclick="return false" style="color: #000000;text-decoration: none;" id="clearAll" data-toggle="modal" data-target="#myModal">
+			删除浏览记录
+		    </a>
+		</div>
+		
+		<div class="modal fade" style="margin-top: 35%;" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+    <div class="modal-dialog" role="document">  
+        <div class="modal-content" style="width: 80%;margin: auto;text-align: center;">  
+            <div class="modal-header">  
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                    <span aria-hidden="true">×</span>  
+                </button> --> 
+                <h4 class="modal-title" id="myModalLabel">确认要删除浏览记录吗？</h4>  
+            </div>  
+            
+            <div class="modal-footer" style="text-align: center;">  
+                <button type="button" class="btn " data-dismiss="modal">取消</button>  
+                <button type="button" class="btn" id="confirmdel"  data-dismiss="modal">确认</button>  
+            </div>  
+        </div>  
+    </div>  
+</div>
+		
+		<div id="searchList" style="padding-left: 10px;">
 			
-			</div>
-				<a class="search-text" href="qunzi.html">搜索</a>
-		</header>
+		</div>
+		<div class="norecored">
+				没有浏览记录
+		</div>
+{/block}
+
+{block name="js"}
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+<script type="text/javascript">
+	  var hisTime;
+	  var hisItem;
+	  var resou;
+	   $("#wst-search").val("");
+	function init() {
+		hisTime = [];
+		hisItem = [];
+		for(var i = 0; i < localStorage.length; i++) {
+			if(!isNaN(localStorage.key(i))) {
+				hisTime.push(localStorage.key(i));
+			}
+		}
+
+		if(hisTime.length > 0) {
+			hisTime.sort(function(a, b) { return b - a });
+			console.log(hisTime);
+			for(var y = hisTime.length - 1; y > -1; y--) {
+				localStorage.getItem(hisTime[y]).trim() && hisItem.push(localStorage.getItem(hisTime[y]));
+			}
+		}
+		if(hisItem.length==0){
+			$("#clearAll").hide();
+			$(".norecored").show()
+		}else{
+			$("#clearAll").show();
+			$(".norecored").hide()
+		}
+
+		$("#searchList").html("");
+		for(i = 0; i < hisItem.length; i++) {
+			//alert(hisItem);
+			$("#searchList").prepend('<div onclick="javascript:WST.search(0,this);">' + hisItem[i] + '</div>')
+		}
+	} 
+	init();
+	$("#btn").click(function() {
+
+
+		if($("#wst-search").val()==""){
+			
+			$("#wst-search").val(resou);
+			$("#btn").trigger("click")
+		}
+		var time = (new Date()).getTime();
+		var val = $("#wst-search").val();
+		for(var k = 0; k < $("#searchList>span").length; k++) {
+			if($("#searchList>span").eq(k).html() == val) {
+				$("#searchList>span").eq(k).remove();
+				k--;
+			} 
+		}
+		for(var i = 0; i < localStorage.length; i++) {
+			if(val == localStorage.getItem(localStorage.key(i))) {
+				localStorage.removeItem(localStorage.key(i));
+			}
+		}
+		localStorage.setItem(time, val);
 		
-		<div style="height: 0.88rem;"></div>
-		<div class="liulan-jilu">
-			<span>浏览记录</span>
-			<a href=""><img src="../img/fanhui_png.png"/></a>
-		</div>
-		<div class="hot-search">
-			<div class="hot-search-title">
-				热门搜索
-			</div>
-		</div>
-		<div class="hot-search-list">
-			<div><a href="">T恤</a></div>
-			<div><a href="">外套</a></div>
-			<div><a href="">短裙</a></div>
-			<div><a href="">平底鞋</a></div>
-			<div><a href="">潮包</a></div>
-			<div><a href="">运动鞋</a></div>
-		</div>
-	</body>
-</html> 
+	})
+	  	$("#confirmdel").click(function(){
+	    	for(var f = 0;f<hisTime.length;f++){
+		      	localStorage.removeItem(hisTime[f]);
+		    }
+    	init();
+    	document.location.reload();//重新加载当前页面 
+	});	
+     
+	  	if($("#searchList>div").length>0){
+	  		resou =$("#searchList>div").eq(0).html();
+	  	}else{resou = ""}
+
+$("#wst-search").attr("placeholder",resou)
+
+
+	  	/*	$("#wst-search").val(resou);
+ 
+	$("#wst-search").css({"color":"#aaa"})
+	$("#wst-search").each(function() {
+        //保存当前文本框的值
+        var vdefault = this.value;
+        $(this).focus(function() {
+            //获得焦点时，如果值为默认值，则设置为空
+            if (this.value == vdefault) {
+                this.value = "";
+            }
+
+            $(this).css({"color":""})
+        });
+        $(this).blur(function() {
+            //失去焦点时，如果值为空，则设置为默认值
+            if (this.value == "") {
+                this.value = vdefault;
+                $(this).css({"color":"#aaa"})
+            }
+        });
+    });*/
+
+    $("#searchList>div").click(function() {
+		var val = $(this).html();
+		$("#wst-search").val(val);
+		$("#btn").trigger("click")
+	})
+
+
+
+	$("#wst-search").focus();
+</script>
+		
+{/block}

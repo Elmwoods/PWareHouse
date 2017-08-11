@@ -1,9 +1,6 @@
 a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var{
-    margin:0;padding:0;
+    margin:0;padding:0
 }
-
-a{text-decoration:none;}
-
 img{border:0;}
 input{border:none;background: #fff;}
 input{padding: 0px;margin:0px;}
@@ -36,12 +33,19 @@ em,i,u{
 body{
     font-family: "微软雅黑";
     color:#666;
-    font-size:12px
+    font-size:12px;
 }
 a{
-    color: #ffffff;
+    color:#666;
     text-decoration:none;
 }
 a:hover {
 	text-decoration: none;
+}
+.download_load{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.download_load:hover{
+	text-decoration: underline;
 }

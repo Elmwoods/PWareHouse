@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京歌通讯录</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #aa {
+            width: 60%;
+            margin-left:20%;
+        }
+        #show tr{
+            color:purple;
+            text-align: center;
+        }
+        #show td, #show th {
+            padding:10px;
+            width:200px;
+            text-align: center;
+        }
+        #show th  {
+            font-size:32px;
+        }
+        #show td {
+            font-size: 20px;
+        }
+        a {
+            color:#fff;
+            text-decoration: none;
+        }
+        a:hover {
+            color:#06c804;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function start(){
+            var firstInput=document.getElementsByTagName("input")[0];
+            firstInput.select();
+        }
+    </script>
+</head>
+<body onload="start();" style="text-align:center;padding:50px;background: url('http://www.jingomall.com/wstmart/hr/view/default/img/back.jpg') no-repeat;background-size: 100%;">
+        <div id="aa">
+            <form action="{:url('hr/index/update')}" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="id" value="{$detail.id}" />
+                <input type="hidden" name="pre" value="{$pre}">
+                <p style="clear: both; font-weight: bold;"><span style="color:#fff;">姓　名:</span>　<input type="text" placeholder="请输入姓名" name="name" style="width:360px;" value="{$detail.name}" /></p>
+                <p style="clear: both; font-weight: bold;"><span style="color:#fff;">手机号:</span>　<input type="text" placeholder="请输入手机号" name="phone" style="width:360px;" value="{$detail.phone}" /></p>
+                <p style="clear: both; font-weight: bold;"><span style="color:#fff;">首字母:</span>　<input type="text" placeholder="请输入首字母缩写" name="short" style="width:360px;" value="{$detail.short}" /></p>
+                <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    提交
+                </button>　　
+                <label><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <a href="{$Think.server.HTTP_REFERER}"> 返回上一页</a>
+                </button></label>
+            </form>
+        </div>
+
+</body>
+</html>

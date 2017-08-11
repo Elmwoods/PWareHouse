@@ -30,13 +30,13 @@ img{
 .wst-shopstr-cat span:hover{
 	cursor:pointer;
 	color: #ffffff;
-	background: #fc6047;
+	background: #e60b49;
     border-radius: 3px;
 }
 .js-selected{
 	cursor:pointer;
 	color: #ffffff;
-	background: #fc6047;
+	background: #e60b49;
     border-radius: 3px;
 }
 .wst-shopstr-shop{
@@ -120,6 +120,7 @@ img{
 	text-indent:1em;
 	cursor:pointer;
 	background:url(../img/img_bg_xiala.png) 0px 0px no-repeat;
+	display:none;
 }
 .wst-shopstr-score .title{
 	font-weight: bold;

@@ -34,10 +34,10 @@ class CashDraws extends Base{
           $userId = (int)session('WST_USER.userId');
           $money = (float)input('money');
           $accId = (float)input('accId');
-          $payPwd = input('payPwd');
+          // $payPwd = input('payPwd');
           $limitMoney = (float)WSTConf('CONF.drawCashUserLimit');
           if($money<$limitMoney)return WSTReturn('提取金额必须大于或等于￥'.$limitMoney.'方可提现');
-          if($payPwd=='')return WSTReturn('支付密码不能为空');
+          // if($payPwd=='')return WSTReturn('支付密码不能为空');
           //加载提现账号信息
           $acc = Db::name('cash_configs')->alias('cc')
                    ->join('__BANKS__ b','cc.accTargetId=b.bankId')->where(['cc.dataFlag'=>1,'id'=>$accId])
@@ -46,8 +46,8 @@ class CashDraws extends Base{
           $areas = model('areas')->getParentNames($acc['accAreaId']);
           //加载用户
           $user = model('users')->get($userId);
-          $payPwd = md5($payPwd.$user->loginSecret);
-          if($payPwd!=$user->payPwd)return WSTReturn('支付密码错误');
+          // $payPwd = md5($payPwd.$user->loginSecret);
+          // if($payPwd!=$user->payPwd)return WSTReturn('支付密码错误');
           if($money>$user->userMoney)return WSTReturn('提取金额不能大于用户余额');
           //减去要提取的金额
           $user->userMoney = $user->userMoney-$money;
